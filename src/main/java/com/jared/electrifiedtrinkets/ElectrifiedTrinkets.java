@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.jared.electrifiedtrinkets.blocks.ETBlocks;
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.proxy.CommonProxy;
+import com.jared.electrifiedtrinkets.util.GuiHandler;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -32,6 +33,7 @@ public class ElectrifiedTrinkets {
 
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
+		new GuiHandler();
 
 	}
 

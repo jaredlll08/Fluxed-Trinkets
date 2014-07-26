@@ -22,7 +22,7 @@ public class ContainerSolderingStation extends Container {
 
 	@Override
 	public boolean canInteractWith(EntityPlayer arg0) {
-		return false;
+		return true;
 	}
 
 }
