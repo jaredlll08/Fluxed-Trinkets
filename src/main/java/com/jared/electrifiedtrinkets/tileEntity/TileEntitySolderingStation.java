@@ -3,18 +3,37 @@ package com.jared.electrifiedtrinkets.tileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntitySolderingStation extends TileEntity implements ISidedInventory{
+public class TileEntitySolderingStation extends TileEntity implements ISidedInventory {
 
-	@Override
-	public void closeInventory() {
-		
+	private ItemStack[] items;
+
+	public TileEntitySolderingStation() {
+		items = new ItemStack[13];
 	}
 
 	@Override
-	public ItemStack decrStackSize(int arg0, int arg1) {
-		return null;
+	public void closeInventory() {
+
+	}
+
+	@Override
+	public ItemStack decrStackSize(int i, int count) {
+		ItemStack itemstack = getStackInSlot(i);
+
+		if (itemstack != null) {
+			if (itemstack.stackSize <= count) {
+				setInventorySlotContents(i, null);
+			} else {
+				itemstack = itemstack.splitStack(count);
+			
+			}
+		}
+
+		return itemstack;
 	}
 
 	@Override
@@ -24,22 +43,24 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 0;
+		return 64;
 	}
 
 	@Override
 	public int getSizeInventory() {
-		return 0;
+		return items.length;
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int arg0) {
-		return null;
+	public ItemStack getStackInSlot(int par1) {
+		return items[par1];
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int arg0) {
-		return null;
+	public ItemStack getStackInSlotOnClosing(int i) {
+		ItemStack item = getStackInSlot(i);
+		setInventorySlotContents(i, null);
+		return item;
 	}
 
 	@Override
@@ -49,17 +70,17 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public boolean isItemValidForSlot(int arg0, ItemStack arg1) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer arg0) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public void openInventory() {
-		
+
 	}
 
 	@Override
@@ -69,17 +90,19 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public boolean canExtractItem(int arg0, ItemStack arg1, int arg2) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean canInsertItem(int arg0, ItemStack arg1, int arg2) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int arg0) {
 		return null;
 	}
+	
+	
 
 }
