@@ -8,5 +8,27 @@
 *.war
 *.ear
 
+/.metadata/
+/.settings/
+/.gradle/
+/build/
+/eclipse/
+
+/logs/
+/crash-reports/
+/config/
+/saves/
+/bin/
+/src/main/java/baubles/
+# /src/main/java/cofh/
+
+# .classpath
+# .project
+server.properties
+options.txt
+
+
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+*.bat
