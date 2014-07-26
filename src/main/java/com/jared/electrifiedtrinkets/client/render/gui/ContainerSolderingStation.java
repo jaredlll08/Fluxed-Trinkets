@@ -15,12 +15,6 @@ public class ContainerSolderingStation extends Container {
 			
 		}
 		
-		for (int y = 0; y < 3; y++) {
-			for (int x = 0; x < 9; x++) {
-				addSlotToContainer(new Slot(invPlayer, x + y * 9 + 9, 8 + 18 * x, 72 + y * 18));
-			}
-		}
-		
 		for(int x = 0; x < 3; x++){
 			addSlotToContainer(new Slot(solderingStation, x, 8+18*x, 17));
 		}
