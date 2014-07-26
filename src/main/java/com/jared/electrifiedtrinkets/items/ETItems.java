@@ -1,17 +1,13 @@
 package com.jared.electrifiedtrinkets.items;
 
-import javafx.scene.transform.Translate;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.oredict.OreDictionary;
 
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.circuits.ItemCircuit;
 import com.jared.electrifiedtrinkets.items.circuits.ItemSpeedCircuit;
-import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
