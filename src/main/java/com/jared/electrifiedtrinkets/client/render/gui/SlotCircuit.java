@@ -23,7 +23,7 @@ public class SlotCircuit extends Slot {
 		if(stack.getItem() == ETItems.circuit || stack.getItem() == ETItems.speedCircuit){
 			return true;
 		}
-		return stack.getItem() == ETItems.circuit;
+		return true;
 	}
 
 }

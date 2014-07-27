@@ -1,5 +1,10 @@
 package com.jared.electrifiedtrinkets.tileEntity;
 
+import com.jared.electrifiedtrinkets.items.ETItems;
+
+import net.minecraft.client.gui.GuiEnchantment;
+import net.minecraft.client.gui.inventory.GuiBeacon;
+import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -29,7 +34,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 				setInventorySlotContents(i, null);
 			} else {
 				itemstack = itemstack.splitStack(count);
-			
+
 			}
 		}
 
@@ -53,13 +58,16 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public ItemStack getStackInSlot(int par1) {
+
+		
 		return items[par1];
 	}
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int i) {
 		ItemStack item = getStackInSlot(i);
-		setInventorySlotContents(i, null);
+		// setInventorySlotContents(i, null);
+		setInventorySlotContents(i, item);
 		return item;
 	}
 
@@ -84,8 +92,12 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 	}
 
 	@Override
-	public void setInventorySlotContents(int arg0, ItemStack arg1) {
-		
+	public void setInventorySlotContents(int i, ItemStack itemstack) {
+		items[i] = itemstack;
+
+		if (itemstack != null && itemstack.stackSize > getInventoryStackLimit()) {
+			itemstack.stackSize = getInventoryStackLimit();
+		}
 	}
 
 	@Override
@@ -102,7 +114,5 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 	public int[] getAccessibleSlotsFromSide(int arg0) {
 		return null;
 	}
-	
-	
 
 }
