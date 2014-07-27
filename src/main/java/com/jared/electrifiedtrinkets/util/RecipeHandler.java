@@ -31,8 +31,8 @@ public class RecipeHandler {
 
 		OreDictionary.registerOre("ingotCopper", ETItems.copperIngot);
 		OreDictionary.registerOre("ingotLead", ETItems.leadIngot);
-		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.copperNugget, new Object[] { "c", 'c', "ingotCopper" }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.leadWire, new Object[] { "   ","lll", "   ", 'l', "ingotLead" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.copperNugget, 9), new Object[] { "c", 'c', "ingotCopper" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.leadWire, 6), new Object[] { "   ","lll", "   ", 'l', "ingotLead" }));
 		
 		
 		
