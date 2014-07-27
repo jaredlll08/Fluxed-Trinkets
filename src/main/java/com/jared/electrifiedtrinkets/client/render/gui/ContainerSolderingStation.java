@@ -14,6 +14,7 @@ public class ContainerSolderingStation extends Container {
 
 	public ContainerSolderingStation(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 
+		
 		for (int x = 0; x < 9; x++) {
 			addSlotToContainer(new Slot(invPlayer, x, 36 + 18 * x, 195));
 
@@ -32,7 +33,11 @@ public class ContainerSolderingStation extends Container {
 			}
 		}
 
-		addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
+		addSlotToContainer(new Slot(solderingStation, 1, 14, 110));
+		addSlotToContainer(new SlotCircuit(solderingStation, 2, 108, 110));
+		addSlotToContainer(new Slot(solderingStation, 3, 200, 110));
+//		addSlotToContainer(new Slot(solderingStation, 4, 9, 42));
+		
 	}
 
 	@Override
@@ -41,8 +46,39 @@ public class ContainerSolderingStation extends Container {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int par2) {
-		return null;
-	}
+    public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
+            ItemStack stack = null;
+            Slot slotObject = (Slot) inventorySlots.get(slot);
 
+            //null checks and checks if the item can be stacked (maxStackSize > 1)
+            if (slotObject != null && slotObject.getHasStack()) {
+                    ItemStack stackInSlot = slotObject.getStack();
+                    stack = stackInSlot.copy();
+
+                    //merges the item into player inventory since its in the tileEntity
+                    if (slot < 9) {
+                            if (!this.mergeItemStack(stackInSlot, 0, 35, true)) {
+                                    return null;
+                            }
+                    }
+                    //places it into the tileEntity is possible since its in the player inventory
+                    else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+                            return null;
+                    }
+
+                    if (stackInSlot.stackSize == 0) {
+                            slotObject.putStack(null);
+                    } else {
+                            slotObject.onSlotChanged();
+                    }
+
+                    if (stackInSlot.stackSize == stack.stackSize) {
+                            return null;
+                    }
+                    slotObject.onPickupFromSlot(player, stackInSlot);
+            }
+            return stack;
+    }
+
+	
 }

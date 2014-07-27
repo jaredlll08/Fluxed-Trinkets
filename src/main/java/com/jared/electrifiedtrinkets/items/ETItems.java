@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.circuits.ItemCircuit;
 import com.jared.electrifiedtrinkets.items.circuits.ItemSpeedCircuit;
+import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -25,23 +26,28 @@ public class ETItems {
 
 	public static Item basicBattery = new ItemBattery();
 
+	public static Item solderingIron = new ItemSolderingIron();
+
 	private static void registerItems() {
 		registerItem(kineticEnergyBelt, "Kinetic Energy Belt", "Kinetic_Energy_Belt_Empty");
 		registerItem(speedCircuit, "Speed Circuit", "Speed_Circuit");
 		registerItem(circuit, "Empty Circuit", "Circuit");
 		registerItem(advancedCircuit, "Advanced Circuit Board", "Advanced_Circuit_Board");
 		registerItem(basicBattery, "Basic Battery", "Basic_Battery");
+		registerItem(solderingIron, "Soldering Iron", "Soldering_Iron");
 	}
 
 	private static void registerRecipes() {
-		ItemStack kineticBelt = new ItemStack(kineticEnergyBelt);
-		ItemStack addon = null;
+		ItemStack kineticBeltBattery = new ItemStack(kineticEnergyBelt);
+		ItemStack kineticBeltSpeed = new ItemStack(kineticEnergyBelt);
+		NBTHelper.setBoolean(kineticBeltBattery, "Battery", true);
+		NBTHelper.setBoolean(kineticBeltBattery, "Speed", true);
+		
+		NBTHelper.setBoolean(kineticBeltSpeed, "Speed", true);
+		
 
-
-		addon = new ItemStack(speedCircuit);
-		GameRegistry.addRecipe(kineticBelt, new Object[] { "c", "k", 'c', addon, 'k', new ItemStack(kineticEnergyBelt) });
-		addon = new ItemStack(basicBattery);
-		GameRegistry.addRecipe(kineticBelt, new Object[] { "c", "k", 'c', addon, 'k', new ItemStack(kineticEnergyBelt) });
+		GameRegistry.addRecipe(kineticBeltSpeed, new Object[] { "c", "k", 'c', new ItemStack(speedCircuit), 'k', new ItemStack(kineticEnergyBelt) });
+		GameRegistry.addRecipe(kineticBeltBattery, new Object[] { "c", "k", 'c', new ItemStack(basicBattery), 'k', kineticBeltSpeed });
 
 		GameRegistry.addRecipe(new ItemStack(circuit), new Object[] { " g ", "gbg", " g ", 'g', new ItemStack(Items.dye, 1, 2), 'b', new ItemStack(Items.book) });
 		GameRegistry.addRecipe(new ItemStack(advancedCircuit), new Object[] { " g ", "gbg", " g ", 'g', new ItemStack(Items.dye, 1, 4), 'b', new ItemStack(Items.book) });

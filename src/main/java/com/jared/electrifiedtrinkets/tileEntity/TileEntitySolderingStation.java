@@ -10,7 +10,7 @@ import com.jared.electrifiedtrinkets.items.ETItems;
 
 public class TileEntitySolderingStation extends TileEntity implements ISidedInventory {
 
-	private ItemStack[] items;
+	public ItemStack[] items;
 
 	public TileEntitySolderingStation() {
 		items = new ItemStack[13];
@@ -113,4 +113,5 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 		return null;
 	}
 
+	
 }
