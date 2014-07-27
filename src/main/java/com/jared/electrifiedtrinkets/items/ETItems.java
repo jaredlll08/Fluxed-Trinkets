@@ -22,7 +22,6 @@ public class ETItems {
 
 	public static void init() {
 		registerItems();
-		registerRecipes();
 	}
 	public static CreativeTabElectrifiedTrinkets tab = new CreativeTabElectrifiedTrinkets();
 
@@ -58,21 +57,7 @@ public class ETItems {
 		registerItem(bundleOfLead, "Bundle of Lead Wire", "Bundle_Of_Lead_Wire");
 	}
 
-	private static void registerRecipes() {
-		ItemStack kineticBeltBattery = new ItemStack(kineticEnergyBelt);
-		ItemStack kineticBeltSpeed = new ItemStack(kineticEnergyBelt);
-		NBTHelper.setBoolean(kineticBeltBattery, "Battery", true);
-		NBTHelper.setBoolean(kineticBeltBattery, "Speed", true);
-
-		NBTHelper.setBoolean(kineticBeltSpeed, "Speed", true);
-
-		GameRegistry.addRecipe(kineticBeltSpeed, new Object[] { "c", "k", 'c', new ItemStack(speedCircuit), 'k', new ItemStack(kineticEnergyBelt) });
-		GameRegistry.addRecipe(kineticBeltBattery, new Object[] { "c", "k", 'c', new ItemStack(basicBattery), 'k', kineticBeltSpeed });
-
-		GameRegistry.addRecipe(new ItemStack(circuit), new Object[] { " g ", "gbg", " g ", 'g', new ItemStack(Items.dye, 1, 2), 'b', new ItemStack(Items.book) });
-		GameRegistry.addRecipe(new ItemStack(advancedCircuit), new Object[] { " g ", "gbg", " g ", 'g', new ItemStack(Items.dye, 1, 4), 'b', new ItemStack(Items.book) });
-
-	}
+	
 
 	private static void registerItem(Item item, String name, String key) {
 		item.setUnlocalizedName(key).setTextureName(ModInfo.modid + ":" + key).setCreativeTab(tab);
