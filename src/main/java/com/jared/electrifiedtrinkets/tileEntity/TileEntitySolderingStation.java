@@ -1,16 +1,12 @@
 package com.jared.electrifiedtrinkets.tileEntity;
 
-import com.jared.electrifiedtrinkets.items.ETItems;
-
-import net.minecraft.client.gui.GuiEnchantment;
-import net.minecraft.client.gui.inventory.GuiBeacon;
-import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.oredict.OreDictionary;
+
+import com.jared.electrifiedtrinkets.items.ETItems;
 
 public class TileEntitySolderingStation extends TileEntity implements ISidedInventory {
 
@@ -58,7 +54,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public ItemStack getStackInSlot(int par1) {
-
 		
 		return items[par1];
 	}
@@ -77,8 +72,11 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int arg0, ItemStack arg1) {
-		return true;
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		if(stack == new ItemStack(ETItems.circuit, 0, OreDictionary.WILDCARD_VALUE)){
+			return true;
+		}
+		return false;
 	}
 
 	@Override

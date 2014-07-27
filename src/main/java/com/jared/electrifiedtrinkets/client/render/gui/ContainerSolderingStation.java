@@ -32,7 +32,7 @@ public class ContainerSolderingStation extends Container {
 			}
 		}
 
-		addSlotToContainer(new Slot(solderingStation, 1, 108, 110));
+		addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
 	}
 
 	@Override
