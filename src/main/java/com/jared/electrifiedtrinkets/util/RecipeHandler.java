@@ -13,6 +13,22 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class RecipeHandler {
 
 	public static void init() {
+
+		registerOreDict();
+		registerRecipes();
+
+	}
+
+	private static void registerOreDict() {
+		OreDictionary.registerOre("ingotCopper", ETItems.copperIngot);
+		OreDictionary.registerOre("ingotLead", ETItems.leadIngot);
+		OreDictionary.registerOre("wireLead", ETItems.leadWire);
+		OreDictionary.registerOre("nuggetCopper", ETItems.copperNugget);
+		OreDictionary.registerOre("nuggetCopper", ETItems.basicBattery);
+		
+	}
+
+	private static void registerRecipes() {
 		ItemStack kineticBeltBattery = new ItemStack(ETItems.kineticEnergyBelt);
 		ItemStack kineticBeltSpeed = new ItemStack(ETItems.kineticEnergyBelt);
 		NBTHelper.setBoolean(kineticBeltBattery, "Battery", true);
@@ -29,11 +45,8 @@ public class RecipeHandler {
 		GameRegistry.addSmelting(ETBlocks.copperOre, new ItemStack(ETItems.copperIngot), 0.5F);
 		GameRegistry.addSmelting(ETBlocks.leadOre, new ItemStack(ETItems.leadIngot), 0.5F);
 
-		OreDictionary.registerOre("ingotCopper", ETItems.copperIngot);
-		OreDictionary.registerOre("ingotLead", ETItems.leadIngot);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.copperNugget, 9), new Object[] { "c", 'c', "ingotCopper" }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.leadWire, 6), new Object[] { "   ","lll", "   ", 'l', "ingotLead" }));
-		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.leadWire, 6), new Object[] { "   ", "lll", "   ", 'l', "ingotLead" }));
 		
 		
 	}

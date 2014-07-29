@@ -13,12 +13,12 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 	public ItemStack[] items;
 
 	public TileEntitySolderingStation() {
-		items = new ItemStack[13];
+		items = new ItemStack[15];
 	}
 
 	@Override
 	public void closeInventory() {
-
+		
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public void openInventory() {
-
+		
 	}
 
 	@Override

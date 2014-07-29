@@ -39,7 +39,6 @@ public class ETItems {
 
 	public static Item leadIngot = new ItemLeadIngot();
 	public static Item leadWire = new ItemLeadWire();
-	public static Item bundleOfLead = new ItemBundleOfLeadWire();
 
 	private static void registerItems() {
 		registerItem(kineticEnergyBelt, "Kinetic Energy Belt", "Kinetic_Energy_Belt_Empty");
@@ -54,7 +53,6 @@ public class ETItems {
 
 		registerItem(leadIngot, "Lead Ingot", "Lead_Ingot");
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
-		registerItem(bundleOfLead, "Bundle of Lead Wire", "Bundle_Of_Lead_Wire");
 	}
 
 	

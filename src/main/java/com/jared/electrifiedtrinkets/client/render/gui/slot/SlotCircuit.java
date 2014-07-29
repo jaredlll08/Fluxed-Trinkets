@@ -1,4 +1,4 @@
-package com.jared.electrifiedtrinkets.client.render.gui;
+package com.jared.electrifiedtrinkets.client.render.gui.slot;
 
 import com.jared.electrifiedtrinkets.items.ETItems;
 

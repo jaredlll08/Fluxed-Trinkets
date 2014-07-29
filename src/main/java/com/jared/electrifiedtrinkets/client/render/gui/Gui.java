@@ -11,10 +11,12 @@ import org.lwjgl.opengl.GL11;
 
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.ETItems;
+import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 
 public class Gui extends GuiContainer {
-
+	
+	
 	public Gui(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 		super(new ContainerSolderingStation(invPlayer, solderingStation));
 
@@ -47,16 +49,18 @@ public class Gui extends GuiContainer {
 		// id is the id you give your button
 		switch (guibutton.id) {
 		case 1:
-			for(int i = 0; i < tile.items.length; i++){
+			for (int i = 0; i < tile.items.length; i++) {
 				tile.setInventorySlotContents(i, new ItemStack(ETItems.speedCircuit));
-				
 			}
 			// i += 1;
 			break;
 		case 2:
 			// i -= 1;
 		}
+		Object packet;
 		// Packet code here
 //		 PacketDispatcher.sendPacketToServer(packet); //send packet
 	}
+	
+	
 }

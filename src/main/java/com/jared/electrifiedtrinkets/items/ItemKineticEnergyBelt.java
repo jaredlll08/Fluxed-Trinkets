@@ -29,32 +29,25 @@ public class ItemKineticEnergyBelt extends Item implements IBauble, IEnergyConta
 	}
 
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		
-			if (StringUtils.isShiftKeyDown()) {
-				if(NBTHelper.getBoolean(stack, "Battery")){
-					
-				
+
+		if (StringUtils.isShiftKeyDown()) {
+			if (NBTHelper.getBoolean(stack, "Battery")) {
+
 				list.add(StringUtils.getChargeText(NBTHelper.getInt(stack, "energy"), maxCapacity));
 				list.add(StringUtils.getEnergyUsageText(10));
 				list.add("Current Addons:");
-				}
-				else{
-					list.add(StringUtils.ORANGE + "No battery installed!");
-				}
-				if (NBTHelper.getBoolean(stack, "Speed")) {
-					list.add("-Speed");
-				}
-				
-				
 			} else {
-				list.add(StringUtils.getShiftText());
+				list.add(StringUtils.ORANGE + "No battery installed!");
+			}
+			if (NBTHelper.getBoolean(stack, "Speed")) {
+				list.add("-Speed");
 			}
 
-			
+		} else {
+			list.add(StringUtils.getShiftText());
 		}
-	
 
-	
+	}
 
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
@@ -69,8 +62,7 @@ public class ItemKineticEnergyBelt extends Item implements IBauble, IEnergyConta
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		
-		
+
 		NBTTagCompound nbt = itemstack.getTagCompound();
 		if (NBTHelper.getInt(itemstack, "energy") > 0) {
 			if (NBTHelper.getBoolean(itemstack, "Speed")) {
@@ -79,22 +71,21 @@ public class ItemKineticEnergyBelt extends Item implements IBauble, IEnergyConta
 					if ((play.onGround || play.capabilities.isFlying) && play.moveForward > 0F)
 						play.moveFlying(0F, 1F, play.capabilities.isFlying ? 0.050F : 0.07F);
 					if (play.motionX != 0 || play.motionZ != 0)
-					NBTHelper.setInteger(itemstack, "energy", NBTHelper.getInt(itemstack, "energy")-10);
+						NBTHelper.setInteger(itemstack, "energy", NBTHelper.getInt(itemstack, "energy") - 10);
 				}
 			}
 		}
-		if(NBTHelper.getInt(itemstack, "energy")< -1){
+		if (NBTHelper.getInt(itemstack, "energy") < -1) {
 			NBTHelper.setInteger(itemstack, "energy", 0);
 		}
-		
-		if(NBTHelper.getInt(itemstack, "energy")<=0){
-			if(NBTHelper.getBoolean(itemstack, "Speed")){
+
+		if (NBTHelper.getInt(itemstack, "energy") <= 0) {
+			if (NBTHelper.getBoolean(itemstack, "Speed")) {
 				if (player instanceof EntityPlayer) {
 					EntityPlayer play = (EntityPlayer) player;
 					if ((play.onGround || play.capabilities.isFlying) && play.moveForward > 0F)
 						play.moveFlying(0F, 1F, play.capabilities.isFlying ? -0.01F : -0.03F);
-					
-					
+
 				}
 			}
 		}
@@ -132,7 +123,6 @@ public class ItemKineticEnergyBelt extends Item implements IBauble, IEnergyConta
 			energy += energyReceived;
 			container.stackTagCompound.setInteger("energy", energy);
 		}
-		container.setItemDamage(getDamageFromEnergy(container.stackTagCompound, container.getMaxDamage()));
 		return energyReceived;
 	}
 
