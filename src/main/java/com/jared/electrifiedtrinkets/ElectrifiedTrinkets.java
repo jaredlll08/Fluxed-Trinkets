@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.jared.electrifiedtrinkets.blocks.ETBlocks;
 import com.jared.electrifiedtrinkets.config.ConfigHandler;
 import com.jared.electrifiedtrinkets.items.ETItems;
+import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.proxy.CommonProxy;
 import com.jared.electrifiedtrinkets.util.GuiHandler;
 import com.jared.electrifiedtrinkets.util.RecipeHandler;
@@ -33,6 +34,7 @@ public class ElectrifiedTrinkets {
 		ETItems.init();
 		ETBlocks.init();
 		RecipeHandler.init();
+		PacketHandler.init();
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new com.jared.electrifiedtrinkets.util.EventHandler());
 	}

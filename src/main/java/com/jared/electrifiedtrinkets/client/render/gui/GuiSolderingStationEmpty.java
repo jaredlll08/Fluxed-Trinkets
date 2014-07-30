@@ -5,6 +5,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.Packet;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -14,10 +15,9 @@ import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 
-public class Gui extends GuiContainer {
-	
-	
-	public Gui(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
+public class GuiSolderingStationEmpty extends GuiContainer {
+
+	public GuiSolderingStationEmpty(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 		super(new ContainerSolderingStation(invPlayer, solderingStation));
 
 		xSize = 230;
@@ -25,7 +25,7 @@ public class Gui extends GuiContainer {
 
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation(ModInfo.modid, "textures/gui/Soldering_Station.png");
+	private static final ResourceLocation texture = new ResourceLocation(ModInfo.modid, "textures/gui/Soldering_Station_Empty.png");
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float arg0, int arg1, int arg2) {
@@ -40,6 +40,7 @@ public class Gui extends GuiContainer {
 		super.initGui();
 		buttonList.add(new GuiButton(1, 10, 52, 20, 20, "+"));
 		buttonList.add(new GuiButton(2, 40, 72, 20, 20, "-"));
+		
 
 	}
 
@@ -56,11 +57,11 @@ public class Gui extends GuiContainer {
 			break;
 		case 2:
 			// i -= 1;
+			
 		}
 		Object packet;
 		// Packet code here
-//		 PacketDispatcher.sendPacketToServer(packet); //send packet
+		// PacketDispatcher.sendPacketToServer(packet); //send packet
 	}
-	
-	
+
 }

@@ -37,23 +37,23 @@ public class ContainerSolderingStation extends Container {
 			}
 		}
 
-		addSlotToContainer(new SlotSolderingIron(solderingStation, 1, 14, 110));
-		addSlotToContainer(new SlotCircuit(solderingStation, 2, 108, 110));
-		addSlotToContainer(new SlotLeadWire(solderingStation, 3, 200, 110));
+		addSlotToContainer(new SlotSolderingIron(solderingStation, 0, 14, 110));
+		addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
+		addSlotToContainer(new SlotLeadWire(solderingStation, 2, 200, 110));
 
-		addSlotToContainer(new SlotAddon(solderingStation, 4, 9, 42));
-		addSlotToContainer(new SlotAddon(solderingStation, 5, 27, 42));
-		addSlotToContainer(new SlotAddon(solderingStation, 6, 27, 24));
-		addSlotToContainer(new SlotAddon(solderingStation, 7, 27, 6));
+		addSlotToContainer(new SlotAddon(solderingStation,3, 9, 42));
+		addSlotToContainer(new SlotAddon(solderingStation, 4, 27, 42));
+		addSlotToContainer(new SlotAddon(solderingStation, 5, 27, 24));
+		addSlotToContainer(new SlotAddon(solderingStation, 6, 27, 6));
 
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 8, 151, 6));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 9, 151, 24));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 10, 151, 42));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 11, 151, 60));
+		addSlotToContainer(new SlotCopperNugget(solderingStation, 7, 151, 6));
+		addSlotToContainer(new SlotCopperNugget(solderingStation, 8, 151, 24));
+		addSlotToContainer(new SlotCopperNugget(solderingStation, 9, 151, 42));
+		addSlotToContainer(new SlotCopperNugget(solderingStation, 10, 151, 60));
 
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 12, 169, 60));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 13, 187, 60));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 14, 205, 60));
+		addSlotToContainer(new SlotCopperNugget(solderingStation, 11, 169, 60));
+		addSlotToContainer(new SlotCopperNugget(solderingStation, 12, 187, 60));
+		addSlotToContainer(new SlotCopperNugget(solderingStation, 13, 205, 60));
 
 	}
 
