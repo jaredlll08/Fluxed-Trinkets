@@ -3,10 +3,14 @@ package com.jared.electrifiedtrinkets.tileEntity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.jared.electrifiedtrinkets.items.ETItems;
+import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 public class TileEntitySolderingStation extends TileEntity implements ISidedInventory {
 
@@ -14,11 +18,12 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	public TileEntitySolderingStation() {
 		items = new ItemStack[15];
+
 	}
 
 	@Override
 	public void closeInventory() {
-		
+
 	}
 
 	@Override
@@ -54,7 +59,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public ItemStack getStackInSlot(int par1) {
-		
+
 		return items[par1];
 	}
 
@@ -73,7 +78,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		if(stack == new ItemStack(ETItems.circuit, 0, OreDictionary.WILDCARD_VALUE)){
+		if (stack == new ItemStack(ETItems.circuit, 0, OreDictionary.WILDCARD_VALUE)) {
 			return true;
 		}
 		return false;
@@ -86,7 +91,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	@Override
 	public void openInventory() {
-		
+
 	}
 
 	@Override
@@ -112,6 +117,52 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 	public int[] getAccessibleSlotsFromSide(int arg0) {
 		return null;
 	}
-
 	
+
+    /* NBT */
+    @Override
+    public void readFromNBT (NBTTagCompound tags)
+    {
+        super.readFromNBT(tags);
+        readInventoryFromNBT(tags);
+    }
+
+    public void readInventoryFromNBT (NBTTagCompound tags)
+    {
+        NBTTagList nbttaglist = tags.getTagList("Items", Constants.NBT.TAG_COMPOUND);
+        for (int iter = 0; iter < nbttaglist.tagCount(); iter++)
+        {
+            NBTTagCompound tagList = (NBTTagCompound) nbttaglist.getCompoundTagAt(iter);
+            byte slotID = tagList.getByte("Slot");
+            if (slotID >= 0 && slotID < items.length)
+            {
+                items[slotID] = ItemStack.loadItemStackFromNBT(tagList);
+            }
+        }
+    }
+
+    @Override
+    public void writeToNBT (NBTTagCompound tags)
+    {
+        super.writeToNBT(tags);
+        writeInventoryToNBT(tags);
+    }
+
+    public void writeInventoryToNBT (NBTTagCompound tags)
+    {
+        NBTTagList nbttaglist = new NBTTagList();
+        for (int iter = 0; iter < items.length; iter++)
+        {
+            if (items[iter] != null)
+            {
+                NBTTagCompound tagList = new NBTTagCompound();
+                tagList.setByte("Slot", (byte) iter);
+                items[iter].writeToNBT(tagList);
+                nbttaglist.appendTag(tagList);
+            }
+        }
+
+        tags.setTag("Items", nbttaglist);
+    }
+
 }

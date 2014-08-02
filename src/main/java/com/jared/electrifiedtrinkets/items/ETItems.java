@@ -9,6 +9,7 @@ import com.jared.electrifiedtrinkets.CreativeTabElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.circuits.ItemCircuit;
 import com.jared.electrifiedtrinkets.items.circuits.ItemSpeedCircuit;
+import com.jared.electrifiedtrinkets.items.equipment.ItemSpeedBelt;
 import com.jared.electrifiedtrinkets.items.resources.ItemBundleOfLeadWire;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperIngot;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperNugget;
@@ -23,6 +24,7 @@ public class ETItems {
 	public static void init() {
 		registerItems();
 	}
+
 	public static CreativeTabElectrifiedTrinkets tab = new CreativeTabElectrifiedTrinkets();
 
 	public static Item kineticEnergyBelt = new ItemKineticEnergyBelt();
@@ -40,6 +42,8 @@ public class ETItems {
 	public static Item leadIngot = new ItemLeadIngot();
 	public static Item leadWire = new ItemLeadWire();
 
+	public static Item speedBelt = new ItemSpeedBelt(25000);
+
 	private static void registerItems() {
 		registerItem(kineticEnergyBelt, "Kinetic Energy Belt", "Kinetic_Energy_Belt_Empty");
 		registerItem(speedCircuit, "Speed Circuit", "Speed_Circuit");
@@ -53,9 +57,9 @@ public class ETItems {
 
 		registerItem(leadIngot, "Lead Ingot", "Lead_Ingot");
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
+		
+		registerItem(speedBelt, "Speed Belt", "Speed_Belt");
 	}
-
-	
 
 	private static void registerItem(Item item, String name, String key) {
 		item.setUnlocalizedName(key).setTextureName(ModInfo.modid + ":" + key).setCreativeTab(tab);

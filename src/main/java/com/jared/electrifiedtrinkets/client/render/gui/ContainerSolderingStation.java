@@ -13,24 +13,21 @@ import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotCircuit;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotCopperNugget;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotLeadWire;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotSolderingIron;
+import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 
 public class ContainerSolderingStation extends Container {
 
-	public ContainerSolderingStation(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
+	public static ContainerSolderingStation INSTANCE;
+	
+	public static Slot resultSlot;
 
+	public ContainerSolderingStation(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 		for (int x = 0; x < 9; x++) {
 			addSlotToContainer(new Slot(invPlayer, x, 36 + 18 * x, 195));
-
+			
 		}
 
-		// for (int y = 0; y < 3; y++) {
-		// for (int x = 0; x < 9; x++) {
-		// addSlotToContainer(new Slot(invPlayer, x + y * 9 + 9, 36 + 18 * x,
-		// 137 + y * 20));
-		// }
-		// }
-		//
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 9; x++) {
 				addSlotToContainer(new Slot(invPlayer, x + y * 9 + 9, 36 + 18 * x, 137 + y * 18));
@@ -38,10 +35,10 @@ public class ContainerSolderingStation extends Container {
 		}
 
 		addSlotToContainer(new SlotSolderingIron(solderingStation, 0, 14, 110));
-		addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
+		resultSlot = addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
 		addSlotToContainer(new SlotLeadWire(solderingStation, 2, 200, 110));
 
-		addSlotToContainer(new SlotAddon(solderingStation,3, 9, 42));
+		addSlotToContainer(new SlotAddon(solderingStation, 3, 9, 42));
 		addSlotToContainer(new SlotAddon(solderingStation, 4, 27, 42));
 		addSlotToContainer(new SlotAddon(solderingStation, 5, 27, 24));
 		addSlotToContainer(new SlotAddon(solderingStation, 6, 27, 6));
@@ -60,6 +57,7 @@ public class ContainerSolderingStation extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer arg0) {
 		return true;
+
 	}
 
 	@Override
@@ -67,20 +65,15 @@ public class ContainerSolderingStation extends Container {
 		ItemStack stack = null;
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 
-		// null checks and checks if the item can be stacked (maxStackSize > 1)
 		if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			stack = stackInSlot.copy();
 
-			// merges the item into player inventory since its in the tileEntity
 			if (slot < 9) {
 				if (!this.mergeItemStack(stackInSlot, 0, 35, true)) {
 					return null;
 				}
-			}
-			// places it into the tileEntity is possible since its in the player
-			// inventory
-			else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+			} else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
 				return null;
 			}
 
@@ -97,7 +90,11 @@ public class ContainerSolderingStation extends Container {
 		}
 		return stack;
 	}
-	
 
+	public void craftSpeedCircuit() {
+		if(resultSlot.inventory.getStackInSlot(0) !=null && resultSlot.inventory.getStackInSlot(0).getItem() == ETItems.circuit){
+			resultSlot.inventory.setInventorySlotContents(0, new ItemStack(ETItems.speedCircuit));
+		}
+	}
 
 }

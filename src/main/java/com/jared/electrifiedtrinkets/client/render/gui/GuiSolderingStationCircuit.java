@@ -17,6 +17,9 @@ import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 import com.jared.electrifiedtrinkets.util.ETTickHandler;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class GuiSolderingStationCircuit extends GuiContainer {
 
 	public GuiSolderingStationCircuit(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
@@ -25,6 +28,10 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 		xSize = 230;
 		ySize = 219;
 
+	}
+
+	public void updateScreen() {
+		super.updateScreen();
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation(ModInfo.modid, "textures/gui/Soldering_Station_Circuit.png");
@@ -40,10 +47,7 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(1, 10, 52, 20, 20, "+"));
-		buttonList.add(new GuiButton(2, 40, 72, 20, 20, "-"));
-		
-
+		buttonList.add(new GuiButton(1, 10, 52, 20, 20, "Solder"));
 	}
 
 	protected void actionPerformed(GuiButton guibutton) {
@@ -52,14 +56,12 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 		// id is the id you give your button
 		switch (guibutton.id) {
 		case 1:
-			PacketHandler.INSTANCE.sendToAll(new MessageSolderingStation());
-			// i += 1;
+
 			break;
 		case 2:
 			// i -= 1;
-			
+
 		}
-		Object packet;
 		// Packet code here
 		// PacketDispatcher.sendPacketToServer(packet); //send packet
 	}

@@ -24,8 +24,7 @@ public class RecipeHandler {
 		OreDictionary.registerOre("ingotLead", ETItems.leadIngot);
 		OreDictionary.registerOre("wireLead", ETItems.leadWire);
 		OreDictionary.registerOre("nuggetCopper", ETItems.copperNugget);
-		OreDictionary.registerOre("nuggetCopper", ETItems.basicBattery);
-		
+
 	}
 
 	private static void registerRecipes() {
@@ -47,8 +46,7 @@ public class RecipeHandler {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.copperNugget, 9), new Object[] { "c", 'c', "ingotCopper" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.leadWire, 6), new Object[] { "   ", "lll", "   ", 'l', "ingotLead" }));
-		
-		
+
 	}
 
 }

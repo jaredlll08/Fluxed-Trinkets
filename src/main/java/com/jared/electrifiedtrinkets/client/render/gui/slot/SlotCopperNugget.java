@@ -20,10 +20,15 @@ public class SlotCopperNugget extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-
-		if (stack.getItem() == new ItemStack(ETItems.copperNugget, 1, OreDictionary.WILDCARD_VALUE).getItem()) {
-			return true;
+		List<ItemStack> list = OreDictionary.getOres("nuggetCopper");
+		int i = 0;
+		while (list.iterator().hasNext()) {
+			if (stack.getItem() == list.get(i).getItem()) {
+				return true;
+			}
+			i++;
 		}
+		
 		return false;
 	}
 }
