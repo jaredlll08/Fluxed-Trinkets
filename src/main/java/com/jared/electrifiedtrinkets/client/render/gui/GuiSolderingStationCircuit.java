@@ -63,8 +63,6 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 			// i -= 1;
 
 		}
-		// Packet code here
-		// PacketDispatcher.sendPacketToServer(packet); //send packet
 	}
 
 }

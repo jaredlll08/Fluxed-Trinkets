@@ -19,12 +19,11 @@ import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 public class ContainerSolderingStation extends Container {
 
 	public static ContainerSolderingStation INSTANCE;
-	
 
 	public ContainerSolderingStation(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 		for (int x = 0; x < 9; x++) {
 			addSlotToContainer(new Slot(invPlayer, x, 36 + 18 * x, 195));
-			
+
 		}
 
 		for (int y = 0; y < 3; y++) {
@@ -89,6 +88,5 @@ public class ContainerSolderingStation extends Container {
 		}
 		return stack;
 	}
-
 
 }
