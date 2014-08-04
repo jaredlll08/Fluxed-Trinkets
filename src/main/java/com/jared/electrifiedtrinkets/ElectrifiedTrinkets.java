@@ -34,7 +34,7 @@ public class ElectrifiedTrinkets {
 		ETItems.init();
 		ETBlocks.init();
 		RecipeHandler.init();
-		PacketHandler.init();
+		
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new com.jared.electrifiedtrinkets.util.EventHandler());
 	}
@@ -44,6 +44,7 @@ public class ElectrifiedTrinkets {
 		GameRegistry.registerWorldGenerator(new GenerationHandler(), 0);
 		new GuiHandler();
 		new GenerationHandler();
+		PacketHandler.init();
 	}
 
 	@EventHandler

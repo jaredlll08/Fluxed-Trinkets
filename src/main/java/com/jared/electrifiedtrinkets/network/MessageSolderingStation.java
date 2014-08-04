@@ -54,6 +54,6 @@ public class MessageSolderingStation implements IMessage, IMessageHandler<Messag
 			TileEntitySolderingStation tile = (TileEntitySolderingStation) entity.worldObj.getTileEntity(message.x, message.y, message.z);
 				tile.setInventorySlotContents(0, new ItemStack(ETItems.solderingIron));
 		}
-		return message;
+		return null;
 	}
 }

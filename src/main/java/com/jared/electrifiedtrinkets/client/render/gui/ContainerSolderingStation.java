@@ -20,7 +20,6 @@ public class ContainerSolderingStation extends Container {
 
 	public static ContainerSolderingStation INSTANCE;
 	
-	public static Slot resultSlot;
 
 	public ContainerSolderingStation(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 		for (int x = 0; x < 9; x++) {
@@ -35,7 +34,7 @@ public class ContainerSolderingStation extends Container {
 		}
 
 		addSlotToContainer(new SlotSolderingIron(solderingStation, 0, 14, 110));
-		resultSlot = addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
+		addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
 		addSlotToContainer(new SlotLeadWire(solderingStation, 2, 200, 110));
 
 		addSlotToContainer(new SlotAddon(solderingStation, 3, 9, 42));
@@ -91,10 +90,5 @@ public class ContainerSolderingStation extends Container {
 		return stack;
 	}
 
-	public void craftSpeedCircuit() {
-		if(resultSlot.inventory.getStackInSlot(0) !=null && resultSlot.inventory.getStackInSlot(0).getItem() == ETItems.circuit){
-			resultSlot.inventory.setInventorySlotContents(0, new ItemStack(ETItems.speedCircuit));
-		}
-	}
 
 }
