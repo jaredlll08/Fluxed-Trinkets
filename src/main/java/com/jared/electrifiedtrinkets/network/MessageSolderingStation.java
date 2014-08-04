@@ -1,15 +1,18 @@
 package com.jared.electrifiedtrinkets.network;
 
+import io.netty.buffer.ByteBuf;
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
 import com.jared.electrifiedtrinkets.blocks.BlockSolderingStation;
+import com.jared.electrifiedtrinkets.client.render.gui.GuiSolderingStationCircuit;
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockSapling;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -42,9 +45,18 @@ public class MessageSolderingStation implements IMessage, IMessageHandler<Messag
 		buf.writeInt(z);
 	}
 
-	@SideOnly(Side.SERVER)
 	@Override
 	public IMessage onMessage(MessageSolderingStation message, MessageContext ctx) {
+		
+//		GuiScreen gui = Minecraft.getMinecraft().currentScreen;
+//		
+//		if(gui !=null && gui instanceof GuiSolderingStationCircuit){
+//			GuiSolderingStationCircuit solderingStation = (GuiSolderingStationCircuit)gui;
+//			
+//			
+//		}
+		
+		
 		EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 
 		Block solderingStation = entity.worldObj.getBlock(message.x, message.y, message.z);
