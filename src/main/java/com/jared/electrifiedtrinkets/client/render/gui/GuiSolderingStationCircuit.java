@@ -56,6 +56,7 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 		// id is the id you give your button
 		switch (guibutton.id) {
 		case 1:
+			tile.setInventorySlotContents(0, new ItemStack(ETItems.solderingIron));
 			PacketHandler.INSTANCE.sendToServer(new MessageSolderingStation(tile.xCoord, tile.yCoord, tile.zCoord));
 			break;
 		case 2:
