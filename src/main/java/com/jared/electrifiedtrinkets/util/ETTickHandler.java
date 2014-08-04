@@ -38,7 +38,7 @@ public class ETTickHandler {
 	}
 
 	private void sendPacket(int x, int y, int z) {
-		PacketHandler.INSTANCE.sendToAll(new MessageSolderingStation(x, y, z));
+		PacketHandler.INSTANCE.sendToServer(new MessageSolderingStation(x, y, z));
 	}
 
 	

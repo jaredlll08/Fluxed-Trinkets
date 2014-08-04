@@ -56,7 +56,7 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 		// id is the id you give your button
 		switch (guibutton.id) {
 		case 1:
-
+			PacketHandler.INSTANCE.sendToServer(new MessageSolderingStation());
 			break;
 		case 2:
 			// i -= 1;

@@ -42,7 +42,7 @@ public class MessageSolderingStation implements IMessage, IMessageHandler<Messag
 		buf.writeInt(z);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@SideOnly(Side.SERVER)
 	@Override
 	public IMessage onMessage(MessageSolderingStation message, MessageContext ctx) {
 		EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
@@ -54,6 +54,6 @@ public class MessageSolderingStation implements IMessage, IMessageHandler<Messag
 			TileEntitySolderingStation tile = (TileEntitySolderingStation) entity.worldObj.getTileEntity(message.x, message.y, message.z);
 				tile.setInventorySlotContents(0, new ItemStack(ETItems.solderingIron));
 		}
-		return null;
+		return message;
 	}
 }

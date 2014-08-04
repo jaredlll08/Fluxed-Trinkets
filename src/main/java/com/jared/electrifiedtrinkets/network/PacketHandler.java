@@ -15,5 +15,6 @@ public class PacketHandler
     public static void init()
     {
        INSTANCE.registerMessage(MessageSolderingStation.class, MessageSolderingStation.class, 0, Side.CLIENT);
+       
     }
 }
