@@ -8,6 +8,8 @@ import net.minecraft.world.World;
 import com.jared.electrifiedtrinkets.ElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.client.render.gui.ContainerSolderingStation;
 import com.jared.electrifiedtrinkets.client.render.gui.GuiSolderingStationCircuit;
+import com.jared.electrifiedtrinkets.network.MessageSolderingStation;
+import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -32,12 +34,6 @@ public class GuiHandler implements IGuiHandler {
 				}
 				break;
 				
-			case 1:
-				TileEntity tile = world.getTileEntity(x, y, z);
-				if (tile != null && tile instanceof TileEntitySolderingStation) {
-					return new ContainerSolderingStation(player.inventory, (TileEntitySolderingStation)tile);
-				}
-				break;
 		}
 		
 		return null;
