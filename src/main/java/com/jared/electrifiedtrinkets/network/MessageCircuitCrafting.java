@@ -42,7 +42,7 @@ public class MessageCircuitCrafting implements IMessage, IMessageHandler<Message
 
 		TileEntity te = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(message.x, message.y, message.z);
 		if (te instanceof TileEntitySolderingStation) {
-//			((TileEntitySolderingStation) te).craftCircuit();
+			((TileEntitySolderingStation) te).craftCircuit();
 		}
 		return null;
 	}

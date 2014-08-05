@@ -56,7 +56,7 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 	protected void actionPerformed(GuiButton guibutton) {
 		switch (guibutton.id) {
 		case 1:
-			tile.craftSpeedCircuit();
+			tile.craftCircuit();
 			break;
 		case 2:
 			// i -= 1;
