@@ -22,12 +22,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiSolderingStationCircuit extends GuiContainer {
 
+    private TileEntitySolderingStation tile;
+    
 	public GuiSolderingStationCircuit(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 		super(new ContainerSolderingStation(invPlayer, solderingStation));
 
 		xSize = 230;
 		ySize = 219;
-
+		
+		this.tile = solderingStation;
 	}
 
 	public void updateScreen() {
@@ -51,8 +54,6 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 	}
 
 	protected void actionPerformed(GuiButton guibutton) {
-		TileEntitySolderingStation tile = new TileEntitySolderingStation();
-
 		// id is the id you give your button
 		switch (guibutton.id) {
 		case 1:
@@ -61,7 +62,6 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 			break;
 		case 2:
 			// i -= 1;
-
 		}
 	}
 
