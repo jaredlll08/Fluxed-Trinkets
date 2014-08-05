@@ -11,13 +11,13 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageSpeedCircuitCrafting implements IMessage, IMessageHandler<MessageSpeedCircuitCrafting, IMessage> {
-	public MessageSpeedCircuitCrafting() {
+public class MessageCircuitCrafting implements IMessage, IMessageHandler<MessageCircuitCrafting, IMessage> {
+	public MessageCircuitCrafting() {
 	}
 
 	private int x, y, z;
 
-	public MessageSpeedCircuitCrafting(int x, int y, int z) {
+	public MessageCircuitCrafting(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -38,11 +38,11 @@ public class MessageSpeedCircuitCrafting implements IMessage, IMessageHandler<Me
 	}
 
 	@Override
-	public IMessage onMessage(MessageSpeedCircuitCrafting message, MessageContext ctx) {
-		
+	public IMessage onMessage(MessageCircuitCrafting message, MessageContext ctx) {
+
 		TileEntity te = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(message.x, message.y, message.z);
 		if (te instanceof TileEntitySolderingStation) {
-		    ((TileEntitySolderingStation) te).craftSpeedCircuit();
+//			((TileEntitySolderingStation) te).craftCircuit();
 		}
 		return null;
 	}

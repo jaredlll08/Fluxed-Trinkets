@@ -28,15 +28,6 @@ public class RecipeHandler {
 	}
 
 	private static void registerRecipes() {
-		ItemStack kineticBeltBattery = new ItemStack(ETItems.kineticEnergyBelt);
-		ItemStack kineticBeltSpeed = new ItemStack(ETItems.kineticEnergyBelt);
-		NBTHelper.setBoolean(kineticBeltBattery, "Battery", true);
-		NBTHelper.setBoolean(kineticBeltBattery, "Speed", true);
-
-		NBTHelper.setBoolean(kineticBeltSpeed, "Speed", true);
-
-		GameRegistry.addRecipe(kineticBeltSpeed, new Object[] { "c", "k", 'c', new ItemStack(ETItems.speedCircuit), 'k', new ItemStack(ETItems.kineticEnergyBelt) });
-		GameRegistry.addRecipe(kineticBeltBattery, new Object[] { "c", "k", 'c', new ItemStack(ETItems.basicBattery), 'k', kineticBeltSpeed });
 
 		GameRegistry.addRecipe(new ItemStack(ETItems.circuit), new Object[] { " g ", "gbg", " g ", 'g', new ItemStack(Items.dye, 1, 2), 'b', new ItemStack(Items.book) });
 		GameRegistry.addRecipe(new ItemStack(ETItems.advancedCircuit), new Object[] { " g ", "gbg", " g ", 'g', new ItemStack(Items.dye, 1, 4), 'b', new ItemStack(Items.book) });

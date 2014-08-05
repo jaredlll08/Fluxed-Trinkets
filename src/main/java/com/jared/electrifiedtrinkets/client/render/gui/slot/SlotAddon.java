@@ -18,16 +18,24 @@ public class SlotAddon extends Slot {
 	@Override
 	public boolean isItemValid(ItemStack stack) {
 
-		ItemStack[] addons = new ItemStack[3];
-		{
-			addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
-			addons[1] = new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE);
-			addons[2] = new ItemStack(Items.slime_ball, 1, OreDictionary.WILDCARD_VALUE);
+		ItemStack[] addons = new ItemStack[9];
 
-		}
+		addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
+		addons[1] = new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE);
+		addons[2] = new ItemStack(Items.slime_ball, 1, OreDictionary.WILDCARD_VALUE);
+		addons[3] = new ItemStack(Items.magma_cream, 1, OreDictionary.WILDCARD_VALUE);
+		addons[4] = new ItemStack(Items.blaze_powder, 1, OreDictionary.WILDCARD_VALUE);
+		addons[5] = new ItemStack(Items.fish, 1, OreDictionary.WILDCARD_VALUE);
+		addons[6] = new ItemStack(Items.fishing_rod, 1, OreDictionary.WILDCARD_VALUE);
+		addons[7] = new ItemStack(Items.clay_ball, 1, OreDictionary.WILDCARD_VALUE);
+		addons[8] = new ItemStack(Items.firework_charge, 1, OreDictionary.WILDCARD_VALUE);
 		
-		if (stack.getItem() == addons[0].getItem() || stack.getItem() == addons[1].getItem() || stack.getItem() == addons[2].getItem()) {
-			return true;
+		int i = 0;
+		while (i < addons.length) {
+			if (stack.getItem() == addons[i].getItem()) {
+				return true;
+			}
+			i++;
 		}
 
 		return false;

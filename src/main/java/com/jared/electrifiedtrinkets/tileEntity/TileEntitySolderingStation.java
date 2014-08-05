@@ -1,6 +1,7 @@
 package com.jared.electrifiedtrinkets.tileEntity;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,11 +11,9 @@ import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.jared.electrifiedtrinkets.items.ETItems;
-import com.jared.electrifiedtrinkets.network.MessageSpeedCircuitCrafting;
+import com.jared.electrifiedtrinkets.network.MessageCircuitCrafting;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
-import com.jared.electrifiedtrinkets.util.NBTHelper;
-
-import cpw.mods.fml.relauncher.Side;
+import com.jared.electrifiedtrinkets.network.message.MessageCircuitCraftingSpeed;
 
 public class TileEntitySolderingStation extends TileEntity implements ISidedInventory {
 
@@ -160,7 +159,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 		tags.setTag("Items", nbttaglist);
 	}
 
-	public boolean craftCircuit() {
+	public boolean craftSpeedCircuit() {
 		for (int i = 0; i < items.length; i++) {
 			if (this.getStackInSlot(i) == null)
 				return false;
@@ -172,32 +171,89 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 		}
 
 		if (this.getStackInSlot(1).getItem() == ETItems.circuit && this.getStackInSlot(0).getItem() == ETItems.solderingIron && this.getStackInSlot(2).getItem() == ETItems.leadWire) {
-			for (int i = 3; i < 7; i++) {
-				
-				
+			int j = 0;
+
+			for (int k = 7; k < 14; k++) {
+				if (this.getStackInSlot(k) != null) {
+					this.decrStackSize(k, 1);
+					j++;
+				}
 			}
+
+			for (int l = 3; l < 7; l++) {
+				if(this.getStackInSlot(l).getItem() == ETItems.addons[0].getItem()){
+					this.decrStackSize(l, 1);
+					j++;	
+				}
+				if(this.getStackInSlot(l).getItem() != ETItems.addons[0].getItem()){
+					
+				}
+
+			}
+			if (j > 10) {
+				if (getStackInSlot(2).getItem() == null) {
+					return false;
+				} else {
+					decrStackSize(2, 1);
+				}
+				this.setInventorySlotContents(1, new ItemStack(ETItems.speedCircuit));
+				this.items[0].setItemDamage(items[0].getItemDamage() + 1);
+				PacketHandler.INSTANCE.sendToServer(new MessageCircuitCraftingSpeed(xCoord, yCoord, zCoord));
+
+			}
+			return true;
+		}
+
+		return false;
+	}
+	
+	public boolean craftJumpCircuit() {
+		for (int i = 0; i < items.length; i++) {
+			if (this.getStackInSlot(i) == null)
+				return false;
+		}
+		for (int i = 7; i < 14; i++) {
+			if (this.getStackInSlot(i).getItem() != ETItems.copperNugget) {
+				return false;
+			}
+		}
+
+		if (this.getStackInSlot(1).getItem() == ETItems.circuit && this.getStackInSlot(0).getItem() == ETItems.solderingIron && this.getStackInSlot(2).getItem() == ETItems.leadWire) {
+			int j = 0;
+
+			for (int k = 7; k < 14; k++) {
+				if (this.getStackInSlot(k) != null) {
+					
+					this.decrStackSize(k, 1);
+					j++;
+				}
+			}
+
+			for (int l = 3; l < 7; l++) {
+				if(this.getStackInSlot(l).getItem() == ETItems.addons[1].getItem()){
+					this.decrStackSize(l, 1);
+					j++;	
+				}
+				
+
+			}
+			if (j > 10) {
+				if (getStackInSlot(2).getItem() == null) {
+					return false;
+				} else {
+					decrStackSize(2, 1);
+				}
+				this.setInventorySlotContents(1, new ItemStack(ETItems.speedCircuit));
+				this.items[0].setItemDamage(items[0].getItemDamage() + 1);
+				PacketHandler.INSTANCE.sendToServer(new MessageCircuitCraftingSpeed(xCoord, yCoord, zCoord));
+
+			}
+			return true;
 		}
 
 		return false;
 	}
 
-	public void craftSpeedCircuit() {
-		if (this.getStackInSlot(1) != null && this.getStackInSlot(1).getItem() == ETItems.circuit && this.getStackInSlot(0).getItem() == ETItems.solderingIron) {
-			int j = 0;
-			for (int i = 7; i < 14; i++) {
-				if (this.getStackInSlot(i) != null) {
-					this.setInventorySlotContents(i, null);
-					j++;
-				}
-			}
-
-			if (j > 6) {
-
-				this.setInventorySlotContents(1, new ItemStack(ETItems.speedCircuit));
-				this.items[0].setItemDamage(items[0].getItemDamage() + 1);
-				PacketHandler.INSTANCE.sendToServer(new MessageSpeedCircuitCrafting(xCoord, yCoord, zCoord));
-
-			}
-		}
+		
 	}
-}
+
