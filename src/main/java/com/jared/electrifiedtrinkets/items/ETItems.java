@@ -1,9 +1,11 @@
 package com.jared.electrifiedtrinkets.items;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import com.jared.electrifiedtrinkets.CreativeTabElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.ModInfo;
@@ -44,6 +46,14 @@ public class ETItems {
 
 	public static Item speedBelt = new ItemSpeedBelt(25000);
 
+	public static ItemStack[] addons = new ItemStack[3];
+	{
+		addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
+		addons[1] = new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE);
+		addons[2] = new ItemStack(Items.slime_ball, 1, OreDictionary.WILDCARD_VALUE);
+	}
+	
+
 	private static void registerItems() {
 		registerItem(kineticEnergyBelt, "Kinetic Energy Belt", "Kinetic_Energy_Belt_Empty");
 		registerItem(speedCircuit, "Speed Circuit", "Speed_Circuit");
@@ -57,8 +67,8 @@ public class ETItems {
 
 		registerItem(leadIngot, "Lead Ingot", "Lead_Ingot");
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
-		
-		registerItem(speedBelt, "Speed Belt", "Speed_Belt");
+
+		registerItem(speedBelt, "Speed Belt", "Belt_Speed");
 	}
 
 	private static void registerItem(Item item, String name, String key) {

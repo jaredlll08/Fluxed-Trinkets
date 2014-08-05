@@ -10,6 +10,7 @@ public class ItemSolderingIron extends Item implements IEnergyContainerItem{
 
 	public ItemSolderingIron(){
 		NBTHelper.setInteger(new ItemStack(this),  "energy", 0);
+		this.setMaxDamage(50);
 		this.setMaxStackSize(1);
 	}
 	
