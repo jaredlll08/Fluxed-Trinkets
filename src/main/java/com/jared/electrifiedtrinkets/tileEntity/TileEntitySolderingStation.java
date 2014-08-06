@@ -1,7 +1,5 @@
 package com.jared.electrifiedtrinkets.tileEntity;
 
-import java.util.ArrayList;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -163,8 +161,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 	public boolean craftCircuit() {
 		ItemStack result = null;
 
-		ArrayList<ItemStack> modifier = new ArrayList<ItemStack>();
-
 		for (int i = 0; i < items.length; i++) {
 			if (this.getStackInSlot(i) == null)
 				return false;
@@ -181,61 +177,22 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 			for (int k = 7; k < 14; k++) {
 				if (this.getStackInSlot(k) != null) {
 					this.decrStackSize(k, 1);
-					
+
 					j++;
 				}
 			}
 
 			for (int l = 3; l < 7; l++) {
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[0].getItem()) {
+				if (this.getStackInSlot(l).getItem() == ETItems.addons[0].getItem() && getStackInSlot(l) != null) {
 					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
 					result = new ItemStack(ETItems.speedCircuit);
-					
 					j++;
 				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[1].getItem()) {
+				if (this.getStackInSlot(l).getItem() == ETItems.addons[1].getItem() && getStackInSlot(l) != null) {
 					this.decrStackSize(l, 1);
 					result = new ItemStack(ETItems.jumpCircuit);
-					modifier.add(getStackInSlot(l));
 					j++;
 				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[2].getItem()) {
-					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[3].getItem()) {
-					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[4].getItem()) {
-					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[5].getItem()) {
-					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[6].getItem()) {
-					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[7].getItem()) {
-					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[8].getItem()) {
-					this.decrStackSize(l, 1);
-					modifier.add(getStackInSlot(l));
-					j++;
-				}
-
 			}
 			if (j > 10) {
 				if (getStackInSlot(2).getItem() == null) {
@@ -243,26 +200,8 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 				} else {
 					decrStackSize(2, 1);
 				}
-				ItemStack mod = modifier.get(0);
-				int i = 0;
 
-				while(modifier.iterator().hasNext()){
-					if(modifier.get(i)!=mod || modifier.get(i)==null){
-						return false;
-					}
-					
-					if(mod.getItem() == ETItems.addons[0].getItem()){
-						result = new ItemStack(ETItems.speedCircuit);
-					}
-					if(mod.getItem() == ETItems.addons[1].getItem()){
-						result = new ItemStack(ETItems.jumpCircuit);
-					}
-					
-					i++;
-				}
-				
 				this.setInventorySlotContents(1, result);
-				modifier.clear();
 				this.items[0].setItemDamage(items[0].getItemDamage() + 1);
 				PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 
