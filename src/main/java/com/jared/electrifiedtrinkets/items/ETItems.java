@@ -8,9 +8,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.jared.electrifiedtrinkets.CreativeTabElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.ModInfo;
-import com.jared.electrifiedtrinkets.items.circuits.ItemCircuit;
-import com.jared.electrifiedtrinkets.items.circuits.ItemJumpCircuit;
-import com.jared.electrifiedtrinkets.items.circuits.ItemSpeedCircuit;
 import com.jared.electrifiedtrinkets.items.equipment.ItemAmuletEmpty;
 import com.jared.electrifiedtrinkets.items.equipment.ItemAmuletRespiratory;
 import com.jared.electrifiedtrinkets.items.equipment.ItemBeltEmpty;
@@ -19,6 +16,8 @@ import com.jared.electrifiedtrinkets.items.equipment.ItemBeltIce;
 import com.jared.electrifiedtrinkets.items.equipment.ItemBeltJump;
 import com.jared.electrifiedtrinkets.items.equipment.ItemBeltSpeed;
 import com.jared.electrifiedtrinkets.items.equipment.ItemBeltStep;
+import com.jared.electrifiedtrinkets.items.equipment.ItemRingEmpty;
+import com.jared.electrifiedtrinkets.items.equipment.ItemRingMiningSpeed;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperIngot;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperNugget;
 import com.jared.electrifiedtrinkets.items.resources.ItemLeadIngot;
@@ -36,9 +35,14 @@ public class ETItems {
 
 	public static Item speedCircuit = new ItemSpeedCircuit();
 	public static Item circuit = new ItemCircuit();
-	public static Item jumpCircuit = new ItemJumpCircuit();
+	public static Item jumpCircuit = new ItemCircuit();
 
 	public static Item advancedCircuit = new ItemCircuit();
+	public static Item circuitAdvancedFire = new ItemCircuit();
+
+	public static Item circuitAdvancedWater = new ItemCircuit();
+	public static Item circtuitStep = new ItemCircuit();
+
 	public static Item basicBattery = new ItemBattery();
 
 	public static Item solderingIron = new ItemSolderingIron();
@@ -54,10 +58,14 @@ public class ETItems {
 	public static Item beltFire = new ItemBeltFire(10000, 10);
 	public static Item beltIce = new ItemBeltIce(35000, 5);
 	public static Item beltJump = new ItemBeltJump(20000, 20);
-	public static Item beltStep	= new ItemBeltStep(10000, 20);
-	
+	public static Item beltStep = new ItemBeltStep(10000, 20);
+
 	public static Item amuletEmpty = new ItemAmuletEmpty();
 	public static Item amuletRespiratory = new ItemAmuletRespiratory(25000, 5);
+	
+	public static Item ringEmpty = new ItemRingEmpty();
+	public static Item ringMiningSpeed = new ItemRingMiningSpeed(25000, 10);
+	
 
 	public static ItemStack[] addons = new ItemStack[9];
 
@@ -92,6 +100,14 @@ public class ETItems {
 		registerItem(beltIce, "Ice Belt", "Belt_Ice");
 		registerItem(beltJump, "Jumping Belt", "Belt_Jump");
 		registerItem(beltStep, "Stepping Belt", "Belt_Step");
+
+		registerItem(circuitAdvancedFire, "Advanced Fire Circuit", "Circuit_Advanced_Fire");
+		registerItem(circuitAdvancedWater, "Advanced Fire Ice", "Circuit_Advanced_Ice");
+		registerItem(circtuitStep, "Step Circuit", "Circuit_Step");
+
+		
+		registerItem(ringEmpty, "Empty Ring", "Ring_Blank");
+		registerItem(ringMiningSpeed, "Mining Ring", "Ring_Mining_Speed");
 	}
 
 	private static void registerItem(Item item, String name, String key) {

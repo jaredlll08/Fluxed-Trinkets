@@ -22,6 +22,11 @@ public class ItemBeltStep extends ModBelt {
 		if (itemstack.stackTagCompound == null) {
 			itemstack.stackTagCompound = new NBTTagCompound();
 		}
+
+		if (itemstack.stackTagCompound.getInteger("energy") < -1) {
+			player.stepHeight = 0.7F;
+			itemstack.stackTagCompound.setInteger("energy", 0);
+		}
 		if (itemstack.stackTagCompound.getInteger("energy") > 0) {
 			if (new Random().nextInt(1200) == 0) {
 				itemstack.stackTagCompound.setInteger("energy", itemstack.stackTagCompound.getInteger("energy") - 20);
