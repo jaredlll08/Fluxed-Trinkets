@@ -1,6 +1,5 @@
 package com.jared.electrifiedtrinkets.items;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -12,13 +11,18 @@ import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.circuits.ItemCircuit;
 import com.jared.electrifiedtrinkets.items.circuits.ItemJumpCircuit;
 import com.jared.electrifiedtrinkets.items.circuits.ItemSpeedCircuit;
-import com.jared.electrifiedtrinkets.items.equipment.ItemSpeedBelt;
-import com.jared.electrifiedtrinkets.items.resources.ItemBundleOfLeadWire;
+import com.jared.electrifiedtrinkets.items.equipment.ItemAmuletEmpty;
+import com.jared.electrifiedtrinkets.items.equipment.ItemAmuletRespiratory;
+import com.jared.electrifiedtrinkets.items.equipment.ItemBeltEmpty;
+import com.jared.electrifiedtrinkets.items.equipment.ItemBeltFire;
+import com.jared.electrifiedtrinkets.items.equipment.ItemBeltIce;
+import com.jared.electrifiedtrinkets.items.equipment.ItemBeltJump;
+import com.jared.electrifiedtrinkets.items.equipment.ItemBeltSpeed;
+import com.jared.electrifiedtrinkets.items.equipment.ItemBeltStep;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperIngot;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperNugget;
 import com.jared.electrifiedtrinkets.items.resources.ItemLeadIngot;
 import com.jared.electrifiedtrinkets.items.resources.ItemLeadWire;
-import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -45,7 +49,15 @@ public class ETItems {
 	public static Item leadIngot = new ItemLeadIngot();
 	public static Item leadWire = new ItemLeadWire();
 
-	public static Item speedBelt = new ItemSpeedBelt(25000);
+	public static Item speedBelt = new ItemBeltSpeed(25000, 10);
+	public static Item beltEmpty = new ItemBeltEmpty();
+	public static Item beltFire = new ItemBeltFire(10000, 10);
+	public static Item beltIce = new ItemBeltIce(35000, 5);
+	public static Item beltJump = new ItemBeltJump(20000, 20);
+	public static Item beltStep	= new ItemBeltStep(10000, 20);
+	
+	public static Item amuletEmpty = new ItemAmuletEmpty();
+	public static Item amuletRespiratory = new ItemAmuletRespiratory(25000, 5);
 
 	public static ItemStack[] addons = new ItemStack[9];
 
@@ -72,8 +84,14 @@ public class ETItems {
 
 		registerItem(leadIngot, "Lead Ingot", "Lead_Ingot");
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
-
 		registerItem(speedBelt, "Speed Belt", "Belt_Speed");
+		registerItem(beltEmpty, "Empty Belt", "Belt_Empty");
+		registerItem(amuletEmpty, "Empty Amulet", "Amulet_Empty");
+		registerItem(amuletRespiratory, "Respiratory Amulet", "Amulet_Respiratory");
+		registerItem(beltFire, "Fire Belt", "Belt_Fire");
+		registerItem(beltIce, "Ice Belt", "Belt_Ice");
+		registerItem(beltJump, "Jumping Belt", "Belt_Jump");
+		registerItem(beltStep, "Stepping Belt", "Belt_Step");
 	}
 
 	private static void registerItem(Item item, String name, String key) {

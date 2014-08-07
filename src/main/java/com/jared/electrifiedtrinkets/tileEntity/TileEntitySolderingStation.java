@@ -182,16 +182,25 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 				}
 			}
 
+			int m = 0;
+			;
 			for (int l = 3; l < 7; l++) {
 				if (this.getStackInSlot(l).getItem() == ETItems.addons[0].getItem() && getStackInSlot(l) != null) {
-					this.decrStackSize(l, 1);
 					result = new ItemStack(ETItems.speedCircuit);
+					m++;
 					j++;
 				}
 				if (this.getStackInSlot(l).getItem() == ETItems.addons[1].getItem() && getStackInSlot(l) != null) {
-					this.decrStackSize(l, 1);
 					result = new ItemStack(ETItems.jumpCircuit);
+					m++;
 					j++;
+				}
+				if (m > 3) {
+					this.decrStackSize(3, 1);
+					this.decrStackSize(4, 1);
+					this.decrStackSize(5, 1);
+					this.decrStackSize(6, 1);
+
 				}
 			}
 			if (j > 10) {

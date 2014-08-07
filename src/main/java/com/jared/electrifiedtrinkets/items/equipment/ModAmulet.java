@@ -17,12 +17,12 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cofh.api.energy.IEnergyContainerItem;
 
-public abstract class ModBelt extends Item implements IBauble, IEnergyContainerItem {
+public abstract class ModAmulet extends Item implements IBauble, IEnergyContainerItem {
 
 	private int maxCapacity;
 	private int usage;
 
-	public ModBelt(int maxCapacity, int usage) {
+	public ModAmulet(int maxCapacity, int usage) {
 		this.setMaxStackSize(1);
 		this.maxCapacity = maxCapacity;
 		this.usage = usage;
@@ -31,8 +31,8 @@ public abstract class ModBelt extends Item implements IBauble, IEnergyContainerI
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 
 		if (StringUtils.isShiftKeyDown()) {
-			list.add(StringUtils.getChargeText(NBTHelper.getInt(stack, "energy"), maxCapacity));
-			list.add(StringUtils.getEnergyUsageText(usage));
+				list.add(StringUtils.getChargeText(NBTHelper.getInt(stack, "energy"), maxCapacity));
+				list.add(StringUtils.getEnergyUsageText(usage));
 		} else {
 			list.add(StringUtils.getShiftText());
 		}
@@ -47,7 +47,7 @@ public abstract class ModBelt extends Item implements IBauble, IEnergyContainerI
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.BELT;
+		return BaubleType.AMULET;
 	}
 
 	@Override
@@ -101,5 +101,6 @@ public abstract class ModBelt extends Item implements IBauble, IEnergyContainerI
 	public int getMaxEnergyStored(ItemStack container) {
 		return maxCapacity;
 	}
+
 
 }
