@@ -56,56 +56,53 @@ public class ETItems {
 	public static Item speedBelt = new ItemBeltSpeed(25000, 10);
 	public static Item beltEmpty = new ItemBeltEmpty();
 	public static Item beltFire = new ItemBeltFire(10000, 10);
-	public static Item beltIce = new ItemBeltIce(35000, 5);
+	public static Item beltIce = new ItemBeltIce(30000, 5);
 	public static Item beltJump = new ItemBeltJump(20000, 20);
 	public static Item beltStep = new ItemBeltStep(10000, 20);
 
 	public static Item amuletEmpty = new ItemAmuletEmpty();
 	public static Item amuletRespiratory = new ItemAmuletRespiratory(25000, 5);
-	
+
 	public static Item ringEmpty = new ItemRingEmpty();
 	public static Item ringMiningSpeed = new ItemRingMiningSpeed(25000, 10);
-	
 
 	public static ItemStack[] addons = new ItemStack[9];
 
 	private static void registerItems() {
 		addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
 		addons[1] = new ItemStack(Items.feather, 1, OreDictionary.WILDCARD_VALUE);
-		addons[2] = new ItemStack(Items.slime_ball, 1, OreDictionary.WILDCARD_VALUE);
-		addons[3] = new ItemStack(Items.magma_cream, 1, OreDictionary.WILDCARD_VALUE);
-		addons[4] = new ItemStack(Items.blaze_powder, 1, OreDictionary.WILDCARD_VALUE);
-		addons[5] = new ItemStack(Items.fish, 1, OreDictionary.WILDCARD_VALUE);
-		addons[6] = new ItemStack(Items.fishing_rod, 1, OreDictionary.WILDCARD_VALUE);
-		addons[7] = new ItemStack(Items.clay_ball, 1, OreDictionary.WILDCARD_VALUE);
-		addons[8] = new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE);
+		addons[2] = new ItemStack(Items.clay_ball, 1, OreDictionary.WILDCARD_VALUE);
+		addons[3] = new ItemStack(Items.blaze_powder, 1, OreDictionary.WILDCARD_VALUE);
+		addons[4] = new ItemStack(Items.fish, 1, OreDictionary.WILDCARD_VALUE);
 
+		registerItem(solderingIron, "Soldering Iron", "Soldering_Iron");
+		registerItem(basicBattery, "Basic Battery", "Battery_Basic");
+
+		registerItem(circuit, "Empty Circuit", "Circuit");
 		registerItem(speedCircuit, "Speed Circuit", "Circuit_Speed");
 		registerItem(jumpCircuit, "Jumping Circuit", "Circuit_Jump");
-		registerItem(circuit, "Empty Circuit", "Circuit");
+		registerItem(circtuitStep, "Step Circuit", "Circuit_Step");
+
 		registerItem(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
-		registerItem(basicBattery, "Basic Battery", "Battery_Basic");
-		registerItem(solderingIron, "Soldering Iron", "Soldering_Iron");
+		registerItem(circuitAdvancedFire, "Advanced Fire Circuit", "Circuit_Advanced_Fire");
+		registerItem(circuitAdvancedWater, "Advanced Fire Ice", "Circuit_Advanced_Ice");
 
 		registerItem(copperIngot, "Copper Ingot", "Copper_Ingot");
 		registerItem(copperNugget, "Copper Nugget", "Copper_Nugget");
 
 		registerItem(leadIngot, "Lead Ingot", "Lead_Ingot");
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
-		registerItem(speedBelt, "Speed Belt", "Belt_Speed");
+
 		registerItem(beltEmpty, "Empty Belt", "Belt_Empty");
-		registerItem(amuletEmpty, "Empty Amulet", "Amulet_Empty");
-		registerItem(amuletRespiratory, "Respiratory Amulet", "Amulet_Respiratory");
+		registerItem(speedBelt, "Speed Belt", "Belt_Speed");
 		registerItem(beltFire, "Fire Belt", "Belt_Fire");
 		registerItem(beltIce, "Ice Belt", "Belt_Ice");
 		registerItem(beltJump, "Jumping Belt", "Belt_Jump");
 		registerItem(beltStep, "Stepping Belt", "Belt_Step");
 
-		registerItem(circuitAdvancedFire, "Advanced Fire Circuit", "Circuit_Advanced_Fire");
-		registerItem(circuitAdvancedWater, "Advanced Fire Ice", "Circuit_Advanced_Ice");
-		registerItem(circtuitStep, "Step Circuit", "Circuit_Step");
+		registerItem(amuletEmpty, "Empty Amulet", "Amulet_Empty");
+		registerItem(amuletRespiratory, "Respiratory Amulet", "Amulet_Respiratory");
 
-		
 		registerItem(ringEmpty, "Empty Ring", "Ring_Blank");
 		registerItem(ringMiningSpeed, "Mining Ring", "Ring_Mining_Speed");
 	}
