@@ -16,8 +16,8 @@ public class ConfigHandler{
 
 		String worldGen = "WORLD GEN";
 		
-		copperGeneration = config.getBoolean("Copper Ore", worldGen, true, "Disable the Copper Ore gen");
-		leadGeneration = config.getBoolean("Lead Ore", worldGen, true, "Disable the Lead Ore gen");
+		copperGeneration = config.getBoolean("Copper Ore", worldGen, true, "Should Copper Ore generate?");
+		leadGeneration = config.getBoolean("Lead Ore", worldGen, true, "Should Lead Ore generate?");
 		config.save();
 
 	}

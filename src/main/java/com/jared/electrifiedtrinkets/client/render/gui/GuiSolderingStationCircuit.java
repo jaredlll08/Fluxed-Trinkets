@@ -50,7 +50,7 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(1, 60, 110, 20, 20, "Solder"));
+		buttonList.add(new GuiButton(1, 517, 263, 20, 20, "✔"));
 	}
 
 	protected void actionPerformed(GuiButton guibutton) {
