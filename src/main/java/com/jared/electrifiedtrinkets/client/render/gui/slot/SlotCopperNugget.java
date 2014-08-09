@@ -21,14 +21,12 @@ public class SlotCopperNugget extends Slot {
 	@Override
 	public boolean isItemValid(ItemStack stack) {
 		List<ItemStack> list = OreDictionary.getOres("nuggetCopper");
-		int i = 0;
-		while (list.iterator().hasNext()) {
-			if (stack.getItem() == list.get(i).getItem()) {
+
+		for (int i = 0; i < list.size(); i++) {
+			if (OreDictionary.itemMatches(list.get(i), stack, true)) {
 				return true;
-			} else {
-				i++;
-				return false;
 			}
+
 		}
 
 		return false;
