@@ -1,40 +1,38 @@
 package com.jared.electrifiedtrinkets.client.render.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import com.jared.electrifiedtrinkets.ModInfo;
-import com.jared.electrifiedtrinkets.items.ETItems;
-import com.jared.electrifiedtrinkets.network.MessageSolderingStation;
-import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
-import com.jared.electrifiedtrinkets.util.ETTickHandler;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiSolderingStationCircuit extends GuiContainer {
 
-    private TileEntitySolderingStation tile;
-    
+	private TileEntitySolderingStation tile;
+
 	public GuiSolderingStationCircuit(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
 		super(new ContainerSolderingStation(invPlayer, solderingStation));
 
 		xSize = 230;
 		ySize = 219;
-		
 		this.tile = solderingStation;
+
 	}
 
 	public void updateScreen() {
 		super.updateScreen();
+	}
+
+	public void drawHoveringText(List list, int x, int y, FontRenderer font) {
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation(ModInfo.modid, "textures/gui/Soldering_Station_Circuit.png");
@@ -50,7 +48,8 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(1, 517, 263, 20, 20, "✔"));
+		buttonList.add(new GuiButton(1, guiLeft+153, guiTop+108, 20, 20, "✔"));
+		
 	}
 
 	protected void actionPerformed(GuiButton guibutton) {
