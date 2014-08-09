@@ -18,7 +18,7 @@ public class SlotAddon extends Slot {
 	@Override
 	public boolean isItemValid(ItemStack stack) {
 
-		ItemStack[] addons = new ItemStack[9];
+		ItemStack[] addons = new ItemStack[5];
 
 		addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
 		addons[1] = new ItemStack(Items.feather, 1, OreDictionary.WILDCARD_VALUE);
@@ -32,6 +32,7 @@ public class SlotAddon extends Slot {
 				return true;
 			}
 			i++;
+
 		}
 
 		return false;

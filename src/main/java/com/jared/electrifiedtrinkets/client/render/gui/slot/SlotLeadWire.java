@@ -22,10 +22,13 @@ public class SlotLeadWire extends Slot {
 		while (list.iterator().hasNext()) {
 			if (stack.getItem() == list.get(i).getItem()) {
 				return true;
+			} else {
+				i++;
+				return false;
 			}
-			i++;
+
 		}
-		
+
 		return false;
 	}
 

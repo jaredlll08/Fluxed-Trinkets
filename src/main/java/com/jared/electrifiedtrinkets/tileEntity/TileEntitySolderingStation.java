@@ -165,7 +165,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 				return false;
 		}
 		for (int i = 7; i < 14; i++) {
-			if (this.getStackInSlot(i).getItem() != ETItems.copperNugget) {
+			if (this.getStackInSlot(i).getItem() == null) {
 				return false;
 			}
 		}

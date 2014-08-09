@@ -15,7 +15,6 @@ public class SlotCircuit extends Slot {
 	
 	@Override
 	public boolean isItemValid(ItemStack stack){
-//		ItemStack circuit = new ItemStack(ETItems.circuit, 1, OreDictionary.WILDCARD_VALUE);
 		if(stack.getItem().getUnlocalizedName().contains("Circuit")){
 			return true;
 		}
