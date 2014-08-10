@@ -36,7 +36,7 @@ public class ElectrifiedTrinkets {
 		RecipeHandler.init();
 		
 		proxy.registerRenderers();
-		MinecraftForge.EVENT_BUS.register(new com.jared.electrifiedtrinkets.util.EventHandler());
+		
 	}
 
 	@EventHandler
@@ -45,6 +45,7 @@ public class ElectrifiedTrinkets {
 		new GuiHandler();
 		new GenerationHandler();
 		PacketHandler.init();
+		MinecraftForge.EVENT_BUS.register(new com.jared.electrifiedtrinkets.util.EventHandler());
 	}
 
 	@EventHandler

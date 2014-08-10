@@ -17,6 +17,7 @@ import com.jared.electrifiedtrinkets.items.equipment.ItemBeltJump;
 import com.jared.electrifiedtrinkets.items.equipment.ItemBeltSpeed;
 import com.jared.electrifiedtrinkets.items.equipment.ItemBeltStep;
 import com.jared.electrifiedtrinkets.items.equipment.ItemRingEmpty;
+import com.jared.electrifiedtrinkets.items.equipment.ItemRingFarming;
 import com.jared.electrifiedtrinkets.items.equipment.ItemRingMiningSpeed;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperIngot;
 import com.jared.electrifiedtrinkets.items.resources.ItemCopperNugget;
@@ -65,6 +66,7 @@ public class ETItems {
 
 	public static Item ringEmpty = new ItemRingEmpty();
 	public static Item ringMiningSpeed = new ItemRingMiningSpeed(25000, 10);
+	public static Item ringFarming = new ItemRingFarming(20000, 500);
 
 	public static ItemStack[] addons = new ItemStack[9];
 
@@ -105,6 +107,7 @@ public class ETItems {
 
 		registerItem(ringEmpty, "Empty Ring", "Ring_Blank");
 		registerItem(ringMiningSpeed, "Mining Ring", "Ring_Mining_Speed");
+		registerItem(ringFarming, "Farmers Ring", "Ring_Farming");
 	}
 
 	private static void registerItem(Item item, String name, String key) {
