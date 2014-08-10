@@ -31,9 +31,9 @@ public class RecipeHandler {
 
 		GameRegistry.addRecipe(new ItemStack(ETItems.circuit), new Object[] { "ege", "gbg", "ege", 'e', new ItemStack(Items.emerald), 'g', new ItemStack(Items.dye, 1, 2), 'b', new ItemStack(Items.book) });
 		GameRegistry.addRecipe(new ItemStack(ETItems.advancedCircuit), new Object[] { "lgl", "gbg", "lgl", 'l', new ItemStack(Blocks.lapis_block), 'g', new ItemStack(Items.paper), 'b', new ItemStack(ETItems.circuit) });
-		
+
 		GameRegistry.addRecipe(new ItemStack(ETBlocks.solderingStation), new Object[] { "lgl", "gbg", "lgl", 'l', new ItemStack(Items.emerald), 'g', new ItemStack(Items.diamond), 'b', new ItemStack(Blocks.crafting_table) });
-		
+
 		GameRegistry.addSmelting(ETBlocks.copperOre, new ItemStack(ETItems.copperIngot), 0.5F);
 		GameRegistry.addSmelting(ETBlocks.leadOre, new ItemStack(ETItems.leadIngot), 0.5F);
 
@@ -54,6 +54,7 @@ public class RecipeHandler {
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.amuletRespiratory), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.circuitAdvancedWater), new ItemStack(ETItems.amuletEmpty));
 		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.ringMiningSpeed), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.speedCircuit), new ItemStack(ETItems.ringEmpty));
+		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.ringFarming), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.circuitAdvancedWater), new ItemStack(ETItems.speedCircuit), new ItemStack(ETItems.ringEmpty));
 
 		GameRegistry.addRecipe(new ItemStack(ETItems.solderingIron), new Object[] { " cc", " ic", "i  ", 'i', new ItemStack(Items.iron_ingot), 'c', new ItemStack(Items.clay_ball) });
 

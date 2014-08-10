@@ -21,6 +21,7 @@ item.Amulet_Empty.name=Empty Necklace
 item.Amulet_Respiratory.name=Respiratory Necklace
 item.Ring_Blank.name=Empty Ring
 item.Ring_Mining_Speed.name=Excavation Ring
+item.Ring_Farming.name=Farmers Ring
 tile.Soldering Station.name=Soldering Station
 tile.Copper Ore.name=Copper Ore
 tile.Lead Ore.name=Lead Ore

@@ -1,20 +1,23 @@
 package com.jared.electrifiedtrinkets.items.equipment;
 
-import com.jared.electrifiedtrinkets.potion.BaublePotionHelper;
-import com.jared.electrifiedtrinkets.potion.BaublesPotionEffect;
+import java.util.List;
+
+import com.jared.electrifiedtrinkets.util.StringUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionHelper;
 
 public class ItemRingFarming extends ModRing {
 
 	public ItemRingFarming(int maxCapacity, int usage) {
 		super(maxCapacity, usage);
+	}
+
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		list.add(StringUtils.BRIGHT_GREEN + "A ring for the modern farmer!");
+		super.addInformation(stack, player, list, par4);
+
 	}
 
 	@Override
