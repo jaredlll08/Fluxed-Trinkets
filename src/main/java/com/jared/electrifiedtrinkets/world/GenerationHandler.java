@@ -31,22 +31,6 @@ public class GenerationHandler implements IWorldGenerator {
 	}
 
 	private void generateSurface(World world, Random rand, int chunkX, int chunkZ) {
-		if(ConfigHandler.copperGeneration){
-			for (int k = 0; k < 3; k++) {
-				int oreXCoord = chunkX + rand.nextInt(16);
-				int oreYCoord = rand.nextInt(64);
-				int oreZCoord = chunkZ + rand.nextInt(16);
-				(new WorldGenMinable(ETBlocks.copperOre, 4)).generate(world, rand, oreXCoord, oreYCoord, oreZCoord);
-			}
-		}
-		if(ConfigHandler.leadGeneration){
-			for (int k = 0; k < 3; k++) {
-				int oreXCoord = chunkX + rand.nextInt(16);
-				int oreYCoord = rand.nextInt(64);
-				int oreZCoord = chunkZ + rand.nextInt(16);
-				(new WorldGenMinable(ETBlocks.leadOre, 4)).generate(world, rand, oreXCoord, oreYCoord, oreZCoord);
-			}
-		}
 	}
 
 	private void generateNether(World world, Random rand, int chunkX, int chunkZ) {

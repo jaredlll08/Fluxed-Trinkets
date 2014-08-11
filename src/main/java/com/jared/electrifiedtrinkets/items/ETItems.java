@@ -1,6 +1,5 @@
 package com.jared.electrifiedtrinkets.items;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,9 +18,6 @@ import com.jared.electrifiedtrinkets.items.equipment.ItemBeltStep;
 import com.jared.electrifiedtrinkets.items.equipment.ItemRingEmpty;
 import com.jared.electrifiedtrinkets.items.equipment.ItemRingFarming;
 import com.jared.electrifiedtrinkets.items.equipment.ItemRingMiningSpeed;
-import com.jared.electrifiedtrinkets.items.resources.ItemCopperIngot;
-import com.jared.electrifiedtrinkets.items.resources.ItemCopperNugget;
-import com.jared.electrifiedtrinkets.items.resources.ItemLeadIngot;
 import com.jared.electrifiedtrinkets.items.resources.ItemLeadWire;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -48,10 +44,6 @@ public class ETItems {
 
 	public static Item solderingIron = new ItemSolderingIron();
 
-	public static Item copperIngot = new ItemCopperIngot();
-	public static Item copperNugget = new ItemCopperNugget();
-
-	public static Item leadIngot = new ItemLeadIngot();
 	public static Item leadWire = new ItemLeadWire();
 
 	public static Item speedBelt = new ItemBeltSpeed(25000, 10);
@@ -89,10 +81,6 @@ public class ETItems {
 		registerItem(circuitAdvancedFire, "Advanced Fire Circuit", "Circuit_Advanced_Fire");
 		registerItem(circuitAdvancedWater, "Advanced Fire Ice", "Circuit_Advanced_Ice");
 
-		registerItem(copperIngot, "Copper Ingot", "Copper_Ingot");
-		registerItem(copperNugget, "Copper Nugget", "Copper_Nugget");
-
-		registerItem(leadIngot, "Lead Ingot", "Lead_Ingot");
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
 
 		registerItem(beltEmpty, "Empty Belt", "Belt_Empty");

@@ -44,6 +44,7 @@ public class EventHandler {
 				if (baubles[1].stackTagCompound.getInteger("energy") > 0) {
 					event.setResult(Result.DENY);
 					applyBonemeal(baubles[1], event.world, event.x, event.y, event.z, event.entityPlayer);
+					
 					baubles[1].stackTagCompound.setInteger("energy", baubles[1].stackTagCompound.getInteger("energy") - 500);
 				}
 			}

@@ -14,10 +14,6 @@ public class ConfigHandler{
 
 		config.load();
 
-		String worldGen = "WORLD GEN";
-		
-		copperGeneration = config.getBoolean("Copper Ore", worldGen, true, "Should Copper Ore generate?");
-		leadGeneration = config.getBoolean("Lead Ore", worldGen, true, "Should Lead Ore generate?");
 		config.save();
 
 	}
