@@ -35,6 +35,6 @@ public class SlotAddon extends Slot {
 
 		}
 
-		return false;
+		return true;
 	}
 }
