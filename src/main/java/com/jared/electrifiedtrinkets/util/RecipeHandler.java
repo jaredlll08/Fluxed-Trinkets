@@ -55,6 +55,9 @@ public class RecipeHandler {
 		// Object[] { " cc", " ic", "i  ", 'i', new ItemStack(Items.iron_ingot),
 		// 'c', new ItemStack(Items.clay_ball) });
 
+		GameRegistry.addRecipe(new ItemStack(ETItems.circuit), new Object[] { "ege", "gbg", "ege", 'e', new ItemStack(Items.emerald), 'g', new ItemStack(Items.dye, 1, 2), 'b', new ItemStack(Items.book) });
+		GameRegistry.addRecipe(new ItemStack(ETItems.advancedCircuit), new Object[] { "lgl", "gbg", "lgl", 'l', new ItemStack(Blocks.redstone_block), 'g', new ItemStack(Items.paper), 'b', new ItemStack(ETItems.circuit) });
+
 		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.solderingIron, new Object[] { " ic", " li", "b  ", 'l', "wireLead", 'c', "ingotCopper", 'i', "nuggetIron", 'b', ETItems.basicBattery }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.basicBattery, new Object[] { " w ", "lrl", "lsl", 'w', "wireLead", 'l', "ingotLead", 'r', Items.redstone, 's', "dustSulfur" }));
 
@@ -62,9 +65,10 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.advancedCircuit, new Object[] { "rsr", "scs", "rsr", 's', "nuggetSignalum", 'r', Items.redstone, 'c', ETItems.circuit }));
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.beltEmpty, new Object[] { "ewe", "wbw", "ewe", 'e', "ingotElectrum", 'w', "wireLead", 'b', ETItems.basicBattery }));
-
-		GameRegistry.addRecipe(new ItemStack(ETItems.circuit), new Object[] { "ege", "gbg", "ege", 'e', new ItemStack(Items.emerald), 'g', new ItemStack(Items.dye, 1, 2), 'b', new ItemStack(Items.book) });
-		GameRegistry.addRecipe(new ItemStack(ETItems.advancedCircuit), new Object[] { "lgl", "gbg", "lgl", 'l', new ItemStack(Blocks.redstone_block), 'g', new ItemStack(Items.paper), 'b', new ItemStack(ETItems.circuit) });
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.speedBelt, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.speedCircuit }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltFire, new Object[] { "gearSignalum", ETItems.beltEmpty, ETItems.circuitAdvancedFire }));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltIce, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.circuitAdvancedWater }));
+		
 
 	}
 

@@ -44,7 +44,7 @@ public class EventHandler {
 				if (baubles[1].stackTagCompound.getInteger("energy") > 0) {
 					event.setResult(Result.DENY);
 					applyBonemeal(baubles[1], event.world, event.x, event.y, event.z, event.entityPlayer);
-					
+
 					baubles[1].stackTagCompound.setInteger("energy", baubles[1].stackTagCompound.getInteger("energy") - 500);
 				}
 			}
@@ -76,10 +76,24 @@ public class EventHandler {
 			if (igrowable.func_149851_a(p_150919_1_, p_150919_2_, p_150919_3_, p_150919_4_, p_150919_1_.isRemote)) {
 				if (!p_150919_1_.isRemote) {
 					if (igrowable.func_149852_a(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_)) {
-						igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
-						igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
-						igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
 
+						if (StringUtils.isShiftKeyDown()) {
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_ - 1, p_150919_3_, p_150919_4_);
+
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_ + 1, p_150919_3_, p_150919_4_);
+
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_ - 1);
+
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_ + 1);
+
+						} else {
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
+							igrowable.func_149853_b(p_150919_1_, p_150919_1_.rand, p_150919_2_, p_150919_3_, p_150919_4_);
+						}
 					}
 
 					// --p_150919_0_.stackSize;
