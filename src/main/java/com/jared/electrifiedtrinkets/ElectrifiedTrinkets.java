@@ -1,7 +1,10 @@
 package com.jared.electrifiedtrinkets;
 
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 
+import com.jared.electrifiedtrinkets.api.recipes.SolderingRegistry;
 import com.jared.electrifiedtrinkets.blocks.ETBlocks;
 import com.jared.electrifiedtrinkets.config.ConfigHandler;
 import com.jared.electrifiedtrinkets.items.ETItems;
@@ -30,10 +33,12 @@ public class ElectrifiedTrinkets {
 
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
+		SolderingRegistry.flush();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		ETItems.init();
 		ETBlocks.init();
 		RecipeHandler.init();
+		
 
 		proxy.registerRenderers();
 

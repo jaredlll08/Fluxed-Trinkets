@@ -1,5 +1,6 @@
 package com.jared.electrifiedtrinkets.util;
 
+import com.jared.electrifiedtrinkets.api.recipes.SolderingRegistry;
 import com.jared.electrifiedtrinkets.blocks.ETBlocks;
 import com.jared.electrifiedtrinkets.items.ETItems;
 
@@ -14,9 +15,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class RecipeHandler {
 
 	public static void init() {
-
+		registerSolderingRecipes();
 		registerOreDict();
 		registerRecipes();
+
+	}
+
+	private static void registerSolderingRecipes() {
+		SolderingRegistry.addRecipe(new ItemStack(ETItems.circuit), new ItemStack(ETItems.speedCircuit), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.sugar));
+//		SolderingRegistry.addRecipe(new ItemStack(ETItems.circuit), new ItemStack(ETItems.circtuitStep), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.feather));
 
 	}
 
@@ -68,7 +75,6 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.speedBelt, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.speedCircuit }));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltFire, new Object[] { "gearSignalum", ETItems.beltEmpty, ETItems.circuitAdvancedFire }));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltIce, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.circuitAdvancedWater }));
-		
 
 	}
 

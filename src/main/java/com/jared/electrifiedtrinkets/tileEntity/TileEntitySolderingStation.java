@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.oredict.OreDictionary;
 
+import com.jared.electrifiedtrinkets.api.recipes.SolderingRegistry;
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.network.MessageCircuitCrafting;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
@@ -158,8 +159,8 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 	}
 
 	public boolean craftCircuit() {
-		ItemStack result = null;
-
+		Object[] recipe = new Object[7];
+		ItemStack result=null;
 		for (int i = 0; i < items.length; i++) {
 			if (this.getStackInSlot(i) == null)
 				return false;
@@ -168,6 +169,10 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 			if (this.getStackInSlot(i).getItem() == null) {
 				return false;
 			}
+		}
+
+		if (getStackInSlot(1) != null) {
+			recipe[0] = getStackInSlot(1);
 		}
 
 		if (this.getStackInSlot(1).getItem() == ETItems.circuit && this.getStackInSlot(0).getItem() == ETItems.solderingIron && this.getStackInSlot(2).getItem() == ETItems.leadWire) {
@@ -184,17 +189,17 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 			int m = 0;
 			for (int l = 3; l < 7; l++) {
 				if (this.getStackInSlot(l).getItem() == ETItems.addons[0].getItem() && getStackInSlot(l) != null) {
-					result = new ItemStack(ETItems.speedCircuit);
+					recipe[m + 1] = getStackInSlot(l);
 					m++;
 					j++;
 				}
 				if (this.getStackInSlot(l).getItem() == ETItems.addons[1].getItem() && getStackInSlot(l) != null) {
-					result = new ItemStack(ETItems.jumpCircuit);
+					recipe[m + 1] = getStackInSlot(l);
 					m++;
 					j++;
 				}
 				if (this.getStackInSlot(l).getItem() == ETItems.addons[2].getItem() && getStackInSlot(l) != null) {
-					result = new ItemStack(ETItems.circtuitStep);
+					recipe[m + 1] = getStackInSlot(l);
 					m++;
 					j++;
 				}
@@ -204,7 +209,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 					this.decrStackSize(4, 1);
 					this.decrStackSize(5, 1);
 					this.decrStackSize(6, 1);
-
 				}
 			}
 			if (j > 10) {
@@ -214,7 +218,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 					decrStackSize(2, 1);
 				}
 
-				this.setInventorySlotContents(1, result);
+				this.setInventorySlotContents(1, SolderingRegistry.getResult((ItemStack) recipe[0], (ItemStack) recipe[1], (ItemStack) recipe[2], (ItemStack) recipe[3], (ItemStack) recipe[4]));
 				this.items[0].setItemDamage(items[0].getItemDamage() + 1);
 				PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 
@@ -270,5 +274,4 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 		return false;
 	}
-
 }
