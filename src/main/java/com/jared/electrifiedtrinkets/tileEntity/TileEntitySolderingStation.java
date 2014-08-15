@@ -1,7 +1,19 @@
 package com.jared.electrifiedtrinkets.tileEntity;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.swing.text.DateFormatter;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -9,7 +21,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.jared.electrifiedtrinkets.api.recipes.SolderingRegistry;
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.network.MessageCircuitCrafting;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
@@ -158,120 +169,376 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 		tags.setTag("Items", nbttaglist);
 	}
 
+	// public boolean craftCircuit() {
+	// ItemStack result = null;
+	// ItemStack[] items = new ItemStack[5];
+	//
+	// for (int i = 0; i < items.length; i++) {
+	// if (this.getStackInSlot(i) == null)
+	// return false;
+	// }
+	// for (int i = 7; i < 14; i++) {
+	// if (this.getStackInSlot(i).getItem() == null) {
+	// return false;
+	// }
+	// }
+	//
+	// if (this.getStackInSlot(1).getItem() == ETItems.circuit &&
+	// this.getStackInSlot(0).getItem() == ETItems.solderingIron &&
+	// this.getStackInSlot(2).getItem() == ETItems.leadWire) {
+	// int j = 0;
+	//
+	// for (int k = 7; k < 14; k++) {
+	// if (this.getStackInSlot(k) != null) {
+	// this.decrStackSize(k, 1);
+	//
+	// j++;
+	// }
+	// }
+	//
+	// items[0] = getStackInSlot(1);
+	// items[1] = getStackInSlot(3);
+	// items[2] = getStackInSlot(4);
+	// items[3] = getStackInSlot(5);
+	// items[4] = getStackInSlot(6);
+	//
+	// if (items[0].getItem() == ETItems.circuit) {
+	//
+	// if (items[1].getItem() == Item.getItemFromBlock(Blocks.coal_block)) {
+	// if (items[2].getItem() == Item.getItemFromBlock(Blocks.iron_ore)) {
+	// if (items[3].getItem() == Item.getItemFromBlock(Blocks.sapling)) {
+	// if(items[4].getItem() == Item.getItemFromBlock(Blocks.grass)){
+	// decrStackSize(3, 1);
+	// decrStackSize(4, 1);
+	// decrStackSize(5, 1);
+	// decrStackSize(6, 1);
+	// setInventorySlotContents(1, new ItemStack(ETItems.circuitEarth));
+	// }
+	// }
+	// }
+	// }
+	//
+	// }
+	//
+	// int m = 0;
+	// for (int l = 3; l < 7; l++) {
+	// if (this.getStackInSlot(l).getItem() == ETItems.addons[0].getItem() &&
+	// getStackInSlot(l) != null) {
+	// result = new ItemStack(ETItems.speedCircuit);
+	// m++;
+	// j++;
+	// }
+	// if (this.getStackInSlot(l).getItem() == ETItems.addons[1].getItem() &&
+	// getStackInSlot(l) != null) {
+	// result = new ItemStack(ETItems.jumpCircuit);
+	// m++;
+	// j++;
+	// }
+	// if (this.getStackInSlot(l).getItem() == ETItems.addons[2].getItem() &&
+	// getStackInSlot(l) != null) {
+	// result = new ItemStack(ETItems.circtuitStep);
+	// m++;
+	// j++;
+	// }
+	//
+	// if (m > 3) {
+	// this.decrStackSize(3, 1);
+	// this.decrStackSize(4, 1);
+	// this.decrStackSize(5, 1);
+	// this.decrStackSize(6, 1);
+	//
+	// }
+	// }
+	// if (j > 10) {
+	// if (getStackInSlot(2).getItem() == null) {
+	// return false;
+	// } else {
+	// decrStackSize(2, 1);
+	// }
+	//
+	// this.setInventorySlotContents(1, result);
+	// this.items[0].setItemDamage(items[0].getItemDamage() + 1);
+	// PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord,
+	// yCoord, zCoord));
+	//
+	// }
+	// return true;
+	// }
+	//
+	// if (this.getStackInSlot(1).getItem() == ETItems.advancedCircuit &&
+	// this.getStackInSlot(0).getItem() == ETItems.solderingIron &&
+	// this.getStackInSlot(2).getItem() == ETItems.leadWire) {
+	// int j = 0;
+	//
+	// for (int k = 7; k < 14; k++) {
+	// if (this.getStackInSlot(k) != null) {
+	// this.decrStackSize(k, 1);
+	//
+	// j++;
+	// }
+	// }
+	//
+	// int m = 0;
+	// for (int l = 3; l < 7; l++) {
+	// if (this.getStackInSlot(l).getItem() == ETItems.addons[4].getItem() &&
+	// getStackInSlot(l) != null) {
+	// result = new ItemStack(ETItems.circuitAdvancedFire);
+	// m++;
+	// j++;
+	// }
+	// if (this.getStackInSlot(l).getItem() == ETItems.addons[5].getItem() &&
+	// getStackInSlot(l) != null) {
+	// result = new ItemStack(ETItems.circuitAdvancedWater);
+	// m++;
+	// j++;
+	// }
+	// if (m > 3) {
+	// this.decrStackSize(3, 1);
+	// this.decrStackSize(4, 1);
+	// this.decrStackSize(5, 1);
+	// this.decrStackSize(6, 1);
+	//
+	// }
+	// }
+	// if (j > 10) {
+	// if (getStackInSlot(2).getItem() == null) {
+	// return false;
+	// } else {
+	// decrStackSize(2, 1);
+	// }
+	//
+	// this.setInventorySlotContents(1, result);
+	// this.items[0].setItemDamage(items[0].getItemDamage() + 1);
+	// PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord,
+	// yCoord, zCoord));
+	//
+	// }
+	// return true;
+	// }
+	//
+	// return false;
+	// }
+
 	public boolean craftCircuit() {
-		Object[] recipe = new Object[7];
-		ItemStack result=null;
+		ItemStack[] item = new ItemStack[5];
 		for (int i = 0; i < items.length; i++) {
-			if (this.getStackInSlot(i) == null)
-				return false;
-		}
-		for (int i = 7; i < 14; i++) {
-			if (this.getStackInSlot(i).getItem() == null) {
+			if (items[i] == null) {
 				return false;
 			}
 		}
+		item[0] = getStackInSlot(1);
+		item[1] = getStackInSlot(3);
+		item[2] = getStackInSlot(4);
+		item[3] = getStackInSlot(5);
+		item[4] = getStackInSlot(6);
+		/*
+		 * earth circuit
+		 */
+		if (item[0].getItem() == ETItems.circuit) {
+			if (item[1].getItem() == Item.getItemFromBlock(Blocks.grass)) {
+				if (item[2].getItem() == Item.getItemFromBlock(Blocks.coal_block)) {
+					if (item[3].getItem() == Item.getItemFromBlock(Blocks.iron_ore)) {
+						if (item[4].getItem() == Item.getItemFromBlock(Blocks.sapling)) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.circuitEarth);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
 
-		if (getStackInSlot(1) != null) {
-			recipe[0] = getStackInSlot(1);
+							}
+						}
+					}
+				}
+			}
 		}
 
-		if (this.getStackInSlot(1).getItem() == ETItems.circuit && this.getStackInSlot(0).getItem() == ETItems.solderingIron && this.getStackInSlot(2).getItem() == ETItems.leadWire) {
-			int j = 0;
+		/*
+		 * Air Circuit
+		 */
+		if (item[0].getItem() == ETItems.circuit) {
+			if (item[1].getItem() == Items.ghast_tear) {
+				if (item[2].getItem() == Item.getItemFromBlock(Blocks.leaves)) {
+					if (item[3].getItem() == Item.getItemFromBlock(Blocks.deadbush)) {
+						if (item[4].getItem() == Items.feather) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
 
-			for (int k = 7; k < 14; k++) {
-				if (this.getStackInSlot(k) != null) {
-					this.decrStackSize(k, 1);
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.circuitAir);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
 
-					j++;
+							}
+						}
+					}
 				}
 			}
-
-			int m = 0;
-			for (int l = 3; l < 7; l++) {
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[0].getItem() && getStackInSlot(l) != null) {
-					recipe[m + 1] = getStackInSlot(l);
-					m++;
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[1].getItem() && getStackInSlot(l) != null) {
-					recipe[m + 1] = getStackInSlot(l);
-					m++;
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[2].getItem() && getStackInSlot(l) != null) {
-					recipe[m + 1] = getStackInSlot(l);
-					m++;
-					j++;
-				}
-
-				if (m > 3) {
-					this.decrStackSize(3, 1);
-					this.decrStackSize(4, 1);
-					this.decrStackSize(5, 1);
-					this.decrStackSize(6, 1);
-				}
-			}
-			if (j > 10) {
-				if (getStackInSlot(2).getItem() == null) {
-					return false;
-				} else {
-					decrStackSize(2, 1);
-				}
-
-				this.setInventorySlotContents(1, SolderingRegistry.getResult((ItemStack) recipe[0], (ItemStack) recipe[1], (ItemStack) recipe[2], (ItemStack) recipe[3], (ItemStack) recipe[4]));
-				this.items[0].setItemDamage(items[0].getItemDamage() + 1);
-				PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
-
-			}
-			return true;
 		}
 
-		if (this.getStackInSlot(1).getItem() == ETItems.advancedCircuit && this.getStackInSlot(0).getItem() == ETItems.solderingIron && this.getStackInSlot(2).getItem() == ETItems.leadWire) {
-			int j = 0;
+		/*
+		 * Fire Circuit
+		 */
+		if (item[0].getItem() == ETItems.circuit) {
+			if (item[1].getItem() == Items.lava_bucket) {
+				if (item[2].getItem() == Item.getItemFromBlock(Blocks.coal_block)) {
+					if (item[3].getItem() == Item.getItemFromBlock(Blocks.log)) {
+						if (item[4].getItem() == Items.flint_and_steel) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
 
-			for (int k = 7; k < 14; k++) {
-				if (this.getStackInSlot(k) != null) {
-					this.decrStackSize(k, 1);
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.circuitFire);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
 
-					j++;
+							}
+						}
+					}
 				}
 			}
-
-			int m = 0;
-			for (int l = 3; l < 7; l++) {
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[4].getItem() && getStackInSlot(l) != null) {
-					result = new ItemStack(ETItems.circuitAdvancedFire);
-					m++;
-					j++;
-				}
-				if (this.getStackInSlot(l).getItem() == ETItems.addons[5].getItem() && getStackInSlot(l) != null) {
-					result = new ItemStack(ETItems.circuitAdvancedWater);
-					m++;
-					j++;
-				}
-				if (m > 3) {
-					this.decrStackSize(3, 1);
-					this.decrStackSize(4, 1);
-					this.decrStackSize(5, 1);
-					this.decrStackSize(6, 1);
-
-				}
-			}
-			if (j > 10) {
-				if (getStackInSlot(2).getItem() == null) {
-					return false;
-				} else {
-					decrStackSize(2, 1);
-				}
-
-				this.setInventorySlotContents(1, result);
-				this.items[0].setItemDamage(items[0].getItemDamage() + 1);
-				PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
-
-			}
-			return true;
 		}
 
+		/*
+		 * Water Circuit
+		 */
+		if (item[0].getItem() == ETItems.circuit) {
+			if (item[1].getItem() == Items.water_bucket) {
+				if (item[2].getItem() == Item.getItemFromBlock(Blocks.ice)) {
+					if (item[3].getItem() == Item.getItemFromBlock(Blocks.waterlily)) {
+						if (item[4].getItem() == Items.dye) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
+
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.circuitWater);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
+
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/*
+		 * Chilling Circuit
+		 */
+		if (item[0].getItem() == ETItems.circuitWater) {
+			if (item[1].getItem() == Item.getItemFromBlock(Blocks.snow)) {
+				if (item[2].getItem() == new ItemStack(Items.potionitem, 1, 8200).getItem()) {
+					if (item[3].getItem() == Item.getItemFromBlock(Blocks.ice)) {
+						if (item[4].getItem() == Items.cake) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
+
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.advancedCircuitIce);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
+
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/*
+		 * Life Circuit
+		 */
+		if (item[0].getItem() == ETItems.circuitEarth) {
+			if (item[1].getItem() == Items.speckled_melon) {
+				if (item[2].getItem() == new ItemStack(Items.potionitem, 1, 8197).getItem()) {
+					if (item[3].getItem() == new ItemStack(Items.potionitem, 1, 8257).getItem()) {
+						if (item[4].getItem() == Items.golden_apple) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
+
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.advancedCircuitLife);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
+
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/*
+		 * Life Circuit
+		 */
+		if (item[0].getItem() == ETItems.circuitAir) {
+			if (item[1].getItem() == Items.redstone) {
+				if (item[2].getItem() == Item.getItemFromBlock(Blocks.glowstone)) {
+					if (item[3].getItem() == Item.getItemFromBlock(Blocks.iron_bars)) {
+						if (item[4].getItem() == Items.sugar) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
+
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.advancedCircuitLife);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
+
+							}
+						}
+					}
+				}
+			}
+		}
 		return false;
 	}
 }

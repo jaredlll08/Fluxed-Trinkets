@@ -1,31 +1,25 @@
 package com.jared.electrifiedtrinkets.util;
 
-import com.jared.electrifiedtrinkets.api.recipes.SolderingRegistry;
-import com.jared.electrifiedtrinkets.blocks.ETBlocks;
-import com.jared.electrifiedtrinkets.items.ETItems;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import com.jared.electrifiedtrinkets.blocks.ETBlocks;
+import com.jared.electrifiedtrinkets.items.ETItems;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeHandler {
 
 	public static void init() {
-		registerSolderingRecipes();
 		registerOreDict();
 		registerRecipes();
 
 	}
 
-	private static void registerSolderingRecipes() {
-		SolderingRegistry.addRecipe(new ItemStack(ETItems.circuit), new ItemStack(ETItems.speedCircuit), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.sugar));
-//		SolderingRegistry.addRecipe(new ItemStack(ETItems.circuit), new ItemStack(ETItems.circtuitStep), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.sugar), new ItemStack(Items.feather));
-
-	}
 
 	private static void registerOreDict() {
 		OreDictionary.registerOre("wireLead", ETItems.leadWire);
@@ -45,8 +39,8 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.leadWire, 6), new Object[] { "   ", "lll", "   ", 'l', "ingotLead" }));
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.speedBelt), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.speedCircuit), new ItemStack(ETItems.beltEmpty));
-		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.beltJump), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.jumpCircuit), new ItemStack(ETItems.beltEmpty));
-		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.beltStep), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.circtuitStep), new ItemStack(ETItems.beltEmpty));
+//		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.beltJump), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.jumpCircuit), new ItemStack(ETItems.beltEmpty));
+//		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.beltStep), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.circtuitStep), new ItemStack(ETItems.beltEmpty));
 		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.beltFire), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.circuitAdvancedFire), new ItemStack(ETItems.beltEmpty));
 		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.beltIce), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.basicBattery), new ItemStack(ETItems.circuitAdvancedWater), new ItemStack(ETItems.beltEmpty));
 

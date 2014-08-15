@@ -1,9 +1,9 @@
 package com.jared.electrifiedtrinkets;
 
-import com.jared.electrifiedtrinkets.items.ETItems;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+
+import com.jared.electrifiedtrinkets.items.ETItems;
 
 public class CreativeTabElectrifiedTrinkets extends CreativeTabs{
 

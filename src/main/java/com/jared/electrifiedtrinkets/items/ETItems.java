@@ -30,11 +30,28 @@ public class ETItems {
 
 	public static CreativeTabElectrifiedTrinkets tab = new CreativeTabElectrifiedTrinkets();
 
-	public static Item speedCircuit = new ItemSpeedCircuit();
+	/*
+	 * circuits
+	 */
 	public static Item circuit = new ItemCircuit();
-	public static Item jumpCircuit = new ItemCircuit();
+	public static Item circuitAir = new ItemCircuit();
+	public static Item circuitEarth = new ItemCircuit();
+	public static Item circuitFire = new ItemCircuit();
+	public static Item circuitWater = new ItemCircuit();
 
 	public static Item advancedCircuit = new ItemCircuit();
+	public static Item advancedCircuitIce = new ItemCircuit();
+	public static Item advancedCircuitLava = new ItemCircuit();
+	public static Item advancedCircuitLife = new ItemCircuit();
+	public static Item advancedCircuitLightning = new ItemCircuit();
+
+	/*
+	 * items
+	 */
+	public static Item speedCircuit = new ItemCircuit();
+
+	public static Item jumpCircuit = new ItemCircuit();
+
 	public static Item circuitAdvancedFire = new ItemCircuit();
 
 	public static Item circuitAdvancedWater = new ItemCircuit();
@@ -69,17 +86,34 @@ public class ETItems {
 		addons[3] = new ItemStack(Items.blaze_powder, 1, OreDictionary.WILDCARD_VALUE);
 		addons[4] = new ItemStack(Items.fish, 1, OreDictionary.WILDCARD_VALUE);
 
+		/*
+		 * Circuits
+		 */
+		registerCircuit(circuitEarth, "Terrestrial Circuit", "Circuit_Earth");
+		registerCircuit(circuitAir, "Atomospheric Circuit", "Circuit_Air");
+		registerCircuit(circuitFire, "Scorched Circuit", "Circuit_Fire");
+		registerCircuit(circuitWater, "Streaming Circuit", "Circuit_Water");
+	
+		registerCircuit(advancedCircuitIce, "Chilling Circuit", "Circuit_Advanced_Ice");
+		registerCircuit(advancedCircuitLava, "Blazing Circuit", "Circuit_Advanced_Lava");
+		registerCircuit(advancedCircuitLife, "Mending Circuit", "Circuit_Advanced_Life");
+		registerCircuit(advancedCircuitLightning, "Thundering Circuit", "Circuit_Advanced_Lightning");
+		
+		
+		/*
+		 * ITems
+		 */
 		registerItem(solderingIron, "Soldering Iron", "Soldering_Iron");
 		registerItem(basicBattery, "Basic Battery", "Battery_Basic");
 
-		registerItem(circuit, "Empty Circuit", "Circuit");
-		registerItem(speedCircuit, "Speed Circuit", "Circuit_Speed");
-		registerItem(jumpCircuit, "Jumping Circuit", "Circuit_Jump");
-		registerItem(circtuitStep, "Step Circuit", "Circuit_Step");
+		registerCircuit(circuit, "Empty Circuit", "Circuit");
+		registerCircuit(speedCircuit, "Speed Circuit", "Circuit_Speed");
+		registerCircuit(jumpCircuit, "Jumping Circuit", "Circuit_Jump");
+		registerCircuit(circtuitStep, "Step Circuit", "Circuit_Step");
 
-		registerItem(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
-		registerItem(circuitAdvancedFire, "Advanced Fire Circuit", "Circuit_Advanced_Fire");
-		registerItem(circuitAdvancedWater, "Advanced Fire Ice", "Circuit_Advanced_Ice");
+		registerCircuit(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
+		registerCircuit(circuitAdvancedFire, "Advanced Fire Circuit", "Circuit_Advanced_Fire");
+		registerCircuit(circuitAdvancedWater, "Advanced Ice Circuit", "Circuit_Advanced_water");
 
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
 
@@ -101,7 +135,11 @@ public class ETItems {
 	private static void registerItem(Item item, String name, String key) {
 		item.setUnlocalizedName(key).setTextureName(ModInfo.modid + ":" + key).setCreativeTab(tab);
 		GameRegistry.registerItem(item, key);
+	}
 
+	private static void registerCircuit(Item item, String name, String key) {
+		item.setUnlocalizedName(key).setTextureName(ModInfo.modid + ":/Circuits/" + key).setCreativeTab(tab);
+		GameRegistry.registerItem(item, key);
 	}
 
 }
