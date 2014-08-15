@@ -343,9 +343,11 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 							decrStackSize(4, 1);
 							decrStackSize(5, 1);
 							decrStackSize(6, 1);
-							items[0].setItemDamage(items[0].getItemDamage() + 1);
-							if (items[0].getItemDamage() <= 0) {
+							items[0].setItemDamage(items[0].getItemDamage() + 10);
+							if (items[0].getItemDamage() >= 50) {
 								setInventorySlotContents(0, null);
+//								items[0] = null;
+//								decrStackSize(0, 1);
 							}
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.circuitEarth);
@@ -529,6 +531,36 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.advancedCircuitLife);
+							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
+							for (int i = 7; i < 14; i++) {
+								decrStackSize(i, 1);
+
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/*
+		 * Lava Circuit
+		 */
+		if (item[0].getItem() == ETItems.circuitFire) {
+			if (item[1].getItem() == new ItemStack(Items.potionitem, 1, 8195).getItem()) {
+				if (item[2].getItem() == Items.blaze_rod) {
+					if (item[3].getItem() == Items.blaze_powder) {
+						if (item[4].getItem() == Item.getItemFromBlock(Blocks.netherrack)) {
+							decrStackSize(3, 1);
+							decrStackSize(4, 1);
+							decrStackSize(5, 1);
+							decrStackSize(6, 1);
+							items[0].setItemDamage(items[0].getItemDamage() + 1);
+							if (items[0].getItemDamage() <= 0) {
+								setInventorySlotContents(0, null);
+							}
+
+							decrStackSize(2, 1);
+							items[1] = new ItemStack(ETItems.advancedCircuitLava);
 							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
