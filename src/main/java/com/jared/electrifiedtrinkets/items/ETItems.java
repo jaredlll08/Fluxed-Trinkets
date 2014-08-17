@@ -79,6 +79,8 @@ public class ETItems {
 
 	public static ItemStack[] addons = new ItemStack[9];
 
+	public static Item manual = new ItemManual();
+
 	private static void registerItems() {
 		addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
 		addons[1] = new ItemStack(Items.feather, 1, OreDictionary.WILDCARD_VALUE);
@@ -93,13 +95,12 @@ public class ETItems {
 		registerCircuit(circuitAir, "Atomospheric Circuit", "Circuit_Air");
 		registerCircuit(circuitFire, "Scorched Circuit", "Circuit_Fire");
 		registerCircuit(circuitWater, "Streaming Circuit", "Circuit_Water");
-	
+
 		registerCircuit(advancedCircuitIce, "Chilling Circuit", "Circuit_Advanced_Ice");
 		registerCircuit(advancedCircuitLava, "Blazing Circuit", "Circuit_Advanced_Lava");
 		registerCircuit(advancedCircuitLife, "Mending Circuit", "Circuit_Advanced_Life");
 		registerCircuit(advancedCircuitLightning, "Thundering Circuit", "Circuit_Advanced_Lightning");
-		
-		
+
 		/*
 		 * ITems
 		 */
@@ -130,6 +131,8 @@ public class ETItems {
 		registerItem(ringEmpty, "Empty Ring", "Ring_Blank");
 		registerItem(ringMiningSpeed, "Mining Ring", "Ring_Mining_Speed");
 		registerItem(ringFarming, "Farmers Ring", "Ring_Farming");
+		
+		registerCircuit(manual, "Electricians Manual", "ETM");
 	}
 
 	private static void registerItem(Item item, String name, String key) {

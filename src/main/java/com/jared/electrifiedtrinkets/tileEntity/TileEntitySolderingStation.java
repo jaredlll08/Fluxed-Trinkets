@@ -346,8 +346,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 							items[0].setItemDamage(items[0].getItemDamage() + 10);
 							if (items[0].getItemDamage() >= 50) {
 								setInventorySlotContents(0, null);
-//								items[0] = null;
-//								decrStackSize(0, 1);
 							}
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.circuitEarth);

@@ -6,7 +6,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.jared.electrifiedtrinkets.ElectrifiedTrinkets;
+import com.jared.electrifiedtrinkets.client.render.gui.ContainerEManual;
 import com.jared.electrifiedtrinkets.client.render.gui.ContainerSolderingStation;
+import com.jared.electrifiedtrinkets.client.render.gui.GuiEManual;
 import com.jared.electrifiedtrinkets.client.render.gui.GuiSolderingStationCircuit;
 import com.jared.electrifiedtrinkets.network.MessageSolderingStation;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
@@ -20,37 +22,39 @@ public class GuiHandler implements IGuiHandler {
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(ElectrifiedTrinkets.instance, this);
 	}
-	
-	
-	
+
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
-		
-			case 0:
-				TileEntity te = world.getTileEntity(x, y, z);
-				if (te != null && te instanceof TileEntitySolderingStation) {
-					return new ContainerSolderingStation(player.inventory, (TileEntitySolderingStation)te);
-				}
-				break;
-				
+
+		case 0:
+			TileEntity te = world.getTileEntity(x, y, z);
+			if (te != null && te instanceof TileEntitySolderingStation) {
+				return new ContainerSolderingStation(player.inventory, (TileEntitySolderingStation) te);
+			}
+			break;
+
+		case 1:
+			return new ContainerEManual();
 		}
-		
+
 		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
-			case 0:
-				TileEntity te = world.getTileEntity(x, y, z);
-				if (te != null && te instanceof TileEntitySolderingStation) {
-					return new GuiSolderingStationCircuit(player.inventory, (TileEntitySolderingStation)te);
-				}
-			
-				break;
-		}
+		case 0:
+			TileEntity te = world.getTileEntity(x, y, z);
+			if (te != null && te instanceof TileEntitySolderingStation) {
+				return new GuiSolderingStationCircuit(player.inventory, (TileEntitySolderingStation) te);
+			}
 
+			break;
+		case 1:
+			return new GuiEManual();
+
+		}
 
 		return null;
 	}

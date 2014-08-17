@@ -1,5 +1,8 @@
 package com.jared.electrifiedtrinkets.items;
 
+import com.jared.electrifiedtrinkets.ElectrifiedTrinkets;
+import com.jared.electrifiedtrinkets.ModInfo;
+
 import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -13,9 +16,9 @@ public class ItemManual extends Item {
 		this.setFull3D();
 	}
 
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-				
-
-		return itemstack;
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		player.openGui(ElectrifiedTrinkets.instance, 1, world, (int)player.posX, (int)player.posY, (int) player.posZ);
+		return stack;
 	}
+
 }
