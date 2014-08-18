@@ -31,7 +31,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 	public TileEntitySolderingStation() {
 		items = new ItemStack[14];
-
 	}
 
 	@Override

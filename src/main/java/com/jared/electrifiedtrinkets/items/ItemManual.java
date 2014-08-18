@@ -17,7 +17,10 @@ public class ItemManual extends Item {
 	}
 
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		player.openGui(ElectrifiedTrinkets.instance, 1, world, (int)player.posX, (int)player.posY, (int) player.posZ);
+		if(!world.isRemote){
+			player.openGui(ElectrifiedTrinkets.instance, 1, world, (int)player.posX, (int)player.posY, (int) player.posZ);
+		}
+		
 		return stack;
 	}
 

@@ -45,6 +45,8 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	}
+	
+	
 
 	public void initGui() {
 		super.initGui();
