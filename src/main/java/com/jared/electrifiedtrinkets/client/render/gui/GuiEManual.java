@@ -166,7 +166,7 @@ public class GuiEManual extends GuiScreen {
 			removeAllChapters();
 			removeAllText();
 			buttonList.clear();
-			// Pages.TrinketsChapters();
+			 Pages.CircuitsChapters();
 			break;
 		case 3:
 			removeAllChapters();

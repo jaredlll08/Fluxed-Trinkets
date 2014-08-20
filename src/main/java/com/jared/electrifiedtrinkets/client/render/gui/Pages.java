@@ -7,7 +7,7 @@ public class Pages {
 	public static void mainPage() {
 		GuiEManual.addChapter("Introduction", 0);
 		GuiEManual.addChapter("Trinkets", 1);
-		GuiEManual.addChapter("Crafting", 2);
+		GuiEManual.addChapter("Circuits", 2);
 	}
 
 	public static void introductionText() {
@@ -29,6 +29,17 @@ public class Pages {
 		GuiEManual.addChapter("Belts", 4);
 		GuiEManual.addChapter("Rings", 5);
 
+	}
+
+	public static void CircuitsChapters() {
+		GuiEManual.addText("Circuits used in crafting Trinkets");
+		GuiEManual.addChapter("", -3);
+		GuiEManual.addChapter("", -4);
+		
+		GuiEManual.addChapter("Basic", 17);
+		GuiEManual.addChapter("Advanced", 18);
+		
+		
 	}
 
 	public static void Amulets() {
@@ -59,7 +70,6 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("");
 		GuiEManual.addText("The recipe for the Empty Amulet is this:");
-		
 	}
 
 }
