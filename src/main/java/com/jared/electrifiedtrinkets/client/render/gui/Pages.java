@@ -26,8 +26,8 @@ public class Pages {
 		GuiEManual.addChapter("", -1);
 		GuiEManual.addChapter("", -2);
 		GuiEManual.addChapter("Amulets", 3);
-		GuiEManual.addChapter("Rings", 4);
-		GuiEManual.addChapter("Belts", 5);
+		GuiEManual.addChapter("Belts", 4);
+		GuiEManual.addChapter("Rings", 5);
 
 	}
 
@@ -35,9 +35,31 @@ public class Pages {
 		GuiEManual.addChapter("Empty Amulet", 6);
 		GuiEManual.addChapter("Respiratory Amulet", 7);
 	}
-	
-	public static void Belts(){
+
+	public static void Belts() {
 		GuiEManual.addChapter("Empty Belt", 8);
+		GuiEManual.addChapter("Hasty Belt", 9);
+		GuiEManual.addChapter("Scorched Belt", 10);
+		GuiEManual.addChapter("Chilling Belt", 11);
+		GuiEManual.addChapter("Sprung Belt", 12);
+		GuiEManual.addChapter("Pacing Belt", 13);
+	}
+
+	public static void Rings() {
+		GuiEManual.addChapter("Empty Ring", 14);
+		GuiEManual.addChapter("Excavation Ring", 15);
+		GuiEManual.addChapter("Farmers Ring", 16);
+	}
+
+	public static void EmptyAmulet() {
+		GuiEManual.addText("Empty Amulet");
+		GuiEManual.addText("");
+		GuiEManual.addText("The Empty Amulet is used as a crafting reagent for other Amulets.");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("The recipe for the Empty Amulet is this:");
+		
 	}
 
 }

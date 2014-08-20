@@ -6,11 +6,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
+
+import scala.tools.nsc.interpreter.Javap.Showable;
 
 import com.ibm.icu.impl.duration.impl.DataRecord.ETimeDirection;
 import com.jared.electrifiedtrinkets.ModInfo;
@@ -18,12 +22,12 @@ import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.util.StringUtils;
 
 public class GuiEManual extends GuiScreen {
-	String title;
 	int guiWidth = 146;
 	int guiHeight = 180;
 	int left, top;
 	int middleX = (guiWidth / 2) - guiWidth;
 	int middleY = (guiHeight / 2) - guiHeight;
+	boolean showEmptyAmuletRecipe=false;
 
 	static ArrayList<Object[]> chapters = new ArrayList<Object[]>();
 	static ArrayList<String> texts = new ArrayList<String>();
@@ -84,26 +88,30 @@ public class GuiEManual extends GuiScreen {
 	@Override
 	public void initGui() {
 		super.initGui();
-		title = Minecraft.getMinecraft().thePlayer.getCurrentEquippedItem().getDisplayName();
 
 		this.left = (this.width / 2) - (guiWidth / 2);
 		this.top = (this.height / 2) - (guiHeight / 2);
 		removeAllChapters();
-		Pages.mainPage();
 		removeAllText();
+		showEmptyAmuletRecipe = false;
+		
+		Pages.mainPage();
+		
 		
 	}
 
+	
 	public void handleKeyboardInput() {
 		super.handleKeyboardInput();
 		if (Keyboard.isKeyDown(Keyboard.KEY_BACK)) {
-			removeAllChapters();
-			removeAllText();
-			Pages.mainPage();
+			this.initGui();
 		}
 
 	}
 
+	private static final ResourceLocation crafting = new ResourceLocation(ModInfo.modid, "textures/gui/crafting.png");
+
+	
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
 
@@ -115,13 +123,32 @@ public class GuiEManual extends GuiScreen {
 		buttonList.clear();
 		for (int i = 0; i < getChapters(); i++) {
 			buttonList.add(new GuiButtonInvisible(Integer.parseInt(String.valueOf(getChapter(i)[1])), left + 10, (top + 15) + (10 * i), 100, 10, (String) getChapter(i)[0]));
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.advancedCircuit), left+10, (top + 15) + (10 * i));
 		}
 
 		for (int i = 0; i < getTexts(); i++) {
 			drawString(fontRendererObj, getText(i), left + 10, (top + 15) + (10 * i), 0);
 		
 		}
+		
+		if(showEmptyAmuletRecipe){
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left+44, top+105, 0, 180, 54, 54);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+45, top+106);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+63, top+106);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+81, top+106);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+45, top+124);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+81, top+124);
+			
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+45, top+142);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+63, top+142);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left+81, top+142);
+			
+		}
+		
+		
+		
 	}
 
 	protected void actionPerformed(GuiButton guibutton) {
@@ -147,7 +174,28 @@ public class GuiEManual extends GuiScreen {
 			Pages.Amulets();
 
 			break;
-
+			
+		case 4:
+			removeAllChapters();
+			removeAllText();
+			Pages.Belts();
+			break;
+			
+		case 5:
+			removeAllChapters();
+			removeAllText();
+			Pages.Rings();
+			break;
+			
+		case 6:
+			removeAllChapters();
+			removeAllText();
+			Pages.EmptyAmulet();
+			showEmptyAmuletRecipe = true;
+			
+			break;
+			
+			
 		default:
 			break;
 		}
