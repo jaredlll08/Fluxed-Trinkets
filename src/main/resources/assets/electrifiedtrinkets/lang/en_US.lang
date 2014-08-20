@@ -26,6 +26,24 @@ tile.Soldering Station.name=Soldering Station
 tile.Copper Ore.name=Copper Ore
 tile.Lead Ore.name=Lead Ore
 itemGroup.Electrified Trinkets=Electrified Trinkets
-electrifiedtrinkets.tooltip.charge=Charge
-electrifiedtrinkets.tooltip.energyUsage=Energy usage
-electrifiedtrinkets.tooltip.holdShift=Hold Shift
+et.tooltip.charge=Charge
+et.tooltip.energyUsage=Energy usage
+et.tooltip.holdShift=Hold Shift
+
+
+
+
+et.manual.Introduction=Introduction
+et.manual.Trinkets=Trinkets
+et.manual.Crafting=Soldering
+et.manual.Baubles this mod adds: =Baubles this mod adds:
+et.manual.=
+et.manual.Amulets=Amulets
+et.manual.Rings=Rings
+et.manual.Belts=Belts
+et.manual.Welcome to Electrified-Trinkets!=Welcome to Electrified-Trinkets!
+et.manual.Electrified-Trinkets is a mod that adds RF-Powered Baubles.=Electrified-Trinkets is a mod that adds RF-Powered Baubles.
+et.manual.Once the Baubles have ran out of power they stop working.=Once the Baubles have ran out of power they stop working.
+et.manual.This mod uses a very intricate crafting system but dont worry, this book will explain it all.=This mod uses a very intricate crafting system but dont worry, this book will explain it all.
+et.manual.Empty Amulet=Empty Amulet
+et.manual.Respiratory Amulet=Respiratory Amulet

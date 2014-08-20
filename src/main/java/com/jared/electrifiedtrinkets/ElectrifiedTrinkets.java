@@ -3,6 +3,7 @@ package com.jared.electrifiedtrinkets;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.jared.electrifiedtrinkets.blocks.ETBlocks;
+import com.jared.electrifiedtrinkets.client.render.gui.Pages;
 import com.jared.electrifiedtrinkets.config.ConfigHandler;
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
@@ -43,6 +44,7 @@ public class ElectrifiedTrinkets {
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
 		GameRegistry.registerWorldGenerator(new GenerationHandler(), 0);
+		
 		new GuiHandler();
 		new GenerationHandler();
 		PacketHandler.init();

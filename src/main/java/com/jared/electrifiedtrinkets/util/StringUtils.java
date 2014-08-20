@@ -110,7 +110,7 @@ public final class StringUtils {
 
     public static String translate(String unlocalized, boolean prefix) {
         if (prefix) {
-            return StatCollector.translateToLocal("electrifiedtrinkets." + unlocalized);
+            return StatCollector.translateToLocal("et." + unlocalized);
         }
         return StatCollector.translateToLocal(unlocalized);
     }

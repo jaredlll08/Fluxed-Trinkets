@@ -32,8 +32,6 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 		super.updateScreen();
 	}
 
-	public void drawHoveringText(List list, int x, int y, FontRenderer font) {
-	}
 
 	private static final ResourceLocation texture = new ResourceLocation(ModInfo.modid, "textures/gui/Soldering_Station_Circuit.png");
 
