@@ -33,31 +33,78 @@ et.tooltip.holdShift=Hold Shift
 
 
 
-et.manual.Introduction=Introduction
-et.manual.Trinkets=Trinkets
-et.manual.Crafting=Soldering
-et.manual.Baubles this mod adds: =Baubles this mod adds:
+et.manual.title.0=Introduction
+et.manual.title.1=Trinkets
+et.manual.title.2=Circuits
+
+et.manual.intro.0=Welcome to Electrified-Trinkets!
+et.manual.intro.1=Electrified-Trinkets is a mod that adds RF-Powered Baubles.
+et.manual.intro.2=Once the Baubles have ran out of power they stop working.
+et.manual.intro.3=This mod uses a very intricate crafting system but dont worry, this book will explain it all.
+
+et.manual.trinkets.0=Baubles this mod adds:
 et.manual.=
-et.manual.Amulets=Amulets
-et.manual.Rings=Rings
-et.manual.Belts=Belts
-et.manual.Welcome to Electrified-Trinkets!=Welcome to Electrified-Trinkets!
-et.manual.Electrified-Trinkets is a mod that adds RF-Powered Baubles.=Electrified-Trinkets is a mod that adds RF-Powered Baubles.
-et.manual.Once the Baubles have ran out of power they stop working.=Once the Baubles have ran out of power they stop working.
-et.manual.This mod uses a very intricate crafting system but dont worry, this book will explain it all.=This mod uses a very intricate crafting system but dont worry, this book will explain it all.
-et.manual.Empty Amulet=Empty Amulet
-et.manual.Respiratory Amulet=Respiratory Amulet
+et.manual.trinkets.1=Amulets
+et.manual.trinkets.2=Rings
+et.manual.trinkets.3=Belts
 
-et.manual.Empty Belt=Empty Belt
-et.manual.Hasty Belt=Hasty Belt
-et.manual.Scorched Belt=Scorched Belt
-et.manual.Chilling Belt=Chilling Belt
-et.manual.Sprung Belt=Sprung Belt
-et.manual.Pacing Belt=Pacing Belt
+et.manual.amulets.0=Empty Amulet
+et.manual.amulets.1=Respiratory Amulet
 
-et.manual.Empty Ring=Empty Ring
-et.manual.Excavation Ring=Excavation Ring
-et.manual.Farmers Ring=Farmers Ring
+et.manual.belt.0=Empty Belt
+et.manual.belt.1=Hasty Belt
+et.manual.belt.2=Scorched Belt
+et.manual.belt.3=Chilling Belt
+et.manual.belt.4=Sprung Belt
+et.manual.belt.5=Pacing Belt
 
-et.manual.The Empty Amulet is used as a crafting reagent for other Amulets.=The Empty Amulet is used as a crafting reagent for other Amulets.
-et.manual.The recipe for the Empty Amulet is this:=The recipe for the Empty Amulet is this:
+et.manual.ring.0=Empty Ring
+et.manual.ring.1=Excavation Ring
+et.manual.ring.2=Farmers Ring
+
+et.manual.amulet.empty.info=The Empty Amulet is used as a crafting reagent for other Amulets.
+et.manual.amulet.empty.recipe=The recipe for the Empty Amulet is this:
+
+et.manual.amulet.respiratory.info=The Respiratory Amulet lets you breath under water by supplying you a constant flow of air.
+et.manual.amulet.respiratory.recipe=The recipe for the Respiratory Amulet is this:
+
+
+et.manual.category.circuits.0=Circuits used in crafting Trinkets
+et.manual.category.circuits.1=Basic
+et.manual.category.circuits.2=Advanced
+
+et.manual.circuits.0=Empty Circuit
+et.manual.circuits.1=Terrestrial Circuit
+et.manual.circuits.2=Atmospheric Circuit
+et.manual.circuits.3=Scorched Circuit
+et.manual.circuits.4=Streaming Circuit
+
+et.manual.circuits.advanced.0=Empty Advanced Circuit
+et.manual.circuits.advanced.1=Chilling Circuit
+et.manual.circuits.advanced.2=Blazing Circuit
+et.manual.circuits.advanced.3=Mending Circuit
+et.manual.circuits.advanced.4=Thundering Circuit
+
+et.manual.circuits.top.0=Basic Circuits
+et.manual.circuits.top.1=Advanced Circuits
+
+
+et.manual.belt.empty.info=The Empty Belt is used as a crafting reagent for other Belts.
+et.manual.belt.empty.recipe=The recipe for the Empty Belt is this:
+
+et.manual.belt.hasty.info=The Hasty Belt gives the user a speed boost.
+et.manual.belt.hasty.recipe=The recipe for the Hasty Belt is this:
+
+et.manual.belt.scorched.info=The Scorched Belt makes the user Fire Resistant.
+et.manual.belt.scorched.recipe=The recipe for the Scorched Belt is this:
+
+et.manual.belt.chilling.info=The Chilling Belt freezes water beneath the user.
+et.manual.belt.chilling.recipe=The recipe for the Chilling Belt is this:
+
+et.manual.belt.sprung.info=The Sprung Belt gives the user a jump boost.
+et.manual.belt.sprung.recipe=The recipe for the Sprung Belt is this:
+
+et.manual.belt.pacing.info=The Pacing Belt allows the user to walk up one block high structures.
+et.manual.belt.pacing.recipe=The recipe for the Pacing Belt is this:
+
+

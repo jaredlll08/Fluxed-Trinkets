@@ -1,17 +1,14 @@
 package com.jared.electrifiedtrinkets.util;
 
-import net.minecraft.client.gui.Gui;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.jared.electrifiedtrinkets.ElectrifiedTrinkets;
-import com.jared.electrifiedtrinkets.client.render.gui.ContainerEManual;
 import com.jared.electrifiedtrinkets.client.render.gui.ContainerSolderingStation;
 import com.jared.electrifiedtrinkets.client.render.gui.GuiEManual;
 import com.jared.electrifiedtrinkets.client.render.gui.GuiSolderingStationCircuit;
-import com.jared.electrifiedtrinkets.network.MessageSolderingStation;
-import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -34,8 +31,6 @@ public class GuiHandler implements IGuiHandler {
 			}
 			break;
 
-		case 1:
-			return new ContainerEManual();
 		}
 
 		return null;
@@ -51,12 +46,14 @@ public class GuiHandler implements IGuiHandler {
 			}
 
 			break;
-		case 1:
-			return new GuiEManual();
 
 		}
 
 		return null;
 	}
 
+	 public static void openManual()
+	    {
+	        Minecraft.getMinecraft().displayGuiScreen(new GuiEManual());
+	    }
 }

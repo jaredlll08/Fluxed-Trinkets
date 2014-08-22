@@ -2,8 +2,11 @@ package com.jared.electrifiedtrinkets.items;
 
 import com.jared.electrifiedtrinkets.ElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.ModInfo;
+import com.jared.electrifiedtrinkets.client.render.gui.GuiEManual;
+import com.jared.electrifiedtrinkets.util.GuiHandler;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,7 +21,7 @@ public class ItemManual extends Item {
 
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		if(!world.isRemote){
-			player.openGui(ElectrifiedTrinkets.instance, 1, world, (int)player.posX, (int)player.posY, (int) player.posZ);
+			GuiHandler.openManual();
 		}
 		
 		return stack;

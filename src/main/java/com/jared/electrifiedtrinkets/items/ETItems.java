@@ -48,14 +48,6 @@ public class ETItems {
 	/*
 	 * items
 	 */
-	public static Item speedCircuit = new ItemCircuit();
-
-	public static Item jumpCircuit = new ItemCircuit();
-
-	public static Item circuitAdvancedFire = new ItemCircuit();
-
-	public static Item circuitAdvancedWater = new ItemCircuit();
-	public static Item circtuitStep = new ItemCircuit();
 
 	public static Item basicBattery = new ItemBattery();
 
@@ -92,7 +84,7 @@ public class ETItems {
 		 * Circuits
 		 */
 		registerCircuit(circuitEarth, "Terrestrial Circuit", "Circuit_Earth");
-		registerCircuit(circuitAir, "Atomospheric Circuit", "Circuit_Air");
+		registerCircuit(circuitAir, "Atmospheric Circuit", "Circuit_Air");
 		registerCircuit(circuitFire, "Scorched Circuit", "Circuit_Fire");
 		registerCircuit(circuitWater, "Streaming Circuit", "Circuit_Water");
 
@@ -108,13 +100,8 @@ public class ETItems {
 		registerItem(basicBattery, "Basic Battery", "Battery_Basic");
 
 		registerCircuit(circuit, "Empty Circuit", "Circuit");
-		registerCircuit(speedCircuit, "Speed Circuit", "Circuit_Speed");
-		registerCircuit(jumpCircuit, "Jumping Circuit", "Circuit_Jump");
-		registerCircuit(circtuitStep, "Step Circuit", "Circuit_Step");
 
 		registerCircuit(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
-		registerCircuit(circuitAdvancedFire, "Advanced Fire Circuit", "Circuit_Advanced_Fire");
-		registerCircuit(circuitAdvancedWater, "Advanced Ice Circuit", "Circuit_Advanced_water");
 
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
 
@@ -132,7 +119,7 @@ public class ETItems {
 		registerItem(ringMiningSpeed, "Mining Ring", "Ring_Mining_Speed");
 		registerItem(ringFarming, "Farmers Ring", "Ring_Farming");
 		
-		registerCircuit(manual, "Electricians Manual", "ETM");
+		registerItem(manual, "Electricians Manual", "Electricians_Manual");
 	}
 
 	private static void registerItem(Item item, String name, String key) {
