@@ -97,10 +97,10 @@ public class Pages {
 		GuiEManual.addChapter("", -6);
 		GuiEManual.addChapter("", -7);
 		GuiEManual.addChapter("circuits.advanced.0", 24);
-		GuiEManual.addChapter("circuits.advanced.1", 24);
-		GuiEManual.addChapter("circuits.advanced.2", 24);
-		GuiEManual.addChapter("circuits.advanced.3", 24);
-		GuiEManual.addChapter("circuits.advanced.4", 24);
+		GuiEManual.addChapter("circuits.advanced.1", 25);
+		GuiEManual.addChapter("circuits.advanced.2", 26);
+		GuiEManual.addChapter("circuits.advanced.3", 27);
+		GuiEManual.addChapter("circuits.advanced.4", 28);
 	}
 
 	public static void BeltEmpty() {
@@ -132,7 +132,7 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("belt.scorched.recipe");
 	}
-	
+
 	public static void BeltChilling() {
 		GuiEManual.addText("belt.3");
 		GuiEManual.addText("");
@@ -142,7 +142,7 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("belt.chilling.recipe");
 	}
-	
+
 	public static void BeltSprung() {
 		GuiEManual.addText("belt.4");
 		GuiEManual.addText("");
@@ -152,6 +152,7 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("belt.sprung.recipe");
 	}
+
 	public static void BeltPacing() {
 		GuiEManual.addText("belt.5");
 		GuiEManual.addText("");
@@ -160,6 +161,37 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("");
 		GuiEManual.addText("belt.pacing.recipe");
+	}
+
+	public static void RingEmpty() {
+		GuiEManual.addText("ring.0");
+		GuiEManual.addText("");
+		GuiEManual.addText("ring.empty.info");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("ring.empty.recipe");
+	}
+
+	public static void RingMining() {
+		GuiEManual.addText("ring.1");
+		GuiEManual.addText("");
+		GuiEManual.addText("ring.mining.info");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("ring.mining.recipe");
+	}
+	
+	public static void RingFarming() {
+		GuiEManual.addText("ring.2");
+		GuiEManual.addText("");
+		GuiEManual.addText("ring.farming.info");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("ring.farming.recipe");
 	}
 
 }

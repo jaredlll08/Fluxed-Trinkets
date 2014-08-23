@@ -6,18 +6,19 @@ import net.minecraft.tileentity.TileEntity;
 
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
+import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageSolderingStation implements IMessage, IMessageHandler<MessageSolderingStation, IMessage> {
-	public MessageSolderingStation() {
+public class MessageTrinketAssembler implements IMessage, IMessageHandler<MessageTrinketAssembler, IMessage> {
+	public MessageTrinketAssembler() {
 	}
 
 	private int x, y, z;
 
-	public MessageSolderingStation(int x, int y, int z) {
+	public MessageTrinketAssembler(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -38,11 +39,11 @@ public class MessageSolderingStation implements IMessage, IMessageHandler<Messag
 	}
 
 	@Override
-	public IMessage onMessage(MessageSolderingStation message, MessageContext ctx) {
-		
+	public IMessage onMessage(MessageTrinketAssembler message, MessageContext ctx) {
+
 		TileEntity te = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(message.x, message.y, message.z);
-		if (te instanceof TileEntitySolderingStation) {
-		    ((TileEntitySolderingStation) te).setInventorySlotContents(0, new ItemStack(ETItems.solderingIron));
+		if (te instanceof TileEntityTrinketAssembler) {
+			((TileEntityTrinketAssembler) te).craftCircuit();
 		}
 		return null;
 	}

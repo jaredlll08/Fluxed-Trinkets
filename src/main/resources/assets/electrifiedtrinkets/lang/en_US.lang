@@ -108,3 +108,13 @@ et.manual.belt.pacing.info=The Pacing Belt allows the user to walk up one block 
 et.manual.belt.pacing.recipe=The recipe for the Pacing Belt is this:
 
 
+
+et.manual.ring.empty.info=The Empty Ring is used as a crafting reagent for other Rings.
+et.manual.ring.empty.recipe=The recipe for the Empty Ring is this:
+
+et.manual.ring.mining.info=The Excavation Ring gives the user the Haste buff, allowing them to mine faster.
+et.manual.ring.mining.recipe=The recipe for the Excavation Ring is this:
+
+et.manual.ring.farming.info=The Farming Ring makes bonemeal 3x effective, if the user holds shift and bone meals a plant it will bonemeal all plants in a 3x3 square.
+et.manual.ring.farming.recipe=The recipe for the Farming Ring is this:
+

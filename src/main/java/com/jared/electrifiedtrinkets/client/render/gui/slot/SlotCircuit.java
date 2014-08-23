@@ -3,6 +3,7 @@ package com.jared.electrifiedtrinkets.client.render.gui.slot;
 import java.util.List;
 
 import com.jared.electrifiedtrinkets.items.ETItems;
+import com.jared.electrifiedtrinkets.items.ItemCircuit;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -17,19 +18,9 @@ public class SlotCircuit extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		List<ItemStack> circuit = OreDictionary.getOres("circuit");
-		List<ItemStack> advancedCircuit = OreDictionary.getOres("circuitAdvanced");
 
-		for (int i = 0; i < circuit.size(); i++) {
-			if (OreDictionary.itemMatches(circuit.get(i), stack, true)) {
-				return true;
-			}
-
-		}
-		for (int i = 0; i < advancedCircuit.size(); i++) {
-			if (OreDictionary.itemMatches(advancedCircuit.get(i), stack, true)) {
-				return true;
-			}
+		if (stack.getItem() instanceof ItemCircuit) {
+			return true;
 
 		}
 

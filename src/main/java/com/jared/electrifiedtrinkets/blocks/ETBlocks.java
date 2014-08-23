@@ -1,6 +1,7 @@
 package com.jared.electrifiedtrinkets.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockTripWireHook;
 
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.ETItems;
@@ -14,9 +15,13 @@ public class ETBlocks {
 	}
 	
 	public static Block solderingStation = new BlockSolderingStation();
+	public static Block trinketAssembler = new BlockTrinketAssembler();
+	
 	
 	private static void registerBlocks() {
 		registerBlock(solderingStation, "Soldering Station", "Soldering_Station");
+//		registerBlock(trinketAssembler, "Trinket Assembler", "Trinket_Assembler");
+		
 	}
 
 	private static void registerBlock(Block block, String name, String key) {

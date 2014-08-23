@@ -7,9 +7,12 @@ import net.minecraft.world.World;
 
 import com.jared.electrifiedtrinkets.ElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.client.render.gui.ContainerSolderingStation;
+import com.jared.electrifiedtrinkets.client.render.gui.ContainerTrinketAssembler;
 import com.jared.electrifiedtrinkets.client.render.gui.GuiEManual;
 import com.jared.electrifiedtrinkets.client.render.gui.GuiSolderingStationCircuit;
+import com.jared.electrifiedtrinkets.client.render.gui.GuiTrinketAssembler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
+import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -31,6 +34,13 @@ public class GuiHandler implements IGuiHandler {
 			}
 			break;
 
+		case 1:
+			TileEntity tile = world.getTileEntity(x, y, z);
+			if (tile != null && tile instanceof TileEntityTrinketAssembler) {
+				return new ContainerTrinketAssembler(player.inventory, (TileEntityTrinketAssembler) tile);
+			}
+			break;
+
 		}
 
 		return null;
@@ -46,14 +56,18 @@ public class GuiHandler implements IGuiHandler {
 			}
 
 			break;
-
+		case 1:
+			TileEntity tile = world.getTileEntity(x, y, z);
+			if (tile != null && tile instanceof TileEntityTrinketAssembler) {
+				return new GuiTrinketAssembler(player.inventory, (TileEntityTrinketAssembler) tile);
+			}
+			break;
 		}
 
 		return null;
 	}
 
-	 public static void openManual()
-	    {
-	        Minecraft.getMinecraft().displayGuiScreen(new GuiEManual());
-	    }
+	public static void openManual() {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiEManual());
+	}
 }

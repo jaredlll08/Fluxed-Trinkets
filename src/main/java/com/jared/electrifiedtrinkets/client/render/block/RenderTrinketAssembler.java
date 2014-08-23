@@ -11,28 +11,25 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.jared.electrifiedtrinkets.ModInfo;
-import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
+import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
-public class RenderSolderingStation extends TileEntitySpecialRenderer {
+public class RenderTrinketAssembler extends TileEntitySpecialRenderer {
 
-	private ModelSolderingStation model = new ModelSolderingStation();
+	private ModelTrinketAssembler model = new ModelTrinketAssembler();
 	private Random random = new Random();
 	private RenderBlocks renderBlock = new RenderBlocks();
 	private Minecraft mc = Minecraft.getMinecraft();
 	private final float size = 0.0625f;
 	private float angle = 1;
 
-	public RenderSolderingStation() {
-
-	}
 
 	@Override
 	public void renderTileEntityAt(TileEntity var1, double var2, double var4, double var6, float var8) {
-		if (var1 instanceof TileEntitySolderingStation)
-			render((TileEntitySolderingStation) var1, var2, var4, var6);
+		if (var1 instanceof TileEntityTrinketAssembler)
+			render((TileEntityTrinketAssembler) var1, var2, var4, var6);
 	}
 
-	public void render(TileEntitySolderingStation tile, double x, double y, double z) {
+	public void render(TileEntityTrinketAssembler tile, double x, double y, double z) {
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_LIGHTING);
 
@@ -40,15 +37,8 @@ public class RenderSolderingStation extends TileEntitySpecialRenderer {
 		GL11.glRotatef(180f, 1f, 0f, 0f);
 		GL11.glScaled(1, 1, 1);
 
-//		int tileRGB = new Color(0, 0, 0).getRGB();
 
-		// float red = (tileRGB >> 16 & 255) / 255f;
-		// float green = (tileRGB >> 8 & 255) / 255f;
-		// float blue = (tileRGB & 255) / 255f;
-
-		// GL11.glColor3f(red, green, blue);
-
-		mc.renderEngine.bindTexture(new ResourceLocation(ModInfo.modid + ":textures/models/Soldering_Station.png"));
+		mc.renderEngine.bindTexture(new ResourceLocation(ModInfo.modid + ":textures/models/Trinket_Assembler.png"));
 		model.render(size);
 		 GL11.glColor3f(1f, 1f, 1f);
 		GL11.glEnable(GL11.GL_LIGHTING);

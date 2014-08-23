@@ -17,9 +17,9 @@ import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
-public class ContainerSolderingStation extends Container {
+public class ContainerTrinketAssembler extends Container {
 
-	public ContainerSolderingStation(InventoryPlayer invPlayer, TileEntitySolderingStation solderingStation) {
+	public ContainerTrinketAssembler(InventoryPlayer invPlayer, TileEntityTrinketAssembler tile) {
 		for (int x = 0; x < 9; x++) {
 			addSlotToContainer(new Slot(invPlayer, x, 36 + 18 * x, 195));
 		}
@@ -30,24 +30,15 @@ public class ContainerSolderingStation extends Container {
 			}
 		}
 
-		addSlotToContainer(new SlotSolderingIron(solderingStation, 0, 14, 110));
-		addSlotToContainer(new SlotCircuit(solderingStation, 1, 108, 110));
-		addSlotToContainer(new SlotLeadWire(solderingStation, 2, 200, 110));
 
-		addSlotToContainer(new SlotAddon(solderingStation, 3, 9, 42));
-		addSlotToContainer(new SlotAddon(solderingStation, 4, 27, 42));
-		addSlotToContainer(new SlotAddon(solderingStation, 5, 27, 24));
-		addSlotToContainer(new SlotAddon(solderingStation, 6, 27, 6));
-
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 7, 151, 6));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 8, 151, 24));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 9, 151, 42));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 10, 151, 60));
-
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 11, 169, 60));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 12, 187, 60));
-		addSlotToContainer(new SlotCopperNugget(solderingStation, 13, 205, 60));
-
+		
+		addSlotToContainer(new Slot(tile, 0, 109, 48));
+		addSlotToContainer(new SlotCircuit(tile, 1, 18, 13));
+		addSlotToContainer(new SlotCircuit(tile, 2, 196, 13));
+		addSlotToContainer(new SlotCircuit(tile, 3, 196, 79));
+		addSlotToContainer(new SlotCircuit(tile, 4, 18, 79));
+		
+		
 	}
 
 	@Override

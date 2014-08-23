@@ -56,7 +56,7 @@ public abstract class ModBelt extends Item implements IBauble, IEnergyContainerI
 			container.stackTagCompound = new NBTTagCompound();
 		}
 		int energy = container.stackTagCompound.getInteger("energy");
-		int energyReceived = Math.min(maxCapacity - energy, Math.min(250, maxReceive));
+		int energyReceived = Math.min(maxCapacity - energy, Math.min(100, maxReceive));
 		if (!simulate) {
 			energy += energyReceived;
 			container.stackTagCompound.setInteger("energy", energy);
