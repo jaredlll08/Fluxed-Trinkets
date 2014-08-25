@@ -147,3 +147,8 @@ et.manual.circuit.advanced.mending.recipe=The recipe for the Mending Circuit is 
 
 et.manual.circuit.advanced.thundering.info=The Thundering Circuit is used as a crafting reagent for Trinkets.
 et.manual.circuit.advanced.thundering.recipe=The recipe for the Thundering Circuit is this in a Soldering Station:
+
+
+et.manual.soldering.station.info=The Soldering Station is used to craft circuits.
+et.manual.soldering.station.recipe=The recipe for the Soldering Station is this:
+

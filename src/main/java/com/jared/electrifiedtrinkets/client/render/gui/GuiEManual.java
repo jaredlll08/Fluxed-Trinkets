@@ -8,6 +8,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipesArmor;
 import net.minecraft.util.IIcon;
@@ -37,6 +38,7 @@ public class GuiEManual extends GuiScreen {
 	boolean recipeBeltEmpty, recipeBeltSpeed, recipeBeltFire, recipeBeltIce, recipeBeltJump, recipeBeltStep = false;
 	boolean recipeAmuletEmpty, recipeAmuletRespiratory = false;
 	boolean recipeRingEmpty, recipeRingMining, recipeRingFarming = false;
+	boolean solderingEarth, solderingAir, solderingFire, solderingWater = false;
 
 	static ArrayList<Object[]> chapters = new ArrayList<Object[]>();
 	static ArrayList<String> texts = new ArrayList<String>();
@@ -365,6 +367,35 @@ public class GuiEManual extends GuiScreen {
 
 			}
 		}
+		
+		if(solderingEarth){
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left+24, top+121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left+64, top+121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left+104, top+121);
+			
+
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+//				drawString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left+23, top+120, 250);
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString( fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left+33, top+110, 0xFFFFF);
+				drawCenteredString( fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left+73, top+138, 0xFFFFF);
+				drawCenteredString( fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left+113, top+110, 0xFFFFF);
+				
+				
+//				renderToolTip(new ItemStack(ETItems.solderingIron), left + 23, top + 120);
+//				renderToolTip(new ItemStack(ETItems.circuitEarth), left + 45, top + 130);
+//				renderToolTip(new ItemStack(ETItems.advancedCircuitLife), left + 81, top + 112);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
 
 	}
 
@@ -491,6 +522,13 @@ public class GuiEManual extends GuiScreen {
 			removeAllChapters();
 			removeAllText();
 			Pages.AdvancedCircuits();
+			break;
+			
+		case 20:
+			
+			removeAllChapters();
+			removeAllText();
+			solderingEarth = true;
 			break;
 
 		case 99:
