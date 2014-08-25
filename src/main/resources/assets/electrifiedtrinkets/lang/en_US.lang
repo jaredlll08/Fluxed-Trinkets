@@ -73,21 +73,6 @@ et.manual.category.circuits.0=Circuits used in crafting Trinkets
 et.manual.category.circuits.1=Basic
 et.manual.category.circuits.2=Advanced
 
-et.manual.circuits.0=Empty Circuit
-et.manual.circuits.1=Terrestrial Circuit
-et.manual.circuits.2=Atmospheric Circuit
-et.manual.circuits.3=Scorched Circuit
-et.manual.circuits.4=Streaming Circuit
-
-et.manual.circuits.advanced.0=Empty Advanced Circuit
-et.manual.circuits.advanced.1=Chilling Circuit
-et.manual.circuits.advanced.2=Blazing Circuit
-et.manual.circuits.advanced.3=Mending Circuit
-et.manual.circuits.advanced.4=Thundering Circuit
-
-et.manual.circuits.top.0=Basic Circuits
-et.manual.circuits.top.1=Advanced Circuits
-
 
 et.manual.belt.empty.info=The Empty Belt is used as a crafting reagent for other Belts.
 et.manual.belt.empty.recipe=The recipe for the Empty Belt is this:
@@ -118,3 +103,47 @@ et.manual.ring.mining.recipe=The recipe for the Excavation Ring is this:
 et.manual.ring.farming.info=The Farming Ring makes bonemeal 3x effective, if the user holds shift and bone meals a plant it will bonemeal all plants in a 3x3 square.
 et.manual.ring.farming.recipe=The recipe for the Farming Ring is this:
 
+et.manual.circuits.0=Empty Circuit
+et.manual.circuits.1=Terrestrial Circuit
+et.manual.circuits.2=Atmospheric Circuit
+et.manual.circuits.3=Scorched Circuit
+et.manual.circuits.4=Streaming Circuit
+
+et.manual.circuits.advanced.0=Empty Advanced Circuit
+et.manual.circuits.advanced.1=Chilling Circuit
+et.manual.circuits.advanced.2=Blazing Circuit
+et.manual.circuits.advanced.3=Mending Circuit
+et.manual.circuits.advanced.4=Thundering Circuit
+
+et.manual.circuits.top.0=Basic Circuits
+et.manual.circuits.top.1=Advanced Circuits
+
+et.manual.circuit.basic.empty.info=The Empty Circuit is used as a crafting reagent for other Circuits.
+et.manual.circuit.basic.empty.recipe=The recipe for the Empty Circuit is this in a Soldering Station:
+
+et.manual.circuit.basic.terrestrial.info=The Terrestrial Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.basic.terrestrial.recipe=The recipe for the Terrestrial Circuit is this in a Soldering Station:
+
+et.manual.circuit.basic.atmospheric.info=The Atmospheric Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.basic.atmospheric.recipe=The recipe for the Atmospheric Circuit is this in a Soldering Station:
+
+et.manual.circuit.basic.scorched.info=The Scorched Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.basic.scorched.recipe=The recipe for the Scorched Circuit is this in a Soldering Station:
+
+et.manual.circuit.basic.streaming.info=The Streaming Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.basic.streaming.recipe=The recipe for the Streaming Circuit is this in a Soldering Station:
+
+et.manual.circuit.advanced.empty.info=The Advanced Empty Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.advanced.empty.recipe=The recipe for the Advanced Empty Circuit is this:
+
+et.manual.circuit.advanced.chilling.info=The Chilling Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.advanced.chilling.recipe=The recipe for the Chilling Circuit is this in a Soldering Station:
+
+et.manual.circuit.advanced.blazing.info=The Blazing Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.advanced.blazing.recipe=The recipe for the Blazing Circuit is this in a Soldering Station:
+
+et.manual.circuit.advanced.mending.info=The Mending Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.advanced.mending.recipe=The recipe for the Mending Circuit is this in a Soldering Station:
+
+et.manual.circuit.advanced.thundering.info=The Thundering Circuit is used as a crafting reagent for Trinkets.
+et.manual.circuit.advanced.thundering.recipe=The recipe for the Thundering Circuit is this in a Soldering Station:
