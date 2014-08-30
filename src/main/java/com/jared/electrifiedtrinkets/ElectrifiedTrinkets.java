@@ -21,7 +21,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = ModInfo.modid, name = ModInfo.name, version = ModInfo.version)
+@Mod(modid = ModInfo.modid, name = ModInfo.name, version = ModInfo.version, dependencies = "required-after:Baubles;")
 public class ElectrifiedTrinkets {
 
 	@Instance("electrifiedtrinkets")
