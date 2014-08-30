@@ -43,7 +43,7 @@ public class MessageTrinketAssembler implements IMessage, IMessageHandler<Messag
 
 		TileEntity te = ctx.getServerHandler().playerEntity.worldObj.getTileEntity(message.x, message.y, message.z);
 		if (te instanceof TileEntityTrinketAssembler) {
-			((TileEntityTrinketAssembler) te).craftCircuit();
+			((TileEntityTrinketAssembler) te).craftTrinket();
 		}
 		return null;
 	}

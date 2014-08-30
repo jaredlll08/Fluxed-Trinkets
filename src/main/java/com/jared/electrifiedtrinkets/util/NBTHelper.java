@@ -59,6 +59,7 @@ public class NBTHelper
         itemStack.stackTagCompound.setString(keyName, keyValue);
     }
 
+
     // boolean
     public static boolean getBoolean(ItemStack itemStack, String keyName)
     {

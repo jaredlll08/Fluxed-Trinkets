@@ -56,10 +56,8 @@ public class GuiTrinketAssembler extends GuiContainer {
 	protected void actionPerformed(GuiButton guibutton) {
 		switch (guibutton.id) {
 		case 1:
-			tile.craftCircuit();
+			tile.craftTrinket();
 			break;
-		case 2:
-			// i -= 1;
 		}
 	}
 

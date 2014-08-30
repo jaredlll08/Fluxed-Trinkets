@@ -19,6 +19,7 @@ import com.jared.electrifiedtrinkets.items.equipment.ItemRingEmpty;
 import com.jared.electrifiedtrinkets.items.equipment.ItemRingFarming;
 import com.jared.electrifiedtrinkets.items.equipment.ItemRingMiningSpeed;
 import com.jared.electrifiedtrinkets.items.resources.ItemLeadWire;
+import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -26,6 +27,7 @@ public class ETItems {
 
 	public static void init() {
 		registerItems();
+		registerNBT();
 	}
 
 	public static CreativeTabElectrifiedTrinkets tab = new CreativeTabElectrifiedTrinkets();
@@ -33,17 +35,17 @@ public class ETItems {
 	/*
 	 * circuits
 	 */
-	public static Item circuit = new ItemCircuit();
-	public static Item circuitAir = new ItemCircuit();
-	public static Item circuitEarth = new ItemCircuit();
-	public static Item circuitFire = new ItemCircuit();
-	public static Item circuitWater = new ItemCircuit();
+	public static Item circuit = new ItemCircuit("empty");
+	public static Item circuitAir = new ItemCircuit("air");
+	public static Item circuitEarth = new ItemCircuit("earth");
+	public static Item circuitFire = new ItemCircuit("fire");
+	public static Item circuitWater = new ItemCircuit("water");
 
-	public static Item advancedCircuit = new ItemCircuit();
-	public static Item advancedCircuitIce = new ItemCircuit();
-	public static Item advancedCircuitLava = new ItemCircuit();
-	public static Item advancedCircuitLife = new ItemCircuit();
-	public static Item advancedCircuitLightning = new ItemCircuit();
+	public static Item advancedCircuit = new ItemCircuit("advancedEmpty");
+	public static Item advancedCircuitIce = new ItemCircuit("advancedIce");
+	public static Item advancedCircuitLava = new ItemCircuit("advancedLava");
+	public static Item advancedCircuitLife = new ItemCircuit("advancedLife");
+	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning");
 
 	/*
 	 * items
@@ -83,11 +85,13 @@ public class ETItems {
 		/*
 		 * Circuits
 		 */
+		registerCircuit(circuit, "Empty Circuit", "Circuit");
 		registerCircuit(circuitEarth, "Terrestrial Circuit", "Circuit_Earth");
 		registerCircuit(circuitAir, "Atmospheric Circuit", "Circuit_Air");
 		registerCircuit(circuitFire, "Scorched Circuit", "Circuit_Fire");
 		registerCircuit(circuitWater, "Streaming Circuit", "Circuit_Water");
 
+		registerCircuit(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
 		registerCircuit(advancedCircuitIce, "Chilling Circuit", "Circuit_Advanced_Ice");
 		registerCircuit(advancedCircuitLava, "Blazing Circuit", "Circuit_Advanced_Lava");
 		registerCircuit(advancedCircuitLife, "Mending Circuit", "Circuit_Advanced_Life");
@@ -99,9 +103,9 @@ public class ETItems {
 		registerItem(solderingIron, "Soldering Iron", "Soldering_Iron");
 		registerItem(basicBattery, "Basic Battery", "Battery_Basic");
 
-		registerCircuit(circuit, "Empty Circuit", "Circuit");
+		
 
-		registerCircuit(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
+		
 
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
 
@@ -131,5 +135,23 @@ public class ETItems {
 		item.setUnlocalizedName(key).setTextureName(ModInfo.modid + ":/Circuits/" + key).setCreativeTab(tab);
 		GameRegistry.registerItem(item, key);
 	}
+	
+	private static void registerNBT(){
+		NBTHelper.setString(new ItemStack(circuit), "ETEffect", "empty");
+		NBTHelper.setString(new ItemStack(circuitAir), "ETEffect", "air");
+		NBTHelper.setString(new ItemStack(circuitEarth), "ETEffect", "earth");
+		NBTHelper.setString(new ItemStack(circuitFire), "ETEffect", "fire");
+		NBTHelper.setString(new ItemStack(circuitWater), "ETEffect", "water");
+		
+		NBTHelper.setString(new ItemStack(advancedCircuit), "ETEffect", "advancedEmpty");
+		NBTHelper.setString(new ItemStack(advancedCircuitIce), "ETEffect", "advancedIce");
+		NBTHelper.setString(new ItemStack(advancedCircuitLava), "ETEffect", "advancedLava");
+		NBTHelper.setString(new ItemStack(advancedCircuitLife), "ETEffect", "advancedLife");
+		NBTHelper.setString(new ItemStack(advancedCircuitLightning), "ETEffect", "advancedLightning");
+		
+		
+	}
+	
+
 
 }

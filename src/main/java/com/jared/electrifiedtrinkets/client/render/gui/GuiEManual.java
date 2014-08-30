@@ -2,25 +2,20 @@ package com.jared.electrifiedtrinkets.client.render.gui;
 
 import java.util.ArrayList;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.RecipesArmor;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import scala.tools.nsc.interpreter.Javap.Showable;
-
-import com.ibm.icu.impl.duration.impl.DataRecord.ETimeDirection;
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.util.StringUtils;
@@ -120,6 +115,12 @@ public class GuiEManual extends GuiScreen {
 		recipeBeltStep = false;
 
 		renderToolTip = false;
+		
+		solderingAir = false;
+		solderingEarth = false;
+		solderingFire = false;
+		solderingWater = false;
+		
 
 		Pages.mainPage();
 
@@ -367,32 +368,45 @@ public class GuiEManual extends GuiScreen {
 
 			}
 		}
-		
-		if(solderingEarth){
+
+		if (solderingEarth) {
 			GL11.glColor4f(1F, 1F, 1F, 1F);
 			mc.renderEngine.bindTexture(texture);
 			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
-			
+
 			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
 			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left+24, top+121);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left+64, top+121);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left+104, top+121);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 63, 0, 180, 18, 18);
+			}
+			
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
 			
 
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+			
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.dirt), left + 24, top + 10);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.leaves), left + 24, top + 28);
+			
+			
 			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
 			if (renderToolTip) {
-//				drawString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left+23, top+120, 250);
 				boolean uni = fontRendererObj.getUnicodeFlag();
 				fontRendererObj.setUnicodeFlag(true);
-				drawCenteredString( fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left+33, top+110, 0xFFFFF);
-				drawCenteredString( fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left+73, top+138, 0xFFFFF);
-				drawCenteredString( fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left+113, top+110, 0xFFFFF);
-				
-				
-//				renderToolTip(new ItemStack(ETItems.solderingIron), left + 23, top + 120);
-//				renderToolTip(new ItemStack(ETItems.circuitEarth), left + 45, top + 130);
-//				renderToolTip(new ItemStack(ETItems.advancedCircuitLife), left + 81, top + 112);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0xFFFFF);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0xFFFFF);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0xFFFFF);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left+73, top+80, 0);
 				fontRendererObj.setUnicodeFlag(uni);
 			}
 		}
@@ -523,9 +537,9 @@ public class GuiEManual extends GuiScreen {
 			removeAllText();
 			Pages.AdvancedCircuits();
 			break;
-			
+
 		case 20:
-			
+
 			removeAllChapters();
 			removeAllText();
 			solderingEarth = true;

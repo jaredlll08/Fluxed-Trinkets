@@ -334,7 +334,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 		 * earth circuit
 		 */
 		if (item[0].getItem() == ETItems.circuit) {
-			if (item[1].getItem() == Item.getItemFromBlock(Blocks.grass)) {
+			if (item[1].getItem() == Item.getItemFromBlock(Blocks.dirt)) {
 				if (item[2].getItem() == Item.getItemFromBlock(Blocks.coal_block)) {
 					if (item[3].getItem() == Item.getItemFromBlock(Blocks.iron_ore)) {
 						if (item[4].getItem() == Item.getItemFromBlock(Blocks.sapling)) {

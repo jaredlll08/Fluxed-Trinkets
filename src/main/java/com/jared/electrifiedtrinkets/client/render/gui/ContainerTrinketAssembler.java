@@ -13,6 +13,7 @@ import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotCircuit;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotCopperNugget;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotLeadWire;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotSolderingIron;
+import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotTrinket;
 import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
@@ -23,7 +24,6 @@ public class ContainerTrinketAssembler extends Container {
 		for (int x = 0; x < 9; x++) {
 			addSlotToContainer(new Slot(invPlayer, x, 36 + 18 * x, 195));
 		}
-
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 9; x++) {
 				addSlotToContainer(new Slot(invPlayer, x + y * 9 + 9, 36 + 18 * x, 137 + y * 18));
@@ -32,7 +32,7 @@ public class ContainerTrinketAssembler extends Container {
 
 
 		
-		addSlotToContainer(new Slot(tile, 0, 109, 48));
+		addSlotToContainer(new SlotTrinket(tile, 0, 109, 48));
 		addSlotToContainer(new SlotCircuit(tile, 1, 18, 13));
 		addSlotToContainer(new SlotCircuit(tile, 2, 196, 13));
 		addSlotToContainer(new SlotCircuit(tile, 3, 196, 79));
