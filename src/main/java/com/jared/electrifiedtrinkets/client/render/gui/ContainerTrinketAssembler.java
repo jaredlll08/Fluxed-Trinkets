@@ -3,20 +3,11 @@ package com.jared.electrifiedtrinkets.client.render.gui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerBeacon;
-import net.minecraft.inventory.ContainerEnchantment;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotAddon;
-import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotCircuit;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotCircuitContainer;
-import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotCopperNugget;
-import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotLeadWire;
-import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotSolderingIron;
 import com.jared.electrifiedtrinkets.client.render.gui.slot.SlotTrinket;
-import com.jared.electrifiedtrinkets.items.ETItems;
-import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
 public class ContainerTrinketAssembler extends Container {

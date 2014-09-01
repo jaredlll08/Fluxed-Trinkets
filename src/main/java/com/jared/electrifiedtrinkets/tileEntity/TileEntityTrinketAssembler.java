@@ -1,28 +1,13 @@
 package com.jared.electrifiedtrinkets.tileEntity;
 
-import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.swing.text.DateFormatter;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.oredict.OreDictionary;
 
-import com.jared.electrifiedtrinkets.items.ETItems;
-import com.jared.electrifiedtrinkets.network.MessageCircuitCrafting;
 import com.jared.electrifiedtrinkets.network.MessageTrinketAssembler;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.util.NBTHelper;

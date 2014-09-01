@@ -3,17 +3,15 @@ package com.jared.electrifiedtrinkets.items.equipment;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jared.electrifiedtrinkets.util.NBTHelper;
-import com.jared.electrifiedtrinkets.util.StringUtils;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+
+import com.jared.electrifiedtrinkets.util.NBTHelper;
+import com.jared.electrifiedtrinkets.util.StringUtils;
 
 public class ItemBeltEmpty extends Item implements IBauble {
 
