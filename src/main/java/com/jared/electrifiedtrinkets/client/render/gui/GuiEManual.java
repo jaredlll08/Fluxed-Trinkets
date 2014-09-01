@@ -148,7 +148,7 @@ public class GuiEManual extends GuiScreen {
 		buttonList.clear();
 
 		for (int i = 0; i < getChapters(); i++) {
-			buttonList.add(new GuiButtonInvisible(Integer.parseInt(String.valueOf(getChapter(i)[1])), left + 10, (top + 15) + (10 * i), 100, 10, (String) getChapter(i)[0]));
+			buttonList.add(new GuiButtonInvisible(Integer.parseInt(String.valueOf(getChapter(i)[1])), left + 10, (top + 15) + (10 * i), 100, 10, (String) getChapter(i)[0], true));
 		}
 
 		for (int i = 0; i < getTexts(); i++) {

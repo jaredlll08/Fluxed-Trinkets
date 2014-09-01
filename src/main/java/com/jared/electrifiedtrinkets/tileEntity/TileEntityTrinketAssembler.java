@@ -32,7 +32,7 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 	public ItemStack[] items;
 
 	public TileEntityTrinketAssembler() {
-		items = new ItemStack[6];
+		items = new ItemStack[12];
 	}
 
 	@Override
@@ -116,12 +116,12 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 
 	@Override
 	public boolean canExtractItem(int arg0, ItemStack arg1, int arg2) {
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean canInsertItem(int arg0, ItemStack arg1, int arg2) {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -174,7 +174,6 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		item[2] = getStackInSlot(2);
 		item[3] = getStackInSlot(3);
 		item[4] = getStackInSlot(4);
-
 		String[] effects = new String[4];
 
 		
@@ -196,12 +195,13 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		
 		if(item[0]!=null){
 			ItemStack result = getStackInSlot(0);
+			result.stackTagCompound = null;
 			for(int i = 0; i < effects.length; i ++){
 				if(effects[i]!=null){
-					NBTHelper.setString(result, "ETEffect"+i, effects[i]);
+					NBTHelper.setString(result, "ETEffect", NBTHelper.getString(result, "ETEffect") + "|" + effects[i]);
 				}	
 			}
-			setInventorySlotContents(1, result);
+			setInventorySlotContents(0, result);
 			PacketHandler.INSTANCE.sendToServer(new MessageTrinketAssembler(xCoord, yCoord, zCoord));
 			
 		}

@@ -15,7 +15,6 @@ import com.jared.electrifiedtrinkets.util.StringUtils;
 public class ItemCircuit extends Item {
 	String type;
 	public ItemCircuit(String type) {
-		this.setMaxStackSize(1);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.type = type;
 	}

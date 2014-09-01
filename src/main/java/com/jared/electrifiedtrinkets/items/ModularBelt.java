@@ -37,7 +37,7 @@ public class ModularBelt extends Item implements IBauble, IEnergyContainerItem {
 			list.add(StringUtils.getEnergyUsageText(baseUsage*usageModifier));
 			if (NBTHelper.getString(stack, "ETEffect") == "air") {
 				usageModifier+=20;
-				list.add(StringUtils.GRAY + "-Air");
+				list.add(StringUtils.GRAY + "-Atmospheric");
 			}
 			if (NBTHelper.getString(stack, "ETEffect") == "ground") {
 

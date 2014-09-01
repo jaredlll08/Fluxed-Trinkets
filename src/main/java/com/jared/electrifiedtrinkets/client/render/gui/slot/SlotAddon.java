@@ -10,6 +10,10 @@ public class SlotAddon extends Slot {
 		super(arg0, arg1, arg2, arg3);
 	}
 
+	public int getSlotStackLimit() {
+		return 1;
+	}
+
 	@Override
 	public boolean isItemValid(ItemStack stack) {
 		return true;
