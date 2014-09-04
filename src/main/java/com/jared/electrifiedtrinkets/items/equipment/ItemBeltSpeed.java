@@ -5,8 +5,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import com.jared.electrifiedtrinkets.util.NBTHelper;
-
 public class ItemBeltSpeed extends ModBelt {
 
 	public ItemBeltSpeed(int maxCapacity, int usage) {

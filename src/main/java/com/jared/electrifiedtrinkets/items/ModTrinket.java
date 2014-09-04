@@ -1,13 +1,13 @@
 package com.jared.electrifiedtrinkets.items;
 
-import cofh.api.energy.IEnergyContainerItem;
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import cofh.api.energy.IEnergyContainerItem;
 
 public class ModTrinket extends Item implements IBauble, IEnergyContainerItem {
 

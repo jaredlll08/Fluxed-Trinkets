@@ -13,18 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import baubles.api.BaubleType;
-import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 
 import com.jared.electrifiedtrinkets.items.equipment.ModBelt;
 import com.jared.electrifiedtrinkets.util.EffectHelper;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
-
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ModularBelt extends ModBelt implements IBauble {
 

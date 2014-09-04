@@ -1,6 +1,5 @@
 package com.jared.electrifiedtrinkets.client.render.gui;
 
-import java.util.ArrayList;
 
 public class Pages {
 
@@ -39,8 +38,6 @@ public class Pages {
 
 	}
 
-
-
 	public static void EmptyAmulet() {
 		GuiEManual.addText("amulets.0");
 		GuiEManual.addText("");
@@ -50,7 +47,6 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("amulet.empty.recipe");
 	}
-
 
 	public static void BasicCircuits() {
 		GuiEManual.addText("circuits.top.0");
@@ -84,7 +80,6 @@ public class Pages {
 		GuiEManual.addText("belt.empty.recipe");
 	}
 
-
 	public static void RingEmpty() {
 		GuiEManual.addText("ring.0");
 		GuiEManual.addText("");
@@ -94,6 +89,5 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("ring.empty.recipe");
 	}
-
 
 }

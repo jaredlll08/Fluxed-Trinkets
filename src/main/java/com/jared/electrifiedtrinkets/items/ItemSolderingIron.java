@@ -1,10 +1,10 @@
 package com.jared.electrifiedtrinkets.items;
 
-import com.jared.electrifiedtrinkets.util.NBTHelper;
-
-import cofh.api.energy.IEnergyContainerItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import cofh.api.energy.IEnergyContainerItem;
+
+import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 public class ItemSolderingIron extends Item implements IEnergyContainerItem{
 

@@ -2,12 +2,8 @@ package com.jared.electrifiedtrinkets.world;
 
 import java.util.Random;
 
-import com.jared.electrifiedtrinkets.blocks.ETBlocks;
-import com.jared.electrifiedtrinkets.config.ConfigHandler;
-
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class GenerationHandler implements IWorldGenerator {

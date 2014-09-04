@@ -15,7 +15,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;

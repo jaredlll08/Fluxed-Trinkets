@@ -16,7 +16,6 @@ import net.minecraft.util.AxisAlignedBB;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 
-import com.jared.electrifiedtrinkets.items.equipment.ModAmulet;
 import com.jared.electrifiedtrinkets.util.EffectHelper;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
 

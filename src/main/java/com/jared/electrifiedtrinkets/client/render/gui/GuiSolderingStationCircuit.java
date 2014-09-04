@@ -1,10 +1,6 @@
 package com.jared.electrifiedtrinkets.client.render.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -16,7 +12,6 @@ import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.network.MessageCircuitCrafting;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
-import com.sun.xml.internal.bind.v2.runtime.reflect.Lister.Pack;
 
 public class GuiSolderingStationCircuit extends GuiContainer {
 

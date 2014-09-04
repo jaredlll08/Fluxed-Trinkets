@@ -2,8 +2,6 @@ package com.jared.electrifiedtrinkets.client.render.gui.slot;
 
 import java.util.List;
 
-import com.jared.electrifiedtrinkets.items.ETItems;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;

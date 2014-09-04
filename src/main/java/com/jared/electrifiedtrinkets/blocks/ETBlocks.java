@@ -1,7 +1,6 @@
 package com.jared.electrifiedtrinkets.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockTripWireHook;
 
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.ETItems;

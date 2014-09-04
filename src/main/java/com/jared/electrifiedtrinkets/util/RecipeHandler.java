@@ -5,7 +5,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import com.jared.electrifiedtrinkets.blocks.ETBlocks;
 import com.jared.electrifiedtrinkets.items.ETItems;

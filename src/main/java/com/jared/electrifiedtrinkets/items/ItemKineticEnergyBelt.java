@@ -2,9 +2,6 @@ package com.jared.electrifiedtrinkets.items;
 
 import java.util.List;
 
-import com.jared.electrifiedtrinkets.util.NBTHelper;
-import com.jared.electrifiedtrinkets.util.StringUtils;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,6 +13,9 @@ import net.minecraft.world.World;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cofh.api.energy.IEnergyContainerItem;
+
+import com.jared.electrifiedtrinkets.util.NBTHelper;
+import com.jared.electrifiedtrinkets.util.StringUtils;
 
 public class ItemKineticEnergyBelt extends Item implements IBauble, IEnergyContainerItem {
 

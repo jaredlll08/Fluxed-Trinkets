@@ -1,23 +1,10 @@
 package com.jared.electrifiedtrinkets.items;
 
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 import com.jared.electrifiedtrinkets.CreativeTabElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.ModInfo;
-import com.jared.electrifiedtrinkets.items.equipment.ItemAmuletEmpty;
-import com.jared.electrifiedtrinkets.items.equipment.ItemAmuletRespiratory;
-import com.jared.electrifiedtrinkets.items.equipment.ItemBeltEmpty;
-import com.jared.electrifiedtrinkets.items.equipment.ItemBeltFire;
-import com.jared.electrifiedtrinkets.items.equipment.ItemBeltIce;
-import com.jared.electrifiedtrinkets.items.equipment.ItemBeltJump;
-import com.jared.electrifiedtrinkets.items.equipment.ItemBeltSpeed;
-import com.jared.electrifiedtrinkets.items.equipment.ItemBeltStep;
-import com.jared.electrifiedtrinkets.items.equipment.ItemRingEmpty;
-import com.jared.electrifiedtrinkets.items.equipment.ItemRingFarming;
-import com.jared.electrifiedtrinkets.items.equipment.ItemRingMiningSpeed;
 import com.jared.electrifiedtrinkets.items.resources.ItemLeadWire;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
 

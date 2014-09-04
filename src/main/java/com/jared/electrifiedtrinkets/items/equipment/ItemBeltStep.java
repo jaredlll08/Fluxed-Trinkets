@@ -1,13 +1,8 @@
 package com.jared.electrifiedtrinkets.items.equipment;
 
-import java.util.List;
 import java.util.Random;
 
-import com.jared.electrifiedtrinkets.util.NBTHelper;
-import com.jared.electrifiedtrinkets.util.StringUtils;
-
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 

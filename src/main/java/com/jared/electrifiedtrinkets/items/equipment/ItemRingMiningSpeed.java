@@ -1,15 +1,12 @@
 package com.jared.electrifiedtrinkets.items.equipment;
 
-import com.jared.electrifiedtrinkets.potion.BaublePotionHelper;
-import com.jared.electrifiedtrinkets.potion.BaublesPotionEffect;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionHelper;
+
+import com.jared.electrifiedtrinkets.potion.BaublesPotionEffect;
 
 public class ItemRingMiningSpeed extends ModRing {
 

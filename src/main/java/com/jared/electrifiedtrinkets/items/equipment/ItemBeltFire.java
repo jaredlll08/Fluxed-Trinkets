@@ -2,16 +2,11 @@ package com.jared.electrifiedtrinkets.items.equipment;
 
 import java.util.Random;
 
-import com.jared.electrifiedtrinkets.potion.BaublesPotionEffect;
-
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class ItemBeltFire extends ModBelt {

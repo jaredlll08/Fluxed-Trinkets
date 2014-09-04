@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.jared.electrifiedtrinkets.util.NBTHelper;
-import com.jared.electrifiedtrinkets.util.StringUtils;
 
 public class ItemCircuit extends Item {
 	String type;

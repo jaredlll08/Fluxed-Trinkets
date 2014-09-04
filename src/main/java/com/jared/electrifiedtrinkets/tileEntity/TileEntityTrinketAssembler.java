@@ -10,10 +10,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
-import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.items.ItemCircuit;
-import com.jared.electrifiedtrinkets.network.MessageTrinketAssembler;
-import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 public class TileEntityTrinketAssembler extends TileEntity implements ISidedInventory {

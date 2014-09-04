@@ -1,10 +1,8 @@
 package com.jared.electrifiedtrinkets.network;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-import com.jared.electrifiedtrinkets.items.ETItems;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;

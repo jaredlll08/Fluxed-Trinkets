@@ -1,19 +1,12 @@
 package com.jared.electrifiedtrinkets.client.render.gui.slot;
 
-import java.util.List;
-
-import baubles.api.IBauble;
-
-import com.jared.electrifiedtrinkets.items.ETItems;
-import com.jared.electrifiedtrinkets.items.ItemCircuit;
-import com.jared.electrifiedtrinkets.items.equipment.ModAmulet;
-import com.jared.electrifiedtrinkets.items.equipment.ModBelt;
-import com.jared.electrifiedtrinkets.items.equipment.ModRing;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
+
+import com.jared.electrifiedtrinkets.items.equipment.ModAmulet;
+import com.jared.electrifiedtrinkets.items.equipment.ModBelt;
+import com.jared.electrifiedtrinkets.items.equipment.ModRing;
 
 public class SlotTrinket extends Slot {
 

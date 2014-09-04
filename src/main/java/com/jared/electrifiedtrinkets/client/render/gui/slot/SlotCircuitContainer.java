@@ -1,14 +1,10 @@
 package com.jared.electrifiedtrinkets.client.render.gui.slot;
 
-import java.util.List;
-
-import com.jared.electrifiedtrinkets.items.ETItems;
-import com.jared.electrifiedtrinkets.items.ItemCircuit;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
+
+import com.jared.electrifiedtrinkets.items.ItemCircuit;
 
 public class SlotCircuitContainer extends Slot {
 
