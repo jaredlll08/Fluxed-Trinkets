@@ -10,6 +10,7 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
@@ -223,11 +224,16 @@ public class ItemBeltEmpty extends ModBelt implements IBauble {
 
 	@SubscribeEvent
 	public void onPlayerJump(LivingJumpEvent event) {
-		String effects = NBTHelper.getString(stack, "ETEffect");
+		
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack belt = BaublesApi.getBaubles(player).getStackInSlot(3);
-
+			ItemStack belt = BaublesApi.getBaubles(player).getStackInSlot(0);
+			
+			if(belt.stackTagCompound == null){
+				belt.stackTagCompound = new NBTTagCompound();
+			}
+			String effects = NBTHelper.getString(belt, "ETEffect");
+			
 			if (effects.contains("jump") && NBTHelper.getInt(stack, "energy")>0) {
 				player.motionY += 0.2;
 				player.fallDistance = -1;

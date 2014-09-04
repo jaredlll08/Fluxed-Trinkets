@@ -30,9 +30,9 @@ public class GuiEManual extends GuiScreen {
 	int middleX = (guiWidth / 2) - guiWidth;
 	int middleY = (guiHeight / 2) - guiHeight;
 	boolean renderToolTip = false;
-	boolean recipeBeltEmpty, recipeBeltSpeed, recipeBeltFire, recipeBeltIce, recipeBeltJump, recipeBeltStep = false;
-	boolean recipeAmuletEmpty, recipeAmuletRespiratory = false;
-	boolean recipeRingEmpty, recipeRingMining, recipeRingFarming = false;
+	boolean recipeBeltEmpty = false;
+	boolean recipeAmuletEmpty = false;
+	boolean recipeRingEmpty = false;
 	boolean solderingEarth, solderingAir, solderingFire, solderingWater = false;
 
 	static ArrayList<Object[]> chapters = new ArrayList<Object[]>();
@@ -101,18 +101,10 @@ public class GuiEManual extends GuiScreen {
 		removeAllText();
 
 		recipeAmuletEmpty = false;
-		recipeAmuletRespiratory = false;
 
 		recipeRingEmpty = false;
-		recipeRingFarming = false;
-		recipeRingMining = false;
 
 		recipeBeltEmpty = false;
-		recipeBeltFire = false;
-		recipeBeltIce = false;
-		recipeBeltJump = false;
-		recipeBeltSpeed = false;
-		recipeBeltStep = false;
 
 		renderToolTip = false;
 		
@@ -158,12 +150,6 @@ public class GuiEManual extends GuiScreen {
 			drawString(fontRendererObj, getText(i), left + 10, (top + 15) + (10 * i), 0);
 		}
 
-//		GL11.glPushMatrix();
-//		GL11.glEnable(GL11.GL_BLEND);
-//		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-//		RenderHelper.enableGUIStandardItemLighting();
-//		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-//		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		if (recipeAmuletEmpty) {
 			GL11.glColor4f(1F, 1F, 1F, 1F);
 			mc.renderEngine.bindTexture(texture);
@@ -181,24 +167,6 @@ public class GuiEManual extends GuiScreen {
 			if (renderToolTip) {
 				renderToolTip(new ItemStack(Items.iron_ingot), left + 63, top + 94);
 				renderToolTip(new ItemStack(Blocks.iron_bars), left + 63, top + 130);
-			}
-		}
-		if (recipeAmuletRespiratory) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitWater), left + 45, top + 130);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.amuletEmpty), left + 63, top + 130);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-				renderToolTip(new ItemStack(ETItems.circuitWater), left + 45, top + 130);
 			}
 		}
 
@@ -222,101 +190,7 @@ public class GuiEManual extends GuiScreen {
 				renderToolTip(new ItemStack(Items.iron_ingot), left + 45, top + 130);
 			}
 		}
-		if (recipeBeltFire) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitFire), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.advancedCircuitLava), left + 45, top + 130);
 
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.beltEmpty), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.circuitFire), left + 63, top + 94);
-				renderToolTip(new ItemStack(ETItems.advancedCircuitLava), left + 45, top + 130);
-			}
-		}
-
-		if (recipeBeltSpeed) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitEarth), left + 45, top + 130);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitAir), left + 81, top + 112);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.beltEmpty), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-				renderToolTip(new ItemStack(ETItems.circuitEarth), left + 45, top + 130);
-
-			}
-		}
-
-		if (recipeBeltIce) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.advancedCircuitIce), left + 63, top + 94);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.beltEmpty), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.advancedCircuitIce), left + 63, top + 94);
-
-			}
-		}
-		if (recipeBeltJump) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitEarth), left + 63, top + 130);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.beltEmpty), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-				renderToolTip(new ItemStack(ETItems.circuitEarth), left + 63, top + 130);
-
-			}
-		}
-		if (recipeBeltStep) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitEarth), left + 63, top + 130);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitEarth), left + 81, top + 112);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.beltEmpty), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-				renderToolTip(new ItemStack(ETItems.circuitEarth), left + 63, top + 130);
-
-			}
-		}
 
 		if (recipeRingEmpty) {
 			GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -335,47 +209,7 @@ public class GuiEManual extends GuiScreen {
 			}
 		}
 
-		if (recipeRingMining) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitEarth), left + 63, top + 130);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.ringEmpty), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.circuitAir), left + 63, top + 94);
-				renderToolTip(new ItemStack(ETItems.circuitEarth), left + 63, top + 130);
-
-			}
-		}
-
-		if (recipeRingFarming) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			ItemStack stack = OreDictionary.getOres("gearElectrum").get(0);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitWater), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitEarth), left + 45, top + 130);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.advancedCircuitLife), left + 81, top + 112);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.basicBattery), left + 81, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.ringEmpty), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(ETItems.circuitWater), left + 63, top + 94);
-				renderToolTip(new ItemStack(ETItems.circuitEarth), left + 45, top + 130);
-				renderToolTip(new ItemStack(ETItems.advancedCircuitLife), left + 81, top + 112);
-
-			}
-		}
+	
 
 		if (solderingEarth) {
 			
@@ -451,24 +285,8 @@ public class GuiEManual extends GuiScreen {
 			buttonList.clear();
 			Pages.CircuitsChapters();
 			break;
-		case 3:
-			removeAllChapters();
-			removeAllText();
-			Pages.Amulets();
 
-			break;
 
-		case 4:
-			removeAllChapters();
-			removeAllText();
-			Pages.Rings();
-			break;
-
-		case 5:
-			removeAllChapters();
-			removeAllText();
-			Pages.Belts();
-			break;
 
 		case 6:
 			removeAllChapters();
@@ -476,54 +294,11 @@ public class GuiEManual extends GuiScreen {
 			Pages.EmptyAmulet();
 			recipeAmuletEmpty = true;
 
-			break;
-		case 7:
-			removeAllChapters();
-			removeAllText();
-			Pages.ResipratoryAmulet();
-			recipeAmuletRespiratory = true;
-
-			break;
-
 		case 8:
 			removeAllChapters();
 			removeAllText();
 			Pages.BeltEmpty();
 			recipeBeltEmpty = true;
-			break;
-
-		case 9:
-			removeAllChapters();
-			removeAllText();
-			Pages.BeltHasty();
-			recipeBeltSpeed = true;
-			break;
-
-		case 10:
-			removeAllChapters();
-			removeAllText();
-			Pages.BeltScorched();
-			recipeBeltFire = true;
-			break;
-		case 11:
-			removeAllChapters();
-			removeAllText();
-			Pages.BeltChilling();
-			recipeBeltIce = true;
-			break;
-
-		case 12:
-			removeAllChapters();
-			removeAllText();
-			Pages.BeltSprung();
-			recipeBeltJump = true;
-			break;
-
-		case 13:
-			removeAllChapters();
-			removeAllText();
-			Pages.BeltPacing();
-			recipeBeltStep = true;
 			break;
 
 		case 14:
@@ -533,19 +308,6 @@ public class GuiEManual extends GuiScreen {
 			recipeRingEmpty = true;
 			break;
 
-		case 15:
-			removeAllChapters();
-			removeAllText();
-			Pages.RingMining();
-			recipeRingMining = true;
-			break;
-
-		case 16:
-			removeAllChapters();
-			removeAllText();
-			Pages.RingFarming();
-			recipeRingFarming = true;
-			break;
 		case 17:
 			removeAllChapters();
 			removeAllText();

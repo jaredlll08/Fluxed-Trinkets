@@ -26,18 +26,18 @@ import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class ModularBelt extends ModBelt implements IBauble {
+public class ModularRing extends ModularItem implements IBauble {
 
 	private ItemStack stack;
 
-	public ModularBelt() {
-		super(25000);
+	public ModularRing() {
+		super(10000);
 		this.setMaxStackSize(1);
-	}
+		}
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.BELT;
+		return BaubleType.RING;
 	}
 
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
@@ -99,16 +99,18 @@ public class ModularBelt extends ModBelt implements IBauble {
 					}
 				}
 				if (effects.contains("respiratory")) {
-					if (play.isInWater()) {
+					if(play.isInWater()){
 						play.setAir(0);
-						energy -= 5;
+						energy -=5;
 					}
 				}
 				if (effects.contains("step")) {
-					if (play.moveForward > 0F) {
-						energy -= 5;
-						play.stepHeight = 1F;
-					}
+						if(play.moveForward > 0F){
+							energy -=5;
+							play.stepHeight=1F;
+						}
+						
+						
 				}
 
 				if (effects.contains("air")) {
@@ -146,8 +148,8 @@ public class ModularBelt extends ModBelt implements IBauble {
 				if (effects.contains("earth")) {
 					if (y < 32) {
 						if (play.worldObj.rand.nextInt(600) == 0) {
-							play.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1, true));
-							play.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 400, 1, true));
+							play.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
+							play.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 400, 1));
 						}
 					}
 				}
@@ -159,7 +161,7 @@ public class ModularBelt extends ModBelt implements IBauble {
 						if (!player.worldObj.isRemote) {
 							if (!entity.isPotionActive(Potion.weakness)) {
 
-								entity.addPotionEffect(new PotionEffect(Potion.weakness.id, 400, 1, true));
+								entity.addPotionEffect(new PotionEffect(Potion.weakness.id, 400, 1));
 								energy -= 30;
 							}
 						}
@@ -183,42 +185,44 @@ public class ModularBelt extends ModBelt implements IBauble {
 					List<EntityTameable> entities = play.worldObj.getEntitiesWithinAABB(EntityTameable.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
 					for (EntityTameable entity : entities) {
 						if (!player.worldObj.isRemote) {
-							if (play.worldObj.rand.nextInt(60) == 0 && entity.isTamed()) {
-								entity.heal(1);
-								energy -= 30;
-							}
-						}
-						play.removePotionEffect(Potion.weakness.id);
-					}
-					if (effects.contains("advancedLightning")) {
-
-						List<EntityLightningBolt> bolts = play.worldObj.getEntitiesWithinAABB(EntityLightningBolt.class, AxisAlignedBB.getBoundingBox(x - 48, y - 48, z - 48, x + 48, y + 48, z + 48));
-						for (EntityLightningBolt bolt : bolts) {
-							if (!player.worldObj.isRemote) {
-								play.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1, true));
-								play.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 1, true));
-								energy -= 30;
-							}
+							if(play.worldObj.rand.nextInt(60)==0 && entity.isTamed()){
+							entity.heal(1);
+							energy -= 30;
 						}
 					}
+					play.removePotionEffect(Potion.weakness.id);
+				}
+				if (effects.contains("advancedLightning")) {
 
-				}
-				if (energy < -1) {
-					energy = 0;
-					if (effects.contains("fire")) {
-						EffectHelper.setFireImmune(play, false);
+					List<EntityLightningBolt> bolts = play.worldObj.getEntitiesWithinAABB(EntityLightningBolt.class, AxisAlignedBB.getBoundingBox(x - 48, y - 48, z - 48, x + 48, y + 48, z + 48));
+					for (EntityLightningBolt bolt : bolts) {
+						if (!player.worldObj.isRemote) {
+							play.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1, true));
+							play.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 1, true));
+							energy -= 30;
+						}
 					}
-					if (effects.contains("step")) {
-						play.stepHeight = 0.50001F;
-					}
 				}
-				NBTHelper.setInteger(itemstack, "energy", energy);
+
 			}
+			if (energy < -1) {
+				energy = 0;
+				if (effects.contains("fire")) {
+					EffectHelper.setFireImmune(play, false);
+				}
+				if (effects.contains("step")) {
+					play.stepHeight = 0.50001F;
+				}
+			}
+			NBTHelper.setInteger(itemstack, "energy", energy);
+		}
 		}
 	}
 
+
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		
 
 	}
 

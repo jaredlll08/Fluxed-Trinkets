@@ -28,9 +28,6 @@ public class SlotTrinket extends Slot {
 			return true;
 		}
 		
-		if(stack.getItem() == ETItems.beltEmpty){
-			return true;
-		}
 
 		return false;
 	}

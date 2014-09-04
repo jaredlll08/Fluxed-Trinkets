@@ -13,27 +13,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import baubles.api.BaubleType;
-import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 
-import com.jared.electrifiedtrinkets.items.equipment.ModBelt;
+import com.jared.electrifiedtrinkets.items.equipment.ModAmulet;
 import com.jared.electrifiedtrinkets.util.EffectHelper;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-
-public class ModularAmulet extends ModBelt implements IBauble {
+public class ModularAmulet extends ModularItem implements IBauble {
 
 	private ItemStack stack;
 
 	public ModularAmulet() {
 		super(15000);
 		this.setMaxStackSize(1);
-		MinecraftForge.EVENT_BUS.register(this);
 		}
 
 	@Override
@@ -69,8 +62,6 @@ public class ModularAmulet extends ModBelt implements IBauble {
 				usage += 20;
 			if (effects.contains("step"))
 				usage += 10;
-			if (effects.contains("jump"))
-				usage += 15;
 			if (effects.contains("respiratory"))
 				usage += 10;
 
@@ -222,20 +213,6 @@ public class ModularAmulet extends ModBelt implements IBauble {
 		}
 	}
 
-	@SubscribeEvent
-	public void onPlayerJump(LivingJumpEvent event) {
-		String effects = NBTHelper.getString(stack, "ETEffect");
-		if (event.entityLiving instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			ItemStack belt = BaublesApi.getBaubles(player).getStackInSlot(3);
-
-			if (effects.contains("jump") && NBTHelper.getInt(stack, "energy")>0) {
-				player.motionY += 0.2;
-				player.fallDistance = -1;
-				NBTHelper.setInteger(stack, "energy", NBTHelper.getInt(stack, "energy")-30);
-			}
-		}
-	}
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {

@@ -25,9 +25,7 @@ public class Pages {
 		GuiEManual.addText("trinkets.0");
 		GuiEManual.addChapter("", -1);
 		GuiEManual.addChapter("", -2);
-		GuiEManual.addChapter("trinkets.1", 3);
-		GuiEManual.addChapter("trinkets.2", 4);
-		GuiEManual.addChapter("trinkets.3", 5);
+		GuiEManual.addText("The trinkets in Electrified Trinkets are completely modular!");
 
 	}
 
@@ -41,25 +39,7 @@ public class Pages {
 
 	}
 
-	public static void Amulets() {
-		GuiEManual.addChapter("amulets.0", 6);
-		GuiEManual.addChapter("amulets.1", 7);
-	}
 
-	public static void Belts() {
-		GuiEManual.addChapter("belt.0", 8);
-		GuiEManual.addChapter("belt.1", 9);
-		GuiEManual.addChapter("belt.2", 10);
-		GuiEManual.addChapter("belt.3", 11);
-		GuiEManual.addChapter("belt.4", 12);
-		GuiEManual.addChapter("belt.5", 13);
-	}
-
-	public static void Rings() {
-		GuiEManual.addChapter("ring.0", 14);
-		GuiEManual.addChapter("ring.1", 15);
-		GuiEManual.addChapter("ring.2", 16);
-	}
 
 	public static void EmptyAmulet() {
 		GuiEManual.addText("amulets.0");
@@ -71,15 +51,6 @@ public class Pages {
 		GuiEManual.addText("amulet.empty.recipe");
 	}
 
-	public static void ResipratoryAmulet() {
-		GuiEManual.addText("amulets.1");
-		GuiEManual.addText("");
-		GuiEManual.addText("amulet.respiratory.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("amulet.respiratory.recipe");
-	}
 
 	public static void BasicCircuits() {
 		GuiEManual.addText("circuits.top.0");
@@ -113,55 +84,6 @@ public class Pages {
 		GuiEManual.addText("belt.empty.recipe");
 	}
 
-	public static void BeltHasty() {
-		GuiEManual.addText("belt.1");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.hasty.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.hasty.recipe");
-
-	}
-
-	public static void BeltScorched() {
-		GuiEManual.addText("belt.2");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.scorched.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.scorched.recipe");
-	}
-
-	public static void BeltChilling() {
-		GuiEManual.addText("belt.3");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.chilling.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.chilling.recipe");
-	}
-
-	public static void BeltSprung() {
-		GuiEManual.addText("belt.4");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.sprung.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.sprung.recipe");
-	}
-
-	public static void BeltPacing() {
-		GuiEManual.addText("belt.5");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.pacing.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("belt.pacing.recipe");
-	}
 
 	public static void RingEmpty() {
 		GuiEManual.addText("ring.0");
@@ -173,25 +95,5 @@ public class Pages {
 		GuiEManual.addText("ring.empty.recipe");
 	}
 
-	public static void RingMining() {
-		GuiEManual.addText("ring.1");
-		GuiEManual.addText("");
-		GuiEManual.addText("ring.mining.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("ring.mining.recipe");
-	}
-	
-	public static void RingFarming() {
-		GuiEManual.addText("ring.2");
-		GuiEManual.addText("");
-		GuiEManual.addText("ring.farming.info");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("");
-		GuiEManual.addText("ring.farming.recipe");
-	}
 
 }

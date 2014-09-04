@@ -24,7 +24,6 @@ public class RecipeHandler {
 		OreDictionary.registerOre("wireLead", ETItems.leadWire);
 		OreDictionary.registerOre("circuit", ETItems.circuit);
 		OreDictionary.registerOre("circuitAdvanced", ETItems.advancedCircuit);
-
 	}
 
 	private static void registerRecipes() {
@@ -33,9 +32,9 @@ public class RecipeHandler {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.leadWire, 6), new Object[] { "   ", "lll", "   ", 'l', "ingotLead" }));
 
-		GameRegistry.addRecipe(new ItemStack(ETItems.beltEmpty), new Object[] { "iii", "i i", "iii", 'i', new ItemStack(Items.iron_ingot) });
-		GameRegistry.addRecipe(new ItemStack(ETItems.ringEmpty), new Object[] { " i ", "i i", " i ", 'i', new ItemStack(Items.iron_ingot) });
-		GameRegistry.addRecipe(new ItemStack(ETItems.amuletEmpty), new Object[] { " bb", "ibb", "ii ", 'i', new ItemStack(Items.iron_ingot), 'b', new ItemStack(Blocks.iron_bars) });
+		GameRegistry.addRecipe(new ItemStack(ETItems.modularBelt), new Object[] { "iii", "i i", "iii", 'i', new ItemStack(Items.iron_ingot) });
+		GameRegistry.addRecipe(new ItemStack(ETItems.modularRing), new Object[] { " i ", "i i", " i ", 'i', new ItemStack(Items.iron_ingot) });
+		GameRegistry.addRecipe(new ItemStack(ETItems.modularAmulet), new Object[] { " bb", "ibb", "ii ", 'i', new ItemStack(Items.iron_ingot), 'b', new ItemStack(Blocks.iron_bars) });
 
 		GameRegistry.addRecipe(new ItemStack(ETItems.circuit), new Object[] { "ege", "gbg", "ege", 'e', new ItemStack(Items.emerald), 'g', new ItemStack(Items.dye, 1, 2), 'b', new ItemStack(Items.book) });
 		GameRegistry.addRecipe(new ItemStack(ETItems.advancedCircuit), new Object[] { "lgl", "gbg", "lgl", 'l', new ItemStack(Blocks.redstone_block), 'g', new ItemStack(Items.paper), 'b', new ItemStack(ETItems.circuit) });
@@ -46,21 +45,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.circuit, new Object[] { "sws", "ccc", "ooo", 's', "dustSulphur", 'w', Items.water_bucket, 'c', "dustCopper", 'o', "dustObsidian" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.advancedCircuit, new Object[] { "rsr", "scs", "rsr", 's', "nuggetSignalum", 'r', Items.redstone, 'c', ETItems.circuit }));
 
-		GameRegistry.addRecipe(new ShapedOreRecipe(ETItems.beltEmpty, new Object[] { "ewe", "wbw", "ewe", 'e', "ingotElectrum", 'w', "wireLead", 'b', ETItems.basicBattery }));
-
 		GameRegistry.addShapelessRecipe(new ItemStack(ETItems.manual), new ItemStack(ETItems.basicBattery), new ItemStack(Items.book));
-
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltIce, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.advancedCircuitIce, ETItems.basicBattery }));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltFire, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.circuitFire, ETItems.advancedCircuitLava, ETItems.basicBattery }));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltJump, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.circuitAir, ETItems.circuitEarth, ETItems.basicBattery }));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.beltStep, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.circuitEarth, ETItems.circuitEarth, ETItems.circuitAir, ETItems.basicBattery }));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.speedBelt, new Object[] { "gearElectrum", ETItems.beltEmpty, ETItems.circuitEarth, ETItems.circuitAir, ETItems.circuitEarth, ETItems.circuitAir, ETItems.basicBattery }));
-		
-		
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.amuletRespiratory, new Object[] { "gearElectrum", ETItems.circuitWater, ETItems.circuitAir, ETItems.basicBattery, ETItems.amuletEmpty }));
-
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.ringFarming, new Object[] { "gearElectrum", ETItems.circuitWater, ETItems.circuitEarth, ETItems.advancedCircuitLife, ETItems.basicBattery, ETItems.ringEmpty }));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(ETItems.ringMiningSpeed, new Object[] { "gearElectrum", ETItems.circuitAir, ETItems.circuitEarth, ETItems.basicBattery, ETItems.ringEmpty }));
 
 	}
 

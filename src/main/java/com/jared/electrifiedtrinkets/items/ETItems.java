@@ -57,34 +57,14 @@ public class ETItems {
 
 	public static Item leadWire = new ItemLeadWire();
 
-	public static Item speedBelt = new ItemBeltSpeed(25000, 10);
-	public static Item beltEmpty = new ItemBeltEmpty();
-	public static Item beltFire = new ItemBeltFire(10000, 10);
-	public static Item beltIce = new ItemBeltIce(30000, 5);
-	public static Item beltJump = new ItemBeltJump(20000, 20);
-	public static Item beltStep = new ItemBeltStep(10000, 20);
-
-	public static Item amuletEmpty = new ItemAmuletEmpty();
-	public static Item amuletRespiratory = new ItemAmuletRespiratory(25000, 5);
-
-	public static Item ringEmpty = new ItemRingEmpty();
-	public static Item ringMiningSpeed = new ItemRingMiningSpeed(25000, 10);
-	public static Item ringFarming = new ItemRingFarming(20000, 500);
-
-	public static ItemStack[] addons = new ItemStack[9];
-
 	public static Item manual = new ItemManual();
 	
 	public static Item modularBelt = new ModularBelt();
 	public static Item modularAmulet= new ModularAmulet();
+	public static Item modularRing= new ModularRing();
 	
 
 	private static void registerItems() {
-		addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
-		addons[1] = new ItemStack(Items.feather, 1, OreDictionary.WILDCARD_VALUE);
-		addons[2] = new ItemStack(Items.clay_ball, 1, OreDictionary.WILDCARD_VALUE);
-		addons[3] = new ItemStack(Items.blaze_powder, 1, OreDictionary.WILDCARD_VALUE);
-		addons[4] = new ItemStack(Items.fish, 1, OreDictionary.WILDCARD_VALUE);
 
 		/*
 		 * Circuits
@@ -109,16 +89,14 @@ public class ETItems {
 
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
 
-//		registerItem(beltEmpty, "Empty Belt", "Belt_Empty");
 
-//		registerItem(amuletEmpty, "Empty Amulet", "Amulet_Empty");
-
-		registerItem(ringEmpty, "Empty Ring", "Ring_Blank");
 		
 		registerItem(manual, "Electricians Manual", "Electricians_Manual");
 		
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
+		registerItem(modularRing, "Modular Ring", "Ring_Blank");
+		
 		
 	}
 
