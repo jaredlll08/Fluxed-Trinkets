@@ -28,7 +28,8 @@ public class RecipeHandler {
 	private static void registerRecipes() {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(ETBlocks.solderingStation, new Object[] { "gcg", "ili", "i i", 'l', "wireLead", 'g', "gearInvar", 'c', new ItemStack(Blocks.crafting_table), 'i', "ingotInvar" }));
-
+		GameRegistry.addRecipe(new ShapedOreRecipe(ETBlocks.trinketAssembler, new Object[] { "gcg", "ili", "ici", 'l', "wireLead", 'g', "gearInvar", 'c', new ItemStack(Blocks.crafting_table), 'i', "ingotInvar" }));
+		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ETItems.leadWire, 6), new Object[] { "   ", "lll", "   ", 'l', "ingotLead" }));
 
 		GameRegistry.addRecipe(new ItemStack(ETItems.modularBelt), new Object[] { "iii", "i i", "iii", 'i', new ItemStack(Items.iron_ingot) });
