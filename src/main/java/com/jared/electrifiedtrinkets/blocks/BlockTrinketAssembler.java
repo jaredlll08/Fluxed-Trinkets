@@ -2,14 +2,12 @@ package com.jared.electrifiedtrinkets.blocks;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.jared.electrifiedtrinkets.ElectrifiedTrinkets;
 import com.jared.electrifiedtrinkets.proxy.ClientProxy;
-import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
 public class BlockTrinketAssembler extends BlockContainer {
