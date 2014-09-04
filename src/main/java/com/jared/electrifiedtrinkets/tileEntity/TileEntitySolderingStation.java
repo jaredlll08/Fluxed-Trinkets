@@ -348,7 +348,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 							}
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.circuitEarth);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 
@@ -378,7 +377,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.circuitAir);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 
@@ -408,7 +406,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.circuitFire);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 
@@ -438,7 +435,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.circuitWater);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 
@@ -468,7 +464,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.advancedCircuitIce);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 
@@ -498,7 +493,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.advancedCircuitLife);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 
@@ -528,7 +522,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.advancedCircuitLife);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 
@@ -558,7 +551,6 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 
 							decrStackSize(2, 1);
 							items[1] = new ItemStack(ETItems.advancedCircuitLava);
-							PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(xCoord, yCoord, zCoord));
 							for (int i = 7; i < 14; i++) {
 								decrStackSize(i, 1);
 

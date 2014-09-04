@@ -22,17 +22,27 @@ public abstract class ModBelt extends Item implements IBauble, IEnergyContainerI
 	private int maxCapacity;
 	private int usage;
 
-	public ModBelt(int maxCapacity, int usage) {
+	public ModBelt(int maxCapacity) {
 		this.setMaxStackSize(1);
 		this.maxCapacity = maxCapacity;
+	}
+
+	public int getUsage() {
+		return usage;
+	}
+
+	public void setUsage(int usage) {
 		this.usage = usage;
 	}
 
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4, String effects) {
+		super.addInformation(stack, player, list, par4);
 		if (StringUtils.isShiftKeyDown()) {
 			list.add(StringUtils.getChargeText(NBTHelper.getInt(stack, "energy"), maxCapacity));
 			list.add(StringUtils.getEnergyUsageText(usage));
+			if (effects != null) {
+				list.add(StringUtils.GRAY + effects);
+			}
 		} else {
 			list.add(StringUtils.getShiftText());
 		}

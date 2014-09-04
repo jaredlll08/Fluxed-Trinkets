@@ -20,7 +20,7 @@ import baubles.api.BaubleType;
 public class ItemBeltIce extends ModBelt {
 
 	public ItemBeltIce(int maxCapacity, int usage) {
-		super(maxCapacity, usage);
+		super(maxCapacity);
 	}
 
 	public static Map<String, List<IceRemover>> playerIceBlocks = new HashMap();

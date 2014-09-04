@@ -1,4 +1,4 @@
-package com.jared.electrifiedtrinkets.items.equipment;
+package com.jared.electrifiedtrinkets.items;
 
 import java.util.List;
 
@@ -20,24 +20,25 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 
+import com.jared.electrifiedtrinkets.items.equipment.ModBelt;
 import com.jared.electrifiedtrinkets.util.EffectHelper;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class ItemBeltEmpty extends ModBelt implements IBauble {
+public class ModularAmulet extends ModBelt implements IBauble {
 
 	private ItemStack stack;
 
-	public ItemBeltEmpty() {
-		super(25000);
+	public ModularAmulet() {
+		super(15000);
 		this.setMaxStackSize(1);
 		MinecraftForge.EVENT_BUS.register(this);
 		}
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.BELT;
+		return BaubleType.AMULET;
 	}
 
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {

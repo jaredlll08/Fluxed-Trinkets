@@ -13,7 +13,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.jared.electrifiedtrinkets.ModInfo;
+import com.jared.electrifiedtrinkets.network.MessageCircuitCrafting;
+import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
+import com.sun.xml.internal.bind.v2.runtime.reflect.Lister.Pack;
 
 public class GuiSolderingStationCircuit extends GuiContainer {
 
@@ -55,10 +58,9 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 	protected void actionPerformed(GuiButton guibutton) {
 		switch (guibutton.id) {
 		case 1:
-			tile.craftCircuit();
+			PacketHandler.INSTANCE.sendToServer(new MessageCircuitCrafting(tile.xCoord, tile.yCoord, tile.zCoord));
 			break;
 		case 2:
-			// i -= 1;
 		}
 	}
 

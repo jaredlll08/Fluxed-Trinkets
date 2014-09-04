@@ -2,19 +2,19 @@ package com.jared.electrifiedtrinkets.client.render.gui;
 
 import java.util.ArrayList;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.jared.electrifiedtrinkets.ModInfo;
 import com.jared.electrifiedtrinkets.items.ETItems;
@@ -142,7 +142,10 @@ public class GuiEManual extends GuiScreen {
 		this.par2 = par2;
 		this.par3 = par3;
 
-		mc.renderEngine.bindTexture(texture);
+		if(mc.renderEngine!=null){
+			mc.renderEngine.bindTexture(texture);	
+		}
+		
 		drawTexturedModalRect(left, top, 0, 0, guiWidth, guiHeight);
 		super.drawScreen(par1, par2, par3);
 		buttonList.clear();
@@ -153,9 +156,14 @@ public class GuiEManual extends GuiScreen {
 
 		for (int i = 0; i < getTexts(); i++) {
 			drawString(fontRendererObj, getText(i), left + 10, (top + 15) + (10 * i), 0);
-
 		}
 
+//		GL11.glPushMatrix();
+//		GL11.glEnable(GL11.GL_BLEND);
+//		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+//		RenderHelper.enableGUIStandardItemLighting();
+//		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+//		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		if (recipeAmuletEmpty) {
 			GL11.glColor4f(1F, 1F, 1F, 1F);
 			mc.renderEngine.bindTexture(texture);
@@ -370,6 +378,8 @@ public class GuiEManual extends GuiScreen {
 		}
 
 		if (solderingEarth) {
+			
+
 			GL11.glColor4f(1F, 1F, 1F, 1F);
 			mc.renderEngine.bindTexture(texture);
 			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
@@ -390,22 +400,33 @@ public class GuiEManual extends GuiScreen {
 				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
 			}
 			
-
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
 			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
 			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
 			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
 			
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.dirt), left + 24, top + 10);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.leaves), left + 24, top + 28);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.grass), left + 24, top + 10);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.obsidian), left + 24, top + 28);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.iron_ore), left + 24, top + 46);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.sapling), left + 24, top + 58);
 			
 			
+			GL11.glPopMatrix();
+			
+			
+			RenderHelper.disableStandardItemLighting();
 			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
 			if (renderToolTip) {
 				boolean uni = fontRendererObj.getUnicodeFlag();
 				fontRendererObj.setUnicodeFlag(true);
-				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0xFFFFF);
-				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0xFFFFF);
-				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0xFFFFF);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110,0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
 				drawCenteredString(fontRendererObj, stack.getDisplayName(), left+73, top+80, 0);
 				fontRendererObj.setUnicodeFlag(uni);
 			}

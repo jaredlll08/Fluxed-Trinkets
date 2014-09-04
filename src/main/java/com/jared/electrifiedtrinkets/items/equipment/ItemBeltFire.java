@@ -18,7 +18,7 @@ public class ItemBeltFire extends ModBelt {
 	public static final String[] IS_IMMUNE_TO_FIRE = new String[] { "isImmuneToFire", "field_70178_ae", "ag" };
 
 	public ItemBeltFire(int maxCapacity, int usage) {
-		super(maxCapacity, usage);
+		super(maxCapacity);
 	}
 
 	@Override

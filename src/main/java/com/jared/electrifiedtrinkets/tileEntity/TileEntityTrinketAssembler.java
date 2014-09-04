@@ -1,5 +1,7 @@
 package com.jared.electrifiedtrinkets.tileEntity;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -8,6 +10,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
+import com.jared.electrifiedtrinkets.items.ETItems;
+import com.jared.electrifiedtrinkets.items.ItemCircuit;
 import com.jared.electrifiedtrinkets.network.MessageTrinketAssembler;
 import com.jared.electrifiedtrinkets.network.PacketHandler;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
@@ -17,7 +21,7 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 	public ItemStack[] items;
 
 	public TileEntityTrinketAssembler() {
-		items = new ItemStack[12];
+		items = new ItemStack[5];
 	}
 
 	@Override
@@ -65,7 +69,6 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 	@Override
 	public ItemStack getStackInSlotOnClosing(int i) {
 		ItemStack item = getStackInSlot(i);
-		// setInventorySlotContents(i, null);
 		setInventorySlotContents(i, item);
 		return item;
 	}
@@ -159,38 +162,79 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		item[2] = getStackInSlot(2);
 		item[3] = getStackInSlot(3);
 		item[4] = getStackInSlot(4);
-		String[] effects = new String[4];
+		String effects = "";
+		ArrayList<String> totalEffects = new ArrayList<String>();
+		for (int i = 1; i < item.length; i++) {
+			if (item[i] != null) {
+				if (item[i].getItem() instanceof ItemCircuit) {
+					ItemCircuit circuit = (ItemCircuit) item[i].getItem();
 
-		
-		
-		if(item[1] !=null && item[1].stackTagCompound!=null){
-			effects[0] = NBTHelper.getString(item[1], "ETEffect");
-		}
-		
-		if(item[2] !=null && item[2].stackTagCompound!=null){
-			effects[1] = NBTHelper.getString(item[2], "ETEffect");
-		}
-		
-		if(item[3] !=null && item[3].stackTagCompound!=null){
-			effects[2] = NBTHelper.getString(item[3], "ETEffect");
-		}
-		if(item[4] !=null && item[4].stackTagCompound!=null){
-			effects[3] = NBTHelper.getString(item[4], "ETEffect");
-		}
-		
-		if(item[0]!=null){
-			ItemStack result = getStackInSlot(0);
-			result.stackTagCompound = null;
-			for(int i = 0; i < effects.length; i ++){
-				if(effects[i]!=null){
-					NBTHelper.setString(result, "ETEffect", NBTHelper.getString(result, "ETEffect") + "|" + effects[i]);
-				}	
+					totalEffects.add(circuit.getEffect());
+
+					if (totalEffects.contains("earth")) {
+						if (totalEffects.contains("empty")) {
+							totalEffects.remove("empty");
+							totalEffects.remove("earth");
+							totalEffects.add("step");
+						}
+						if (totalEffects.contains("advancedEmpty") && totalEffects.contains("air")) {
+							totalEffects.remove("advancedEmpty");
+							totalEffects.remove("air");
+							totalEffects.remove("earth");
+							totalEffects.add("jump");
+						}
+						if (totalEffects.contains("air") && !totalEffects.contains("advancedEmpty")) {
+							totalEffects.remove("air");
+							totalEffects.remove("earth");
+							totalEffects.add("haste");
+						}
+						if (totalEffects.contains("water")) {
+							if (totalEffects.contains("advancedLife")) {
+								totalEffects.remove("water");
+								totalEffects.remove("advancedLife");
+								totalEffects.add("growth");
+							}
+						}
+					}
+					
+
+					if (totalEffects.contains("air")) {
+						if (totalEffects.contains("water")) {
+							totalEffects.remove("air");
+							totalEffects.remove("water");
+							totalEffects.add("respiratory");
+						}
+					}
+
+					if (totalEffects.contains("fire") && totalEffects.contains("advancedLava")) {
+						totalEffects.remove("fire");
+						totalEffects.remove("advancedLava");
+						totalEffects.add("Scorched");
+					}
+					if (totalEffects.contains("water") && totalEffects.contains("advancedIce")) {
+						totalEffects.remove("water");
+						totalEffects.remove("advancedIce");
+						totalEffects.add("Freezing");
+					}
+
+				}
 			}
-			setInventorySlotContents(0, result);
-			PacketHandler.INSTANCE.sendToServer(new MessageTrinketAssembler(xCoord, yCoord, zCoord));
-			
 		}
-		
+
+		if (item[0] != null) {
+			ItemStack result = item[0].copy();
+			NBTHelper.setString(result, "ETEffect", totalEffects.toString());
+			setInventorySlotContents(0, result);
+			decrStackSize(1, 1);
+			decrStackSize(2, 1);
+			decrStackSize(3, 1);
+			decrStackSize(4, 1);
+
+			// PacketHandler.INSTANCE.sendToServer(new
+			// MessageTrinketAssembler(xCoord, yCoord, zCoord));
+			return true;
+		}
+
 		return false;
 	}
 

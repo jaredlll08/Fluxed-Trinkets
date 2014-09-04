@@ -12,7 +12,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class ItemBeltJump extends ModBelt {
 
 	public ItemBeltJump(int maxCapacity, int usage) {
-		super(maxCapacity, usage);
+		super(maxCapacity);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 

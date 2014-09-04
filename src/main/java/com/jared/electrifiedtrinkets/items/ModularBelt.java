@@ -2,129 +2,237 @@ package com.jared.electrifiedtrinkets.items;
 
 import java.util.List;
 
-import com.jared.electrifiedtrinkets.util.NBTHelper;
-import com.jared.electrifiedtrinkets.util.StringUtils;
-
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
 import baubles.api.IBauble;
-import cofh.api.energy.IEnergyContainerItem;
 
-public class ModularBelt extends Item implements IBauble, IEnergyContainerItem {
+import com.jared.electrifiedtrinkets.items.equipment.ModBelt;
+import com.jared.electrifiedtrinkets.util.EffectHelper;
+import com.jared.electrifiedtrinkets.util.NBTHelper;
 
-	private int maxCapacity;
-	private int baseUsage;
-	private int usageModifier = 0;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-	public ModularBelt(int maxCapacity, int usage) {
+public class ModularBelt extends ModBelt implements IBauble {
+
+	private ItemStack stack;
+
+	public ModularBelt() {
+		super(25000);
 		this.setMaxStackSize(1);
-		this.maxCapacity = maxCapacity;
-		this.baseUsage = usage;
-	}
-
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-
-		if (StringUtils.isShiftKeyDown()) {
-			list.add(StringUtils.getChargeText(NBTHelper.getInt(stack, "energy"), maxCapacity));
-			list.add(StringUtils.getEnergyUsageText(baseUsage*usageModifier));
-			if (NBTHelper.getString(stack, "ETEffect") == "air") {
-				usageModifier+=20;
-				list.add(StringUtils.GRAY + "-Atmospheric");
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "ground") {
-
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "") {
-
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "") {
-
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "") {
-
-			}
-		} else {
-			list.add(StringUtils.getShiftText());
+		MinecraftForge.EVENT_BUS.register(this);
 		}
-
-	}
-
-	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
-		if (par1ItemStack.stackTagCompound == null)
-			NBTHelper.setBoolean(par1ItemStack, "hasNBT", true);
-	}
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
 		return BaubleType.BELT;
 	}
 
-	@Override
-	public int receiveEnergy(ItemStack container, int maxReceive, boolean simulate) {
-		if (container.stackTagCompound == null) {
-			container.stackTagCompound = new NBTTagCompound();
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		int usage = 0;
+
+		if (NBTHelper.getString(stack, "ETEffect") != "" && NBTHelper.getString(stack, "ETEffect") != null) {
+			String effects = NBTHelper.getString(stack, "ETEffect");
+
+			if (effects.contains("air"))
+				usage += 10;
+			if (effects.contains("water"))
+				usage += 10;
+			if (effects.contains("earth"))
+				usage += 25;
+			if (effects.contains("fire"))
+				usage += 40;
+
+			if (effects.contains("advancedIce"))
+				usage += 30;
+			if (effects.contains("advancedLava"))
+				usage += 30;
+			if (effects.contains("advancedLife"))
+				usage += 30;
+			if (effects.contains("advancedLightning"))
+				usage += 30;
+
+			if (effects.contains("haste"))
+				usage += 20;
+			if (effects.contains("step"))
+				usage += 10;
+			if (effects.contains("jump"))
+				usage += 15;
+			if (effects.contains("respiratory"))
+				usage += 10;
+			if(effects.contains("growth"))
+				usage +=10;
+
+			this.setUsage(usage);
+
+			super.addInformation(stack, player, list, par4, effects);
+
 		}
-		int energy = container.stackTagCompound.getInteger("energy");
-		int energyReceived = Math.min(maxCapacity - energy, Math.min(100, maxReceive));
-		if (!simulate) {
-			energy += energyReceived;
-			container.stackTagCompound.setInteger("energy", energy);
-		}
-		return energyReceived;
-	}
 
-	private int getDamageFromEnergy(NBTTagCompound tag, int max) {
-		return ((int) (Math.abs(((float) tag.getInteger("energy") / maxCapacity) - 1) * max) + 1);
-	}
-
-	@Override
-	public int extractEnergy(ItemStack container, int maxExtract, boolean simulate) {
-		if (container == null || container.getTagCompound() == null)
-			return 0;
-
-		int available = container.stackTagCompound.getInteger("energy");
-		int removed;
-		if (maxExtract < available) {
-			if (!simulate)
-				container.stackTagCompound.setInteger("energy", available - maxExtract);
-			removed = maxExtract;
-		} else {
-			if (!simulate)
-				container.stackTagCompound.setInteger("energy", 0);
-			removed = available;
-		}
-		if (!simulate)
-			container.setItemDamage(getDamageFromEnergy(container.stackTagCompound, container.getMaxDamage()));
-
-		return removed;
-	}
-
-	@Override
-	public int getEnergyStored(ItemStack container) {
-		if (container == null || container.stackTagCompound == null || !container.stackTagCompound.hasKey("energy"))
-			return 0;
-		return container.stackTagCompound.getInteger("energy");
-	}
-
-	@Override
-	public int getMaxEnergyStored(ItemStack container) {
-		return maxCapacity;
 	}
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-		if(NBTHelper.getString(itemstack, "ETEffect")=="air"){
-			if(!player.onGround && !player.isInWater() && !player.isRiding() && player.moveForward>0 && !player.isInsideOfMaterial(Material.lava) && !player.isInsideOfMaterial(Material.water)){
-				player.moveFlying(0F, 1F,0.05F);
+		stack = itemstack;
+		int energy = NBTHelper.getInt(itemstack, "energy");
+		if (player instanceof EntityPlayer) {
+			EntityPlayer play = (EntityPlayer) player;
+			double x = play.posX;
+			double y = play.posY;
+			double z = play.posZ;
+
+			String effects = NBTHelper.getString(itemstack, "ETEffect");
+			if (energy > 0) {
+
+				if (effects.contains("haste")) {
+					if ((play.onGround || play.capabilities.isFlying) && play.moveForward > 0F) {
+						play.moveFlying(0F, 1F, play.capabilities.isFlying ? 0.050F : 0.07F);
+						energy -= 20;
+					}
+				}
+				if (effects.contains("respiratory")) {
+					if(play.isInWater()){
+						play.setAir(0);
+						energy -=5;
+					}
+				}
+				if (effects.contains("step")) {
+						if(play.moveForward > 0F){
+							energy -=5;
+							play.stepHeight=1F;
+						}
+				}
+
+				if (effects.contains("air")) {
+					if (!play.onGround && play.moveForward > 0F && !play.isInWater() && !play.isInsideOfMaterial(Material.web) && !play.isInsideOfMaterial(Material.lava))
+						play.moveFlying(0F, 1F, play.capabilities.isFlying ? 0.02F : 0.02F * 2);
+					energy -= 10;
+				}
+				if (effects.contains("fire")) {
+					if (play.isBurning()) {
+						play.extinguish();
+						EffectHelper.setFireImmune(play, true);
+						if (play.worldObj.rand.nextInt(100) == 0) {
+							EffectHelper.setFireImmune(play, true);
+
+						}
+						energy -= 40;
+					}
+				}
+				if (effects.contains("water")) {
+					if (play.isBurning()) {
+						play.extinguish();
+					}
+					for (int rangeX = -5; rangeX < 5; rangeX++) {
+						for (int rangeY = -5; rangeY < 5; rangeY++) {
+							for (int rangeZ = -5; rangeZ < 5; rangeZ++) {
+								if (play.worldObj.getBlock((int) x + rangeX, (int) y + rangeY, (int) z + rangeZ) == Blocks.fire) {
+									play.worldObj.setBlockToAir((int) x + rangeX, (int) y + rangeY, (int) z + rangeZ);
+
+									energy -= 10;
+								}
+							}
+						}
+					}
+				}
+				if (effects.contains("earth")) {
+					if (y < 32) {
+						if (play.worldObj.rand.nextInt(600) == 0) {
+							play.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
+							play.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 400, 1));
+						}
+					}
+				}
+
+				if (effects.contains("advancedIce")) {
+
+					List<EntityCreature> entities = play.worldObj.getEntitiesWithinAABB(EntityCreature.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
+					for (EntityCreature entity : entities) {
+						if (!player.worldObj.isRemote) {
+							if (!entity.isPotionActive(Potion.weakness)) {
+
+								entity.addPotionEffect(new PotionEffect(Potion.weakness.id, 400, 1));
+								energy -= 30;
+							}
+						}
+					}
+					play.removePotionEffect(Potion.weakness.id);
+				}
+
+				if (effects.contains("advancedLava")) {
+
+					List<EntityCreature> entities = play.worldObj.getEntitiesWithinAABB(EntityCreature.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
+					for (EntityCreature entity : entities) {
+						if (!player.worldObj.isRemote) {
+							entity.setFire(80);
+							energy -= 30;
+						}
+					}
+					play.removePotionEffect(Potion.weakness.id);
+				}
+
+				if (effects.contains("advancedLife")) {
+					List<EntityTameable> entities = play.worldObj.getEntitiesWithinAABB(EntityTameable.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
+					for (EntityTameable entity : entities) {
+						if (!player.worldObj.isRemote) {
+							if(play.worldObj.rand.nextInt(60)==0 && entity.isTamed()){
+							entity.heal(1);
+							energy -= 30;
+						}
+					}
+					play.removePotionEffect(Potion.weakness.id);
+				}
+				if (effects.contains("advancedLightning")) {
+
+					List<EntityLightningBolt> bolts = play.worldObj.getEntitiesWithinAABB(EntityLightningBolt.class, AxisAlignedBB.getBoundingBox(x - 48, y - 48, z - 48, x + 48, y + 48, z + 48));
+					for (EntityLightningBolt bolt : bolts) {
+						if (!player.worldObj.isRemote) {
+							play.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1, true));
+							play.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 1, true));
+							energy -= 30;
+						}
+					}
+				}
+
+			}
+			if (energy < -1) {
+				energy = 0;
+				if (effects.contains("fire")) {
+					EffectHelper.setFireImmune(play, false);
+				}
+				if (effects.contains("step")) {
+					play.stepHeight = 0.50001F;
+				}
+			}
+			NBTHelper.setInteger(itemstack, "energy", energy);
+		}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerJump(LivingJumpEvent event) {
+		String effects = NBTHelper.getString(stack, "ETEffect");
+		if (event.entityLiving instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			ItemStack belt = BaublesApi.getBaubles(player).getStackInSlot(3);
+
+			if (effects.contains("jump") && NBTHelper.getInt(stack, "energy")>0) {
+				player.motionY += 0.2;
+				player.fallDistance = -1;
+				NBTHelper.setInteger(stack, "energy", NBTHelper.getInt(stack, "energy")-30);
 			}
 		}
 	}
@@ -132,27 +240,39 @@ public class ModularBelt extends Item implements IBauble, IEnergyContainerItem {
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		
+
 	}
 
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-		
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		if (effects.contains("advancedLightning")) {
+			player.removePotionEffect(Potion.damageBoost.id);
+		}
+		if (effects.contains("step")) {
+			player.stepHeight = 0.50001F;
+		}
 	}
 
 	@Override
 	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
-		if(NBTHelper.getBoolean(itemstack, "equipable")){
-			return true;
-		}
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-		if(NBTHelper.getBoolean(itemstack, "unEquipable")){
-			return true;
+		return true;
+	}
+
+	private int countEffects(ItemStack itemstack, String keyValue) {
+		int index = NBTHelper.getString(itemstack, "ETEffect").indexOf(keyValue);
+		int count = 0;
+		while (index != -1) {
+			count++;
+			keyValue = keyValue.substring(index + 1);
+			index = keyValue.indexOf(keyValue);
 		}
-		return false;
+		return count;
 	}
 
 }

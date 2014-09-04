@@ -10,7 +10,7 @@ import com.jared.electrifiedtrinkets.util.NBTHelper;
 public class ItemBeltSpeed extends ModBelt {
 
 	public ItemBeltSpeed(int maxCapacity, int usage) {
-		super(maxCapacity, usage);
+		super(maxCapacity);
 	}
 
 	@Override

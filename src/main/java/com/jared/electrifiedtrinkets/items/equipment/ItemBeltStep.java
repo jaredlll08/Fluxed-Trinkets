@@ -14,7 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class ItemBeltStep extends ModBelt {
 
 	public ItemBeltStep(int maxCapacity, int usage) {
-		super(maxCapacity, usage);
+		super(maxCapacity);
 	}
 
 	@Override

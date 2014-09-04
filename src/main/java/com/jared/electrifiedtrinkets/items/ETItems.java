@@ -74,6 +74,10 @@ public class ETItems {
 	public static ItemStack[] addons = new ItemStack[9];
 
 	public static Item manual = new ItemManual();
+	
+	public static Item modularBelt = new ModularBelt();
+	public static Item modularAmulet= new ModularAmulet();
+	
 
 	private static void registerItems() {
 		addons[0] = new ItemStack(Items.sugar, 1, OreDictionary.WILDCARD_VALUE);
@@ -103,27 +107,19 @@ public class ETItems {
 		registerItem(solderingIron, "Soldering Iron", "Soldering_Iron");
 		registerItem(basicBattery, "Basic Battery", "Battery_Basic");
 
-		
-
-		
-
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
 
-		registerItem(beltEmpty, "Empty Belt", "Belt_Empty");
-		registerItem(speedBelt, "Speed Belt", "Belt_Speed");
-		registerItem(beltFire, "Fire Belt", "Belt_Fire");
-		registerItem(beltIce, "Ice Belt", "Belt_Ice");
-		registerItem(beltJump, "Jumping Belt", "Belt_Jump");
-		registerItem(beltStep, "Stepping Belt", "Belt_Step");
+//		registerItem(beltEmpty, "Empty Belt", "Belt_Empty");
 
-		registerItem(amuletEmpty, "Empty Amulet", "Amulet_Empty");
-		registerItem(amuletRespiratory, "Respiratory Amulet", "Amulet_Respiratory");
+//		registerItem(amuletEmpty, "Empty Amulet", "Amulet_Empty");
 
 		registerItem(ringEmpty, "Empty Ring", "Ring_Blank");
-		registerItem(ringMiningSpeed, "Mining Ring", "Ring_Mining_Speed");
-		registerItem(ringFarming, "Farmers Ring", "Ring_Farming");
 		
 		registerItem(manual, "Electricians Manual", "Electricians_Manual");
+		
+		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
+		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
+		
 	}
 
 	private static void registerItem(Item item, String name, String key) {

@@ -14,32 +14,27 @@ import com.jared.electrifiedtrinkets.util.StringUtils;
 
 public class ItemCircuit extends Item {
 	String type;
+	String effect;
 	public ItemCircuit(String type) {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.type = type;
+		this.effect = type;
 	}
 
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5)
-	{
+	public String getEffect() {
+		return effect;
+	}
+
+	public void setEffect(String effect) {
+		this.effect = effect;
+	}
+
+	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
 		NBTHelper.setString(stack, "ETEffect", type);
 	}
+
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-			if (NBTHelper.getString(stack, "ETEffect") == "air") {
-				list.add(StringUtils.GRAY + "-Air");
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "ground") {
-
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "") {
-
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "") {
-
-			}
-			if (NBTHelper.getString(stack, "ETEffect") == "") {
-
-			}
-
+		list.add(NBTHelper.getString(stack, "ETEffect"));
 	}
 
 }
