@@ -28,12 +28,8 @@ public class ItemCircuit extends Item {
 		this.effect = effect;
 	}
 
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
-		NBTHelper.setString(stack, "ETEffect", type);
-	}
-
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		list.add(NBTHelper.getString(stack, "ETEffect"));
+		list.add(getEffect());
 	}
 
 }

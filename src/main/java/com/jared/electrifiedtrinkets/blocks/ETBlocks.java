@@ -20,7 +20,6 @@ public class ETBlocks {
 	private static void registerBlocks() {
 		registerBlock(solderingStation, "Soldering Station", "Soldering_Station");
 		registerBlock(trinketAssembler, "Trinket Assembler", "Trinket_Assembler");
-		
 	}
 
 	private static void registerBlock(Block block, String name, String key) {

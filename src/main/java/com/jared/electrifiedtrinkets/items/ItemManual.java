@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.jared.electrifiedtrinkets.proxy.ClientProxy;
 import com.jared.electrifiedtrinkets.util.GuiHandler;
 
 public class ItemManual extends Item {
@@ -16,7 +17,7 @@ public class ItemManual extends Item {
 
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		if(!world.isRemote){
-			GuiHandler.openManual();
+			ClientProxy.openManual();
 		}
 		
 		return stack;

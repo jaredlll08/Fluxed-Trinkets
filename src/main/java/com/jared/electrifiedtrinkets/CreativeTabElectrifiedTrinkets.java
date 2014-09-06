@@ -5,11 +5,14 @@ import net.minecraft.item.Item;
 
 import com.jared.electrifiedtrinkets.items.ETItems;
 
-public class CreativeTabElectrifiedTrinkets extends CreativeTabs{
+public class CreativeTabElectrifiedTrinkets extends CreativeTabs {
 
 	public CreativeTabElectrifiedTrinkets() {
 		super("Electrified Trinkets");
+		
 	}
+
+
 
 	@Override
 	public Item getTabIconItem() {

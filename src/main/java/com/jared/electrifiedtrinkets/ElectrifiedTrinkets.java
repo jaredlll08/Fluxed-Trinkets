@@ -1,5 +1,6 @@
 package com.jared.electrifiedtrinkets;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.jared.electrifiedtrinkets.blocks.ETBlocks;
@@ -20,7 +21,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = ModInfo.modid, name = ModInfo.name, version = ModInfo.version, dependencies = "required-after:Baubles;")
+@Mod(modid = ModInfo.modid, name = ModInfo.name, version = ModInfo.version, dependencies = "required-after:Baubles;required-after:ThermalFoundation;required-after:CoFHCore")
 public class ElectrifiedTrinkets {
 
 	@Instance("electrifiedtrinkets")
@@ -37,7 +38,6 @@ public class ElectrifiedTrinkets {
 		
 
 		proxy.registerRenderers();
-
 	}
 
 	@EventHandler

@@ -16,9 +16,11 @@ import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GuiHandler implements IGuiHandler {
-
+	
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(ElectrifiedTrinkets.instance, this);
 	}
@@ -65,9 +67,5 @@ public class GuiHandler implements IGuiHandler {
 		}
 
 		return null;
-	}
-
-	public static void openManual() {
-		Minecraft.getMinecraft().displayGuiScreen(new GuiEManual());
 	}
 }

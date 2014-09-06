@@ -93,7 +93,7 @@ public class ETItems {
 	}
 
 	private static void registerCircuit(Item item, String name, String key) {
-		item.setUnlocalizedName(key).setTextureName(ModInfo.modid + ":/Circuits/" + key).setCreativeTab(tab);
+		item.setUnlocalizedName(key).setTextureName(ModInfo.modid + ":" + key).setCreativeTab(tab);
 		GameRegistry.registerItem(item, key);
 	}
 	

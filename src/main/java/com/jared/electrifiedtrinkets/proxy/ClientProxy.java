@@ -1,7 +1,10 @@
 package com.jared.electrifiedtrinkets.proxy;
 
+import net.minecraft.client.Minecraft;
+
 import com.jared.electrifiedtrinkets.client.render.block.RenderSolderingStation;
 import com.jared.electrifiedtrinkets.client.render.block.RenderTrinketAssembler;
+import com.jared.electrifiedtrinkets.client.render.gui.GuiEManual;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntitySolderingStation;
 import com.jared.electrifiedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
@@ -22,5 +25,9 @@ public class ClientProxy extends CommonProxy {
 //		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySolderingStation.class, solderingStation);
 		ClientRegistry.registerTileEntity(TileEntitySolderingStation.class, "solderingStation", solderingStation);
 		ClientRegistry.registerTileEntity(TileEntityTrinketAssembler.class, "trinketAssembler", trinketAssembler);
+	}
+	
+	public static void openManual() {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiEManual());
 	}
 }
