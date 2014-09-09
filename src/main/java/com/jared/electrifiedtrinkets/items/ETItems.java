@@ -76,8 +76,6 @@ public class ETItems {
 
 		registerItem(leadWire, "Lead Wire", "Lead_Wire");
 
-
-		
 		registerItem(manual, "Electricians Manual", "Electricians_Manual");
 		
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");

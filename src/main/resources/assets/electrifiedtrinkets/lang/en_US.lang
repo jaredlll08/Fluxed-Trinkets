@@ -1,30 +1,29 @@
 item.Soldering_Iron.name=Soldering Iron
 item.Battery_Basic.name=Mundane Battery
+
 item.Circuit.name=Circuit
-item.Circuit_Speed.name=Hasty Circuit
-item.Circuit_Jump.name=Sprung Circuit
-item.Circuit_Step.name=Pacing Circuit
+item.Circuit_Fire.name=Scorching Circuit
+item.Circuit_Earth.name=Terrestrial Circuit
+item.Circuit_Air.name=Atmospheric Circuit
+item.Circuit_Water.name=Streaming Circuit
+
 item.Circuit_Advanced.name=Advanced Circuit
-item.Circuit_Advanced_Fire.name=Advanced Scorched Circuit
-item.Circuit_Advanced_Ice.name=Advanced Chilling Circuit
+item.Circuit_Advanced_Ice.name=Chilling Circuit
+item.Circuit_Advanced_Lava.name=Blazing Circuit
+item.Circuit_Advanced_Life=Mending Circuit
+item.Circuit_Advanced_Lightning=Thundering Circuit
+
 item.Copper_Ingot.name=Copper Ingot
 item.Copper_Nugget.name=Copper Nugget
 item.Lead_Ingot.name=Lead Ingot
 item.Lead_Wire.name=Lead Wire
 item.Belt_Empty.name=Empty Belt
-item.Belt_Speed.name=Hasty Belt
-item.Belt_Fire.name=Scorched Belt
-item.Belt_Ice.name=Chilling Belt
-item.Belt_Jump.name=Sprung Belt
-item.Belt_Step.name=Pacing Belt
 item.Amulet_Empty.name=Empty Necklace
-item.Amulet_Respiratory.name=Respiratory Necklace
 item.Ring_Blank.name=Empty Ring
-item.Ring_Mining_Speed.name=Excavation Ring
-item.Ring_Farming.name=Farmers Ring
+item.Electricians_Manual.name=Electricians Manual
 tile.Soldering Station.name=Soldering Station
-tile.Copper Ore.name=Copper Ore
-tile.Lead Ore.name=Lead Ore
+tile.Trinket Assembler.name=Trinket Assembler
+
 itemGroup.Electrified Trinkets=Electrified Trinkets
 et.tooltip.charge=Charge
 et.tooltip.energyUsage=Energy usage
@@ -44,64 +43,7 @@ et.manual.intro.3=This mod uses a very intricate crafting system but dont worry,
 
 et.manual.trinkets.0=Baubles this mod adds:
 et.manual.=
-et.manual.trinkets.1=Amulets
-et.manual.trinkets.2=Rings
-et.manual.trinkets.3=Belts
-
-et.manual.amulets.0=Empty Amulet
-et.manual.amulets.1=Respiratory Amulet
-
-et.manual.belt.0=Empty Belt
-et.manual.belt.1=Hasty Belt
-et.manual.belt.2=Scorched Belt
-et.manual.belt.3=Chilling Belt
-et.manual.belt.4=Sprung Belt
-et.manual.belt.5=Pacing Belt
-
-et.manual.ring.0=Empty Ring
-et.manual.ring.1=Excavation Ring
-et.manual.ring.2=Farmers Ring
-
-et.manual.amulet.empty.info=The Empty Amulet is used as a crafting reagent for other Amulets.
-et.manual.amulet.empty.recipe=The recipe for the Empty Amulet is this:
-
-et.manual.amulet.respiratory.info=The Respiratory Amulet lets you breath under water by supplying you a constant flow of air.
-et.manual.amulet.respiratory.recipe=The recipe for the Respiratory Amulet is this:
-
-
-et.manual.category.circuits.0=Circuits used in crafting Trinkets
-et.manual.category.circuits.1=Basic
-et.manual.category.circuits.2=Advanced
-
-
-et.manual.belt.empty.info=The Empty Belt is used as a crafting reagent for other Belts.
-et.manual.belt.empty.recipe=The recipe for the Empty Belt is this:
-
-et.manual.belt.hasty.info=The Hasty Belt gives the user a speed boost.
-et.manual.belt.hasty.recipe=The recipe for the Hasty Belt is this:
-
-et.manual.belt.scorched.info=The Scorched Belt makes the user Fire Resistant.
-et.manual.belt.scorched.recipe=The recipe for the Scorched Belt is this:
-
-et.manual.belt.chilling.info=The Chilling Belt freezes water beneath the user.
-et.manual.belt.chilling.recipe=The recipe for the Chilling Belt is this:
-
-et.manual.belt.sprung.info=The Sprung Belt gives the user a jump boost.
-et.manual.belt.sprung.recipe=The recipe for the Sprung Belt is this:
-
-et.manual.belt.pacing.info=The Pacing Belt allows the user to walk up one block high structures.
-et.manual.belt.pacing.recipe=The recipe for the Pacing Belt is this:
-
-
-
-et.manual.ring.empty.info=The Empty Ring is used as a crafting reagent for other Rings.
-et.manual.ring.empty.recipe=The recipe for the Empty Ring is this:
-
-et.manual.ring.mining.info=The Excavation Ring gives the user the Haste buff, allowing them to mine faster.
-et.manual.ring.mining.recipe=The recipe for the Excavation Ring is this:
-
-et.manual.ring.farming.info=The Farming Ring makes bonemeal 3x effective, if the user holds shift and bone meals a plant it will bonemeal all plants in a 3x3 square.
-et.manual.ring.farming.recipe=The recipe for the Farming Ring is this:
+et.manual.trinkets.1=The trinkets in Electrified Trinkets are completely modular!
 
 et.manual.circuits.0=Empty Circuit
 et.manual.circuits.1=Terrestrial Circuit
@@ -115,11 +57,17 @@ et.manual.circuits.advanced.2=Blazing Circuit
 et.manual.circuits.advanced.3=Mending Circuit
 et.manual.circuits.advanced.4=Thundering Circuit
 
-et.manual.circuits.top.0=Basic Circuits
-et.manual.circuits.top.1=Advanced Circuits
+et.manual.circuits.category.0=Circuits this mod adds:
+et.manual.circuits.category.1=Basic Circuits
+et.manual.circuits.category.2=Advanced Circuits
+et.manual.circuits.category.3=Soldering Station
 
-et.manual.circuit.basic.empty.info=The Empty Circuit is used as a crafting reagent for other Circuits.
-et.manual.circuit.basic.empty.recipe=The recipe for the Empty Circuit is this in a Soldering Station:
+et.manual.soldering.station.info=The Soldering Station is used to craft Circuit
+
+et.manual.circuits.advanced.0.info=The Advanced Circuit is used as a crafting reagent for other circuits
+
+et.manual.circuit.basic.0.info=The Empty Circuit is used as a crafting reagent for other Circuits.
+et.manual.circuit.basic.0.recipe=The recipe for the Empty Circuit is this in a Soldering Station:
 
 et.manual.circuit.basic.terrestrial.info=The Terrestrial Circuit is used as a crafting reagent for Trinkets.
 et.manual.circuit.basic.terrestrial.recipe=The recipe for the Terrestrial Circuit is this in a Soldering Station:

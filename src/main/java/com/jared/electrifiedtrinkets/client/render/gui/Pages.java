@@ -1,5 +1,6 @@
 package com.jared.electrifiedtrinkets.client.render.gui;
 
+import net.minecraft.client.gui.Gui;
 
 public class Pages {
 
@@ -21,20 +22,20 @@ public class Pages {
 
 	public static void TrinketsChapters() {
 
-		GuiEManual.addText("trinkets.0");
 		GuiEManual.addChapter("", -1);
 		GuiEManual.addChapter("", -2);
-		GuiEManual.addText("The trinkets in Electrified Trinkets are completely modular!");
+		GuiEManual.addText("trinkets.1");
 
 	}
 
 	public static void CircuitsChapters() {
-		GuiEManual.addText("category.circuits.0");
+		GuiEManual.addText("circuits.category.0");
 		GuiEManual.addChapter("", -3);
 		GuiEManual.addChapter("", -4);
 
-		GuiEManual.addChapter("category.circuits.1", 17);
-		GuiEManual.addChapter("category.circuits.2", 18);
+		GuiEManual.addChapter("circuits.category.1", 17);
+		GuiEManual.addChapter("circuits.category.2", 18);
+		GuiEManual.addChapter("circuits.category.3", 29);
 
 	}
 
@@ -49,18 +50,25 @@ public class Pages {
 	}
 
 	public static void BasicCircuits() {
-		GuiEManual.addText("circuits.top.0");
+		GuiEManual.addText("circuits.category.1");
 		GuiEManual.addChapter("", -4);
 		GuiEManual.addChapter("", -5);
 		GuiEManual.addChapter("circuits.0", 19);
 		GuiEManual.addChapter("circuits.1", 20);
-		GuiEManual.addChapter("circuits.2", 12);
+		GuiEManual.addChapter("circuits.2", 21);
 		GuiEManual.addChapter("circuits.3", 22);
 		GuiEManual.addChapter("circuits.4", 23);
 	}
 
+	public static void CircuitEmpty() {
+		GuiEManual.addText("circuits.0");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("circuit.basic.0.info");
+	}
+
 	public static void AdvancedCircuits() {
-		GuiEManual.addText("circuits.top.1");
+		GuiEManual.addText("circuits.category.2");
 		GuiEManual.addChapter("", -6);
 		GuiEManual.addChapter("", -7);
 		GuiEManual.addChapter("circuits.advanced.0", 24);
@@ -89,5 +97,18 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("ring.empty.recipe");
 	}
+	
+	public static void SolderingStation(){
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("soldering.station.info");
+	}
 
+	public static void AdvancedCircuit(){
+		GuiEManual.addText("circuits.advanced.0");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("circuits.advanced.0.info");
+		
+	}
 }

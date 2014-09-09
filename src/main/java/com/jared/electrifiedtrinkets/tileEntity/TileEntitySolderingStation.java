@@ -495,11 +495,11 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 		/*
 		 * Life Circuit
 		 */
-		if (item[0].getItem() == ETItems.circuitAir) {
-			if (item[1].getItem() == Items.redstone) {
-				if (item[2].getItem() == Item.getItemFromBlock(Blocks.glowstone)) {
-					if (item[3].getItem() == Item.getItemFromBlock(Blocks.iron_bars)) {
-						if (item[4].getItem() == Items.sugar) {
+		if (item[0].getItem() == ETItems.circuitEarth) {
+			if (item[1].getItem() == Items.glowstone_dust) {
+				if (item[2].getItem() == new ItemStack(Items.redstone).getItem()) {
+					if (item[3].getItem() == new ItemStack(Blocks.iron_bars).getItem()) {
+						if (item[4].getItem() == ETItems.advancedCircuitLava) {
 							decrStackSize(3, 1);
 							decrStackSize(4, 1);
 							decrStackSize(5, 1);
@@ -520,6 +520,7 @@ public class TileEntitySolderingStation extends TileEntity implements ISidedInve
 				}
 			}
 		}
+
 
 		/*
 		 * Lava Circuit

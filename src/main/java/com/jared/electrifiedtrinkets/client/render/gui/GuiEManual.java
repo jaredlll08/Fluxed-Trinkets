@@ -33,7 +33,12 @@ public class GuiEManual extends GuiScreen {
 	boolean recipeBeltEmpty = false;
 	boolean recipeAmuletEmpty = false;
 	boolean recipeRingEmpty = false;
+	boolean circuitEmpty = false;
+	boolean circuitAdvancedEmpty = false;
+
 	boolean solderingEarth, solderingAir, solderingFire, solderingWater = false;
+	boolean solderingAdvancedIce, solderingAdvancedLava, solderingAdvancedLife, solderingAdvancedLightning = false;
+	boolean solderingStation = false;
 
 	static ArrayList<Object[]> chapters = new ArrayList<Object[]>();
 	static ArrayList<String> texts = new ArrayList<String>();
@@ -107,12 +112,20 @@ public class GuiEManual extends GuiScreen {
 		recipeBeltEmpty = false;
 
 		renderToolTip = false;
-		
+
 		solderingAir = false;
 		solderingEarth = false;
 		solderingFire = false;
 		solderingWater = false;
-		
+		solderingAdvancedIce = false;
+		solderingAdvancedLava = false;
+		solderingAdvancedLife = false;
+		solderingAdvancedLightning = false;
+
+		circuitAdvancedEmpty = false;
+		circuitEmpty = false;
+
+		solderingStation = false;
 
 		Pages.mainPage();
 
@@ -134,10 +147,10 @@ public class GuiEManual extends GuiScreen {
 		this.par2 = par2;
 		this.par3 = par3;
 
-		if(mc.renderEngine!=null){
-			mc.renderEngine.bindTexture(texture);	
+		if (mc.renderEngine != null) {
+			mc.renderEngine.bindTexture(texture);
 		}
-		
+
 		drawTexturedModalRect(left, top, 0, 0, guiWidth, guiHeight);
 		super.drawScreen(par1, par2, par3);
 		buttonList.clear();
@@ -191,7 +204,6 @@ public class GuiEManual extends GuiScreen {
 			}
 		}
 
-
 		if (recipeRingEmpty) {
 			GL11.glColor4f(1F, 1F, 1F, 1F);
 			mc.renderEngine.bindTexture(texture);
@@ -209,31 +221,79 @@ public class GuiEManual extends GuiScreen {
 			}
 		}
 
-	
+		if (circuitEmpty) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
+
+			ItemStack dustCopper = OreDictionary.getOres("dustCopper").get(0);
+			ItemStack dustsulfur = OreDictionary.getOres("dustSulfur").get(0);
+			ItemStack dustObsidian = OreDictionary.getOres("dustObsidian").get(0);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.water_bucket), left + 63, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustCopper, left + 81, top + 112);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustCopper, left + 45, top + 112);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustObsidian, left + 63, top + 130);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustsulfur, left + 45, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustObsidian, left + 45, top + 130);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustsulfur, left + 81, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustObsidian, left + 81, top + 130);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), dustCopper, left + 63, top + 112);
+
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				renderToolTip(dustsulfur, left + 45, top + 94);
+				renderToolTip(dustCopper, left + 63, top + 112);
+				renderToolTip(dustObsidian, left + 81, top + 130);
+			}
+		}
+		if (circuitAdvancedEmpty) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
+
+			ItemStack nuggetSignalum = OreDictionary.getOres("nuggetSignalum").get(0);
+			ItemStack dustsulfur = OreDictionary.getOres("dustSulfur").get(0);
+			ItemStack dustObsidian = OreDictionary.getOres("dustObsidian").get(0);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.redstone), left + 45, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), nuggetSignalum, left + 45, top + 112);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.redstone), left + 45, top + 130);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), nuggetSignalum, left + 63, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 63, top + 112);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), nuggetSignalum, left + 63, top + 130);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.redstone), left + 81, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), nuggetSignalum, left + 81, top + 112);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.redstone), left + 81, top + 130);
+
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				renderToolTip(nuggetSignalum, left + 63, top + 94);
+			}
+		}
 
 		if (solderingEarth) {
-			
-
 			GL11.glColor4f(1F, 1F, 1F, 1F);
 			mc.renderEngine.bindTexture(texture);
 			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
-
 			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
 			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
 			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
-
 			for (int i = 0; i < 7; i++) {
 				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
 			}
-			
 			for (int i = 0; i < 4; i++) {
-				drawTexturedModalRect(left + 10 + (18 * i), top + 63, 0, 180, 18, 18);
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
 			}
-			
 			for (int i = 0; i < 7; i++) {
 				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
 			}
-			
 			GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -243,26 +303,429 @@ public class GuiEManual extends GuiScreen {
 			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
 			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
 			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
-			
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.grass), left + 24, top + 10);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.obsidian), left + 24, top + 28);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.iron_ore), left + 24, top + 46);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.sapling), left + 24, top + 58);
-			
-			
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.grass), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.obsidian), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.iron_ore), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.sapling), left + 64, top + 44);
+
 			GL11.glPopMatrix();
-			
-			
+
 			RenderHelper.disableStandardItemLighting();
 			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
 			if (renderToolTip) {
 				boolean uni = fontRendererObj.getUnicodeFlag();
 				fontRendererObj.setUnicodeFlag(true);
-				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110,0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
 				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
 				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
-				drawCenteredString(fontRendererObj, stack.getDisplayName(), left+73, top+80, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Blocks.grass).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Blocks.obsidian).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Blocks.iron_ore).getDisplayName(), left + 66, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Blocks.sapling).getDisplayName(), left + 80, top + 60, 0);
 				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+		if (solderingAir) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.ghast_tear), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.leaves), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.deadbush), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.feather), left + 64, top + 44);
+
+			GL11.glPopMatrix();
+
+			RenderHelper.disableStandardItemLighting();
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+
+				drawCenteredString(fontRendererObj, new ItemStack(Items.ghast_tear).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Blocks.leaves).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Blocks.deadbush).getDisplayName(), left + 66, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Items.feather).getDisplayName(), left + 80, top + 60, 0);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+		if (solderingFire) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.lava_bucket), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.coal_block), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.log), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.flint_and_steel), left + 64, top + 44);
+
+			GL11.glPopMatrix();
+
+			RenderHelper.disableStandardItemLighting();
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+
+				drawCenteredString(fontRendererObj, new ItemStack(Items.lava_bucket).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Blocks.coal_block).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Blocks.log).getDisplayName(), left + 66, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Items.flint_and_steel).getDisplayName(), left + 20, top + 60, 0);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+		if (solderingWater) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.water_bucket), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.ice), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.waterlily), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.dye), left + 64, top + 44);
+
+			GL11.glPopMatrix();
+
+			RenderHelper.disableStandardItemLighting();
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+
+				drawCenteredString(fontRendererObj, new ItemStack(Items.water_bucket).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Blocks.ice).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Blocks.waterlily).getDisplayName(), left + 66, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Items.dye).getDisplayName(), left + 80, top + 60, 0);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+
+		if (solderingAdvancedIce) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.snow), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.potionitem, 1, 8200), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.ice), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.cake), left + 64, top + 44);
+
+			GL11.glPopMatrix();
+
+			RenderHelper.disableStandardItemLighting();
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+
+				drawCenteredString(fontRendererObj, new ItemStack(Blocks.snow).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Items.potionitem, 1, 8200).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Blocks.ice).getDisplayName(), left + 66, top + 35, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Items.cake).getDisplayName(), left + 80, top + 60, 0);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+
+		if (solderingAdvancedLava) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitFire), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.potionitem, 1, 8195), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.blaze_rod), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.blaze_powder), left + 64, top + 44);
+
+			GL11.glPopMatrix();
+
+			RenderHelper.disableStandardItemLighting();
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuitFire).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Items.potionitem, 1, 8195).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Items.blaze_rod).getDisplayName(), left + 81, top + 35, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Items.blaze_powder).getDisplayName(), left + 108, top + 60, 0);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+
+		if (solderingAdvancedLife) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuitEarth), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.speckled_melon), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.potionitem, 1, 8197), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.potionitem, 1, 8257), left + 64, top + 44);
+
+			GL11.glPopMatrix();
+
+			RenderHelper.disableStandardItemLighting();
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuitEarth).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Items.speckled_melon).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Items.potionitem, 1, 8197).getDisplayName(), left + 101, top + 35, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Items.potionitem, 1, 8257).getDisplayName(), left + 108, top + 60, 0);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+		if (solderingAdvancedLightning) {
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 23, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 63, top + 120, 0, 180, 18, 18);
+			drawTexturedModalRect(left + 103, top + 120, 0, 180, 18, 18);
+			ItemStack stack = OreDictionary.getOres("nuggetCopper").get(0);
+			for (int i = 0; i < 7; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 90, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 4; i++) {
+				drawTexturedModalRect(left + 10 + (18 * i), top + 43, 0, 180, 18, 18);
+			}
+			for (int i = 0; i < 7; i++) {
+				itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), stack, left + 11 + (18 * i), top + 91);
+			}
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.solderingIron), left + 24, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.circuit), left + 64, top + 121);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 104, top + 121);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.glowstone_dust), left + 11, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.redstone), left + 29, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.iron_bars), left + 47, top + 44);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.advancedCircuitLava), left + 64, top + 44);
+
+			GL11.glPopMatrix();
+
+			RenderHelper.disableStandardItemLighting();
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				boolean uni = fontRendererObj.getUnicodeFlag();
+				fontRendererObj.setUnicodeFlag(true);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.solderingIron).getDisplayName(), left + 33, top + 110, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.circuit).getDisplayName(), left + 73, top + 138, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(ETItems.leadWire).getDisplayName(), left + 113, top + 110, 0);
+				drawCenteredString(fontRendererObj, stack.getDisplayName(), left + 73, top + 80, 0);
+				drawCenteredString(fontRendererObj, "Addons", left + 70, top + 20, 0);
+				drawCenteredString(fontRendererObj, "Materials", left + 70, top + 70, 0);
+
+				drawCenteredString(fontRendererObj, new ItemStack(Items.glowstone_dust).getDisplayName(), left + 28, top + 35, 0);
+				drawCenteredString(fontRendererObj, new ItemStack(Items.redstone).getDisplayName(), left + 37, top + 60, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(Blocks.iron_bars).getDisplayName(), left + 75, top + 35, 0);
+				drawCenteredString(fontRendererObj, "|" + new ItemStack(ETItems.advancedCircuitLava).getDisplayName(), left + 80, top + 60, 0);
+				fontRendererObj.setUnicodeFlag(uni);
+			}
+		}
+
+		if (solderingStation) {
+
+			GL11.glColor4f(1F, 1F, 1F, 1F);
+			GL11.glPushMatrix();
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			RenderHelper.enableGUIStandardItemLighting();
+			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			mc.renderEngine.bindTexture(texture);
+			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
+
+			ItemStack invarIngot = OreDictionary.getOres("ingotInvar").get(0);
+			ItemStack invarGear = OreDictionary.getOres("gearInvar").get(0);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), invarGear, left + 45, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.crafting_table), left + 63, top + 94);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), invarGear, left + 81, top + 94);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), invarIngot, left + 45, top + 112);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(ETItems.leadWire), left + 63, top + 112);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), invarIngot, left + 81, top + 112);
+
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), invarIngot, left + 45, top + 130);
+			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), invarIngot, left + 81, top + 130);
+
+			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
+			if (renderToolTip) {
+				renderToolTip(invarIngot, left + 63, top + 94);
+				renderToolTip(invarGear, left + 45, top + 94);
 			}
 		}
 
@@ -285,8 +748,6 @@ public class GuiEManual extends GuiScreen {
 			buttonList.clear();
 			Pages.CircuitsChapters();
 			break;
-
-
 
 		case 6:
 			removeAllChapters();
@@ -312,7 +773,6 @@ public class GuiEManual extends GuiScreen {
 			removeAllChapters();
 			removeAllText();
 			Pages.BasicCircuits();
-
 			break;
 
 		case 18:
@@ -321,13 +781,69 @@ public class GuiEManual extends GuiScreen {
 			Pages.AdvancedCircuits();
 			break;
 
-		case 20:
+		case 19:
+			removeAllChapters();
+			removeAllText();
+			Pages.CircuitEmpty();
+			circuitEmpty = true;
+			break;
 
+		case 20:
 			removeAllChapters();
 			removeAllText();
 			solderingEarth = true;
 			break;
-
+		case 21:
+			removeAllChapters();
+			removeAllText();
+			solderingAir = true;
+			break;
+		case 22:
+			removeAllChapters();
+			removeAllText();
+			solderingFire = true;
+			break;
+		case 23:
+			removeAllChapters();
+			removeAllText();
+			solderingWater = true;
+			break;
+		case 24:
+			removeAllChapters();
+			removeAllText();
+			circuitAdvancedEmpty = true;
+			Pages.AdvancedCircuit();
+			break;
+		case 25:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedIce = true;
+			break;
+		case 26:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedLava = true;
+			break;
+			
+		case 27:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedLife = true;
+			break;
+		
+		case 28:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedLightning = true;
+			break;
+			
+		case 29:
+			removeAllChapters();
+			removeAllText();
+			solderingStation = true;
+			Pages.SolderingStation();
+			break;
+			
 		case 99:
 			if (renderToolTip == true) {
 				renderToolTip = false;
@@ -337,7 +853,10 @@ public class GuiEManual extends GuiScreen {
 			this.drawScreen(par1, par2, par3);
 
 			break;
+			
 		default:
+			removeAllChapters();
+			removeAllText();
 			break;
 		}
 

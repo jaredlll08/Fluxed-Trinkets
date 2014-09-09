@@ -3,6 +3,7 @@ package com.jared.electrifiedtrinkets.items;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -64,7 +65,7 @@ public class ModularBelt extends ModBelt implements IBauble {
 				usage += 10;
 			if (effects.contains("respiratory"))
 				usage += 10;
-
+			
 			this.setUsage(usage);
 
 			super.addInformation(stack, player, list, par4, effects);
@@ -116,7 +117,6 @@ public class ModularBelt extends ModBelt implements IBauble {
 						EffectHelper.setFireImmune(play, true);
 						if (play.worldObj.rand.nextInt(100) == 0) {
 							EffectHelper.setFireImmune(play, true);
-
 						}
 						energy -= 40;
 					}
