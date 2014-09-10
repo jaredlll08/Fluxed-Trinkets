@@ -15,11 +15,13 @@ public class ETBlocks {
 	
 	public static Block solderingStation = new BlockSolderingStation();
 	public static Block trinketAssembler = new BlockTrinketAssembler();
+	public static Block wirelessCharger = new BlockWirelessCharger();
 	
 	
 	private static void registerBlocks() {
 		registerBlock(solderingStation, "Soldering Station", "Soldering_Station");
 		registerBlock(trinketAssembler, "Trinket Assembler", "Trinket_Assembler");
+		registerBlock(wirelessCharger, "Wireless charger", "wireless_charger");
 	}
 
 	private static void registerBlock(Block block, String name, String key) {

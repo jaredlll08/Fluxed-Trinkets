@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -14,12 +15,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MathHelper;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 
 import com.jared.electrifiedtrinkets.items.equipment.ModBelt;
 import com.jared.electrifiedtrinkets.util.EffectHelper;
 import com.jared.electrifiedtrinkets.util.NBTHelper;
+import com.jared.electrifiedtrinkets.util.StringUtils;
 
 public class ModularBelt extends ModBelt implements IBauble {
 
@@ -85,8 +88,8 @@ public class ModularBelt extends ModBelt implements IBauble {
 			double z = play.posZ;
 
 			String effects = NBTHelper.getString(itemstack, "ETEffect");
+			
 			if (energy > 0) {
-
 				if (effects.contains("haste")) {
 					if ((play.onGround || play.capabilities.isFlying) && play.moveForward > 0F) {
 						play.moveFlying(0F, 1F, play.capabilities.isFlying ? 0.050F : 0.07F);
