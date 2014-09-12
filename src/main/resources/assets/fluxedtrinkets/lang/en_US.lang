@@ -1,0 +1,102 @@
+item.Soldering_Iron.name=Soldering Iron
+item.Battery_Basic.name=Mundane Battery
+
+item.Circuit.name=Circuit
+item.Circuit_Fire.name=Scorching Circuit
+item.Circuit_Earth.name=Terrestrial Circuit
+item.Circuit_Air.name=Atmospheric Circuit
+item.Circuit_Water.name=Streaming Circuit
+
+item.Circuit_Advanced.name=Advanced Circuit
+item.Circuit_Advanced_Ice.name=Chilling Circuit
+item.Circuit_Advanced_Lava.name=Blazing Circuit
+item.Circuit_Advanced_Life=Mending Circuit
+item.Circuit_Advanced_Lightning=Thundering Circuit
+
+item.Copper_Ingot.name=Copper Ingot
+item.Copper_Nugget.name=Copper Nugget
+item.Lead_Ingot.name=Lead Ingot
+item.Lead_Wire.name=Lead Wire
+item.Belt_Empty.name=Empty Belt
+item.Amulet_Empty.name=Empty Necklace
+item.Ring_Blank.name=Empty Ring
+item.Electricians_Manual.name=Electricians Manual
+tile.Soldering Station.name=Soldering Station
+tile.Trinket Assembler.name=Trinket Assembler
+
+itemGroup.Fluxed Trinkets=Fluxed Trinkets
+ft.tooltip.charge=Charge
+ft.tooltip.energyUsage=Energy usage
+ft.tooltip.holdShift=Hold Shift
+
+
+
+
+ft.manual.title.0=Introduction
+ft.manual.title.1=Trinkets
+ft.manual.title.2=Circuits
+
+ft.manual.intro.0=Welcome to Fluxed-Trinkets!
+ft.manual.intro.1=Fluxed-Trinkets is a mod that adds RF-Powered Baubles.
+ft.manual.intro.2=Once the Baubles have ran out of power they stop working.
+ft.manual.intro.3=This mod uses a very intricate crafting system but dont worry, this book will explain it all.
+
+ft.manual.trinkets.0=Baubles this mod adds:
+ft.manual.=
+ft.manual.trinkets.1=The trinkets in Fluxed Trinkets are completely modular!
+
+ft.manual.circuits.0=Empty Circuit
+ft.manual.circuits.1=Terrestrial Circuit
+ft.manual.circuits.2=Atmospheric Circuit
+ft.manual.circuits.3=Scorched Circuit
+ft.manual.circuits.4=Streaming Circuit
+
+ft.manual.circuits.advanced.0=Empty Advanced Circuit
+ft.manual.circuits.advanced.1=Chilling Circuit
+ft.manual.circuits.advanced.2=Blazing Circuit
+ft.manual.circuits.advanced.3=Mending Circuit
+ft.manual.circuits.advanced.4=Thundering Circuit
+
+ft.manual.circuits.category.0=Circuits this mod adds:
+ft.manual.circuits.category.1=Basic Circuits
+ft.manual.circuits.category.2=Advanced Circuits
+ft.manual.circuits.category.3=Soldering Station
+
+ft.manual.soldering.station.info=The Soldering Station is used to craft Circuit
+
+ft.manual.circuits.advanced.0.info=The Advanced Circuit is used as a crafting reagent for other circuits
+
+ft.manual.circuit.basic.0.info=The Empty Circuit is used as a crafting reagent for other Circuits.
+ft.manual.circuit.basic.0.recipe=The recipe for the Empty Circuit is this in a Soldering Station:
+
+ft.manual.circuit.basic.terrestrial.info=The Terrestrial Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.basic.terrestrial.recipe=The recipe for the Terrestrial Circuit is this in a Soldering Station:
+
+ft.manual.circuit.basic.atmospheric.info=The Atmospheric Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.basic.atmospheric.recipe=The recipe for the Atmospheric Circuit is this in a Soldering Station:
+
+ft.manual.circuit.basic.scorched.info=The Scorched Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.basic.scorched.recipe=The recipe for the Scorched Circuit is this in a Soldering Station:
+
+ft.manual.circuit.basic.streaming.info=The Streaming Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.basic.streaming.recipe=The recipe for the Streaming Circuit is this in a Soldering Station:
+
+ft.manual.circuit.advanced.empty.info=The Advanced Empty Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.advanced.empty.recipe=The recipe for the Advanced Empty Circuit is this:
+
+ft.manual.circuit.advanced.chilling.info=The Chilling Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.advanced.chilling.recipe=The recipe for the Chilling Circuit is this in a Soldering Station:
+
+ft.manual.circuit.advanced.blazing.info=The Blazing Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.advanced.blazing.recipe=The recipe for the Blazing Circuit is this in a Soldering Station:
+
+ft.manual.circuit.advanced.mending.info=The Mending Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.advanced.mending.recipe=The recipe for the Mending Circuit is this in a Soldering Station:
+
+ft.manual.circuit.advanced.thundering.info=The Thundering Circuit is used as a crafting reagent for Trinkets.
+ft.manual.circuit.advanced.thundering.recipe=The recipe for the Thundering Circuit is this in a Soldering Station:
+
+
+ft.manual.soldering.station.info=The Soldering Station is used to craft circuits.
+ft.manual.soldering.station.recipe=The recipe for the Soldering Station is this:
+

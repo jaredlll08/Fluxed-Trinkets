@@ -17,12 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.${System.getenv().BUILD_NUMBER}"
-group= "com.jared.electrifiedtrinkets" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Electrified Trinkets"
+version = "1.0"
+group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "modid"
 
 minecraft {
-    version = "1.7.10-10.13.0.1207"
+    version = "1.7.10-10.13.0.1208"
     assetDir = "eclipse/assets"
 }
 
