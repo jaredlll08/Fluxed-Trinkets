@@ -34,6 +34,7 @@ public class VersionChecker {
 			} else {
 				upToDate = false;
 				releaseVersion = inputLine;
+				System.out.println("new Fluxed Trinkets Version found!");
 			}
 
 			in.close();

@@ -24,17 +24,17 @@ public class EventHandler {
 		FMLCommonHandler.instance().bus().register(this);
 	}
 
-	@SubscribeEvent
-	public void onTick(ClientTickEvent event) {
-		if (event.phase == Phase.END && doneChecked &&Minecraft.getMinecraft().thePlayer != null && !checked) {
-			if (!VersionChecker.releaseVersion.isEmpty()) {
-				EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-				if (!VersionChecker.releaseVersion.equals(ModInfo.version)) {
-					player.addChatComponentMessage(new ChatComponentTranslation(StringUtils.LIGHT_RED + "New Fluxed Trinkets version found! [" + VersionChecker.releaseVersion + "]"));
-				}
-			}
-
-			checked = true;
-		}
-	}
+//	@SubscribeEvent
+//	public void onTick(ClientTickEvent event) {
+//		if (event.phase == Phase.END && doneChecked &&Minecraft.getMinecraft().thePlayer != null && !checked) {
+//			if (!VersionChecker.releaseVersion.isEmpty()) {
+//				EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+//				if (!VersionChecker.releaseVersion.equals(ModInfo.version)) {
+//					player.addChatComponentMessage(new ChatComponentTranslation(StringUtils.LIGHT_RED + "New Fluxed Trinkets version found! [" + VersionChecker.releaseVersion + "]"));
+//				}
+//			}
+//
+//			checked = true;
+//		}
+//	}
 }

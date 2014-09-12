@@ -843,7 +843,17 @@ public class GuiEManual extends GuiScreen {
 			solderingStation = true;
 			Pages.SolderingStation();
 			break;
-			
+		case 30:
+			removeAllChapters();
+			removeAllText();
+			Pages.SolderingIron();
+			break;
+		case 31:
+			removeAllChapters();
+			removeAllText();
+			Pages.LeadWire();;
+			break;
+				
 		case 99:
 			if (renderToolTip == true) {
 				renderToolTip = false;

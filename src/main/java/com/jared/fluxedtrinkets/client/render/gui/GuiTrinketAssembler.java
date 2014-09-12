@@ -43,7 +43,7 @@ public class GuiTrinketAssembler extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(1, guiLeft + 153, guiTop + 108, 20, 20, "✔"));
+		buttonList.add(new GuiButton(1, guiLeft + 153, guiTop + 108, 20, 20, "✓"));
 
 	}
 

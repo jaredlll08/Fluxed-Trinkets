@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -67,8 +68,6 @@ public class ModularBelt extends ModBelt implements IBauble {
 				usage += 10;
 			if (effects.contains("respiratory"))
 				usage += 10;
-			if (effects.contains("magnetism"))
-				usage += 20;
 
 			this.setUsage(usage);
 

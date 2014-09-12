@@ -1,6 +1,5 @@
 package com.jared.fluxedtrinkets.client.render.gui;
 
-
 public class Pages {
 
 	public static void mainPage() {
@@ -35,7 +34,22 @@ public class Pages {
 		GuiEManual.addChapter("circuits.category.1", 17);
 		GuiEManual.addChapter("circuits.category.2", 18);
 		GuiEManual.addChapter("circuits.category.3", 29);
+		GuiEManual.addChapter("circuits.category.4", 30);
+		GuiEManual.addChapter("circuits.category.5", 31);
 
+	}
+
+	public static void SolderingIron() {
+		GuiEManual.addText("circuits.category.4");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("soldering.iron.info");
+	}
+	public static void LeadWire() {
+		GuiEManual.addText("circuits.category.5");
+		GuiEManual.addText("");
+		GuiEManual.addText("");
+		GuiEManual.addText("wire.lead.info");
 	}
 
 	public static void EmptyAmulet() {
@@ -96,18 +110,18 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("ring.empty.recipe");
 	}
-	
-	public static void SolderingStation(){
+
+	public static void SolderingStation() {
 		GuiEManual.addText("");
 		GuiEManual.addText("");
 		GuiEManual.addText("soldering.station.info");
 	}
 
-	public static void AdvancedCircuit(){
+	public static void AdvancedCircuit() {
 		GuiEManual.addText("circuits.advanced.0");
 		GuiEManual.addText("");
 		GuiEManual.addText("");
 		GuiEManual.addText("circuits.advanced.0.info");
-		
 	}
+
 }

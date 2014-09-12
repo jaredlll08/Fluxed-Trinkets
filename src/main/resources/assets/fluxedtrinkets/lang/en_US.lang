@@ -34,7 +34,7 @@ ft.tooltip.holdShift=Hold Shift
 
 ft.manual.title.0=Introduction
 ft.manual.title.1=Trinkets
-ft.manual.title.2=Circuits
+ft.manual.title.2=Soldering
 
 ft.manual.intro.0=Welcome to Fluxed-Trinkets!
 ft.manual.intro.1=Fluxed-Trinkets is a mod that adds RF-Powered Baubles.
@@ -61,6 +61,15 @@ ft.manual.circuits.category.0=Circuits this mod adds:
 ft.manual.circuits.category.1=Basic Circuits
 ft.manual.circuits.category.2=Advanced Circuits
 ft.manual.circuits.category.3=Soldering Station
+ft.manual.circuits.category.4=Soldering Iron
+ft.manual.circuits.category.5=Lead Wire
+
+ft.manual.soldering.iron.info=The Soldering Iron is used to Solder Circuits in the Soldering Iron.
+ft.manual.wire.lead.info=Lead Wire is used to Solder Circuits in the Soldering Iron.
+
+
+
+
 
 ft.manual.soldering.station.info=The Soldering Station is used to craft Circuit
 
