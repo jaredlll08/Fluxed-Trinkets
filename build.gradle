@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.42"
+version = "1.7.10-1.0.43"
 group= "com.jared.fluxedtrinkets" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Fluxed Trinkets"
 
@@ -61,3 +61,8 @@ processResources
         exclude 'mcmod.info'
     }
 }
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+ }
+ tasks.build.dependsOn deobfJar
