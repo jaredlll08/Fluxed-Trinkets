@@ -19,11 +19,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.items.equipment.ModBelt;
 import fluxedtrinkets.util.EffectHelper;
 import fluxedtrinkets.util.NBTHelper;
 
-public class ModularBelt extends ModBelt implements IBauble {
+public class ModularBelt extends ModularItem implements IBauble {
 
 	private ItemStack stack;
 
@@ -43,31 +45,11 @@ public class ModularBelt extends ModBelt implements IBauble {
 		if (NBTHelper.getString(stack, "ETEffect") != "" && NBTHelper.getString(stack, "ETEffect") != null) {
 			String effects = NBTHelper.getString(stack, "ETEffect");
 
-			if (effects.contains("air"))
-				usage += 10;
-			if (effects.contains("water"))
-				usage += 10;
-			if (effects.contains("earth"))
-				usage += 25;
-			if (effects.contains("fire"))
-				usage += 40;
-
-			if (effects.contains("advancedIce"))
-				usage += 30;
-			if (effects.contains("advancedLava"))
-				usage += 30;
-			if (effects.contains("advancedLife"))
-				usage += 30;
-			if (effects.contains("advancedLightning"))
-				usage += 30;
-
-			if (effects.contains("haste"))
-				usage += 20;
-			if (effects.contains("step"))
-				usage += 10;
-			if (effects.contains("respiratory"))
-				usage += 10;
-
+			for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+				if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+					usage += FluxedTrinketsAPI.getEffects().get(i).getUsage();
+				}
+			}
 			this.setUsage(usage);
 
 			super.addInformation(stack, player, list, par4, effects);
@@ -87,8 +69,17 @@ public class ModularBelt extends ModBelt implements IBauble {
 			double z = play.posZ;
 
 			String effects = NBTHelper.getString(itemstack, "ETEffect");
-			
 			if (energy > 0) {
+
+				for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+					if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+						if (FluxedTrinketsAPI.getEffects().get(i).onWornTick(player.worldObj, itemstack, player)) {
+							energy -= FluxedTrinketsAPI.getEffects().get(i).getUsage();
+						}
+
+					}
+				}
+
 				if (effects.contains("haste")) {
 					if ((play.onGround || play.capabilities.isFlying) && play.moveForward > 0F) {
 						play.moveFlying(0F, 1F, play.capabilities.isFlying ? 0.050F : 0.07F);
@@ -106,148 +97,72 @@ public class ModularBelt extends ModBelt implements IBauble {
 						energy -= 5;
 						play.stepHeight = 1F;
 					}
-				}
-
-				if (effects.contains("air")) {
-					if (!play.onGround && play.moveForward > 0F && !play.isInWater() && !play.isInsideOfMaterial(Material.web) && !play.isInsideOfMaterial(Material.lava))
-						play.moveFlying(0F, 1F, play.capabilities.isFlying ? 0.02F : 0.02F * 2);
-					energy -= 10;
-				}
-				if (effects.contains("fire")) {
-					if (play.isBurning()) {
-						play.extinguish();
-						EffectHelper.setFireImmune(play, true);
-						if (play.worldObj.rand.nextInt(100) == 0) {
-							EffectHelper.setFireImmune(play, true);
-						}
-						energy -= 40;
-					}
-				}
-				if (effects.contains("water")) {
-					if (play.isBurning()) {
-						play.extinguish();
-					}
-					for (int rangeX = -5; rangeX < 5; rangeX++) {
-						for (int rangeY = -5; rangeY < 5; rangeY++) {
-							for (int rangeZ = -5; rangeZ < 5; rangeZ++) {
-								if (play.worldObj.getBlock((int) x + rangeX, (int) y + rangeY, (int) z + rangeZ) == Blocks.fire) {
-									play.worldObj.setBlockToAir((int) x + rangeX, (int) y + rangeY, (int) z + rangeZ);
-
-									energy -= 10;
-								}
-							}
-						}
-					}
-				}
-				if (effects.contains("earth")) {
-					if (y < 32) {
-						if (play.worldObj.rand.nextInt(600) == 0) {
-							play.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1, true));
-							play.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 400, 1, true));
-						}
-					}
-				}
-
-				if (effects.contains("advancedIce")) {
-
-					List<EntityCreature> entities = play.worldObj.getEntitiesWithinAABB(EntityCreature.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
-					for (EntityCreature entity : entities) {
-						if (!player.worldObj.isRemote) {
-							if (!entity.isPotionActive(Potion.weakness)) {
-
-								entity.addPotionEffect(new PotionEffect(Potion.weakness.id, 400, 1, true));
-								energy -= 30;
-							}
-						}
-					}
-					play.removePotionEffect(Potion.weakness.id);
-				}
-
-				if (effects.contains("advancedLava")) {
-
-					List<EntityCreature> entities = play.worldObj.getEntitiesWithinAABB(EntityCreature.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
-					for (EntityCreature entity : entities) {
-						if (!player.worldObj.isRemote) {
-							entity.setFire(80);
-							energy -= 30;
-						}
-					}
-					play.removePotionEffect(Potion.weakness.id);
-				}
-
-				if (effects.contains("advancedLife")) {
-					List<EntityTameable> entities = play.worldObj.getEntitiesWithinAABB(EntityTameable.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
-					for (EntityTameable entity : entities) {
-						if (!player.worldObj.isRemote) {
-							if (play.worldObj.rand.nextInt(60) == 0 && entity.isTamed()) {
-								entity.heal(1);
-								energy -= 30;
-							}
-						}
-						play.removePotionEffect(Potion.weakness.id);
-					}
-					if (effects.contains("advancedLightning")) {
-
-						List<EntityLightningBolt> bolts = play.worldObj.getEntitiesWithinAABB(EntityLightningBolt.class, AxisAlignedBB.getBoundingBox(x - 48, y - 48, z - 48, x + 48, y + 48, z + 48));
-						for (EntityLightningBolt bolt : bolts) {
-							if (!player.worldObj.isRemote) {
-								play.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1, true));
-								play.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 1, true));
-								energy -= 30;
-							}
-						}
-					}
 
 				}
-				if (energy < -1) {
-					energy = 0;
-					if (effects.contains("fire")) {
-						EffectHelper.setFireImmune(play, false);
-					}
-					if (effects.contains("step")) {
-						play.stepHeight = 0.50001F;
-					}
-				}
-				NBTHelper.setInteger(itemstack, "energy", energy);
+
 			}
+			if (energy < -1) {
+				energy = 0;
+				for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+					if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+						if (FluxedTrinketsAPI.getEffects().get(i).hasEquipEffect()) {
+							FluxedTrinketsAPI.getEffects().get(i).onUnEquipped(player.worldObj, itemstack, player);
+						}
+
+					}
+				}
+			}
+			NBTHelper.setInteger(itemstack, "energy", energy);
 		}
 	}
 
 	@Override
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+				if (FluxedTrinketsAPI.getEffects().get(i).hasEquipEffect()) {
+					FluxedTrinketsAPI.getEffects().get(i).onEquipped(player.worldObj, itemstack, player);
+				}
 
+			}
+		}
 	}
 
 	@Override
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 		String effects = NBTHelper.getString(itemstack, "ETEffect");
-		if (effects.contains("advancedLightning")) {
-			player.removePotionEffect(Potion.damageBoost.id);
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+				if (FluxedTrinketsAPI.getEffects().get(i).hasEquipEffect()) {
+					FluxedTrinketsAPI.getEffects().get(i).onUnEquipped(player.worldObj, itemstack, player);
+				}
+
+			}
 		}
-		if (effects.contains("step")) {
-			player.stepHeight = 0.50001F;
-		}
+
 	}
 
 	@Override
 	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+			return	FluxedTrinketsAPI.getEffects().get(i).canEquip(player.worldObj, itemstack, player);
+			}
+		}
 		return true;
 	}
 
 	@Override
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	private int countEffects(ItemStack itemstack, String keyValue) {
-		int index = NBTHelper.getString(itemstack, "ETEffect").indexOf(keyValue);
-		int count = 0;
-		while (index != -1) {
-			count++;
-			keyValue = keyValue.substring(index + 1);
-			index = keyValue.indexOf(keyValue);
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+				return FluxedTrinketsAPI.getEffects().get(i).canUnequip(player.worldObj, itemstack, player);
+			}
 		}
-		return count;
+		return true;
 	}
 
 }

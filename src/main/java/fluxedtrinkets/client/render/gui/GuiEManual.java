@@ -39,6 +39,7 @@ public class GuiEManual extends GuiScreen {
 	boolean solderingEarth, solderingAir, solderingFire, solderingWater = false;
 	boolean solderingAdvancedIce, solderingAdvancedLava, solderingAdvancedLife, solderingAdvancedLightning = false;
 	boolean solderingStation = false;
+	int page=0;
 
 	static ArrayList<Object[]> chapters = new ArrayList<Object[]>();
 	static ArrayList<String> texts = new ArrayList<String>();
@@ -733,127 +734,6 @@ public class GuiEManual extends GuiScreen {
 
 	protected void actionPerformed(GuiButton guibutton) {
 		switch (guibutton.id) {
-		case 0:
-			removeAllChapters();
-			removeAllText();
-			Pages.introductionText();
-			break;
-		case 1:
-			removeAllChapters();
-			Pages.TrinketsChapters();
-			break;
-		case 2:
-			removeAllChapters();
-			removeAllText();
-			buttonList.clear();
-			Pages.CircuitsChapters();
-			break;
-
-		case 6:
-			removeAllChapters();
-			removeAllText();
-			Pages.EmptyAmulet();
-			recipeAmuletEmpty = true;
-
-		case 8:
-			removeAllChapters();
-			removeAllText();
-			Pages.BeltEmpty();
-			recipeBeltEmpty = true;
-			break;
-
-		case 14:
-			removeAllChapters();
-			removeAllText();
-			Pages.RingEmpty();
-			recipeRingEmpty = true;
-			break;
-
-		case 17:
-			removeAllChapters();
-			removeAllText();
-			Pages.BasicCircuits();
-			break;
-
-		case 18:
-			removeAllChapters();
-			removeAllText();
-			Pages.AdvancedCircuits();
-			break;
-
-		case 19:
-			removeAllChapters();
-			removeAllText();
-			Pages.CircuitEmpty();
-			circuitEmpty = true;
-			break;
-
-		case 20:
-			removeAllChapters();
-			removeAllText();
-			solderingEarth = true;
-			break;
-		case 21:
-			removeAllChapters();
-			removeAllText();
-			solderingAir = true;
-			break;
-		case 22:
-			removeAllChapters();
-			removeAllText();
-			solderingFire = true;
-			break;
-		case 23:
-			removeAllChapters();
-			removeAllText();
-			solderingWater = true;
-			break;
-		case 24:
-			removeAllChapters();
-			removeAllText();
-			circuitAdvancedEmpty = true;
-			Pages.AdvancedCircuit();
-			break;
-		case 25:
-			removeAllChapters();
-			removeAllText();
-			solderingAdvancedIce = true;
-			break;
-		case 26:
-			removeAllChapters();
-			removeAllText();
-			solderingAdvancedLava = true;
-			break;
-			
-		case 27:
-			removeAllChapters();
-			removeAllText();
-			solderingAdvancedLife = true;
-			break;
-		
-		case 28:
-			removeAllChapters();
-			removeAllText();
-			solderingAdvancedLightning = true;
-			break;
-			
-		case 29:
-			removeAllChapters();
-			removeAllText();
-			solderingStation = true;
-			Pages.SolderingStation();
-			break;
-		case 30:
-			removeAllChapters();
-			removeAllText();
-			Pages.SolderingIron();
-			break;
-		case 31:
-			removeAllChapters();
-			removeAllText();
-			Pages.LeadWire();;
-			break;
-				
 		case 99:
 			if (renderToolTip == true) {
 				renderToolTip = false;
@@ -864,6 +744,113 @@ public class GuiEManual extends GuiScreen {
 
 			break;
 			
+			
+		
+		case 0:
+			removeAllChapters();
+			removeAllText();
+			Pages.introductionText();
+			page = guibutton.id;
+			break;
+		case 1:
+			removeAllChapters();
+			Pages.TrinketsChapters();
+			page = 1;
+			break;
+		case 2:
+			removeAllChapters();
+			removeAllText();
+			buttonList.clear();
+			Pages.CircuitsChapters();
+			page = 2;
+			break;
+
+		case 3:
+			removeAllChapters();
+			removeAllText();
+			Pages.BasicCircuits();
+			break;
+
+		case 4:
+			removeAllChapters();
+			removeAllText();
+			Pages.AdvancedCircuits();
+			break;
+
+		case 5:
+			removeAllChapters();
+			removeAllText();
+			Pages.CircuitEmpty();
+			circuitEmpty = true;
+			break;
+
+		case 6:
+			removeAllChapters();
+			removeAllText();
+			solderingEarth = true;
+			break;
+		case 7:
+			removeAllChapters();
+			removeAllText();
+			solderingAir = true;
+			break;
+		case 8:
+			removeAllChapters();
+			removeAllText();
+			solderingFire = true;
+			break;
+		case 9:
+			removeAllChapters();
+			removeAllText();
+			solderingWater = true;
+			break;
+		case 10:
+			removeAllChapters();
+			removeAllText();
+			circuitAdvancedEmpty = true;
+			Pages.AdvancedCircuit();
+			break;
+		case 11:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedIce = true;
+			break;
+		case 12:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedLava = true;
+			break;
+			
+		case 13:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedLife = true;
+			break;
+		
+		case 14:
+			removeAllChapters();
+			removeAllText();
+			solderingAdvancedLightning = true;
+			break;
+			
+		case 15:
+			removeAllChapters();
+			removeAllText();
+			solderingStation = true;
+			Pages.SolderingStation();
+			break;
+		case 16:
+			removeAllChapters();
+			removeAllText();
+			Pages.SolderingIron();
+			break;
+		case 17:
+			removeAllChapters();
+			removeAllText();
+			Pages.LeadWire();;
+			break;
+				
+		
 		default:
 			removeAllChapters();
 			removeAllText();

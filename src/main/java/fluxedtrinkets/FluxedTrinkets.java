@@ -1,8 +1,5 @@
 package fluxedtrinkets;
 
-import sun.security.krb5.internal.ETypeInfo;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -11,17 +8,24 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import fluxedtrinkets.api.SolderingRecipe;
+import fluxedtrinkets.api.FluxedTrinketsAPI;
 import fluxedtrinkets.blocks.FTBlocks;
 import fluxedtrinkets.config.ConfigHandler;
+import fluxedtrinkets.effects.EffectAdvancedIce;
+import fluxedtrinkets.effects.EffectAdvancedLava;
+import fluxedtrinkets.effects.EffectAdvancedLightning;
+import fluxedtrinkets.effects.EffectAir;
+import fluxedtrinkets.effects.EffectEarth;
+import fluxedtrinkets.effects.EffectFire;
+import fluxedtrinkets.effects.EffectHaste;
+import fluxedtrinkets.effects.EffectRespiratory;
+import fluxedtrinkets.effects.EffectWater;
 import fluxedtrinkets.items.FTItems;
 import fluxedtrinkets.network.PacketHandler;
 import fluxedtrinkets.proxy.CommonProxy;
 import fluxedtrinkets.util.GuiHandler;
 import fluxedtrinkets.util.RecipeHandler;
 import fluxedtrinkets.util.version.VersionChecker;
-import fluxedtrinkets.world.GenerationHandler;
 
 @Mod(modid = ModInfo.modid, name = ModInfo.name, version = ModInfo.version, dependencies = "required-after:Baubles;required-after:ThermalFoundation;required-after:CoFHCore")
 public class FluxedTrinkets {
@@ -33,11 +37,22 @@ public class FluxedTrinkets {
 
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
+		FluxedTrinketsAPI.addEffect(new EffectAir());
+		FluxedTrinketsAPI.addEffect(new EffectEarth());
+		FluxedTrinketsAPI.addEffect(new EffectFire());
+		FluxedTrinketsAPI.addEffect(new EffectWater());
+		FluxedTrinketsAPI.addEffect(new EffectAdvancedIce());
+		FluxedTrinketsAPI.addEffect(new EffectAdvancedLava());
+		FluxedTrinketsAPI.addEffect(new EffectAdvancedLightning());
+		FluxedTrinketsAPI.addEffect(new EffectHaste());
+		FluxedTrinketsAPI.addEffect(new EffectRespiratory());
+		
+		
+		
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		FTItems.init();
 		FTBlocks.init();
 		RecipeHandler.init();
-
 		proxy.registerRenderers();
 	}
 

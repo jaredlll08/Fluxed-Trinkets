@@ -36,6 +36,7 @@ ft.manual.title.0=Introduction
 ft.manual.title.1=Trinkets
 ft.manual.title.2=Soldering
 
+
 ft.manual.intro.0=Welcome to Fluxed-Trinkets!
 ft.manual.intro.1=Fluxed-Trinkets is a mod that adds RF-Powered Baubles.
 ft.manual.intro.2=Once the Baubles have ran out of power they stop working.
@@ -109,3 +110,4 @@ ft.manual.circuit.advanced.thundering.recipe=The recipe for the Thundering Circu
 ft.manual.soldering.station.info=The Soldering Station is used to craft circuits.
 ft.manual.soldering.station.recipe=The recipe for the Soldering Station is this:
 
+✓=✓

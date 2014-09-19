@@ -7,8 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**
- * 
- * @author Jaredlll08
+ * @author Jared
  *
  */
 public class SolderingRecipe {
@@ -94,5 +93,8 @@ public class SolderingRecipe {
 		}
 		return null;
 	}
+	
+	
+	
 
 }

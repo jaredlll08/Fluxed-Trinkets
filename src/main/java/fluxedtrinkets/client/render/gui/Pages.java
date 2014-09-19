@@ -6,6 +6,7 @@ public class Pages {
 		GuiEManual.addChapter("title.0", 0);
 		GuiEManual.addChapter("title.1", 1);
 		GuiEManual.addChapter("title.2", 2);
+		
 	}
 
 	public static void introductionText() {
@@ -16,6 +17,7 @@ public class Pages {
 
 		GuiEManual.addText("");
 		GuiEManual.addText("intro.3");
+		
 	}
 
 	public static void TrinketsChapters() {
@@ -31,11 +33,11 @@ public class Pages {
 		GuiEManual.addChapter("", -3);
 		GuiEManual.addChapter("", -4);
 
-		GuiEManual.addChapter("circuits.category.1", 17);
-		GuiEManual.addChapter("circuits.category.2", 18);
-		GuiEManual.addChapter("circuits.category.3", 29);
-		GuiEManual.addChapter("circuits.category.4", 30);
-		GuiEManual.addChapter("circuits.category.5", 31);
+		GuiEManual.addChapter("circuits.category.1", 3);
+		GuiEManual.addChapter("circuits.category.2", 4);
+		GuiEManual.addChapter("circuits.category.3", 15);
+		GuiEManual.addChapter("circuits.category.4", 16);
+		GuiEManual.addChapter("circuits.category.5", 17);
 
 	}
 
@@ -66,11 +68,11 @@ public class Pages {
 		GuiEManual.addText("circuits.category.1");
 		GuiEManual.addChapter("", -4);
 		GuiEManual.addChapter("", -5);
-		GuiEManual.addChapter("circuits.0", 19);
-		GuiEManual.addChapter("circuits.1", 20);
-		GuiEManual.addChapter("circuits.2", 21);
-		GuiEManual.addChapter("circuits.3", 22);
-		GuiEManual.addChapter("circuits.4", 23);
+		GuiEManual.addChapter("circuits.0", 5);
+		GuiEManual.addChapter("circuits.1", 6);
+		GuiEManual.addChapter("circuits.2", 7);
+		GuiEManual.addChapter("circuits.3", 8);
+		GuiEManual.addChapter("circuits.4", 9);
 	}
 
 	public static void CircuitEmpty() {
@@ -84,11 +86,11 @@ public class Pages {
 		GuiEManual.addText("circuits.category.2");
 		GuiEManual.addChapter("", -6);
 		GuiEManual.addChapter("", -7);
-		GuiEManual.addChapter("circuits.advanced.0", 24);
-		GuiEManual.addChapter("circuits.advanced.1", 25);
-		GuiEManual.addChapter("circuits.advanced.2", 26);
-		GuiEManual.addChapter("circuits.advanced.3", 27);
-		GuiEManual.addChapter("circuits.advanced.4", 28);
+		GuiEManual.addChapter("circuits.advanced.0", 10);
+		GuiEManual.addChapter("circuits.advanced.1", 11);
+		GuiEManual.addChapter("circuits.advanced.2", 12);
+		GuiEManual.addChapter("circuits.advanced.3", 13);
+		GuiEManual.addChapter("circuits.advanced.4", 14);
 	}
 
 	public static void BeltEmpty() {

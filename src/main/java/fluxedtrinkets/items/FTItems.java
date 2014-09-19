@@ -2,9 +2,14 @@ package fluxedtrinkets.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.DungeonHooks;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.CreativeTabFluxedTrinkets;
 import fluxedtrinkets.ModInfo;
+import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.SolderingRecipe;
 import fluxedtrinkets.items.resources.ItemLeadWire;
 import fluxedtrinkets.util.NBTHelper;
 
@@ -32,6 +37,7 @@ public class FTItems {
 	public static Item advancedCircuitLife = new ItemCircuit("advancedLife");
 	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning");
 
+	
 	/*
 	 * items
 	 */
@@ -50,7 +56,12 @@ public class FTItems {
 	
 
 	private static void registerItems() {
-
+//		FluxedTrinketsAPI.addEffect("empty");
+//		FluxedTrinketsAPI.addEffect("water");
+//		FluxedTrinketsAPI.addEffect("fire");
+//		FluxedTrinketsAPI.addEffect("air");
+//		FluxedTrinketsAPI.addEffect("earth");
+		
 		/*
 		 * Circuits
 		 */
@@ -59,6 +70,7 @@ public class FTItems {
 		registerCircuit(circuitAir, "Atmospheric Circuit", "Circuit_Air");
 		registerCircuit(circuitFire, "Scorched Circuit", "Circuit_Fire");
 		registerCircuit(circuitWater, "Streaming Circuit", "Circuit_Water");
+		
 
 		registerCircuit(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
 		registerCircuit(advancedCircuitIce, "Chilling Circuit", "Circuit_Advanced_Ice");
@@ -94,17 +106,6 @@ public class FTItems {
 	}
 	
 	private static void registerNBT(){
-		NBTHelper.setString(new ItemStack(circuit), "ETEffect", "empty");
-		NBTHelper.setString(new ItemStack(circuitAir), "ETEffect", "air");
-		NBTHelper.setString(new ItemStack(circuitEarth), "ETEffect", "earth");
-		NBTHelper.setString(new ItemStack(circuitFire), "ETEffect", "fire");
-		NBTHelper.setString(new ItemStack(circuitWater), "ETEffect", "water");
-		
-		NBTHelper.setString(new ItemStack(advancedCircuit), "ETEffect", "advancedEmpty");
-		NBTHelper.setString(new ItemStack(advancedCircuitIce), "ETEffect", "advancedIce");
-		NBTHelper.setString(new ItemStack(advancedCircuitLava), "ETEffect", "advancedLava");
-		NBTHelper.setString(new ItemStack(advancedCircuitLife), "ETEffect", "advancedLife");
-		NBTHelper.setString(new ItemStack(advancedCircuitLightning), "ETEffect", "advancedLightning");
 		
 		
 	}
