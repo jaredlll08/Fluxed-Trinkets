@@ -6,50 +6,56 @@ import java.util.List;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionHealth;
+import net.minecraft.potion.PotionHealthBoost;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
 
-public class EffectRespiratory implements IEffect{
+public class EffectFall implements IEffect {
 
 	@Override
 	public String getEffectName() {
-		return "respiratory";
+		return "fall";
+	}
+
+	@Override
+	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
+		if (entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
+
+			if (!player.onGround && player.motionY < 0) {
+				if (!player.isSneaking()) {
+					player.motionY = -0.1;
+					player.fallDistance = -1;
+					return true;
+				}
+
+			}
+		}
+
+		return false;
 	}
 
 	@Override
 	public int getUsage() {
-		// TODO Auto-generated method stub
-		return 10;
+		return 5;
 	}
 
 	@Override
 	public boolean hasEquipEffect() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-		
+
 	}
 
 	@Override
 	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-		
+
 	}
 
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if(entity instanceof EntityPlayer){
-			EntityPlayer player = (EntityPlayer)entity;
-			if (player.isInWater()) {
-				player.setAir(0);
-				return true;
-			}
-		}
-		
-		return false;
-	}
 	@Override
 	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
@@ -59,6 +65,5 @@ public class EffectRespiratory implements IEffect{
 	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
 	}
-	
-	
+
 }

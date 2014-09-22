@@ -17,9 +17,11 @@ item.Copper_Ingot.name=Copper Ingot
 item.Copper_Nugget.name=Copper Nugget
 item.Lead_Ingot.name=Lead Ingot
 item.Lead_Wire.name=Lead Wire
-item.Belt_Empty.name=Empty Belt
-item.Amulet_Empty.name=Empty Necklace
-item.Ring_Blank.name=Empty Ring
+
+item.Belt_Empty.name=Modular Belt
+item.Amulet_Empty.name=Modular Necklace
+item.Ring_Blank.name=Modular Ring
+
 item.Electricians_Manual.name=Electricians Manual
 tile.Soldering Station.name=Soldering Station
 tile.Trinket Assembler.name=Trinket Assembler
@@ -110,4 +112,4 @@ ft.manual.circuit.advanced.thundering.recipe=The recipe for the Thundering Circu
 ft.manual.soldering.station.info=The Soldering Station is used to craft circuits.
 ft.manual.soldering.station.recipe=The recipe for the Soldering Station is this:
 
-✓=✓
+tick=✓

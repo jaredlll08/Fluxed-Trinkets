@@ -2,10 +2,14 @@ package fluxedtrinkets.api;
 
 import java.util.ArrayList;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 public class FluxedTrinketsAPI {
 
 	private static ArrayList<String> effectName = new ArrayList<String>();
 	private static ArrayList<IEffect> effects = new ArrayList<IEffect>();
+
+	private static ArrayList<ArrayList<IEffect>> effectCombo2 = new ArrayList<ArrayList<IEffect>>();
 
 	/**
 	 * Adds an effect to the effect list.
@@ -62,11 +66,12 @@ public class FluxedTrinketsAPI {
 		}
 		return false;
 	}
-/**
- * 
- * @param name
- * @return The effect that has the name provided
- */
+
+	/**
+	 * 
+	 * @param name
+	 * @return The effect that has the name provided
+	 */
 	public static IEffect getEffectFromName(String name) {
 		for (int i = 0; i < effects.size(); i++) {
 			if (effects.get(i).getEffectName().equals(name)) {
@@ -84,6 +89,5 @@ public class FluxedTrinketsAPI {
 	public static String getNameFromEffect(IEffect effect) {
 		return effect.getEffectName();
 	}
-	
-	
+
 }

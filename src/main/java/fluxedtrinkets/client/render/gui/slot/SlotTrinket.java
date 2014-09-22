@@ -3,7 +3,7 @@ package fluxedtrinkets.client.render.gui.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import fluxedtrinkets.items.ModularItem;
+import fluxedtrinkets.api.ModularItem;
 import fluxedtrinkets.items.equipment.ModAmulet;
 import fluxedtrinkets.items.equipment.ModBelt;
 import fluxedtrinkets.items.equipment.ModRing;

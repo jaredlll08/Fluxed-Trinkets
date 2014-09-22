@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cofh.api.energy.IEnergyContainerItem;
+import fluxedtrinkets.api.StringUtils;
 import fluxedtrinkets.util.NBTHelper;
-import fluxedtrinkets.util.StringUtils;
 
 public abstract class ModAmulet extends Item implements IBauble, IEnergyContainerItem {
 

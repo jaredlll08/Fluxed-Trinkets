@@ -21,11 +21,12 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ModularItem;
 import fluxedtrinkets.items.equipment.ModBelt;
 import fluxedtrinkets.util.EffectHelper;
 import fluxedtrinkets.util.NBTHelper;
 
-public class ModularBelt extends ModularItem implements IBauble {
+public class ModularBelt extends ModularItem {
 
 	private ItemStack stack;
 

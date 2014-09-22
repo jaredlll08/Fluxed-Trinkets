@@ -9,10 +9,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import fluxedtrinkets.ModInfo;
+import fluxedtrinkets.api.StringUtils;
 import fluxedtrinkets.network.MessageTrinketAssembler;
 import fluxedtrinkets.network.PacketHandler;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
-import fluxedtrinkets.util.StringUtils;
 
 public class GuiTrinketAssembler extends GuiContainer {
 
@@ -44,7 +44,7 @@ public class GuiTrinketAssembler extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(1, guiLeft + 78, guiTop + 60, 20, 20, StringUtils.translate("✓", false)));
+		buttonList.add(new GuiButton(1, guiLeft + 78, guiTop + 60, 20, 20, StringUtils.translate("tick", false)));
 
 	}
 

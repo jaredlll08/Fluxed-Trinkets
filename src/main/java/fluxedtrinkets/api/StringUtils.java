@@ -1,4 +1,4 @@
-package fluxedtrinkets.util;
+package fluxedtrinkets.api;
 
 import java.text.DecimalFormat;
 

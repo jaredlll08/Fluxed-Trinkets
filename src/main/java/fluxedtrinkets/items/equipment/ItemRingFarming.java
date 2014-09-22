@@ -5,7 +5,7 @@ import java.util.List;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import fluxedtrinkets.util.StringUtils;
+import fluxedtrinkets.api.StringUtils;
 
 public class ItemRingFarming extends ModRing {
 

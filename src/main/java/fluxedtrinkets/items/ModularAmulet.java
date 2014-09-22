@@ -16,10 +16,11 @@ import net.minecraft.util.AxisAlignedBB;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.ModularItem;
 import fluxedtrinkets.util.EffectHelper;
 import fluxedtrinkets.util.NBTHelper;
 
-public class ModularAmulet extends ModularItem implements IBauble {
+public class ModularAmulet extends ModularItem {
 
 	private ItemStack stack;
 

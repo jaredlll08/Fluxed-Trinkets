@@ -2,6 +2,7 @@ package fluxedtrinkets.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DungeonHooks;
@@ -30,12 +31,15 @@ public class FTItems {
 	public static Item circuitEarth = new ItemCircuit("earth");
 	public static Item circuitFire = new ItemCircuit("fire");
 	public static Item circuitWater = new ItemCircuit("water");
+	public static Item circuitfall = new ItemCircuit("fall");
+	
 
 	public static Item advancedCircuit = new ItemCircuit("advancedEmpty");
 	public static Item advancedCircuitIce = new ItemCircuit("advancedIce");
 	public static Item advancedCircuitLava = new ItemCircuit("advancedLava");
 	public static Item advancedCircuitLife = new ItemCircuit("advancedLife");
 	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning");
+	
 
 	
 	/*
@@ -70,6 +74,8 @@ public class FTItems {
 		registerCircuit(circuitAir, "Atmospheric Circuit", "Circuit_Air");
 		registerCircuit(circuitFire, "Scorched Circuit", "Circuit_Fire");
 		registerCircuit(circuitWater, "Streaming Circuit", "Circuit_Water");
+		registerCircuit(circuitfall, "Streaming ", "Water");
+		
 		
 
 		registerCircuit(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
@@ -91,6 +97,7 @@ public class FTItems {
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
 		registerItem(modularRing, "Modular Ring", "Ring_Blank");
+		
 		
 		
 	}

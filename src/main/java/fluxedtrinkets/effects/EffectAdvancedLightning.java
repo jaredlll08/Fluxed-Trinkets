@@ -1,5 +1,6 @@
 package fluxedtrinkets.effects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -28,14 +29,15 @@ public class EffectAdvancedLightning implements IEffect {
 	public boolean hasEquipEffect() {
 		return false;
 	}
+
 	@Override
 	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-		
+
 	}
 
 	@Override
 	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-		
+
 	}
 
 	@Override
@@ -58,6 +60,7 @@ public class EffectAdvancedLightning implements IEffect {
 
 		return false;
 	}
+
 	@Override
 	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
@@ -67,4 +70,6 @@ public class EffectAdvancedLightning implements IEffect {
 	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
 	}
+
+	
 }

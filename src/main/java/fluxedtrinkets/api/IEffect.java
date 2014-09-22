@@ -1,10 +1,13 @@
 package fluxedtrinkets.api;
 
+import java.util.List;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public interface IEffect {
+	
 	/**
 	 * The name of the effect.
 	 * 
@@ -16,10 +19,11 @@ public interface IEffect {
 	/**
 	 * What happens on world tick.
 	 * 
+	 * Return false if it shouldnt use power.
 	 * @param world
 	 * @param stack
 	 * @param entity
-	 * @return boolean if it was succefull
+	 * @return boolean if it was successful.
 	 */
 	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity);
 
@@ -29,7 +33,8 @@ public interface IEffect {
 	 * @return
 	 */
 	public int getUsage();
-
+	
+	
 	/**
 	 * Does something happen when you equip/unequip it?
 	 * 
@@ -59,5 +64,6 @@ public interface IEffect {
 
 	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player);
 
+	
 	
 }

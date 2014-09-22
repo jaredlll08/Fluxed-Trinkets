@@ -10,10 +10,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import fluxedtrinkets.ModInfo;
+import fluxedtrinkets.api.StringUtils;
 import fluxedtrinkets.network.MessageCircuitCrafting;
 import fluxedtrinkets.network.PacketHandler;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
-import fluxedtrinkets.util.StringUtils;
 
 public class GuiSolderingStationCircuit extends GuiContainer {
 
@@ -48,7 +48,7 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(1, guiLeft+113, guiTop+60, 20, 20, StringUtils.translate("✓", false)));
+		buttonList.add(new GuiButton(1, guiLeft+113, guiTop+60, 20, 20, StringUtils.translate("tick", false)));
 		
 	}
 

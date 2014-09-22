@@ -1,6 +1,8 @@
 package fluxedtrinkets.effects;
 
-import net.minecraft.block.material.Material;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -13,7 +15,7 @@ public class EffectWater implements IEffect {
 	public String getEffectName() {
 		return "water";
 	}
-
+	
 	@Override
 	public int getUsage() {
 		return 10;
@@ -40,9 +42,20 @@ public class EffectWater implements IEffect {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 
-			if (!player.onGround && player.moveForward > 0F && !player.isInWater() && !player.isInsideOfMaterial(Material.web) && !player.isInsideOfMaterial(Material.lava)) {
-				player.moveFlying(0F, 1F, player.capabilities.isFlying ? 0.02F : 0.02F * 2);
-				return true;
+			double x = player.posX;
+			double y = player.posY;
+			double z = player.posZ;
+			
+					
+			if (player.isBurning()) {
+				player.extinguish();
+			}
+			for (int rangeX = -5; rangeX < 5; rangeX++) {
+				for (int rangeY = -2; rangeY < 2; rangeY++) {
+					for (int rangeZ = -5; rangeZ < 5; rangeZ++) {
+							player.worldObj.extinguishFire(player, (int) x + rangeX, (int) y + rangeY, (int) z + rangeZ, 0);
+					}
+				}
 			}
 		}
 		return false;
@@ -57,5 +70,6 @@ public class EffectWater implements IEffect {
 	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
 	}
+
 
 }

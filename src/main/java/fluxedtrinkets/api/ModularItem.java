@@ -1,18 +1,19 @@
-package fluxedtrinkets.items;
+package fluxedtrinkets.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import cofh.api.energy.IEnergyContainerItem;
-import fluxedtrinkets.util.NBTHelper;
-import fluxedtrinkets.util.StringUtils;
 
 public abstract class ModularItem extends Item implements IBauble, IEnergyContainerItem {
 
@@ -32,13 +33,39 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 		this.usage = usage;
 	}
 
+	@Override
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		if (!par2World.isRemote) {
+			IInventory baubles = BaublesApi.getBaubles(par3EntityPlayer);
+			for (int i = 0; i < baubles.getSizeInventory(); i++)
+				if (baubles.getStackInSlot(i) == null && baubles.isItemValidForSlot(i, par1ItemStack)) {
+					baubles.setInventorySlotContents(i, par1ItemStack.copy());
+					if (!par3EntityPlayer.capabilities.isCreativeMode) {
+						par3EntityPlayer.inventory.setInventorySlotContents(par3EntityPlayer.inventory.currentItem, null);
+					}
+					onEquipped(par1ItemStack, par3EntityPlayer);
+					break;
+				}
+		}
+		return par1ItemStack;
+	}
+
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4, String effects) {
 		super.addInformation(stack, player, list, par4);
+		if (stack.stackTagCompound == null) {
+			stack.stackTagCompound = new NBTTagCompound();
+		}
 		if (StringUtils.isShiftKeyDown()) {
-			list.add(StringUtils.getChargeText(NBTHelper.getInt(stack, "energy"), maxCapacity));
+			list.add(StringUtils.getChargeText(stack.stackTagCompound.getInteger("energy"), maxCapacity));
 			list.add(StringUtils.getEnergyUsageText(usage));
 			if (effects != null) {
+				
 				list.add(StringUtils.GRAY + effects);
+				String[] effectList = effects.replace("[", "").replace("]", "").split(",");
+				ArrayList<IEffect>effect = new ArrayList<IEffect>();
+				for(int i = 0; i < effectList.length;i++){
+					effect.add(FluxedTrinketsAPI.getEffectFromName(effectList[i]));
+				}
 			}
 		} else {
 			list.add(StringUtils.getShiftText());
@@ -49,12 +76,7 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 	@Override
 	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
 		if (par1ItemStack.stackTagCompound == null)
-			NBTHelper.setBoolean(par1ItemStack, "hasNBT", true);
-	}
-
-	@Override
-	public BaubleType getBaubleType(ItemStack itemstack) {
-		return BaubleType.BELT;
+			par1ItemStack.stackTagCompound = new NBTTagCompound();
 	}
 
 	@Override

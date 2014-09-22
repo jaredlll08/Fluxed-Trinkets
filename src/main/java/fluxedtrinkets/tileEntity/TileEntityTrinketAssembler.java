@@ -12,9 +12,10 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.util.Constants;
+import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.StringUtils;
 import fluxedtrinkets.items.ItemCircuit;
 import fluxedtrinkets.util.NBTHelper;
-import fluxedtrinkets.util.StringUtils;
 
 public class TileEntityTrinketAssembler extends TileEntity implements ISidedInventory {
 
@@ -162,7 +163,6 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		item[2] = getStackInSlot(2);
 		item[3] = getStackInSlot(3);
 		item[4] = getStackInSlot(4);
-		String effects = "";
 		ArrayList<String> totalEffects = new ArrayList<String>();
 		for (int i = 1; i < item.length; i++) {
 			if (item[i] != null) {
@@ -177,19 +177,18 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 							totalEffects.remove("earth");
 							totalEffects.add("step");
 						}
-//						if (totalEffects.contains("advancedEmpty") && totalEffects.contains("air")) {
-//							totalEffects.remove("advancedEmpty");
-//							totalEffects.remove("air");
-//							totalEffects.remove("earth");
-//							totalEffects.add("jump");
-//						}
+						if (totalEffects.contains("advancedEmpty") && totalEffects.contains("air")) {
+							totalEffects.remove("advancedEmpty");
+							totalEffects.remove("air");
+							totalEffects.remove("earth");
+							totalEffects.add("fall");
+						}
 						if (totalEffects.contains("air") && !totalEffects.contains("advancedEmpty")) {
 							totalEffects.remove("air");
 							totalEffects.remove("earth");
 							totalEffects.add("haste");
 						}
 					}
-					
 
 					if (totalEffects.contains("air")) {
 						if (totalEffects.contains("water")) {
@@ -198,12 +197,6 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 							totalEffects.add("respiratory");
 						}
 					}
-
-//					if (totalEffects.contains("fire") && totalEffects.contains("advancedLava")) {
-//						totalEffects.remove("fire");
-//						totalEffects.remove("advancedLava");
-//						totalEffects.add("Scorched");
-//					}
 
 				}
 			}

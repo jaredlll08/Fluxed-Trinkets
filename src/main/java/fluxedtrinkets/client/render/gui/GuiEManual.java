@@ -17,13 +17,10 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import fluxedtrinkets.ModInfo;
+import fluxedtrinkets.api.StringUtils;
 import fluxedtrinkets.items.FTItems;
-import fluxedtrinkets.util.StringUtils;
 
 public class GuiEManual extends GuiScreen {
-	int par1;
-	int par2;
-	float par3;
 	int guiWidth = 146;
 	int guiHeight = 180;
 	int left, top;
@@ -39,7 +36,6 @@ public class GuiEManual extends GuiScreen {
 	boolean solderingEarth, solderingAir, solderingFire, solderingWater = false;
 	boolean solderingAdvancedIce, solderingAdvancedLava, solderingAdvancedLife, solderingAdvancedLightning = false;
 	boolean solderingStation = false;
-	int page=0;
 
 	static ArrayList<Object[]> chapters = new ArrayList<Object[]>();
 	static ArrayList<String> texts = new ArrayList<String>();
@@ -144,10 +140,6 @@ public class GuiEManual extends GuiScreen {
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
-		this.par1 = par1;
-		this.par2 = par2;
-		this.par3 = par3;
-
 		if (mc.renderEngine != null) {
 			mc.renderEngine.bindTexture(texture);
 		}
@@ -740,29 +732,23 @@ public class GuiEManual extends GuiScreen {
 			} else {
 				renderToolTip = true;
 			}
-			this.drawScreen(par1, par2, par3);
 
 			break;
-			
-			
-		
+
 		case 0:
 			removeAllChapters();
 			removeAllText();
 			Pages.introductionText();
-			page = guibutton.id;
 			break;
 		case 1:
 			removeAllChapters();
+			removeAllText();
 			Pages.TrinketsChapters();
-			page = 1;
 			break;
 		case 2:
 			removeAllChapters();
 			removeAllText();
-			buttonList.clear();
 			Pages.CircuitsChapters();
-			page = 2;
 			break;
 
 		case 3:
@@ -820,19 +806,19 @@ public class GuiEManual extends GuiScreen {
 			removeAllText();
 			solderingAdvancedLava = true;
 			break;
-			
+
 		case 13:
 			removeAllChapters();
 			removeAllText();
 			solderingAdvancedLife = true;
 			break;
-		
+
 		case 14:
 			removeAllChapters();
 			removeAllText();
 			solderingAdvancedLightning = true;
 			break;
-			
+
 		case 15:
 			removeAllChapters();
 			removeAllText();
@@ -847,14 +833,9 @@ public class GuiEManual extends GuiScreen {
 		case 17:
 			removeAllChapters();
 			removeAllText();
-			Pages.LeadWire();;
+			Pages.LeadWire();
 			break;
-				
-		
-		default:
-			removeAllChapters();
-			removeAllText();
-			break;
+
 		}
 
 	}

@@ -1,6 +1,7 @@
 package fluxedtrinkets;
 
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -16,6 +17,8 @@ import fluxedtrinkets.effects.EffectAdvancedLava;
 import fluxedtrinkets.effects.EffectAdvancedLightning;
 import fluxedtrinkets.effects.EffectAir;
 import fluxedtrinkets.effects.EffectEarth;
+import fluxedtrinkets.effects.EffectFall;
+import fluxedtrinkets.effects.EffectFeed;
 import fluxedtrinkets.effects.EffectFire;
 import fluxedtrinkets.effects.EffectHaste;
 import fluxedtrinkets.effects.EffectRespiratory;
@@ -24,6 +27,7 @@ import fluxedtrinkets.items.FTItems;
 import fluxedtrinkets.network.PacketHandler;
 import fluxedtrinkets.proxy.CommonProxy;
 import fluxedtrinkets.util.GuiHandler;
+import fluxedtrinkets.util.KeyInputEventHandler;
 import fluxedtrinkets.util.RecipeHandler;
 import fluxedtrinkets.util.version.VersionChecker;
 
@@ -46,6 +50,8 @@ public class FluxedTrinkets {
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedLightning());
 		FluxedTrinketsAPI.addEffect(new EffectHaste());
 		FluxedTrinketsAPI.addEffect(new EffectRespiratory());
+		FluxedTrinketsAPI.addEffect(new EffectFeed());
+		FluxedTrinketsAPI.addEffect(new EffectFall());
 		
 		
 		
@@ -54,11 +60,12 @@ public class FluxedTrinkets {
 		FTBlocks.init();
 		RecipeHandler.init();
 		proxy.registerRenderers();
+		proxy.registerKeyBinding();
 	}
 
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
-
+		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 		new GuiHandler();
 		PacketHandler.init();
 		VersionChecker.init();

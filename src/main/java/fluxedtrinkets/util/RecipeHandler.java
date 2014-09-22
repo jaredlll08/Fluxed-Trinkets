@@ -28,7 +28,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ShapedOreRecipe(FTBlocks.solderingStation, new Object[] { "gcg", "ili", "i i", 'l', "wireLead", 'g', "gearInvar", 'c', new ItemStack(Blocks.crafting_table), 'i', "ingotInvar" }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(FTBlocks.trinketAssembler, new Object[] { "gcg", "ili", "ici", 'l', "wireLead", 'g', "gearInvar", 'c', new ItemStack(Blocks.crafting_table), 'i', "ingotInvar" }));
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FTItems.leadWire, 6), new Object[] { "   ", "lll", "   ", 'l', "ingotLead" }));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FTItems.leadWire, 6), new Object[] { "l  ", "l  ", "l  ", 'l', "ingotLead" }));
 
 		GameRegistry.addRecipe(new ItemStack(FTItems.modularBelt), new Object[] { "iii", "i i", "iii", 'i', new ItemStack(Items.iron_ingot) });
 		GameRegistry.addRecipe(new ItemStack(FTItems.modularRing), new Object[] { " i ", "i i", " i ", 'i', new ItemStack(Items.iron_ingot) });
