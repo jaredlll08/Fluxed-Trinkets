@@ -27,7 +27,6 @@ public class BlockLavaGenerator extends Block implements ITileEntityProvider {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntityLavaGenerator tile = (TileEntityLavaGenerator) world.getTileEntity(x, y, z);
 		if (!world.isRemote) {
-			tile.player = player;
 			tile.generateLava();
 		}
 		return true;
@@ -38,8 +37,5 @@ public class BlockLavaGenerator extends Block implements ITileEntityProvider {
 		return new TileEntityLavaGenerator();
 	}
 
-	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side) {
-		return true;
-	}
 
 }
