@@ -9,6 +9,7 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 
 public class EffectFeed implements IEffect {
 
@@ -43,7 +44,7 @@ public class EffectFeed implements IEffect {
 
 	@Override
 	public int getUsage() {
-		return 50;
+		return ConfigProps.energyFeed;
 	}
 
 	@Override
@@ -71,4 +72,13 @@ public class EffectFeed implements IEffect {
 		return true;
 	}
 
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("If the wearer is");
+		list.add("low on hunger");
+		list.add("food from the inventory");
+		list.add("is automaticaly consumed.");
+		return list;
+	}
 }

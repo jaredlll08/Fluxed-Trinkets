@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 
 public class EffectAdvancedLife implements IEffect {
 
@@ -20,7 +21,7 @@ public class EffectAdvancedLife implements IEffect {
 
 	@Override
 	public int getUsage() {
-		return 30;
+		return ConfigProps.energyAdvancedLife;
 	}
 
 	@Override
@@ -45,7 +46,7 @@ public class EffectAdvancedLife implements IEffect {
 			double x = player.posX;
 			double y = player.posY;
 			double z = player.posZ;
-			List<EntityTameable> entities = player.worldObj.getEntitiesWithinAABB(EntityTameable.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
+			List<EntityTameable> entities = player.worldObj.getEntitiesWithinAABB(EntityTameable.class, AxisAlignedBB.getBoundingBox(x - 8, y - 2, z - 8, x + 8, y + 2, z + 8));
 			for (EntityTameable entityTame : entities) {
 				if (!player.worldObj.isRemote) {
 					if (player.worldObj.rand.nextInt(60) == 0 && entityTame.isTamed()) {
@@ -68,5 +69,11 @@ public class EffectAdvancedLife implements IEffect {
 		return true;
 	}
 
-	
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Heals any nearby pets");
+		return list;
+	}
+
 }

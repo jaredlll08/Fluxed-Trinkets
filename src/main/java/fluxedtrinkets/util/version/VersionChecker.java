@@ -43,6 +43,5 @@ public class VersionChecker {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		EventHandler.doneChecked = true;
 	}
 }

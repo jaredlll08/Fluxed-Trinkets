@@ -10,6 +10,7 @@ import net.minecraft.potion.PotionHealth;
 import net.minecraft.potion.PotionHealthBoost;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 
 public class EffectFall implements IEffect {
 
@@ -38,7 +39,7 @@ public class EffectFall implements IEffect {
 
 	@Override
 	public int getUsage() {
-		return 5;
+		return ConfigProps.energyFall;
 	}
 
 	@Override
@@ -66,4 +67,12 @@ public class EffectFall implements IEffect {
 		return true;
 	}
 
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("while the player is not");
+		list.add("holding shift, the player");
+		list.add("will fall slower than normal.");
+		return list;
+	}
 }

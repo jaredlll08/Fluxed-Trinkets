@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.client.render.block.RenderSolderingStation;
 import fluxedtrinkets.client.render.block.RenderTrinketAssembler;
 import fluxedtrinkets.client.render.gui.GuiEManual;
@@ -22,13 +23,13 @@ public class ClientProxy extends CommonProxy {
 		
 		RenderSolderingStation solderingStation = new RenderSolderingStation();
 		RenderTrinketAssembler trinketAssembler = new RenderTrinketAssembler();
-		ClientRegistry.registerTileEntity(TileEntitySolderingStation.class, "solderingStation", solderingStation);
-		ClientRegistry.registerTileEntity(TileEntityTrinketAssembler.class, "trinketAssembler", trinketAssembler);
+		ClientRegistry.registerTileEntity(TileEntitySolderingStation.class, "solderingStationRenderer", solderingStation);
+		ClientRegistry.registerTileEntity(TileEntityTrinketAssembler.class, "trinketAssemblerRenderer", trinketAssembler);
 		
 		
 	}
 	
-	public static void openManual() {
+	public void openManual() {
 		Minecraft.getMinecraft().displayGuiScreen(new GuiEManual());
 	}
 	

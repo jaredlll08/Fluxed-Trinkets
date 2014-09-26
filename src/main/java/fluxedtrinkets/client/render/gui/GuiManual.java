@@ -13,7 +13,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -21,7 +20,7 @@ import fluxedtrinkets.ModInfo;
 import fluxedtrinkets.api.StringUtils;
 import fluxedtrinkets.items.FTItems;
 
-public class GuiEManual extends GuiScreen {
+public class GuiManual extends GuiScreen {
 	int guiWidth = 146;
 	int guiHeight = 180;
 	int left, top;
@@ -137,13 +136,6 @@ public class GuiEManual extends GuiScreen {
 
 	}
 
-	
-	public void handleMouseInput(){
-		super.handleMouseInput();
-		if(Mouse.isButtonDown(1)){
-			initGui();
-		}
-	}
 	private static final ResourceLocation crafting = new ResourceLocation(ModInfo.modid, "textures/gui/crafting.png");
 
 	@Override

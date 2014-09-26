@@ -7,5 +7,8 @@ public class CommonProxy {
 	public void registerKeyBinding() {
 
 	}
+	
+	public void openManual() {
+	}
 
 }

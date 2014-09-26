@@ -1,26 +1,27 @@
 package fluxedtrinkets.effects;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
-import fluxedtrinkets.config.ConfigProps;
 
-public class EffectAir implements IEffect {
+public class EffectEmpty implements IEffect{
 
 	@Override
 	public String getEffectName() {
-		return "air";
+		return "empty";
+	}
+
+	@Override
+	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
+		return false;
 	}
 
 	@Override
 	public int getUsage() {
-		return ConfigProps.energyAir;
+		return 0;
 	}
 
 	@Override
@@ -30,24 +31,12 @@ public class EffectAir implements IEffect {
 
 	@Override
 	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
+		
 	}
 
 	@Override
 	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			if (!player.onGround && player.moveForward > 0F && !player.isInWater() && !player.isInsideOfMaterial(Material.web) && !player.isInsideOfMaterial(Material.lava)) {
-				player.moveFlying(0F, 1F, player.capabilities.isFlying ? 0.02F : 0.02F * 2);
-				return true;
-			}
-		}
-		return false;
+		
 	}
 
 	@Override
@@ -62,9 +51,8 @@ public class EffectAir implements IEffect {
 
 	@Override
 	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("Allows the player to move");
-		list.add("faster while airborne.");
+		ArrayList<String>list = new ArrayList<String>();
+		list.add("No Effect.");
 		return list;
 	}
 

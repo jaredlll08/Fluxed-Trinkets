@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 
 public class EffectAdvancedLava implements IEffect {
 
@@ -20,7 +21,7 @@ public class EffectAdvancedLava implements IEffect {
 
 	@Override
 	public int getUsage() {
-		return 30;
+		return ConfigProps.energyAdvancedLava;
 	}
 
 	@Override
@@ -67,5 +68,11 @@ public class EffectAdvancedLava implements IEffect {
 		return true;
 	}
 
-	
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Sets any nearby mobs on fire.");
+		return list;
+	}
+
 }

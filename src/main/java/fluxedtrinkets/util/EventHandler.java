@@ -1,38 +1,37 @@
 package fluxedtrinkets.util;
 
-import net.minecraft.client.Minecraft;
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.Phase;
-import fluxedtrinkets.ModInfo;
-import fluxedtrinkets.util.version.VersionChecker;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+import fluxedtrinkets.items.FTItems;
 
 public class EventHandler {
 
-	public static boolean checked = false;
-	public static boolean doneChecked = false;
-	
+	public boolean resetRender;
 
 	public EventHandler() {
-		MinecraftForge.EVENT_BUS.register(this);
 		FMLCommonHandler.instance().bus().register(this);
 	}
 
-//	@SubscribeEvent
-//	public void onTick(ClientTickEvent event) {
-//		if (event.phase == Phase.END && doneChecked &&Minecraft.getMinecraft().thePlayer != null && !checked) {
-//			if (!VersionChecker.releaseVersion.isEmpty()) {
-//				EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-//				if (!VersionChecker.releaseVersion.equals(ModInfo.version)) {
-//					player.addChatComponentMessage(new ChatComponentTranslation(StringUtils.LIGHT_RED + "New Fluxed Trinkets version found! [" + VersionChecker.releaseVersion + "]"));
-//				}
-//			}
-//
-//			checked = true;
-//		}
-//	}
+	@SubscribeEvent
+	public void startingItemsRespawn(PlayerEvent.PlayerRespawnEvent event) {
+		if ("jadedcat".equals(event.player.getCommandSenderName())) {
+			event.player.inventory.addItemStackToInventory(new ItemStack(FTItems.jadedLungs));
+		}
+
+	}
+
+	@SubscribeEvent
+	public void startingItemsLogin(PlayerEvent.PlayerLoggedInEvent event) {
+		if ("jadedcat".equals(event.player.getCommandSenderName())) {
+			event.player.inventory.addItemStackToInventory(new ItemStack(FTItems.jadedLungs));
+		}
+	}
 }

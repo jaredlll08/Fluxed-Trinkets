@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 import fluxedtrinkets.util.EffectHelper;
 
 public class EffectFire implements IEffect {
@@ -19,7 +20,7 @@ public class EffectFire implements IEffect {
 
 	@Override
 	public int getUsage() {
-		return 40;
+		return ConfigProps.energyFire;
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class EffectFire implements IEffect {
 
 	@Override
 	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-		
+
 	}
 
 	@Override
@@ -53,6 +54,7 @@ public class EffectFire implements IEffect {
 		}
 		return false;
 	}
+
 	@Override
 	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
@@ -62,5 +64,12 @@ public class EffectFire implements IEffect {
 	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
 	}
-	
+
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Makes the player");
+		list.add("immune to heat.");
+		return list;
+	}
 }

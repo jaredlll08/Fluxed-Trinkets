@@ -169,7 +169,18 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 				if (item[i].getItem() instanceof ItemCircuit) {
 					ItemCircuit circuit = (ItemCircuit) item[i].getItem();
 
+					if(!totalEffects.contains(circuit.getEffect())){
+						
 					totalEffects.add(circuit.getEffect());
+					}
+					
+					if(totalEffects.contains("advancedLife")){
+						if(totalEffects.contains("water")){
+							totalEffects.remove("advancedLife");
+							totalEffects.remove("water");
+							totalEffects.add("feed");
+						}
+					}
 
 					if (totalEffects.contains("earth")) {
 						if (totalEffects.contains("empty")) {
@@ -177,13 +188,13 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 							totalEffects.remove("earth");
 							totalEffects.add("step");
 						}
-						if (totalEffects.contains("advancedEmpty") && totalEffects.contains("air")) {
-							totalEffects.remove("advancedEmpty");
+						if (totalEffects.contains("advancedIce") && totalEffects.contains("air")) {
+							totalEffects.remove("advancedIce");
 							totalEffects.remove("air");
 							totalEffects.remove("earth");
 							totalEffects.add("fall");
 						}
-						if (totalEffects.contains("air") && !totalEffects.contains("advancedEmpty")) {
+						if (totalEffects.contains("air")) {
 							totalEffects.remove("air");
 							totalEffects.remove("earth");
 							totalEffects.add("haste");
@@ -203,6 +214,7 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		}
 
 		if (item[0] != null) {
+
 			ItemStack result = item[0].copy();
 			NBTHelper.setString(result, "ETEffect", totalEffects.toString());
 			setInventorySlotContents(0, result);

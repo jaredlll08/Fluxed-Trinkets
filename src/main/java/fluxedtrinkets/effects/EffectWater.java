@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 
 public class EffectWater implements IEffect {
 
@@ -18,7 +19,7 @@ public class EffectWater implements IEffect {
 	
 	@Override
 	public int getUsage() {
-		return 10;
+		return ConfigProps.energyWater;
 	}
 
 	@Override
@@ -69,6 +70,14 @@ public class EffectWater implements IEffect {
 	@Override
 	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
+	}
+
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Extinguishes any nearby");
+		list.add("fires within a 5 block radius.");
+		return list;
 	}
 
 

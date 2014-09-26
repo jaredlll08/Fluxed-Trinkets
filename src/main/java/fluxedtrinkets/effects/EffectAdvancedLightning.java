@@ -12,6 +12,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 
 public class EffectAdvancedLightning implements IEffect {
 
@@ -22,7 +23,7 @@ public class EffectAdvancedLightning implements IEffect {
 
 	@Override
 	public int getUsage() {
-		return 30;
+		return ConfigProps.energyAdvancedLightning;
 	}
 
 	@Override
@@ -71,5 +72,14 @@ public class EffectAdvancedLightning implements IEffect {
 		return true;
 	}
 
-	
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("If there is a lightning bolt");
+		list.add("within 48 blocks from the player,");
+		list.add("a strength buff is a applied");
+		list.add("to the player.");
+		return list;
+	}
+
 }

@@ -58,13 +58,16 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 		if (StringUtils.isShiftKeyDown()) {
 			list.add(StringUtils.getChargeText(stack.stackTagCompound.getInteger("energy"), maxCapacity));
 			list.add(StringUtils.getEnergyUsageText(usage));
-			if (effects != null) {
-				
-				list.add(StringUtils.GRAY + effects);
-				String[] effectList = effects.replace("[", "").replace("]", "").split(",");
-				ArrayList<IEffect>effect = new ArrayList<IEffect>();
-				for(int i = 0; i < effectList.length;i++){
-					effect.add(FluxedTrinketsAPI.getEffectFromName(effectList[i]));
+			if (effects != null && !effects.equals("[]") && !effects.equals("")) {
+				// list.add(StringUtils.GRAY + effects);
+				String[] effectList = effects.replace("[", "").replace("]", "").replace(" ", "").split(",");
+				if (effectList != null) {
+					for (int i = 0; i < effectList.length; i++) {
+						list.add(StringUtils.GRAY + FluxedTrinketsAPI.getEffectFromName(effectList[i]).getEffectName());
+						for (int j = 0; j < FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().size(); j++) {
+							list.add(FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().get(j));
+						}
+					}
 				}
 			}
 		} else {

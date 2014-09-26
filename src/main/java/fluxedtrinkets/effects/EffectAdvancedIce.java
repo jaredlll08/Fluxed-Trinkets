@@ -12,6 +12,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.config.ConfigProps;
 
 public class EffectAdvancedIce implements IEffect {
 
@@ -22,7 +23,7 @@ public class EffectAdvancedIce implements IEffect {
 
 	@Override
 	public int getUsage() {
-		return 30;
+		return ConfigProps.energyAdvancedIce;
 	}
 
 	@Override
@@ -73,4 +74,11 @@ public class EffectAdvancedIce implements IEffect {
 		return true;
 	}
 
+	@Override
+	public ArrayList<String> getDescription() {
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("Applied a weakness buff");
+		list.add("to nearby mobs.");
+		return list;
+	}
 }
