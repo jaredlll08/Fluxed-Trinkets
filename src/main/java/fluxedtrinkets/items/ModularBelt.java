@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentText;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
@@ -61,6 +62,7 @@ public class ModularBelt extends ModularItem {
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		stack = itemstack;
 		int energy = getEnergyStored(itemstack);
+		int usage = 0;
 		if (player instanceof EntityPlayer) {
 			EntityPlayer play = (EntityPlayer) player;
 			double x = play.posX;
@@ -73,11 +75,13 @@ public class ModularBelt extends ModularItem {
 				for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
 					if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
 						if (FluxedTrinketsAPI.getEffects().get(i).onWornTick(player.worldObj, itemstack, player)) {
-						extractEnergy(itemstack, FluxedTrinketsAPI.getEffects().get(i).getUsage(), false);
+							usage += FluxedTrinketsAPI.getEffects().get(i).getUsage();
+							extractEnergy(itemstack, FluxedTrinketsAPI.getEffects().get(i).getUsage(), false);
 						}
 
 					}
 				}
+				play.addChatComponentMessage(new ChatComponentText(String.valueOf(extractEnergy(itemstack, usage, false))));
 
 			}
 			if (energy < -1) {
@@ -91,8 +95,7 @@ public class ModularBelt extends ModularItem {
 					}
 				}
 			}
-			
-			
+
 		}
 	}
 

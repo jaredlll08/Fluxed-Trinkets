@@ -69,6 +69,7 @@ public class ModularAmulet extends ModularItem {
 				for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
 					if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
 						if (FluxedTrinketsAPI.getEffects().get(i).onWornTick(player.worldObj, itemstack, player)) {
+							if(!play.worldObj.isRemote)
 							extractEnergy(itemstack, FluxedTrinketsAPI.getEffects().get(i).getUsage(), false);
 						}
 
