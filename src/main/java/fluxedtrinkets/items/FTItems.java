@@ -13,6 +13,7 @@ import fluxedtrinkets.ModInfo;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
 import fluxedtrinkets.api.SolderingRecipe;
 import fluxedtrinkets.items.resources.ItemLeadWire;
+import fluxedtrinkets.items.resources.ItemSilicon;
 import fluxedtrinkets.util.NBTHelper;
 
 public class FTItems {
@@ -40,6 +41,8 @@ public class FTItems {
 	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning");
 
 	public static Item jadedLungs = new ItemJadedLungs();
+	
+	public static Item silicon = new ItemSilicon();
 
 	/*
 	 * items
@@ -80,6 +83,7 @@ public class FTItems {
 		registerCircuit(advancedCircuitLava, "Blazing Circuit", "Circuit_Advanced_Lava");
 		registerCircuit(advancedCircuitLife, "Mending Circuit", "Circuit_Advanced_Life");
 		registerCircuit(advancedCircuitLightning, "Thundering Circuit", "Circuit_Advanced_Lightning");
+		
 
 		/*
 		 * ITems
@@ -94,6 +98,8 @@ public class FTItems {
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
 		registerItem(modularRing, "Modular Ring", "Ring_Blank");
+
+		registerItem(silicon, "Silicon", "Silicon");
 
 	}
 

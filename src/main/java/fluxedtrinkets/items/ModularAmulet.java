@@ -56,7 +56,7 @@ public class ModularAmulet extends ModularItem {
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		stack = itemstack;
-		int energy = NBTHelper.getInt(itemstack, "energy");
+		int energy = getEnergyStored(itemstack);
 		if (player instanceof EntityPlayer) {
 			EntityPlayer play = (EntityPlayer) player;
 			double x = play.posX;
@@ -69,7 +69,7 @@ public class ModularAmulet extends ModularItem {
 				for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
 					if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
 						if (FluxedTrinketsAPI.getEffects().get(i).onWornTick(player.worldObj, itemstack, player)) {
-							energy -= FluxedTrinketsAPI.getEffects().get(i).getUsage();
+							extractEnergy(itemstack, FluxedTrinketsAPI.getEffects().get(i).getUsage(), false);
 						}
 
 					}
@@ -95,7 +95,6 @@ public class ModularAmulet extends ModularItem {
 					}
 				}
 			}
-			NBTHelper.setInteger(itemstack, "energy", energy);
 		}
 	}
 
@@ -131,7 +130,7 @@ public class ModularAmulet extends ModularItem {
 		String effects = NBTHelper.getString(itemstack, "ETEffect");
 		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
 			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
-			return	FluxedTrinketsAPI.getEffects().get(i).canEquip(player.worldObj, itemstack, player);
+				return FluxedTrinketsAPI.getEffects().get(i).canEquip(player.worldObj, itemstack, player);
 			}
 		}
 		return true;
@@ -147,6 +146,5 @@ public class ModularAmulet extends ModularItem {
 		}
 		return true;
 	}
-
 
 }

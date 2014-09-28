@@ -6,10 +6,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import fluxedtrinkets.FluxedTrinkets;
+import fluxedtrinkets.client.render.gui.ContainerCompressor;
 import fluxedtrinkets.client.render.gui.ContainerSolderingStation;
 import fluxedtrinkets.client.render.gui.ContainerTrinketAssembler;
+import fluxedtrinkets.client.render.gui.GuiCompressor;
 import fluxedtrinkets.client.render.gui.GuiSolderingStationCircuit;
 import fluxedtrinkets.client.render.gui.GuiTrinketAssembler;
+import fluxedtrinkets.tileEntity.TileEntityCompressor;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
@@ -36,6 +39,13 @@ public class GuiHandler implements IGuiHandler {
 				return new ContainerTrinketAssembler(player.inventory, (TileEntityTrinketAssembler) tile);
 			}
 			break;
+			
+		case 2:
+			TileEntity tec = world.getTileEntity(x, y, z);
+			if (tec != null && tec instanceof TileEntityCompressor) {
+				return new ContainerCompressor(player.inventory, (TileEntityCompressor) tec);
+			}
+			break;
 
 		}
 
@@ -56,6 +66,13 @@ public class GuiHandler implements IGuiHandler {
 			TileEntity tile = world.getTileEntity(x, y, z);
 			if (tile != null && tile instanceof TileEntityTrinketAssembler) {
 				return new GuiTrinketAssembler(player.inventory, (TileEntityTrinketAssembler) tile);
+			}
+			break;
+			
+		case 2:
+			TileEntity tec = world.getTileEntity(x, y, z);
+			if (tec != null && tec instanceof TileEntityCompressor) {
+				return new GuiCompressor(player.inventory, (TileEntityCompressor) tec);
 			}
 			break;
 		}

@@ -56,6 +56,7 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 			stack.stackTagCompound = new NBTTagCompound();
 		}
 		if (StringUtils.isShiftKeyDown()) {
+			list.add(stack.stackTagCompound.getInteger("energy") + "/"+maxCapacity );
 			list.add(StringUtils.getChargeText(stack.stackTagCompound.getInteger("energy"), maxCapacity));
 			list.add(StringUtils.getEnergyUsageText(usage));
 			if (effects != null && !effects.equals("[]") && !effects.equals("")) {

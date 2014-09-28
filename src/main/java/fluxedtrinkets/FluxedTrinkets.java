@@ -72,7 +72,7 @@ public class FluxedTrinkets {
 
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
-		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
+//		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 		new GuiHandler();
 		PacketHandler.init();
 		VersionChecker.init();
