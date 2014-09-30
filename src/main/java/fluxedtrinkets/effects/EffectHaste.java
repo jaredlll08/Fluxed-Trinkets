@@ -16,7 +16,7 @@ import fluxedtrinkets.config.ConfigProps;
 
 public class EffectHaste implements IEffect {
 
-    private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed",  0.4f, 1);
+    private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed",  0.3f, 1);
 
 	@Override
 	public String getEffectName() {
