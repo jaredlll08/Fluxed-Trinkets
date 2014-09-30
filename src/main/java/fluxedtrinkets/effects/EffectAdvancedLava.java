@@ -1,78 +1,39 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectAdvancedLava implements IEffect {
+public class EffectAdvancedLava extends BaseEffect {
 
-	@Override
-	public String getEffectName() {
-		return "advancedLava";
+	public EffectAdvancedLava() {
+		super("advancedLava");
 	}
 
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyAdvancedLava;
-	}
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		if (!entity.worldObj.isRemote) {
+			
+			List<EntityCreature> entities = getEntitiesAround(entity, 8, EntityCreature.class);
 
-	@Override
-	public boolean hasEquipEffect() {
-		return false;
-	}
-
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			double x = player.posX;
-			double y = player.posY;
-			double z = player.posZ;
-
-			List<EntityCreature> entities = player.worldObj.getEntitiesWithinAABB(EntityCreature.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
 			for (EntityCreature entityCreature : entities) {
-				if (!player.worldObj.isRemote && !entityCreature.isBurning()) {
+				if (!entityCreature.isBurning() && hasEnergy(item, stack, ConfigProps.energyAdvancedLava)) {
 					entityCreature.setFire(80);
-					return true;
+					return ConfigProps.energyAdvancedLava;
 				}
 			}
 		}
-		return false;
+		return 0;
 	}
 
-	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("Sets any nearby mobs on fire.");
-		return list;
-	}
-
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("Sets any nearby mobs on fire.");
+//		return list;
+//	}
 }

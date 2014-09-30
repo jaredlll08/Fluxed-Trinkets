@@ -11,10 +11,10 @@ import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectFeed implements IEffect {
+public class EffectFeed extends BaseEffect {
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "feed";
 	}
 
@@ -58,7 +58,7 @@ public class EffectFeed implements IEffect {
 	}
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 
 	}
 

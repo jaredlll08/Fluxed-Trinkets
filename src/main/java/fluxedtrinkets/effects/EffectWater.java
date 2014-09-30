@@ -10,10 +10,10 @@ import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectWater implements IEffect {
+public class EffectWater extends BaseEffect {
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "water";
 	}
 	
@@ -34,7 +34,7 @@ public class EffectWater implements IEffect {
 
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 		
 	}
 

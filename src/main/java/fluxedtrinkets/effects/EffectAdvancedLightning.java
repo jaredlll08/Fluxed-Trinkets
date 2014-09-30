@@ -1,85 +1,44 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectAdvancedLightning implements IEffect {
+public class EffectAdvancedLightning extends BaseEffect{
 
-	@Override
-	public String getEffectName() {
-		return "advancedLightning";
+	public EffectAdvancedLightning() {
+		super("advancedLightning");
 	}
 
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyAdvancedLightning;
-	}
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		if (entity.worldObj.isRemote) {
 
-	@Override
-	public boolean hasEquipEffect() {
-		return false;
-	}
+			List<EntityLightningBolt> bolts = getEntitiesAround(entity, 48, EntityLightningBolt.class);
 
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-
-			double x = player.posX;
-			double y = player.posY;
-			double z = player.posZ;
-
-			List<EntityLightningBolt> bolts = player.worldObj.getEntitiesWithinAABB(EntityLightningBolt.class, AxisAlignedBB.getBoundingBox(x - 48, y - 48, z - 48, x + 48, y + 48, z + 48));
-			for (EntityLightningBolt bolt : bolts) {
-				if (!player.worldObj.isRemote) {
-					player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1, true));
-					player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 1, true));
-				}
+			if (!bolts.isEmpty() && hasEnergy(item, stack, ConfigProps.energyAdvancedLightning)) {
+				entity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1, true));
+				entity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 1, true));
+				return ConfigProps.energyAdvancedLightning;
 			}
 		}
 
-		return false;
+		return 0;
 	}
 
-	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("If there is a lightning bolt");
-		list.add("within 48 blocks from the player,");
-		list.add("a strength buff is a applied");
-		list.add("to the player.");
-		return list;
-	}
-
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("If there is a lightning bolt");
+//		list.add("within 48 blocks from the player,");
+//		list.add("a strength buff is a applied");
+//		list.add("to the player.");
+//		return list;
+//	}
 }

@@ -1,80 +1,35 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectEarth implements IEffect {
+public class EffectEarth extends BaseEffect {
 
-	@Override
-	public String getEffectName() {
-		return "earth";
+	public EffectEarth() {
+		super("earth");
 	}
 
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyEarth;
-	}
-
-	@Override
-	public boolean hasEquipEffect() {
-		return true;
-	}
-
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-	}
-
-	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			
-
-			if (player.posY < 32) {
-				if (player.worldObj.rand.nextInt(600) == 0) {
-					player.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
-					player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 400, 1));
-					return true;
-				}
-				return false;
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		if (!entity.worldObj.isRemote) {
+			if (hasEnergy(item, stack, ConfigProps.energyEarth) && entity.posY < 32 && entity.worldObj.rand.nextInt(600) == 0) {
+				entity.addPotionEffect(new PotionEffect(Potion.resistance.id, 400, 1));
+				entity.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 400, 1));
+				return ConfigProps.energyEarth;
 			}
-			return false;
 		}
-		return false;
+		return 0;
 	}
-
-	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("while the player is below y=32");
-		list.add("a haste buff is applied to them.");
-		return list;
-	}
-
+	
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("while the player is below y=32");
+//		list.add("a haste buff is applied to them.");
+//		return list;
+//	}
 }

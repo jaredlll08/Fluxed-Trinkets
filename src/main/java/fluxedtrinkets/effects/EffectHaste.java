@@ -14,12 +14,12 @@ import cofh.api.energy.IEnergyContainerItem;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectHaste implements IEffect {
+public class EffectHaste extends BaseEffect {
 
     private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed",  0.3f, 1);
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "haste";
 	}
 
@@ -39,7 +39,7 @@ public class EffectHaste implements IEffect {
 	}
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 	    entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed).removeModifier(speedMod);
 	}
 

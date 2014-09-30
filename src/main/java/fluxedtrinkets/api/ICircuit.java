@@ -1,10 +1,8 @@
 package fluxedtrinkets.api;
 
 public interface ICircuit {
-	
 
-	public CircuitTiers getTier();
-	
-	public String getEffect();
-	
+	public CircuitTier getTier();
+
+	public IEffect getEffect();
 }

@@ -12,10 +12,10 @@ import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectFall implements IEffect {
+public class EffectFall extends BaseEffect {
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "fall";
 	}
 
@@ -53,7 +53,7 @@ public class EffectFall implements IEffect {
 	}
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 
 	}
 

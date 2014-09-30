@@ -1,71 +1,39 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectAir implements IEffect {
+public class EffectAir extends BaseEffect {
 
-	@Override
-	public String getEffectName() {
-		return "air";
+	public EffectAir() {
+		super("air");
 	}
-
+	
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyAir;
-	}
-
-	@Override
-	public boolean hasEquipEffect() {
-		return false;
-	}
-
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer) {
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		if (entity instanceof EntityPlayer && !entity.worldObj.isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
-			if (!player.onGround && player.moveForward > 0F && !player.isInWater() && !player.isInsideOfMaterial(Material.web) && !player.isInsideOfMaterial(Material.lava)) {
+			if (hasEnergy(item, stack, ConfigProps.energyAir) && isPlayerInAir(player)) {
 				player.moveFlying(0F, 1F, player.capabilities.isFlying ? 0.02F : 0.02F * 2);
-				return true;
+				return ConfigProps.energyAir;
 			}
 		}
-		return false;
+		return 0;
+	}
+	
+	private boolean isPlayerInAir(EntityPlayer player) {
+		return !player.onGround && player.moveForward > 0F && !player.isInWater() && !player.isInsideOfMaterial(Material.web) && !player.isInsideOfMaterial(Material.lava);
 	}
 
-	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("Allows the player to move");
-		list.add("faster while airborne.");
-		return list;
-	}
-
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("Allows the player to move");
+//		list.add("faster while airborne.");
+//		return list;
+//	}
 }

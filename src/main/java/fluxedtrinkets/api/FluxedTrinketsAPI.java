@@ -6,10 +6,8 @@ import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class FluxedTrinketsAPI {
 
-	private static ArrayList<String> effectName = new ArrayList<String>();
+	private static ArrayList<String> effectNames = new ArrayList<String>();
 	private static ArrayList<IEffect> effects = new ArrayList<IEffect>();
-
-	private static ArrayList<ArrayList<IEffect>> effectCombo2 = new ArrayList<ArrayList<IEffect>>();
 
 	/**
 	 * Adds an effect to the effect list.
@@ -17,9 +15,9 @@ public class FluxedTrinketsAPI {
 	 * @param effect
 	 */
 	public static void addEffect(IEffect effect) {
-		if (!hasEffect(effect) && !hasEffect(effect.getEffectName())) {
+		if (!hasEffect(effect) && !hasEffect(effect.getName())) {
 			effects.add(effect);
-			effectName.add(effect.getEffectName());
+			effectNames.add(effect.getName());
 		}
 	}
 
@@ -29,7 +27,11 @@ public class FluxedTrinketsAPI {
 	 * @return a list of effects
 	 */
 	public static ArrayList<String> getEffectNames() {
-		return effectName;
+		return effectNames;
+	}
+	
+	public static int getEffectAmount() {
+		return effects.size();
 	}
 
 	/**
@@ -48,10 +50,7 @@ public class FluxedTrinketsAPI {
 	 * @return
 	 */
 	public static boolean hasEffect(String effect) {
-		if (effectName.contains(effect)) {
-			return true;
-		}
-		return false;
+		return effectNames.contains(effect);
 	}
 
 	/**
@@ -61,10 +60,7 @@ public class FluxedTrinketsAPI {
 	 * @return
 	 */
 	public static boolean hasEffect(IEffect effect) {
-		if (effects.contains(effect)) {
-			return true;
-		}
-		return false;
+		return effects.contains(effect);
 	}
 
 	/**
@@ -74,7 +70,7 @@ public class FluxedTrinketsAPI {
 	 */
 	public static IEffect getEffectFromName(String name) {
 		for (int i = 0; i < effects.size(); i++) {
-			if (effects.get(i).getEffectName().equals(name)) {
+			if (effects.get(i).getName().equals(name)) {
 				return effects.get(i);
 			}
 		}
@@ -87,7 +83,7 @@ public class FluxedTrinketsAPI {
 	 * @return the name of the effect
 	 */
 	public static String getNameFromEffect(IEffect effect) {
-		return effect.getEffectName();
+		return effect.getName();
 	}
 
 }

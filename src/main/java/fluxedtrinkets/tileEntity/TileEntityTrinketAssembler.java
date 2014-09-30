@@ -171,7 +171,7 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 
 					if(!totalEffects.contains(circuit.getEffect())){
 						
-					totalEffects.add(circuit.getEffect());
+					totalEffects.add(circuit.getEffect().getName());
 					}
 					
 					if(totalEffects.contains("advancedLife")){

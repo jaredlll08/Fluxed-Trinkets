@@ -1,28 +1,32 @@
-package fluxedtrinkets.api;
+package fluxedtrinkets.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
-import baubles.api.IBauble;
-import cofh.api.energy.IEnergyContainerItem;
+import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.ITrinket;
+import fluxedtrinkets.api.StringUtils;
+import fluxedtrinkets.util.NBTHelper;
 
-public abstract class ModularItem extends Item implements IBauble, IEnergyContainerItem {
+public class ModularTrinketItem extends Item implements ITrinket {
 
 	private int maxCapacity;
 	private int usage;
+	private BaubleType type;
 
-	public ModularItem(int maxCapacity) {
+	public ModularTrinketItem(int maxCapacity, BaubleType type) {
 		this.setMaxStackSize(1);
 		this.maxCapacity = maxCapacity;
+		this.type = type;
 	}
 
 	public int getUsage() {
@@ -31,6 +35,11 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 
 	public void setUsage(int usage) {
 		this.usage = usage;
+	}
+	
+	@Override
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		return type;
 	}
 
 	@Override
@@ -56,7 +65,7 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 			stack.stackTagCompound = new NBTTagCompound();
 		}
 		if (StringUtils.isShiftKeyDown()) {
-			list.add(stack.stackTagCompound.getInteger("energy") + "/"+maxCapacity );
+			list.add(stack.stackTagCompound.getInteger("energy") + "/" + maxCapacity);
 			list.add(StringUtils.getChargeText(stack.stackTagCompound.getInteger("energy"), maxCapacity));
 			list.add(StringUtils.getEnergyUsageText(usage));
 			if (effects != null && !effects.equals("[]") && !effects.equals("")) {
@@ -64,10 +73,12 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 				String[] effectList = effects.replace("[", "").replace("]", "").replace(" ", "").split(",");
 				if (effectList != null) {
 					for (int i = 0; i < effectList.length; i++) {
-						list.add(StringUtils.GRAY + FluxedTrinketsAPI.getEffectFromName(effectList[i]).getEffectName());
-						for (int j = 0; j < FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().size(); j++) {
-							list.add(FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().get(j));
-						}
+						list.add(StringUtils.GRAY + FluxedTrinketsAPI.getEffectFromName(effectList[i]).getName());
+						// for (int j = 0; j <
+						// FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().size();
+						// j++) {
+						// list.add(FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().get(j));
+						// }
 					}
 				}
 			}
@@ -133,6 +144,80 @@ public abstract class ModularItem extends Item implements IBauble, IEnergyContai
 	@Override
 	public int getMaxEnergyStored(ItemStack container) {
 		return maxCapacity;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		int usage = 0;
+
+		if (NBTHelper.getString(stack, "ETEffect") != "" && NBTHelper.getString(stack, "ETEffect") != null) {
+			String effects = NBTHelper.getString(stack, "ETEffect");
+			for (int i = 0; i < FluxedTrinketsAPI.getEffectAmount(); i++) {
+				if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+					// TODO fix usage // usage +=
+					// FluxedTrinketsAPI.getEffects().get(i).getUsage();
+				}
+			}
+			this.setUsage(usage);
+
+			addInformation(stack, player, list, par4, effects);
+		}
+	}
+
+	@Override
+	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+		if (player instanceof EntityPlayer) {
+			String effects = NBTHelper.getString(itemstack, "ETEffect");
+			for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+				if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+					extractEnergy(itemstack, FluxedTrinketsAPI.getEffects().get(i).onWornTick(itemstack, player, (ITrinket) itemstack.getItem()), false);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+				FluxedTrinketsAPI.getEffects().get(i).onEquipped(itemstack, player, (ITrinket) itemstack.getItem());
+			}
+		}
+	}
+
+	@Override
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+				FluxedTrinketsAPI.getEffects().get(i).onUnequipped(itemstack, player, (ITrinket) itemstack.getItem());
+			}
+
+		}
+	}
+
+	@Override
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+				return FluxedTrinketsAPI.getEffects().get(i).canEquip(itemstack, player, (ITrinket) itemstack.getItem());
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		String effects = NBTHelper.getString(itemstack, "ETEffect");
+		for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
+			if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+				return FluxedTrinketsAPI.getEffects().get(i).canUnequip(itemstack, player, (ITrinket) itemstack.getItem());
+			}
+		}
+		return true;
 	}
 
 }

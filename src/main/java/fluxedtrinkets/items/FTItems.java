@@ -1,5 +1,6 @@
 package fluxedtrinkets.items;
 
+import baubles.api.BaubleType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,8 +13,10 @@ import fluxedtrinkets.CreativeTabFluxedTrinkets;
 import fluxedtrinkets.ModInfo;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
 import fluxedtrinkets.api.SolderingRecipe;
-import fluxedtrinkets.items.resources.ItemLeadWire;
-import fluxedtrinkets.items.resources.ItemSilicon;
+import fluxedtrinkets.items.ingredient.ItemBattery;
+import fluxedtrinkets.items.ingredient.ItemLeadWire;
+import fluxedtrinkets.items.ingredient.ItemSilicon;
+import fluxedtrinkets.items.ingredient.ItemSolderingIron;
 import fluxedtrinkets.util.NBTHelper;
 
 public class FTItems {
@@ -56,9 +59,9 @@ public class FTItems {
 
 	public static Item manual = new ItemManual();
 
-	public static Item modularBelt = new ModularBelt();
-	public static Item modularAmulet = new ModularAmulet();
-	public static Item modularRing = new ModularRing();
+	public static Item modularBelt = new ModularTrinketItem(25000, BaubleType.BELT);
+	public static Item modularAmulet = new ModularTrinketItem(15000, BaubleType.AMULET);
+	public static Item modularRing = new ModularTrinketItem(10000, BaubleType.RING);
 
 	private static void registerItems() {
 		// FluxedTrinketsAPI.addEffect("empty");

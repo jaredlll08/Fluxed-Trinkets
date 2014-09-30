@@ -1,11 +1,9 @@
 package fluxedtrinkets.api;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public interface IEffect {
 
@@ -14,56 +12,46 @@ public interface IEffect {
 	 * 
 	 * @return the effect name
 	 */
-
-	public String getEffectName();
+	public String getName();
 
 	/**
-	 * What happens on world tick.
+	 * Called once for every instance of the effect on the player, once per
+	 * tick.
 	 * 
-	 * Return false if it shouldnt use power.
-	 * 
-	 * @param world
 	 * @param stack
+	 *            ItemStack with this effect
 	 * @param entity
-	 * @return boolean if it was successful.
+	 *            EntityLivingBase wearing this item
+	 * @param item
+	 *            {@link ITrinket} with this effect applied
 	 */
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity);
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item);
 
 	/**
-	 * How much RF does the effect use?
+	 * Called when an item with the effect is equipped into a bauble slot
 	 * 
-	 * @return
-	 */
-	public int getUsage();
-
-	/**
-	 * Does something happen when you equip/unequip it?
-	 * 
-	 * @return
-	 */
-	public boolean hasEquipEffect();
-
-	/**
-	 * what happens when you equip it?
-	 * 
-	 * @param world
 	 * @param stack
+	 *            ItemStack with this effect
 	 * @param entity
+	 *            EntityLivingBase wearing this item
+	 * @param item
+	 *            {@link ITrinket} with this effect applied
 	 */
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity);
+	public void onEquipped(ItemStack stack, EntityLivingBase entity, ITrinket item);
 
 	/**
-	 * What happens when you unequip it.
+	 * Called when an item with the effect is removed from a bauble slot
 	 * 
-	 * @param world
 	 * @param stack
+	 *            ItemStack with this effect
 	 * @param entity
+	 *            EntityLivingBase wearing this item
+	 * @param item
+	 *            {@link ITrinket} with this effect applied
 	 */
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity);
+	public void onUnequipped(ItemStack stack, EntityLivingBase entity, ITrinket item);
 
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player);
+	public boolean canEquip(ItemStack stack, EntityLivingBase entity, ITrinket item);
 
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player);
-
-	public ArrayList<String> getDescription();
+	public boolean canUnequip(ItemStack stack, EntityLivingBase entity, ITrinket item);
 }

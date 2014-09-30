@@ -11,10 +11,10 @@ import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 import fluxedtrinkets.util.EffectHelper;
 
-public class EffectFire implements IEffect {
+public class EffectFire extends BaseEffect {
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "fire";
 	}
 
@@ -34,7 +34,7 @@ public class EffectFire implements IEffect {
 	}
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 		EffectHelper.setFireImmune(entity, false);
 	}
 

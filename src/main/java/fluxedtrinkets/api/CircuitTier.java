@@ -3,6 +3,6 @@
  */
 package fluxedtrinkets.api;
 
-public enum CircuitTiers {
+public enum CircuitTier {
 	basic, advanced
 }

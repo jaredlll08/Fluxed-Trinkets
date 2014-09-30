@@ -1,4 +1,4 @@
-package fluxedtrinkets.items;
+package fluxedtrinkets.items.ingredient;
 
 import net.minecraft.item.Item;
 

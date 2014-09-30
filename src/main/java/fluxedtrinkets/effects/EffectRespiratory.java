@@ -10,10 +10,10 @@ import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectRespiratory implements IEffect {
+public class EffectRespiratory extends BaseEffect {
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "respiratory";
 	}
 
@@ -33,7 +33,7 @@ public class EffectRespiratory implements IEffect {
 	}
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 
 	}
 

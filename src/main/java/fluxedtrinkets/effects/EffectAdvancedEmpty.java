@@ -1,59 +1,17 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 
-public class EffectAdvancedEmpty implements IEffect{
+public class EffectAdvancedEmpty extends BaseEffect {
 
-	@Override
-	public String getEffectName() {
-		return "advancedEmpty";
+	public EffectAdvancedEmpty() {
+		super("advancedEmpty");
 	}
 
 	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		return false;
-	}
-
-	@Override
-	public int getUsage() {
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		return 0;
 	}
-
-	@Override
-	public boolean hasEquipEffect() {
-		return false;
-	}
-
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-		
-	}
-
-	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-		
-	}
-
-	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String>list = new ArrayList<String>();
-		list.add("No Effect.");
-		return list;
-	}
-
 }

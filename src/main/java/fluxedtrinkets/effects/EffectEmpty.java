@@ -7,10 +7,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
 
-public class EffectEmpty implements IEffect{
+public class EffectEmpty extends BaseEffect{
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "empty";
 	}
 
@@ -35,7 +35,7 @@ public class EffectEmpty implements IEffect{
 	}
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 		
 	}
 

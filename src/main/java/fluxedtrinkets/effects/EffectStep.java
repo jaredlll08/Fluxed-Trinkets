@@ -11,10 +11,10 @@ import net.minecraft.world.World;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectStep implements IEffect {
+public class EffectStep extends BaseEffect {
 
 	@Override
-	public String getEffectName() {
+	public String getName() {
 		return "step";
 	}
 
@@ -36,7 +36,7 @@ public class EffectStep implements IEffect {
 	}
 
 	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
 		if (entity instanceof EntityPlayer) {
 			((EntityPlayer) entity).stepHeight = 0.50001F;
 		}

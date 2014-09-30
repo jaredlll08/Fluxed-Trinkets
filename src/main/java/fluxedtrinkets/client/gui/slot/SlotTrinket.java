@@ -3,10 +3,7 @@ package fluxedtrinkets.client.gui.slot;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import fluxedtrinkets.api.ModularItem;
-import fluxedtrinkets.items.equipment.ModAmulet;
-import fluxedtrinkets.items.equipment.ModBelt;
-import fluxedtrinkets.items.equipment.ModRing;
+import fluxedtrinkets.items.ModularTrinketItem;
 
 public class SlotTrinket extends Slot {
 
@@ -16,13 +13,7 @@ public class SlotTrinket extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-
-		if (stack.getItem() instanceof ModularItem) {
-			return true;
-		}
-		
-
-		return false;
+		return stack.getItem() instanceof ModularTrinketItem;
 	}
 
 }

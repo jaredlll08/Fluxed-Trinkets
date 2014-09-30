@@ -1,84 +1,46 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
-public class EffectAdvancedIce implements IEffect {
+public class EffectAdvancedIce extends BaseEffect {
 
-	@Override
-	public String getEffectName() {
-		return "advancedIce";
+	public EffectAdvancedIce() {
+		super("advancedIce");
 	}
 
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyAdvancedIce;
-	}
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		if (!entity.worldObj.isRemote) {
 
-	@Override
-	public boolean hasEquipEffect() {
-		return false;
-	}
+			entity.removePotionEffect(Potion.weakness.id);
 
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
+			List<EntityCreature> entities = getEntitiesAround(entity, 8, EntityCreature.class);
 
-	}
-
-	@Override
-	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			double x = player.posX;
-			double y = player.posY;
-			double z = player.posZ;
-			player.removePotionEffect(Potion.weakness.id);
-			List<EntityCreature> entities = player.worldObj.getEntitiesWithinAABB(EntityCreature.class, AxisAlignedBB.getBoundingBox(x - 8, y - 8, z - 8, x + 8, y + 8, z + 8));
+			int energyUsed = 0;
 			for (EntityCreature entityCreature : entities) {
-				if (!player.worldObj.isRemote) {
-					if (!entityCreature.isPotionActive(Potion.weakness)) {
-						entityCreature.addPotionEffect(new PotionEffect(Potion.weakness.id, 400, 1));
-						return true;
-					}
+				if (!entityCreature.isPotionActive(Potion.weakness) && hasEnergy(item, stack, ConfigProps.energyAdvancedIce + energyUsed)) {
+					entityCreature.addPotionEffect(new PotionEffect(Potion.weakness.id, 400, 1));
+					energyUsed += ConfigProps.energyAdvancedIce;
 				}
 			}
-			return true;
+			return energyUsed;
 		}
-		return false;
+		return 0;
 	}
 
-	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("Applied a weakness buff");
-		list.add("to nearby mobs.");
-		return list;
-	}
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("Applied a weakness buff");
+//		list.add("to nearby mobs.");
+//		return list;
+//	}
 }
