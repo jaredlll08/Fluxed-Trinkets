@@ -1,90 +1,56 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import cofh.api.energy.IEnergyContainerItem;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
 public class EffectHaste extends BaseEffect {
 
     private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed",  0.3f, 1);
 
-	@Override
-	public String getName() {
-		return "haste";
+	public EffectHaste() {
+		super("haste");
 	}
 
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyHaste;
-	}
-
-	@Override
-	public boolean hasEquipEffect() {
-		return true;
-	}
-
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
-	    entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed).removeModifier(speedMod);
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer && !world.isRemote) {
-			EntityPlayer player = (EntityPlayer) entity;
-            IAttributeInstance moveInst = player.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed);
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		if (!entity.worldObj.isRemote) {
+            IAttributeInstance moveInst = entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed);
             moveInst.removeModifier(speedMod);
-            
-            boolean hasPower = ((IEnergyContainerItem)stack.getItem()).getEnergyStored(stack) > 0;
-            
-            if (hasPower) {
+                        
+            if (hasEnergy(item, stack, ConfigProps.energyHaste)) {
                 moveInst.applyModifier(speedMod);
+            } else {
+            	return 0;
             }
 
-			if (player.onGround && isMoving(player)) {
-                return true;
+			if (entity.onGround && isMoving(entity)) {
+                return ConfigProps.energyHaste;
 			}
 		}
-		return false;
+		return 0;
 	}
 
-	private boolean isMoving(EntityPlayer player)
-	{
-	    return Math.abs(player.distanceWalkedModified - player.prevDistanceWalkedModified) > 0;
-    }
-
-    @Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
+	private boolean isMoving(EntityLivingBase entity) {
+		return Math.abs(entity.distanceWalkedModified - entity.prevDistanceWalkedModified) > 0;
 	}
 
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
+	public void onUnequipped(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed).removeModifier(speedMod);
 	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("While the wearer is");
-		list.add("on the ground they gain");
-		list.add("a speed boost.");
-		return list;
-	}
-
+	
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("While the wearer is");
+//		list.add("on the ground they gain");
+//		list.add("a speed boost.");
+//		return list;
+//	}
 }

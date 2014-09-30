@@ -1,19 +1,14 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
 public class EffectWater extends BaseEffect {
 
-	public EffectWater(String name) {
+	public EffectWater() {
 		super("water");
 	}
 

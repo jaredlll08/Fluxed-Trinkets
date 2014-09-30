@@ -1,5 +1,7 @@
 package fluxedtrinkets.util;
 
+import java.lang.reflect.Field;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
@@ -9,10 +11,19 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public class EffectHelper {
-	public static final String[] IS_IMMUNE_TO_FIRE = new String[] { "isImmuneToFire", "field_70178_ae", "ag" };
+	private static final String[] IS_IMMUNE_TO_FIRE = new String[] { "isImmuneToFire", "field_70178_ae", "ag" };
+	private static final Field isImmuneToFire = ReflectionHelper.findField(Entity.class, IS_IMMUNE_TO_FIRE);
+
+	static {
+		isImmuneToFire.setAccessible(true);
+	}
 
 	public static void setFireImmune(Entity entity, boolean isImmune) {
-		ReflectionHelper.setPrivateValue(Entity.class, entity, isImmune, IS_IMMUNE_TO_FIRE);
+		try {
+			isImmuneToFire.set(entity, isImmune);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static boolean applyBonemeal(ItemStack p_150919_0_, World p_150919_1_, int p_150919_2_, int p_150919_3_, int p_150919_4_, EntityPlayer player, boolean superStrength) {

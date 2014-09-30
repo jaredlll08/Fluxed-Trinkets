@@ -1,70 +1,33 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 
 public class EffectRespiratory extends BaseEffect {
 
-	@Override
-	public String getName() {
-		return "respiratory";
+	public EffectRespiratory() {
+		super("respiratory");
 	}
 
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyRespiratory;
-	}
-
-	@Override
-	public boolean hasEquipEffect() {
-		return false;
-	}
-
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			if (player.isInWater()) {
-				player.setAir(0);
-				return true;
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		if (!entity.worldObj.isRemote && entity.worldObj.getTotalWorldTime() % 20 == 0) {
+			if (entity.isInWater()) {
+				entity.setAir(0);
+				return ConfigProps.energyWater;
 			}
 		}
 
-		return false;
+		return 0;
 	}
 
-	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("Allows the wearer");
-		list.add("to breath underwater.");
-		return list;
-	}
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("Allows the wearer");
+//		list.add("to breath underwater.");
+//		return list;
+//	}
 }

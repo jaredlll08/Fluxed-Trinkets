@@ -1,75 +1,49 @@
 package fluxedtrinkets.effects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.ConfigProps;
 import fluxedtrinkets.util.EffectHelper;
 
 public class EffectFire extends BaseEffect {
 
-	@Override
-	public String getName() {
-		return "fire";
+	public EffectFire() {
+		super("fire");
 	}
 
 	@Override
-	public int getUsage() {
-		return ConfigProps.energyFire;
-	}
-
-	@Override
-	public boolean hasEquipEffect() {
-		return true;
-	}
-
-	@Override
-	public void onEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
-	}
-
-	@Override
-	public void onRemoved(World world, ItemStack stack, EntityLivingBase entity) {
-		EffectHelper.setFireImmune(entity, false);
-	}
-
-	@Override
-	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
+	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
-			if (player.isBurning()) {
+			int powerUsed = 0;
+			if (player.isBurning() && hasEnergy(item, stack, ConfigProps.energyFire)) {
 				player.extinguish();
-				EffectHelper.setFireImmune(player, true);
-				if (player.worldObj.rand.nextInt(100) == 0) {
-					EffectHelper.setFireImmune(player, true);
-					return true;
-				}
+				powerUsed += ConfigProps.energyFire;
 			}
-			return false;
+			
+			if (hasEnergy(item, stack, ConfigProps.energyFire + powerUsed)) {
+				EffectHelper.setFireImmune(entity, true);
+				powerUsed += ConfigProps.energyFire; // TODO find a better way to draw power
+			} else {
+				EffectHelper.setFireImmune(entity, false);
+			}
+			return powerUsed;
 		}
-		return false;
+		return 0;
 	}
 
 	@Override
-	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
+	public void onUnequipped(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		EffectHelper.setFireImmune(entity, false);
 	}
-
-	@Override
-	public boolean canUnequip(World world, ItemStack itemstack, EntityLivingBase player) {
-		return true;
-	}
-
-	@Override
-	public ArrayList<String> getDescription() {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("Makes the player");
-		list.add("immune to heat.");
-		return list;
-	}
+	
+//	@Override
+//	public ArrayList<String> getDescription() {
+//		ArrayList<String> list = new ArrayList<String>();
+//		list.add("Makes the player");
+//		list.add("immune to heat.");
+//		return list;
+//	}
 }

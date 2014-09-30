@@ -1,7 +1,6 @@
 package fluxedtrinkets;
 
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -32,7 +31,6 @@ import fluxedtrinkets.proxy.CommonProxy;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
 import fluxedtrinkets.util.GuiHandler;
-import fluxedtrinkets.util.KeyInputEventHandler;
 import fluxedtrinkets.util.RecipeHandler;
 import fluxedtrinkets.util.version.VersionChecker;
 

@@ -61,13 +61,13 @@ public abstract class BaseEffect implements IEffect {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <T extends Entity> List<T> getEntitiesAround(EntityLivingBase entity, double range, final Class<? extends Entity> clazz) {
+	public <T extends Entity> List<T> getEntitiesAround(EntityLivingBase entity, double range, final Class<? extends T> clazz) {
 		AxisAlignedBB bb = getBBSurrounding(entity, range);
 		return entity.worldObj.getEntitiesWithinAABBExcludingEntity(entity, bb, new IEntitySelector() {
 			
 			@Override
 			public boolean isEntityApplicable(Entity entity) {
-				return entity.getClass().isAssignableFrom(clazz);
+				return clazz.isAssignableFrom(entity.getClass());
 			}
 		});
 	}
