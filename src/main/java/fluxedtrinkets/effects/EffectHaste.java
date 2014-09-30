@@ -1,16 +1,22 @@
 package fluxedtrinkets.effects;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import cofh.api.energy.IEnergyContainerItem;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.config.ConfigProps;
 
 public class EffectHaste implements IEffect {
+
+    private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed",  0.4f, 1);
 
 	@Override
 	public String getEffectName() {
@@ -24,7 +30,7 @@ public class EffectHaste implements IEffect {
 
 	@Override
 	public boolean hasEquipEffect() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -34,22 +40,35 @@ public class EffectHaste implements IEffect {
 
 	@Override
 	public void onUnEquipped(World world, ItemStack stack, EntityLivingBase entity) {
-
+	    entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed).removeModifier(speedMod);
 	}
 
 	@Override
 	public boolean onWornTick(World world, ItemStack stack, EntityLivingBase entity) {
-		if (entity instanceof EntityPlayer) {
+		if (entity instanceof EntityPlayer && !world.isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
-			if ((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F) {
-				player.moveFlying(0F, 1F, player.capabilities.isFlying ? 0.050F : 0.07F);
-				return true;
+            IAttributeInstance moveInst = player.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed);
+            moveInst.removeModifier(speedMod);
+            
+            boolean hasPower = ((IEnergyContainerItem)stack.getItem()).getEnergyStored(stack) > 0;
+            
+            if (hasPower) {
+                moveInst.applyModifier(speedMod);
+            }
+
+			if (player.onGround && isMoving(player)) {
+                return true;
 			}
 		}
 		return false;
 	}
 
-	@Override
+	private boolean isMoving(EntityPlayer player)
+	{
+	    return Math.abs(player.distanceWalkedModified - player.prevDistanceWalkedModified) > 0;
+    }
+
+    @Override
 	public boolean canEquip(World world, ItemStack itemstack, EntityLivingBase player) {
 		return true;
 	}

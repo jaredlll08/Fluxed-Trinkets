@@ -81,10 +81,9 @@ public class ModularBelt extends ModularItem {
 
 					}
 				}
-				play.addChatComponentMessage(new ChatComponentText(String.valueOf(extractEnergy(itemstack, usage, false))));
 
 			}
-			if (energy < -1) {
+			if (energy <= 0) {
 				energy = 0;
 				for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
 					if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
