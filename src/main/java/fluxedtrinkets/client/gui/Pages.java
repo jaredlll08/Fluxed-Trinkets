@@ -1,4 +1,4 @@
-package fluxedtrinkets.client.render.gui;
+package fluxedtrinkets.client.gui;
 
 public class Pages {
 

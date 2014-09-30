@@ -1,4 +1,4 @@
-package fluxedtrinkets.client.render.gui;
+package fluxedtrinkets.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -8,11 +8,11 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
-import fluxedtrinkets.client.render.gui.slot.SlotAddon;
-import fluxedtrinkets.client.render.gui.slot.SlotCircuit;
-import fluxedtrinkets.client.render.gui.slot.SlotCopperNugget;
-import fluxedtrinkets.client.render.gui.slot.SlotLeadWire;
-import fluxedtrinkets.client.render.gui.slot.SlotSolderingIron;
+import fluxedtrinkets.client.gui.slot.SlotAddon;
+import fluxedtrinkets.client.gui.slot.SlotCircuit;
+import fluxedtrinkets.client.gui.slot.SlotCopperNugget;
+import fluxedtrinkets.client.gui.slot.SlotLeadWire;
+import fluxedtrinkets.client.gui.slot.SlotSolderingIron;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
 
 public class ContainerSolderingStation extends Container {

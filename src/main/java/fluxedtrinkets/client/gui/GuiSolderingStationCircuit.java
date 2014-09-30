@@ -1,4 +1,4 @@
-package fluxedtrinkets.client.render.gui;
+package fluxedtrinkets.client.gui;
 
 import io.netty.util.internal.StringUtil;
 import net.minecraft.client.Minecraft;

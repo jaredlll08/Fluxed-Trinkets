@@ -1,10 +1,10 @@
-package fluxedtrinkets.client.render.gui;
+package fluxedtrinkets.client.gui;
 
-import fluxedtrinkets.client.render.gui.slot.SlotAddon;
-import fluxedtrinkets.client.render.gui.slot.SlotCircuit;
-import fluxedtrinkets.client.render.gui.slot.SlotCopperNugget;
-import fluxedtrinkets.client.render.gui.slot.SlotLeadWire;
-import fluxedtrinkets.client.render.gui.slot.SlotSolderingIron;
+import fluxedtrinkets.client.gui.slot.SlotAddon;
+import fluxedtrinkets.client.gui.slot.SlotCircuit;
+import fluxedtrinkets.client.gui.slot.SlotCopperNugget;
+import fluxedtrinkets.client.gui.slot.SlotLeadWire;
+import fluxedtrinkets.client.gui.slot.SlotSolderingIron;
 import fluxedtrinkets.tileEntity.TileEntityCompressor;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
 import net.minecraft.entity.player.EntityPlayer;

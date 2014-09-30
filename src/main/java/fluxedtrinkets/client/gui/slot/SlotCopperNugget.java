@@ -1,4 +1,4 @@
-package fluxedtrinkets.client.render.gui.slot;
+package fluxedtrinkets.client.gui.slot;
 
 import java.util.List;
 

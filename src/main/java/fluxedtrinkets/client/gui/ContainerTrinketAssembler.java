@@ -1,12 +1,12 @@
-package fluxedtrinkets.client.render.gui;
+package fluxedtrinkets.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import fluxedtrinkets.client.render.gui.slot.SlotCircuit;
-import fluxedtrinkets.client.render.gui.slot.SlotTrinket;
+import fluxedtrinkets.client.gui.slot.SlotCircuit;
+import fluxedtrinkets.client.gui.slot.SlotTrinket;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
 public class ContainerTrinketAssembler extends Container {
