@@ -50,11 +50,14 @@ public class EffectWater implements IEffect {
 					
 			if (player.isBurning()) {
 				player.extinguish();
+				return true;
 			}
 			for (int rangeX = -5; rangeX < 5; rangeX++) {
 				for (int rangeY = -2; rangeY < 2; rangeY++) {
 					for (int rangeZ = -5; rangeZ < 5; rangeZ++) {
-							player.worldObj.extinguishFire(player, (int) x + rangeX, (int) y + rangeY, (int) z + rangeZ, 0);
+					    if (player.worldObj.extinguishFire(player, (int) x + rangeX, (int) y + rangeY, (int) z + rangeZ, 0)) {
+						   return true;
+						}
 					}
 				}
 			}
