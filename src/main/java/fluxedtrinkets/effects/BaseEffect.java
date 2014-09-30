@@ -57,7 +57,7 @@ public abstract class BaseEffect implements IEffect {
 	
 	public AxisAlignedBB getBBSurrounding(EntityLivingBase entity, double range) {
 		Vec3 pos = getPos(entity);
-		return AxisAlignedBB.getBoundingBox(pos.xCoord - 8, pos.yCoord - 8, pos.zCoord - 8, pos.xCoord + 8, pos.yCoord + 8, pos.zCoord + 8);
+		return AxisAlignedBB.getBoundingBox(pos.xCoord - range, pos.yCoord - range, pos.zCoord - range, pos.xCoord + range, pos.yCoord + range, pos.zCoord + range);
 	}
 	
 	@SuppressWarnings("unchecked")
