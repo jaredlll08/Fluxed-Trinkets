@@ -8,12 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectAdvancedLightning extends BaseEffect{
 
 	public EffectAdvancedLightning() {
-		super("advancedLightning");
+		super("advancedLightning", EffectProps.energyAdvancedLightning);
 	}
 
 	@Override
@@ -22,10 +22,10 @@ public class EffectAdvancedLightning extends BaseEffect{
 
 			List<EntityLightningBolt> bolts = getEntitiesAround(entity, 48, EntityLightningBolt.class);
 
-			if (!bolts.isEmpty() && hasEnergy(item, stack, ConfigProps.energyAdvancedLightning)) {
+			if (!bolts.isEmpty() && hasEnergy(item, stack, getUsage())) {
 				entity.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 600, 1, true));
 				entity.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 1, true));
-				return ConfigProps.energyAdvancedLightning;
+				return getUsage();
 			}
 		}
 

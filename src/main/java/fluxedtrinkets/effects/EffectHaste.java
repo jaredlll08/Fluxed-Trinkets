@@ -8,14 +8,14 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectHaste extends BaseEffect {
 
     private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed",  0.3f, 1);
 
 	public EffectHaste() {
-		super("haste");
+		super("haste", EffectProps.energyHaste);
 	}
 
 	@Override
@@ -24,14 +24,14 @@ public class EffectHaste extends BaseEffect {
             IAttributeInstance moveInst = entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed);
             moveInst.removeModifier(speedMod);
                         
-            if (hasEnergy(item, stack, ConfigProps.energyHaste)) {
+            if (hasEnergy(item, stack, getUsage())) {
                 moveInst.applyModifier(speedMod);
             } else {
             	return 0;
             }
 
 			if (entity.onGround && isMoving(entity)) {
-                return ConfigProps.energyHaste;
+                return getUsage();
 			}
 		}
 		return 0;

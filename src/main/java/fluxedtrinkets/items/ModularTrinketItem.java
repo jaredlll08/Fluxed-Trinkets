@@ -38,7 +38,7 @@ public class ModularTrinketItem extends Item implements ITrinket {
 	public void setUsage(int usage) {
 		this.usage = usage;
 	}
-	
+
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack) {
 		return type;
@@ -60,7 +60,7 @@ public class ModularTrinketItem extends Item implements ITrinket {
 		}
 		return par1ItemStack;
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
@@ -70,8 +70,7 @@ public class ModularTrinketItem extends Item implements ITrinket {
 			String effects = NBTHelper.getString(stack, "ETEffect");
 			for (int i = 0; i < FluxedTrinketsAPI.getEffectAmount(); i++) {
 				if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
-					// TODO fix usage // usage +=
-					// FluxedTrinketsAPI.getEffects().get(i).getUsage();
+					usage += FluxedTrinketsAPI.getEffects().get(i).getUsage();
 				}
 			}
 			this.setUsage(usage);
@@ -104,8 +103,9 @@ public class ModularTrinketItem extends Item implements ITrinket {
 			list.add(StringUtils.getShiftText());
 		}
 	}
-	
+
 	private static final String lineSplit = "\\|";
+
 	private String[] formatTooltip(String tooltip) {
 		return tooltip.split(lineSplit);
 	}

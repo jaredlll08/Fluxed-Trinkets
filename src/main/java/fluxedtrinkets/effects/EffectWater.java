@@ -4,12 +4,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectWater extends BaseEffect {
 
 	public EffectWater() {
-		super("water");
+		super("water", EffectProps.energyWater);
 	}
 
 
@@ -25,13 +25,13 @@ public class EffectWater extends BaseEffect {
 
 			if (player.isBurning()) {
 				player.extinguish();
-				energyUsed += ConfigProps.energyWater;
+				energyUsed += getUsage();
 			}
 			for (int rangeX = -5; rangeX < 5; rangeX++) {
 				for (int rangeY = -2; rangeY < 2; rangeY++) {
 					for (int rangeZ = -5; rangeZ < 5; rangeZ++) {
 						if (player.worldObj.extinguishFire(player, (int) x + rangeX, (int) y + rangeY, (int) z + rangeZ, 0)) {
-							energyUsed += ConfigProps.energyWater;
+							energyUsed += getUsage();
 						}
 					}
 				}

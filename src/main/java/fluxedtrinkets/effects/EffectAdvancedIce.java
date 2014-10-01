@@ -8,12 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectAdvancedIce extends BaseEffect {
 
 	public EffectAdvancedIce() {
-		super("advancedIce");
+		super("advancedIce", EffectProps.energyAdvancedIce);
 	}
 
 	@Override
@@ -26,9 +26,9 @@ public class EffectAdvancedIce extends BaseEffect {
 
 			int energyUsed = 0;
 			for (EntityCreature entityCreature : entities) {
-				if (!entityCreature.isPotionActive(Potion.weakness) && hasEnergy(item, stack, ConfigProps.energyAdvancedIce + energyUsed)) {
+				if (!entityCreature.isPotionActive(Potion.weakness) && hasEnergy(item, stack, getUsage() + energyUsed)) {
 					entityCreature.addPotionEffect(new PotionEffect(Potion.weakness.id, 400, 1));
-					energyUsed += ConfigProps.energyAdvancedIce;
+					energyUsed += getUsage();
 				}
 			}
 			return energyUsed;

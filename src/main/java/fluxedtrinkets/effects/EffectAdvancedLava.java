@@ -6,12 +6,12 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectAdvancedLava extends BaseEffect {
 
 	public EffectAdvancedLava() {
-		super("advancedLava");
+		super("advancedLava", EffectProps.energyAdvancedLava);
 	}
 
 	@Override
@@ -21,9 +21,9 @@ public class EffectAdvancedLava extends BaseEffect {
 			List<EntityCreature> entities = getEntitiesAround(entity, 8, EntityCreature.class);
 
 			for (EntityCreature entityCreature : entities) {
-				if (!entityCreature.isBurning() && hasEnergy(item, stack, ConfigProps.energyAdvancedLava)) {
+				if (!entityCreature.isBurning() && hasEnergy(item, stack, getUsage())) {
 					entityCreature.setFire(80);
-					return ConfigProps.energyAdvancedLava;
+					return getUsage();
 				}
 			}
 		}

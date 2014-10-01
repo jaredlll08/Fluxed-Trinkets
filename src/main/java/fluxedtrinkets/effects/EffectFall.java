@@ -4,12 +4,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectFall extends BaseEffect {
 
 	public EffectFall() {
-		super("fall");
+		super("fall", EffectProps.energyFall);
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class EffectFall extends BaseEffect {
 			if (!player.onGround && player.motionY < 0 && !player.isSneaking()) {
 				player.motionY = -0.1;
 				player.fallDistance = -1;
-				return ConfigProps.energyFall;
+				return getUsage();
 			}
 		}
 		return 0;

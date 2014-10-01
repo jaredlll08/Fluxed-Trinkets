@@ -5,21 +5,21 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectAir extends BaseEffect {
 
 	public EffectAir() {
-		super("air");
+		super("air", EffectProps.energyAir);
 	}
 	
 	@Override
 	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		if (entity instanceof EntityPlayer && !entity.worldObj.isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
-			if (hasEnergy(item, stack, ConfigProps.energyAir) && isPlayerInAir(player)) {
+			if (hasEnergy(item, stack, getUsage()) && isPlayerInAir(player)){
 				player.moveFlying(0F, 1F, player.capabilities.isFlying ? 0.02F : 0.02F * 2);
-				return ConfigProps.energyAir;
+				return getUsage();
 			}
 		}
 		return 0;

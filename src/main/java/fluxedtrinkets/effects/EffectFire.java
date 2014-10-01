@@ -4,13 +4,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 import fluxedtrinkets.util.EffectHelper;
 
 public class EffectFire extends BaseEffect {
 
 	public EffectFire() {
-		super("fire");
+		super("fire", EffectProps.energyFire);
 	}
 
 	@Override
@@ -18,14 +18,14 @@ public class EffectFire extends BaseEffect {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			int powerUsed = 0;
-			if (player.isBurning() && hasEnergy(item, stack, ConfigProps.energyFire)) {
+			if (player.isBurning() && hasEnergy(item, stack, getUsage())) {
 				player.extinguish();
-				powerUsed += ConfigProps.energyFire;
+				powerUsed += getUsage();
 			}
 			
-			if (hasEnergy(item, stack, ConfigProps.energyFire + powerUsed)) {
+			if (hasEnergy(item, stack, getUsage())) {
 				EffectHelper.setFireImmune(entity, true);
-				powerUsed += ConfigProps.energyFire; // TODO find a better way to draw power
+				powerUsed += getUsage();
 			} else {
 				EffectHelper.setFireImmune(entity, false);
 			}

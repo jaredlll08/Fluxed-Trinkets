@@ -44,6 +44,8 @@ public class FluxedTrinkets {
 
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
+
 		FluxedTrinketsAPI.addEffect(new EffectAir());
 		FluxedTrinketsAPI.addEffect(new EffectEarth());
 		FluxedTrinketsAPI.addEffect(new EffectFire());
@@ -58,7 +60,6 @@ public class FluxedTrinkets {
 		FluxedTrinketsAPI.addEffect(new EffectEmpty());
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedEmpty());
 
-		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		FTItems.init();
 		FTBlocks.init();
 		RecipeHandler.init();

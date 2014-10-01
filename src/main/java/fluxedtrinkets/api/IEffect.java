@@ -13,6 +13,11 @@ public interface IEffect {
 	 * @return the effect name
 	 */
 	public String getName();
+	
+	/**
+	 * @return The amount this effect uses per tick. Does not affect any actual calculations, only used in tooltips.
+	 */
+	public int getUsage();
 
 	/**
 	 * Called once for every instance of the effect on the player, once per

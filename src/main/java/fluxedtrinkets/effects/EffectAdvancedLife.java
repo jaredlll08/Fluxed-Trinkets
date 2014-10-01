@@ -6,12 +6,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
-import fluxedtrinkets.config.ConfigProps;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectAdvancedLife extends BaseEffect {
 
 	public EffectAdvancedLife() {
-		super("advancedLife");
+		super("advancedLife", EffectProps.energyAdvancedLife);
 	}
 	
 	@Override
@@ -22,9 +22,9 @@ public class EffectAdvancedLife extends BaseEffect {
 
 			for (EntityTameable entityTame : entities) {
 
-				if (entity.worldObj.rand.nextInt(60) == 0 && entityTame.isTamed() && hasEnergy(item, stack, ConfigProps.energyAdvancedLife)) {
+				if (entity.worldObj.rand.nextInt(60) == 0 && entityTame.isTamed() && hasEnergy(item, stack, getUsage())) {
 					entityTame.heal(1);
-					return ConfigProps.energyAdvancedLife;
+					return getUsage();
 				}
 			}
 		}

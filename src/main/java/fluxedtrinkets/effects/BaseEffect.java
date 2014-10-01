@@ -8,20 +8,28 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
+import net.minecraftforge.common.config.Property;
 import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.api.ITrinket;
 
 public abstract class BaseEffect implements IEffect {
 
 	private String name;
+	private Property usage;
 
-	public BaseEffect(String name) {
+	public BaseEffect(String name, Property usage) {
 		this.name = name;
+		this.usage = usage;
 	}
 
 	@Override
 	public String getName() {
 		return name;
+	}
+	
+	@Override
+	public int getUsage() {
+		return usage.getInt();
 	}
 
 	@Override

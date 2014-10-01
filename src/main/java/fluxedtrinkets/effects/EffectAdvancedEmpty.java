@@ -3,11 +3,12 @@ package fluxedtrinkets.effects;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.ITrinket;
+import fluxedtrinkets.config.EffectProps;
 
 public class EffectAdvancedEmpty extends BaseEffect {
 
 	public EffectAdvancedEmpty() {
-		super("advancedEmpty");
+		super("advancedEmpty", EffectProps.zero);
 	}
 
 	@Override
