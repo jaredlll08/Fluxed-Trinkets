@@ -43,7 +43,7 @@ public class GuiManual extends GuiScreen {
 	private static final ResourceLocation texture = new ResourceLocation(ModInfo.modid, "textures/gui/Electricians_Manual.png");
 
 	public static void addText(String text) {
-		texts.add(StringUtils.translate("manual." + text));
+		texts.add(StringUtils.localize("manual." + text));
 	}
 
 	public static void removeText(String text) {
@@ -68,7 +68,7 @@ public class GuiManual extends GuiScreen {
 
 	public static void addChapter(String title, int number) {
 
-		chapters.add(new Object[] { StringUtils.translate("manual." + title), number });
+		chapters.add(new Object[] { StringUtils.localize("manual." + title), number });
 
 	}
 

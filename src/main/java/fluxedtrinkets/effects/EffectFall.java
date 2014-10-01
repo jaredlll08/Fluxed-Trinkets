@@ -25,13 +25,4 @@ public class EffectFall extends BaseEffect {
 		}
 		return 0;
 	}
-
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("while the player is not");
-//		list.add("holding shift, the player");
-//		list.add("will fall slower than normal.");
-//		return list;
-//	}
 }

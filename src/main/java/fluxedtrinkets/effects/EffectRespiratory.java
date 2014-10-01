@@ -22,12 +22,4 @@ public class EffectRespiratory extends BaseEffect {
 
 		return 0;
 	}
-
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("Allows the wearer");
-//		list.add("to breath underwater.");
-//		return list;
-//	}
 }

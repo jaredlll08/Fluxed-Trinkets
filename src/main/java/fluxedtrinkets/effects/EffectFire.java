@@ -38,12 +38,4 @@ public class EffectFire extends BaseEffect {
 	public void onUnequipped(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		EffectHelper.setFireImmune(entity, false);
 	}
-	
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("Makes the player");
-//		list.add("immune to heat.");
-//		return list;
-//	}
 }

@@ -6,6 +6,8 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.input.Keyboard;
 
+import fluxedtrinkets.ModInfo;
+
 public final class StringUtils {
 
     private static DecimalFormat formatter = new DecimalFormat("###,###");
@@ -70,20 +72,15 @@ public final class StringUtils {
     }
 
     public static String getChargeText(int charge, int total) {
-        return ORANGE + translate("tooltip.charge") + ": " + StringUtils.getColoredPercent((charge/total)*100) + getFormattedNumber(charge) + " / " + getFormattedNumber(total) + " RF";
+        return ORANGE + localize("tooltip.charge") + ": " + StringUtils.getColoredPercent(charge, total) + getFormattedNumber(charge) + " / " + getFormattedNumber(total) + " RF";
     }
-
-    
 
     public static String getEnergyUsageText(int usage) {
-        return ORANGE + translate("tooltip.energyUsage") + ": " + LIGHT_GRAY + usage + " RF/t";
+        return ORANGE + localize("tooltip.energyUsage") + ": " + LIGHT_GRAY + usage + " RF/t";
     }
 
-   
-
-    
-
-    public static String getColoredPercent(int percent) {
+    public static String getColoredPercent(int charge, int maxCharge) {
+    	int percent = (int) (((double)charge/(double)maxCharge) * 100);
         if (percent > 70) {
             return BRIGHT_GREEN;
         } else if (percent > 40 && percent <= 70) {
@@ -95,22 +92,21 @@ public final class StringUtils {
         }
     }
 
-
     public static String getShiftText() {
-        return YELLOW + "**" + translate("tooltip.holdShift") +"**";
+        return YELLOW + "**" + localize("tooltip.holdShift") +"**";
     }
 
     public static boolean canShowDetails() {
         return true;
     }
 
-    public static String translate(String unlocalized) {
-        return translate(unlocalized, true);
+    public static String localize(String unlocalized) {
+        return localize(unlocalized, true);
     }
 
-    public static String translate(String unlocalized, boolean prefix) {
+    public static String localize(String unlocalized, boolean prefix) {
         if (prefix) {
-            return StatCollector.translateToLocal("ft." + unlocalized);
+            return StatCollector.translateToLocal(ModInfo.localizing + "." + unlocalized);
         }
         return StatCollector.translateToLocal(unlocalized);
     }

@@ -31,14 +31,4 @@ public class EffectAdvancedLightning extends BaseEffect{
 
 		return 0;
 	}
-
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("If there is a lightning bolt");
-//		list.add("within 48 blocks from the player,");
-//		list.add("a strength buff is a applied");
-//		list.add("to the player.");
-//		return list;
-//	}
 }

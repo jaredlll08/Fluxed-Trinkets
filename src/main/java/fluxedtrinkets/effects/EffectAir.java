@@ -28,12 +28,4 @@ public class EffectAir extends BaseEffect {
 	private boolean isPlayerInAir(EntityPlayer player) {
 		return !player.onGround && player.moveForward > 0F && !player.isInWater() && !player.isInsideOfMaterial(Material.web) && !player.isInsideOfMaterial(Material.lava);
 	}
-
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("Allows the player to move");
-//		list.add("faster while airborne.");
-//		return list;
-//	}
 }

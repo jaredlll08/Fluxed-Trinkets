@@ -34,12 +34,4 @@ public class EffectStep extends BaseEffect {
 		}
 		return 0;
 	}
-	
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("Allows the player to walk");
-//		list.add("up 1-high blocks.");
-//		return list;
-//	}
 }

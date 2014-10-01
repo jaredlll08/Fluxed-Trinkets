@@ -29,11 +29,4 @@ public class EffectAdvancedLava extends BaseEffect {
 		}
 		return 0;
 	}
-
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("Sets any nearby mobs on fire.");
-//		return list;
-//	}
 }

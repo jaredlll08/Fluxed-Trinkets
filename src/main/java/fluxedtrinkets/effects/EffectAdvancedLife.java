@@ -30,11 +30,4 @@ public class EffectAdvancedLife extends BaseEffect {
 		}
 		return 0;
 	}
-	
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("Heals any nearby pets");
-//		return list;
-//	}
 }

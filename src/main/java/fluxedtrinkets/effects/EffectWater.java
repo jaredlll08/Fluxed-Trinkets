@@ -39,13 +39,4 @@ public class EffectWater extends BaseEffect {
 		}
 		return energyUsed;
 	}
-
-	// @Override
-	// public ArrayList<String> getDescription() {
-	// ArrayList<String> list = new ArrayList<String>();
-	// list.add("Extinguishes any nearby");
-	// list.add("fires within a 5 block radius.");
-	// return list;
-	// }
-
 }

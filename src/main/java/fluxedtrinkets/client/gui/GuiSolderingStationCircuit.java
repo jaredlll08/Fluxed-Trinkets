@@ -48,7 +48,7 @@ public class GuiSolderingStationCircuit extends GuiContainer {
 
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(1, guiLeft+113, guiTop+60, 20, 20, StringUtils.translate("tick", false)));
+		buttonList.add(new GuiButton(1, guiLeft+113, guiTop+60, 20, 20, StringUtils.localize("tick", false)));
 		
 	}
 

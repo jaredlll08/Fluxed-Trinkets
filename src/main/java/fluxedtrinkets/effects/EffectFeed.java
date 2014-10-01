@@ -33,14 +33,4 @@ public class EffectFeed extends BaseEffect {
 		}
 		return 0;
 	}
-
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("If the wearer is");
-//		list.add("low on hunger");
-//		list.add("food from the inventory");
-//		list.add("is automaticaly consumed.");
-//		return list;
-//	}
 }

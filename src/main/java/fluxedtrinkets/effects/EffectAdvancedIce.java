@@ -35,12 +35,4 @@ public class EffectAdvancedIce extends BaseEffect {
 		}
 		return 0;
 	}
-
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("Applied a weakness buff");
-//		list.add("to nearby mobs.");
-//		return list;
-//	}
 }

@@ -44,13 +44,4 @@ public class EffectHaste extends BaseEffect {
 	public void onUnequipped(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed).removeModifier(speedMod);
 	}
-	
-//	@Override
-//	public ArrayList<String> getDescription() {
-//		ArrayList<String> list = new ArrayList<String>();
-//		list.add("While the wearer is");
-//		list.add("on the ground they gain");
-//		list.add("a speed boost.");
-//		return list;
-//	}
 }

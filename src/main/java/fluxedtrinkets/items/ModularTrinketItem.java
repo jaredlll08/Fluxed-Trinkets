@@ -10,9 +10,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import scala.actors.threadpool.Arrays;
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.IEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.api.StringUtils;
 import fluxedtrinkets.util.NBTHelper;
@@ -58,14 +60,33 @@ public class ModularTrinketItem extends Item implements ITrinket {
 		}
 		return par1ItemStack;
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		int usage = 0;
 
+		if (NBTHelper.getString(stack, "ETEffect") != "" && NBTHelper.getString(stack, "ETEffect") != null) {
+			String effects = NBTHelper.getString(stack, "ETEffect");
+			for (int i = 0; i < FluxedTrinketsAPI.getEffectAmount(); i++) {
+				if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
+					// TODO fix usage // usage +=
+					// FluxedTrinketsAPI.getEffects().get(i).getUsage();
+				}
+			}
+			this.setUsage(usage);
+
+			addInformation(stack, player, list, par4, effects);
+		}
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4, String effects) {
 		super.addInformation(stack, player, list, par4);
 		if (stack.stackTagCompound == null) {
 			stack.stackTagCompound = new NBTTagCompound();
 		}
 		if (StringUtils.isShiftKeyDown()) {
-			list.add(stack.stackTagCompound.getInteger("energy") + "/" + maxCapacity);
 			list.add(StringUtils.getChargeText(stack.stackTagCompound.getInteger("energy"), maxCapacity));
 			list.add(StringUtils.getEnergyUsageText(usage));
 			if (effects != null && !effects.equals("[]") && !effects.equals("")) {
@@ -73,19 +94,20 @@ public class ModularTrinketItem extends Item implements ITrinket {
 				String[] effectList = effects.replace("[", "").replace("]", "").replace(" ", "").split(",");
 				if (effectList != null) {
 					for (int i = 0; i < effectList.length; i++) {
-						list.add(StringUtils.GRAY + FluxedTrinketsAPI.getEffectFromName(effectList[i]).getName());
-						// for (int j = 0; j <
-						// FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().size();
-						// j++) {
-						// list.add(FluxedTrinketsAPI.getEffectFromName(effectList[i]).getDescription().get(j));
-						// }
+						IEffect effect = FluxedTrinketsAPI.getEffectFromName(effectList[i]);
+						list.add(StringUtils.GRAY + effect.getName());
+						list.addAll(Arrays.asList(formatTooltip(StringUtils.localize("effect." + effect.getName() + ".desc"))));
 					}
 				}
 			}
 		} else {
 			list.add(StringUtils.getShiftText());
 		}
-
+	}
+	
+	private static final String lineSplit = "\\|";
+	private String[] formatTooltip(String tooltip) {
+		return tooltip.split(lineSplit);
 	}
 
 	@Override
@@ -144,25 +166,6 @@ public class ModularTrinketItem extends Item implements ITrinket {
 	@Override
 	public int getMaxEnergyStored(ItemStack container) {
 		return maxCapacity;
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-		int usage = 0;
-
-		if (NBTHelper.getString(stack, "ETEffect") != "" && NBTHelper.getString(stack, "ETEffect") != null) {
-			String effects = NBTHelper.getString(stack, "ETEffect");
-			for (int i = 0; i < FluxedTrinketsAPI.getEffectAmount(); i++) {
-				if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
-					// TODO fix usage // usage +=
-					// FluxedTrinketsAPI.getEffects().get(i).getUsage();
-				}
-			}
-			this.setUsage(usage);
-
-			addInformation(stack, player, list, par4, effects);
-		}
 	}
 
 	@Override
