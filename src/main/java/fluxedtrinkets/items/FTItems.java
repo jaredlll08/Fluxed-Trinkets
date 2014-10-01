@@ -46,6 +46,7 @@ public class FTItems {
 	public static Item jadedLungs = new ItemJadedLungs();
 	
 	public static Item silicon = new ItemSilicon();
+	
 
 	/*
 	 * items

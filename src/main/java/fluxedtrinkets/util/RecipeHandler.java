@@ -44,6 +44,8 @@ public class RecipeHandler {
 
 		GameRegistry.addShapelessRecipe(new ItemStack(FTItems.manual), new ItemStack(FTItems.basicBattery), new ItemStack(Items.book));
 
+		
+		
 	}
 
 }

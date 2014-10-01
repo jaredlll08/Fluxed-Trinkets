@@ -169,13 +169,13 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 				if (item[i].getItem() instanceof ItemCircuit) {
 					ItemCircuit circuit = (ItemCircuit) item[i].getItem();
 
-					if(!totalEffects.contains(circuit.getEffect())){
-						
-					totalEffects.add(circuit.getEffect().getName());
+					if (!totalEffects.contains(circuit.getEffect())) {
+
+						totalEffects.add(circuit.getEffect().getName());
 					}
-					
-					if(totalEffects.contains("advancedLife")){
-						if(totalEffects.contains("water")){
+
+					if (totalEffects.contains("advancedLife")) {
+						if (totalEffects.contains("water")) {
 							totalEffects.remove("advancedLife");
 							totalEffects.remove("water");
 							totalEffects.add("feed");
@@ -216,16 +216,16 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		if (item[0] != null) {
 
 			ItemStack result = item[0].copy();
-			NBTHelper.setString(result, "ETEffect", totalEffects.toString());
-			setInventorySlotContents(0, result);
-			decrStackSize(1, 1);
-			decrStackSize(2, 1);
-			decrStackSize(3, 1);
-			decrStackSize(4, 1);
+				NBTHelper.setString(result, "ETEffect", totalEffects.toString());
+				setInventorySlotContents(0, result);
+				decrStackSize(1, 1);
+				decrStackSize(2, 1);
+				decrStackSize(3, 1);
+				decrStackSize(4, 1);
+				return true;
 
 			// PacketHandler.INSTANCE.sendToServer(new
 			// MessageTrinketAssembler(xCoord, yCoord, zCoord));
-			return true;
 		}
 
 		return false;
