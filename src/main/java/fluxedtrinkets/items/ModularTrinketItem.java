@@ -22,21 +22,12 @@ import fluxedtrinkets.util.NBTHelper;
 public class ModularTrinketItem extends Item implements ITrinket {
 
 	private int maxCapacity;
-	private int usage;
 	private BaubleType type;
 
 	public ModularTrinketItem(int maxCapacity, BaubleType type) {
 		this.setMaxStackSize(1);
 		this.maxCapacity = maxCapacity;
 		this.type = type;
-	}
-
-	public int getUsage() {
-		return usage;
-	}
-
-	public void setUsage(int usage) {
-		this.usage = usage;
 	}
 
 	@Override
@@ -73,14 +64,13 @@ public class ModularTrinketItem extends Item implements ITrinket {
 					usage += FluxedTrinketsAPI.getEffects().get(i).getUsage();
 				}
 			}
-			this.setUsage(usage);
-
-			addInformation(stack, player, list, par4, effects);
+			
+			addInformation(stack, player, list, par4, effects, usage);
 		}
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4, String effects) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4, String effects, int usage) {
 		super.addInformation(stack, player, list, par4);
 		if (stack.stackTagCompound == null) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -89,12 +79,11 @@ public class ModularTrinketItem extends Item implements ITrinket {
 			list.add(StringUtils.getChargeText(stack.stackTagCompound.getInteger("energy"), maxCapacity));
 			list.add(StringUtils.getEnergyUsageText(usage));
 			if (effects != null && !effects.equals("[]") && !effects.equals("")) {
-				// list.add(StringUtils.GRAY + effects);
 				String[] effectList = effects.replace("[", "").replace("]", "").replace(" ", "").split(",");
 				if (effectList != null) {
 					for (int i = 0; i < effectList.length; i++) {
 						IEffect effect = FluxedTrinketsAPI.getEffectFromName(effectList[i]);
-						list.add(StringUtils.GRAY + effect.getName());
+						list.add(StringUtils.WHITE + StringUtils.localize("effect." + effect.getName() + ".name"));
 						list.addAll(Arrays.asList(formatTooltip(StringUtils.localize("effect." + effect.getName() + ".desc"))));
 					}
 				}

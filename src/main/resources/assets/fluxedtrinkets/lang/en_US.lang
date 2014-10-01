@@ -31,21 +31,49 @@ ft.tooltip.charge=Charge
 ft.tooltip.energyUsage=Energy usage
 ft.tooltip.holdShift=Hold Shift
 
+ft.effect.advancedEmpty.name=Empty
 ft.effect.advancedEmpty.desc=No effect.
+
+ft.effect.empty.name=Empty
 ft.effect.empty.desc=No effect.
 
+ft.effect.advancedLava.name=Advanced Lava
 ft.effect.advancedLava.desc=Sets any nearby mobs on fire.
+
+ft.effect.advancedIce.name=Advanced Ice
 ft.effect.advancedIce.desc=Applies a weakness buff|to nearby mobs.
+
+ft.effect.advancedLife.name=Advanced Life
 ft.effect.advancedLife.desc=Heals any nearby pets.
+
+ft.effect.advancedLightning.name=Advanced Lightning
 ft.effect.advancedLightning.desc=If there is a lightning bolt|within 48 blocks of the player,|a strength buff is applied|to the player.
+
+ft.effect.air.name=Air
 ft.effect.air.desc=Allows the player to move|faster while airborne.
+
+ft.effect.earth.name=Earth
 ft.effect.earth.desc=While the player is below y=32|a haste buff is applied to them.
+
+ft.effect.fall.name=Slow Fall
 ft.effect.fall.desc=While not holding shift,|the player will fall slower|than normal.
+
+ft.effect.feed.name=Feeder
 ft.effect.feed.desc=If the wearer is|low on hunger,|food from the inventory|is automatically consumed.
+
+ft.effect.fire.name=Fire Protection
 ft.effect.fire.desc=Makes the player immune|to fire and heat.
+
+ft.effect.haste.name=Haste
 ft.effect.haste.desc=While the wearer is|on the ground they|gain a speed boost.
+
+ft.effect.respiratory.name=Respiration
 ft.effect.respiratory.desc=Allows the wearer|to breathe underwater.
+
+ft.effect.step.name=Stepper
 ft.effect.step.desc=Allows the player to|walk up full blocks.
+
+ft.effect.water.name=Water
 ft.effect.water.desc=Extinguishes any nearby|fires within a 5 block radius.
 
 ft.manual.title.0=Introduction
