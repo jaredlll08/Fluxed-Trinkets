@@ -4,7 +4,7 @@ public class ModInfo {
 
 	public static final String modid = "fluxedtrinkets";
 	public static final String name = "Fluxed Trinkets";
-	public static final String version = "0.48";
+	public static final String version = "0.49";
 	public static final String channel = "fluxedtrinkets";
 	public static final String localizing = "ft";
 	

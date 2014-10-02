@@ -43,8 +43,9 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ShapedOreRecipe(FTItems.advancedCircuit, new Object[] { "rsr", "scs", "rsr", 's', "nuggetSignalum", 'r', Items.redstone, 'c', FTItems.circuit }));
 
 		GameRegistry.addShapelessRecipe(new ItemStack(FTItems.manual), new ItemStack(FTItems.basicBattery), new ItemStack(Items.book));
-
 		
+		
+
 		
 	}
 

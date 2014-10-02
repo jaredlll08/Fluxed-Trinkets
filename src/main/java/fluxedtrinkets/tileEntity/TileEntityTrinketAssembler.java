@@ -6,15 +6,19 @@ import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.Constants.NBT;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
 import fluxedtrinkets.api.StringUtils;
+import fluxedtrinkets.items.FTItems;
 import fluxedtrinkets.items.ItemCircuit;
+import fluxedtrinkets.items.ModularTrinketItem;
 import fluxedtrinkets.util.NBTHelper;
 
 public class TileEntityTrinketAssembler extends TileEntity implements ISidedInventory {
@@ -224,8 +228,8 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 				decrStackSize(4, 1);
 				return true;
 
-			// PacketHandler.INSTANCE.sendToServer(new
-			// MessageTrinketAssembler(xCoord, yCoord, zCoord));
+				// PacketHandler.INSTANCE.sendToServer(new
+				// MessageTrinketAssembler(xCoord, yCoord, zCoord));
 		}
 
 		return false;

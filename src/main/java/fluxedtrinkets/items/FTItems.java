@@ -1,23 +1,14 @@
 package fluxedtrinkets.items;
 
-import baubles.api.BaubleType;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.DungeonHooks;
+import baubles.api.BaubleType;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.CreativeTabFluxedTrinkets;
 import fluxedtrinkets.ModInfo;
-import fluxedtrinkets.api.FluxedTrinketsAPI;
-import fluxedtrinkets.api.SolderingRecipe;
 import fluxedtrinkets.items.ingredient.ItemBattery;
 import fluxedtrinkets.items.ingredient.ItemLeadWire;
-import fluxedtrinkets.items.ingredient.ItemSilicon;
 import fluxedtrinkets.items.ingredient.ItemSolderingIron;
-import fluxedtrinkets.util.NBTHelper;
 
 public class FTItems {
 
@@ -90,7 +81,7 @@ public class FTItems {
 		
 
 		/*
-		 * ITems
+		 * Items
 		 */
 		registerItem(solderingIron, "Soldering Iron", "Soldering_Iron");
 		registerItem(basicBattery, "Basic Battery", "Battery_Basic");
@@ -102,6 +93,7 @@ public class FTItems {
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
 		registerItem(modularRing, "Modular Ring", "Ring_Blank");
+//		registerItem(brokenTrinket, "Broken Trinket Metal", "Broken_Trinket");
 
 //		registerItem(silicon, "Silicon", "Silicon");
 
