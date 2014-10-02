@@ -1,4 +1,4 @@
-package fluxedtrinkets.effects;
+package fluxedtrinkets.api;
 
 import java.util.List;
 
@@ -9,8 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.common.config.Property;
-import fluxedtrinkets.api.IEffect;
-import fluxedtrinkets.api.ITrinket;
 
 public abstract class BaseEffect implements IEffect {
 

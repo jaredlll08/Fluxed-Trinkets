@@ -7,6 +7,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.item.ItemStack;
+import fluxedtrinkets.api.BaseEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.EffectProps;
 

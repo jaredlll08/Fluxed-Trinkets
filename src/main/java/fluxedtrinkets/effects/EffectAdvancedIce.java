@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import fluxedtrinkets.api.BaseEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.EffectProps;
 

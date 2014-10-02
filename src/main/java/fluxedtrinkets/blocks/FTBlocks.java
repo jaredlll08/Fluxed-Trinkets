@@ -14,12 +14,12 @@ public class FTBlocks {
 	public static Block solderingStation = new BlockSolderingStation();
 	public static Block trinketAssembler = new BlockTrinketAssembler();
 	
-	public static Block compressor = new BlockCompressor();
+//	public static Block compressor = new BlockCompressor();
 	
 	private static void registerBlocks() {
 		registerBlock(solderingStation, "Soldering Station", "Soldering_Station");
 		registerBlock(trinketAssembler, "Trinket Assembler", "Trinket_Assembler");
-		registerBlock(compressor, "Compressor", "Machine_Compressor");
+//		registerBlock(compressor, "Compressor", "Machine_Compressor");
 		
 	}
 	

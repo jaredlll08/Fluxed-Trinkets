@@ -45,7 +45,7 @@ public class FTItems {
 
 	public static Item jadedLungs = new ItemJadedLungs();
 	
-	public static Item silicon = new ItemSilicon();
+//	public static Item silicon = new ItemSilicon();
 	
 
 	/*
@@ -103,7 +103,7 @@ public class FTItems {
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
 		registerItem(modularRing, "Modular Ring", "Ring_Blank");
 
-		registerItem(silicon, "Silicon", "Silicon");
+//		registerItem(silicon, "Silicon", "Silicon");
 
 	}
 

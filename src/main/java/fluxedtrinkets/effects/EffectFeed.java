@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import fluxedtrinkets.api.BaseEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.EffectProps;
 
