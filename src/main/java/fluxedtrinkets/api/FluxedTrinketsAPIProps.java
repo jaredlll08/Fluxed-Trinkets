@@ -6,6 +6,6 @@ public class FluxedTrinketsAPIProps {
 
 	}
 
-	public static final String VERSION = "0.48";
+	public static final String VERSION = "0.49";
 
 }
