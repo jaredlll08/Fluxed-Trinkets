@@ -13,6 +13,8 @@ public class FTBlocks {
 	
 	public static Block solderingStation = new BlockSolderingStation();
 	public static Block trinketAssembler = new BlockTrinketAssembler();
+	public static Block kineticGenerator = new BlockKineticGenerator();
+	
 	
 //	public static Block compressor = new BlockCompressor();
 	
@@ -20,6 +22,7 @@ public class FTBlocks {
 		registerBlock(solderingStation, "Soldering Station", "Soldering_Station");
 		registerBlock(trinketAssembler, "Trinket Assembler", "Trinket_Assembler");
 //		registerBlock(compressor, "Compressor", "Machine_Compressor");
+		registerBlock(kineticGenerator, "kinetic", "kinetic");
 		
 	}
 	
