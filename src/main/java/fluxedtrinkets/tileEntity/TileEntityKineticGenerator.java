@@ -29,11 +29,13 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 	}
 
 	public void writeToNBT(NBTTagCompound nbt) {
-		nbt.setInteger("energy", getEnergyStored());
+		super.writeToNBT(nbt);
+		storage.writeToNBT(nbt);
 	}
 
 	public void readFromNBT(NBTTagCompound nbt) {
-		setEnergyStored(nbt.getInteger("energy"));
+		super.readFromNBT(nbt);
+//		storage = storage.readFromNBT(nbt);
 	}
 
 	public void updateEntity() {
@@ -53,7 +55,7 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from) {
-		if(from !=from.UP){
+		if (from != from.UP) {
 			return true;
 		}
 		return false;
