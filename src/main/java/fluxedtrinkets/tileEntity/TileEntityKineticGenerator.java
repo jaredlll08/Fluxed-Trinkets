@@ -1,36 +1,48 @@
 package fluxedtrinkets.tileEntity;
 
-import net.minecraft.nbt.NBTTagCompound;
+import java.util.List;
+import java.util.Random;
+
+import com.jcraft.jogg.Packet;
+
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemLead;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
+import fluxedtrinkets.network.MessageEnergyUpdate;
+import fluxedtrinkets.network.PacketHandler;
 
 public class TileEntityKineticGenerator extends TileEntity implements IEnergyHandler {
-
-	public EnergyStorage storage;
-	protected int capacity = 500000;
+	protected EnergyStorage storage;
+	public EntityPlayer player;
 
 	public TileEntityKineticGenerator() {
-		init(capacity);
+		init(500000);
+		setInputSpeed(10000);
 	}
 
 	public void updateEntity() {
-		worldObj.getPlayerEntityByName("ForgeDevName").addChatComponentMessage(new ChatComponentText(String.valueOf(getEnergyStored())));
+		if (worldObj.getPlayerEntityByName("ForgeDevName") != null)
+			worldObj.getPlayerEntityByName("ForgeDevName").addChatComponentMessage(new ChatComponentText(String.valueOf(getEnergyStored())));
 	}
 
-	private void init(int cap) {
-		storage = new EnergyStorage(cap);
+	public void generateEnergy(int energy) {
+
+		if (getEnergyStored() < getMaxStorage()) {
+			receiveEnergy(ForgeDirection.UNKNOWN, energy, false);
+
+		}
 	}
 
 	@Override
-	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
-		int ret = storage.extractEnergy(maxExtract, true);
-		if (!simulate) {
-			storage.extractEnergy(ret, false);
-		}
-		return ret;
+	public boolean canConnectEnergy(ForgeDirection from) {
+		return true;
 	}
 
 	@Override
@@ -42,21 +54,22 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 		return ret;
 	}
 
-	@Override
-	public final boolean canConnectEnergy(ForgeDirection from) {
-		if (!(from == from.UP)) {
-			return false;
-		}
-		return true;
+	private void init(int cap) {
+		storage = new EnergyStorage(cap);
 	}
 
 	@Override
-	public final int getEnergyStored(ForgeDirection from) {
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
+		return 0;
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from) {
 		return getEnergyStored();
 	}
 
 	@Override
-	public final int getMaxEnergyStored(ForgeDirection from) {
+	public int getMaxEnergyStored(ForgeDirection from) {
 		return getMaxStorage();
 	}
 
@@ -76,18 +89,6 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 		this.storage.setCapacity(storage);
 	}
 
-	public int getOutputSpeed() {
-		return storage.getMaxExtract();
-	}
-
-	public int getMaxOutputSpeed() {
-		return getOutputSpeed();
-	}
-
-	public void setOutputSpeed(int outputSpeed) {
-		this.storage.setMaxExtract(outputSpeed);
-	}
-
 	public int getInputSpeed() {
 		return storage.getMaxReceive();
 	}
@@ -96,15 +97,4 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 		this.storage.setMaxReceive(inputSpeed);
 	}
 
-	@Override
-	public void writeToNBT(NBTTagCompound nbt) {
-		storage.writeToNBT(nbt);
-		super.writeToNBT(nbt);
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound nbt) {
-		storage.readFromNBT(nbt);
-		super.readFromNBT(nbt);
-	}
 }

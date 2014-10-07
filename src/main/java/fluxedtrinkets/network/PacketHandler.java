@@ -11,6 +11,7 @@ public class PacketHandler {
 	public static void init() {
 		INSTANCE.registerMessage(MessageCircuitCrafting.class, MessageCircuitCrafting.class, 0, Side.SERVER);
 		INSTANCE.registerMessage(MessageTrinketAssembler.class, MessageTrinketAssembler.class, 1, Side.SERVER);
+		INSTANCE.registerMessage(MessageEnergyUpdate.class, MessageEnergyUpdate.class, 2, Side.SERVER);
 		
 	}
 }
