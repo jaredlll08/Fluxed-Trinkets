@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemLead;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
@@ -27,9 +28,19 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 		setInputSpeed(10000);
 	}
 
+	public void writeToNBT(NBTTagCompound nbt) {
+		nbt.setInteger("energy", getEnergyStored());
+	}
+
+	public void readFromNBT(NBTTagCompound nbt) {
+		setEnergyStored(nbt.getInteger("energy"));
+	}
+
 	public void updateEntity() {
-		if (worldObj.getPlayerEntityByName("ForgeDevName") != null)
-			worldObj.getPlayerEntityByName("ForgeDevName").addChatComponentMessage(new ChatComponentText(String.valueOf(getEnergyStored())));
+		if (!worldObj.isRemote && worldObj.getWorldTime() % 10 == 0) {
+			if (worldObj.getPlayerEntityByName("ForgeDevName") != null)
+				worldObj.getPlayerEntityByName("ForgeDevName").addChatComponentMessage(new ChatComponentText(String.valueOf(getEnergyStored())));
+		}
 	}
 
 	public void generateEnergy(int energy) {
@@ -42,7 +53,10 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 
 	@Override
 	public boolean canConnectEnergy(ForgeDirection from) {
-		return true;
+		if(from !=from.UP){
+			return true;
+		}
+		return false;
 	}
 
 	@Override

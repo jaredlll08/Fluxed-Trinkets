@@ -22,9 +22,11 @@ public class BlockKineticGenerator extends Block implements ITileEntityProvider 
 	public void onEntityWalking(World world, int x, int y, int z, Entity entity) {
 		TileEntityKineticGenerator tile = (TileEntityKineticGenerator) world.getTileEntity(x, y, z);
 		if (entity instanceof EntityPlayer) {
-			int energy = new Random().nextInt(50);
-			tile.generateEnergy(energy);
-			PacketHandler.INSTANCE.sendToServer(new MessageEnergyUpdate(x, y, z, energy));
+			if (!world.isRemote) {
+				int energy = new Random().nextInt(50);
+				tile.generateEnergy(energy);
+			}
+
 		}
 
 	}
