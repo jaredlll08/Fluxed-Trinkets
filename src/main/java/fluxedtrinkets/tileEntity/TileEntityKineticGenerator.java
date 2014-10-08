@@ -35,7 +35,7 @@ public class TileEntityKineticGenerator extends TileEntity implements IEnergyHan
 
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-//		storage = storage.readFromNBT(nbt);
+		storage.readFromNBT(nbt);
 	}
 
 	public void updateEntity() {
