@@ -26,7 +26,6 @@ public class TileEntityKineticGenerator extends TileEnergyBase implements IEnerg
 
 	public TileEntityKineticGenerator() {
 		super(500000);
-		setInputSpeed(10000);
 	}
 
 	
@@ -38,10 +37,6 @@ public class TileEntityKineticGenerator extends TileEnergyBase implements IEnerg
 
 	public void updateEntity() {
 		pushEnergy();
-		if (!worldObj.isRemote && worldObj.getWorldTime() % 10 == 0) {
-			if (worldObj.getPlayerEntityByName("ForgeDevName") != null)
-				worldObj.getPlayerEntityByName("ForgeDevName").addChatComponentMessage(new ChatComponentText(String.valueOf(getEnergyStored())));
-		}
 	}
 
 	public void generateEnergy(int energy) {

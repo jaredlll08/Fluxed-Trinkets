@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import fluxedtrinkets.ModInfo;
@@ -28,6 +29,13 @@ public class BlockKineticGenerator extends Block implements ITileEntityProvider 
 
 	protected BlockKineticGenerator() {
 		super(Material.iron);
+	}
+
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int metadata, float hitX, float hiY, float hitZ) {
+		TileEntityKineticGenerator tile = (TileEntityKineticGenerator) world.getTileEntity(x, y, z);
+		if (!world.isRemote)
+			player.addChatComponentMessage(new ChatComponentText("Energy Stored: " + tile.getEnergyStored()));
+		return true;
 	}
 
 	public void onEntityWalking(World world, int x, int y, int z, Entity entity) {
@@ -49,7 +57,7 @@ public class BlockKineticGenerator extends Block implements ITileEntityProvider 
 
 	public void registerBlockIcons(IIconRegister icon) {
 		top = icon.registerIcon(ModInfo.modid + ":KineticGenerator_Top");
-//		bottom = icon.registerIcon(ModInfo.modid + ":Machine_Bottom");
+		// bottom = icon.registerIcon(ModInfo.modid + ":Machine_Bottom");
 		side = icon.registerIcon(ModInfo.modid + ":Machine_Side");
 	}
 
