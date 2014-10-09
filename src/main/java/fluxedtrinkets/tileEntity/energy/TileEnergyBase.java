@@ -2,7 +2,6 @@ package fluxedtrinkets.tileEntity.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -24,8 +23,6 @@ public abstract class TileEnergyBase extends TileEntity implements IEnergyHandle
         super();
         init(cap);
     }
-
-
 
     private void init(int cap)
     {
@@ -65,7 +62,8 @@ public abstract class TileEnergyBase extends TileEntity implements IEnergyHandle
             if (tile instanceof IEnergyHandler)
             {
                 IEnergyHandler ieh = (IEnergyHandler) tile;
-                ieh.receiveEnergy(dir, storage.extractEnergy(getOutputSpeed(), false), false);
+                int toExtract = ieh.receiveEnergy(dir, getMaxOutputSpeed(), true);
+                ieh.receiveEnergy(dir, storage.extractEnergy(toExtract, false), false);
             }
         }
     }
