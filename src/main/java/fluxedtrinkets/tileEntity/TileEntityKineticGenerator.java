@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import com.jcraft.jogg.Packet;
 
 import net.minecraft.entity.EntityCreature;
@@ -27,8 +29,6 @@ public class TileEntityKineticGenerator extends TileEnergyBase implements IEnerg
 	public TileEntityKineticGenerator() {
 		super(500000);
 	}
-
-	
 
 	@Override
 	protected void pushEnergy() {
@@ -57,7 +57,7 @@ public class TileEntityKineticGenerator extends TileEnergyBase implements IEnerg
 
 	@Override
 	public ForgeDirection[] getValidInputs() {
-		return null;
+		return new ForgeDirection[] { ForgeDirection.UP };
 	}
 
 }
