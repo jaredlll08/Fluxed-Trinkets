@@ -25,6 +25,9 @@ item.Ring_Blank.name=Modular Ring
 item.Electricians_Manual.name=Electricians Manual
 tile.Soldering Station.name=Soldering Station
 tile.Trinket Assembler.name=Trinket Assembler
+tile.Kinetic Generator.name=Kinetic Generator
+tile.Machine Cube.name=Machine Cube
+
 
 itemGroup.Fluxed Trinkets=Fluxed Trinkets
 ft.tooltip.charge=Charge

@@ -28,7 +28,10 @@ import fluxedtrinkets.effects.EffectWater;
 import fluxedtrinkets.items.FTItems;
 import fluxedtrinkets.network.PacketHandler;
 import fluxedtrinkets.proxy.CommonProxy;
+import fluxedtrinkets.tileEntity.TileEntityHeatGenerator;
+import fluxedtrinkets.tileEntity.TileEntityKineticGenerator;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
+import fluxedtrinkets.tileEntity.TileEntityTeleporter;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
 import fluxedtrinkets.util.GuiHandler;
 import fluxedtrinkets.util.RecipeHandler;
@@ -67,6 +70,10 @@ public class FluxedTrinkets {
 //		proxy.registerKeyBinding();
 		GameRegistry.registerTileEntity(TileEntitySolderingStation.class, "solderingStation");
 		GameRegistry.registerTileEntity(TileEntityTrinketAssembler.class, "trinketAssembler");
+		GameRegistry.registerTileEntity(TileEntityKineticGenerator.class, "kineticGenerator");
+		GameRegistry.registerTileEntity(TileEntityHeatGenerator.class, "heatGenerator");
+		
+		
 	}
 
 	@EventHandler

@@ -6,18 +6,18 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import fluxedtrinkets.FluxedTrinkets;
-import fluxedtrinkets.client.gui.ContainerCompressor;
+import fluxedtrinkets.client.gui.ContainerHeatGenerator;
 import fluxedtrinkets.client.gui.ContainerSolderingStation;
 import fluxedtrinkets.client.gui.ContainerTrinketAssembler;
-import fluxedtrinkets.client.gui.GuiCompressor;
+import fluxedtrinkets.client.gui.GuiHeatGenerator;
 import fluxedtrinkets.client.gui.GuiSolderingStationCircuit;
 import fluxedtrinkets.client.gui.GuiTrinketAssembler;
-import fluxedtrinkets.tileEntity.TileEntityCompressor;
+import fluxedtrinkets.tileEntity.TileEntityHeatGenerator;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
 
 public class GuiHandler implements IGuiHandler {
-	
+
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(FluxedTrinkets.instance, this);
 	}
@@ -39,11 +39,11 @@ public class GuiHandler implements IGuiHandler {
 				return new ContainerTrinketAssembler(player.inventory, (TileEntityTrinketAssembler) tile);
 			}
 			break;
-			
+
 		case 2:
 			TileEntity tec = world.getTileEntity(x, y, z);
-			if (tec != null && tec instanceof TileEntityCompressor) {
-				return new ContainerCompressor(player.inventory, (TileEntityCompressor) tec);
+			if (tec != null && tec instanceof TileEntityHeatGenerator) {
+				return new ContainerHeatGenerator(player.inventory, (TileEntityHeatGenerator) tec);
 			}
 			break;
 
@@ -68,11 +68,11 @@ public class GuiHandler implements IGuiHandler {
 				return new GuiTrinketAssembler(player.inventory, (TileEntityTrinketAssembler) tile);
 			}
 			break;
-			
+
 		case 2:
 			TileEntity tec = world.getTileEntity(x, y, z);
-			if (tec != null && tec instanceof TileEntityCompressor) {
-				return new GuiCompressor(player.inventory, (TileEntityCompressor) tec);
+			if (tec != null && tec instanceof TileEntityHeatGenerator) {
+				return new GuiHeatGenerator(player.inventory, (TileEntityHeatGenerator) tec);
 			}
 			break;
 		}

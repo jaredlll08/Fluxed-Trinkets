@@ -5,7 +5,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.IEnergyHandler;
 import fluxedtrinkets.tileEntity.energy.TileEnergyBase;
 
-public class TileEntityKineticGenerator extends TileEnergyBase implements IEnergyHandler {
+public class TileEntityKineticGenerator extends TileEnergyBase {
 	public EntityPlayer player;
 
 	public TileEntityKineticGenerator() {
@@ -30,7 +30,7 @@ public class TileEntityKineticGenerator extends TileEnergyBase implements IEnerg
 
 	@Override
 	public ForgeDirection[] getValidInputs() {
-		return new ForgeDirection[] { ForgeDirection.UP };
+		return null;
 	}
 
 }

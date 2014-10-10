@@ -11,25 +11,63 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.oredict.OreDictionary;
 import fluxedtrinkets.api.SolderingRecipe;
 import fluxedtrinkets.items.FTItems;
+import fluxedtrinkets.tileEntity.energy.TileEnergyBase;
 
-public class TileEntityCompressor extends TileEntity implements ISidedInventory, IEnergyHandler {
-	protected EnergyStorage storage;
+public class TileEntityHeatGenerator extends TileEnergyBase implements ISidedInventory {
+	private int percentage = 0;
+
+	public TileEntityHeatGenerator() {
+		super(200000);
+		items = new ItemStack[1];
+	}
+
+	public int getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(int percentage) {
+		this.percentage = percentage;
+	}
+
+	public void addPercentage(int amount) {
+		this.percentage += amount;
+	}
+
 	public EntityPlayer player;
 
 	public ItemStack[] items;
 
-	public TileEntityCompressor() {
-		items = new ItemStack[3];
-		init(500000);
-		setInputSpeed(10000);
-	}
-	
 	public void updateEntity() {
+		pushEnergy();
+		if (getStackInSlot(0) == null) {
+			setPercentage(0);
+		}
+		if (getStackInSlot(0) != null) {
+			if (TileEntityFurnace.getItemBurnTime(getStackInSlot(0)) > 0) {
+				int energy = TileEntityFurnace.getItemBurnTime(getStackInSlot(0));
+				if (getPercentage() == TileEntityFurnace.getItemBurnTime(getStackInSlot(0))) {
+					setPercentage(0);
+					decrStackSize(0, 1);
+					// receiveEnergy(ForgeDirection.DOWN,
+					// TileEntityFurnace.getItemBurnTime(getStackInSlot(0)),
+					// false);
+					storage.receiveEnergy(energy, false);
+					// storage.receiveEnergy(TileEntityFurnace.getItemBurnTime(getStackInSlot(0))
+					// * (worldObj.rand.nextInt(6) + 1), false);
+				} else {
+					if (getStackInSlot(0) != null) {
+						addPercentage(1);
+					}
+
+				}
+			}
+		}
 	}
 
 	@Override
@@ -131,6 +169,7 @@ public class TileEntityCompressor extends TileEntity implements ISidedInventory,
 	/* NBT */
 	@Override
 	public void readFromNBT(NBTTagCompound tags) {
+		storage.readFromNBT(tags);
 		super.readFromNBT(tags);
 		readInventoryFromNBT(tags);
 	}
@@ -148,7 +187,6 @@ public class TileEntityCompressor extends TileEntity implements ISidedInventory,
 
 	@Override
 	public void writeToNBT(NBTTagCompound tags) {
-		super.writeToNBT(tags);
 		writeInventoryToNBT(tags);
 	}
 
@@ -166,64 +204,17 @@ public class TileEntityCompressor extends TileEntity implements ISidedInventory,
 		tags.setTag("Items", nbttaglist);
 	}
 
-	
-
-
 	@Override
-	public boolean canConnectEnergy(ForgeDirection from) {
-		return true;
+	public ForgeDirection[] getValidOutputs() {
+		return new ForgeDirection[] { ForgeDirection.DOWN, ForgeDirection.UP, ForgeDirection.EAST, ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.WEST };
 	}
 
 	@Override
-	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
-		int ret = storage.receiveEnergy(maxReceive, true);
-		if (!simulate) {
-			storage.receiveEnergy(ret, false);
-		}
-		return ret;
+	public ForgeDirection[] getValidInputs() {
+		return null;
 	}
 
-	private void init(int cap) {
-		storage = new EnergyStorage(cap);
+	public EnergyStorage getStorage() {
+		return storage;
 	}
-
-	@Override
-	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
-		return 0;
-	}
-
-	@Override
-	public int getEnergyStored(ForgeDirection from) {
-		return getEnergyStored();
-	}
-
-	@Override
-	public int getMaxEnergyStored(ForgeDirection from) {
-		return getMaxStorage();
-	}
-
-	public int getEnergyStored() {
-		return storage.getEnergyStored();
-	}
-
-	public void setEnergyStored(int energy) {
-		storage.setEnergyStored(energy);
-	}
-
-	public int getMaxStorage() {
-		return storage.getMaxEnergyStored();
-	}
-
-	public void setMaxStorage(int storage) {
-		this.storage.setCapacity(storage);
-	}
-
-	public int getInputSpeed() {
-		return storage.getMaxReceive();
-	}
-
-	public void setInputSpeed(int inputSpeed) {
-		this.storage.setMaxReceive(inputSpeed);
-	}
-
 }

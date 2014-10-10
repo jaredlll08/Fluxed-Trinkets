@@ -35,9 +35,9 @@ public class FTItems {
 	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning");
 
 	public static Item jadedLungs = new ItemJadedLungs();
-	
-//	public static Item silicon = new ItemSilicon();
-	
+
+
+	// public static Item silicon = new ItemSilicon();
 
 	/*
 	 * items
@@ -78,7 +78,6 @@ public class FTItems {
 		registerCircuit(advancedCircuitLava, "Blazing Circuit", "Circuit_Advanced_Lava");
 		registerCircuit(advancedCircuitLife, "Mending Circuit", "Circuit_Advanced_Life");
 		registerCircuit(advancedCircuitLightning, "Thundering Circuit", "Circuit_Advanced_Lightning");
-		
 
 		/*
 		 * Items
@@ -93,9 +92,10 @@ public class FTItems {
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
 		registerItem(modularRing, "Modular Ring", "Ring_Blank");
-//		registerItem(brokenTrinket, "Broken Trinket Metal", "Broken_Trinket");
+		// registerItem(brokenTrinket, "Broken Trinket Metal",
+		// "Broken_Trinket");
 
-//		registerItem(silicon, "Silicon", "Silicon");
+		// registerItem(silicon, "Silicon", "Silicon");
 
 	}
 
