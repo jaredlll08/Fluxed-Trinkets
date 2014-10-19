@@ -173,8 +173,7 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 				if (item[i].getItem() instanceof ItemCircuit) {
 					ItemCircuit circuit = (ItemCircuit) item[i].getItem();
 
-					if (!totalEffects.contains(circuit.getEffect())) {
-
+					if (!totalEffects.contains(circuit.getEffect().getName())) {
 						totalEffects.add(circuit.getEffect().getName());
 					}
 

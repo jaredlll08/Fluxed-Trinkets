@@ -1,7 +1,10 @@
 package fluxedtrinkets.effects;
 
+import java.util.Random;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import fluxedtrinkets.api.BaseEffect;
 import fluxedtrinkets.api.ITrinket;
@@ -12,7 +15,6 @@ public class EffectWater extends BaseEffect {
 	public EffectWater() {
 		super("water", EffectProps.energyWater);
 	}
-
 
 	@Override
 	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
@@ -39,5 +41,10 @@ public class EffectWater extends BaseEffect {
 			}
 		}
 		return energyUsed;
+	}
+
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.setFire(new Random().nextInt(300));
 	}
 }

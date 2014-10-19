@@ -13,9 +13,10 @@ public interface IEffect {
 	 * @return the effect name
 	 */
 	public String getName();
-	
+
 	/**
-	 * @return The amount this effect uses per tick. Does not affect any actual calculations, only used in tooltips.
+	 * @return The amount this effect uses per tick. Does not affect any actual
+	 *         calculations, only used in tooltips.
 	 */
 	public int getUsage();
 
@@ -59,4 +60,13 @@ public interface IEffect {
 	public boolean canEquip(ItemStack stack, EntityLivingBase entity, ITrinket item);
 
 	public boolean canUnequip(ItemStack stack, EntityLivingBase entity, ITrinket item);
+
+	/**
+	 * Called when an item loses power.
+	 * 
+	 * @param stack
+	 * @param entity
+	 * @param item
+	 */
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item);
 }

@@ -11,11 +11,12 @@ import fluxedtrinkets.api.BaseEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.EffectProps;
 
-public class EffectAdvancedLightning extends BaseEffect{
+public class EffectAdvancedLightning extends BaseEffect {
 
 	public EffectAdvancedLightning() {
 		super("advancedLightning", EffectProps.energyAdvancedLightning);
 	}
+
 
 	@Override
 	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
@@ -32,4 +33,10 @@ public class EffectAdvancedLightning extends BaseEffect{
 
 		return 0;
 	}
+
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.worldObj.spawnEntityInWorld(new EntityLightningBolt(entity.worldObj, entity.posX, entity.posX, entity.posX));
+	}
+
 }

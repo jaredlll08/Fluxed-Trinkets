@@ -24,7 +24,7 @@ public abstract class BaseEffect implements IEffect {
 	public String getName() {
 		return name;
 	}
-	
+
 	@Override
 	public int getUsage() {
 		return usage.getInt();
@@ -52,7 +52,7 @@ public abstract class BaseEffect implements IEffect {
 	public boolean canUnequip(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		return true;
 	}
-	
+
 	public boolean hasEnergy(ITrinket item, ItemStack stack, int amount) {
 		return item.getEnergyStored(stack) > amount;
 	}
@@ -60,25 +60,31 @@ public abstract class BaseEffect implements IEffect {
 	public Vec3 getPos(EntityLivingBase entity) {
 		return Vec3.createVectorHelper(entity.posX, entity.posY, entity.posZ);
 	}
-	
+
 	public AxisAlignedBB getBBSurrounding(EntityLivingBase entity, double range) {
 		Vec3 pos = getPos(entity);
 		return AxisAlignedBB.getBoundingBox(pos.xCoord - range, pos.yCoord - range, pos.zCoord - range, pos.xCoord + range, pos.yCoord + range, pos.zCoord + range);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public <T extends Entity> List<T> getEntitiesAround(EntityLivingBase entity, double range, final Class<? extends T> clazz) {
 		AxisAlignedBB bb = getBBSurrounding(entity, range);
 		return entity.worldObj.getEntitiesWithinAABBExcludingEntity(entity, bb, new IEntitySelector() {
-			
+
 			@Override
 			public boolean isEntityApplicable(Entity entity) {
 				return clazz.isAssignableFrom(entity.getClass());
 			}
 		});
 	}
-	
+
 	public List<Entity> getEntitiesAround(EntityLivingBase entity, double range) {
 		return getEntitiesAround(entity, range, Entity.class);
 	}
+
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		;
+	}
+
 }

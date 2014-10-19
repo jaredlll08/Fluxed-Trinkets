@@ -44,10 +44,10 @@ public class GuiHeatGenerator extends GuiContainer {
 
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
-		fontRendererObj.drawString(String.valueOf(tile.getEnergyStored() + "/" + tile.getStorage().getMaxEnergyStored()), guiLeft + (xSize / 2) - 30, guiTop + 60, 0);
+//		fontRendererObj.drawString(String.valueOf(tile.getStorage().getEnergyStored() + "/" + tile.getStorage().getMaxEnergyStored()), guiLeft + (xSize / 2) - 30, guiTop + 60, 0);
 
 		if (tile.getStackInSlot(0) != null) {
-			fontRendererObj.drawString(String.valueOf((tile.getPercentage()/20) + "/" + TileEntityFurnace.getItemBurnTime(tile.getStackInSlot(0))/20), guiLeft + (xSize / 2) - 25, guiTop + 50, 0);
+			fontRendererObj.drawString(String.valueOf((tile.getPercentage() / 20) + "/" + TileEntityFurnace.getItemBurnTime(tile.getStackInSlot(0)) / 20), guiLeft + (xSize / 2) - 25, guiTop + 50, 0);
 		}
 
 	}

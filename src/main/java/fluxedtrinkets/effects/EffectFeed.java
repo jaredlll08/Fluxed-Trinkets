@@ -4,6 +4,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import fluxedtrinkets.api.BaseEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.EffectProps;
@@ -36,4 +38,9 @@ public class EffectFeed extends BaseEffect {
 		}
 		return 0;
 	}
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.addPotionEffect(new PotionEffect(Potion.hunger.id, 5, 5, false));
+	}
+
 }

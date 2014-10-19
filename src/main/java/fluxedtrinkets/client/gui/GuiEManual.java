@@ -2,6 +2,7 @@ package fluxedtrinkets.client.gui;
 
 import java.util.ArrayList;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -9,8 +10,12 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.RecipesCrafting;
+import net.minecraft.item.crafting.RecipesTools;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -19,6 +24,8 @@ import org.lwjgl.opengl.GL12;
 
 import fluxedtrinkets.ModInfo;
 import fluxedtrinkets.api.StringUtils;
+import fluxedtrinkets.client.gui.book.manual.GUIManual;
+import fluxedtrinkets.config.EffectProps;
 import fluxedtrinkets.items.FTItems;
 
 public class GuiEManual extends GuiScreen {
@@ -45,6 +52,10 @@ public class GuiEManual extends GuiScreen {
 
 	public static void addText(String text) {
 		texts.add(StringUtils.localize("manual." + text));
+	}
+
+	public static void addText(String text, boolean localize) {
+		texts.add(text);
 	}
 
 	public static void removeText(String text) {
@@ -137,18 +148,17 @@ public class GuiEManual extends GuiScreen {
 
 	}
 
-	
-	public void handleMouseInput(){
+	public void handleMouseInput() {
 		super.handleMouseInput();
-		if(Mouse.isButtonDown(1)){
-			initGui();
+		if (Mouse.isButtonDown(1)) {
+			this.initGui();
 		}
 	}
-	private static final ResourceLocation crafting = new ResourceLocation(ModInfo.modid, "textures/gui/crafting.png");
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
 		if (mc.renderEngine != null) {
+
 			mc.renderEngine.bindTexture(texture);
 		}
 
@@ -163,63 +173,20 @@ public class GuiEManual extends GuiScreen {
 		for (int i = 0; i < getTexts(); i++) {
 			drawString(fontRendererObj, getText(i), left + 10, (top + 15) + (10 * i), 0);
 		}
-
 		if (recipeAmuletEmpty) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 81, top + 94);
+			drawString(fontRendererObj, new ItemStack(FTItems.modularAmulet).getDisplayName(), left + 11, top + 84, 0);
+			drawString(fontRendererObj, new ItemStack(FTItems.modularBelt).getDisplayName(), left + 80, top + 84, 0);
+			drawString(fontRendererObj, new ItemStack(FTItems.modularRing).getDisplayName(), left / 2 + left, top + 21, 0);
 
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.iron_bars), left + 45, top + 112);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 63, top + 112);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 81, top + 112);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.iron_bars), left + 45, top + 130);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Blocks.iron_bars), left + 63, top + 130);
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(Items.iron_ingot), left + 63, top + 94);
-				renderToolTip(new ItemStack(Blocks.iron_bars), left + 63, top + 130);
-			}
+			showRecipe(left + 11, top + 93, new ShapedOreRecipe(new ItemStack(FTItems.modularAmulet), new Object[] { " bb", "ibb", "ii ", 'i', new ItemStack(Items.iron_ingot), 'b', new ItemStack(Blocks.iron_bars) }));
 		}
 
 		if (recipeBeltEmpty) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 45, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 81, top + 94);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 45, top + 112);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 81, top + 112);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 45, top + 130);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 63, top + 130);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 81, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(Items.iron_ingot), left + 45, top + 130);
-			}
+			showRecipe(left + 80, top + 93, new ShapedOreRecipe(new ItemStack(FTItems.modularBelt), new Object[] { "iii", "i i", "iii", 'i', new ItemStack(Items.iron_ingot) }));
 		}
 
 		if (recipeRingEmpty) {
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			mc.renderEngine.bindTexture(texture);
-			drawTexturedModalRect(left + 44, top + 93, 0, 180, 54, 54);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 63, top + 94);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 81, top + 112);
-
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 45, top + 112);
-			itemRender.renderItemIntoGUI(fontRendererObj, mc.getTextureManager(), new ItemStack(Items.iron_ingot), left + 63, top + 130);
-
-			buttonList.add(new GuiButton(99, left + 34, top + 150, 75, 20, "Toggle tooltip"));
-			if (renderToolTip) {
-				renderToolTip(new ItemStack(Items.iron_ingot), left + 63, top + 94);
-
-			}
+			showRecipe(left + (left / 2), top + 30, new ShapedOreRecipe(new ItemStack(FTItems.modularRing), new Object[] { " i ", "i i", " i ", 'i', new ItemStack(Items.iron_ingot) }));
 		}
 
 		if (circuitEmpty) {
@@ -752,6 +719,9 @@ public class GuiEManual extends GuiScreen {
 			removeAllChapters();
 			removeAllText();
 			Pages.TrinketsChapters();
+			recipeAmuletEmpty = true;
+			recipeBeltEmpty = true;
+			recipeRingEmpty = true;
 			break;
 		case 2:
 			removeAllChapters();
@@ -843,6 +813,192 @@ public class GuiEManual extends GuiScreen {
 			removeAllText();
 			Pages.LeadWire();
 			break;
+		case 18:
+			removeAllChapters();
+			removeAllText();
+			Pages.effectType();
+			break;
+		case 19:
+			removeAllChapters();
+			removeAllText();
+			Pages.basicEffects();
+			break;
+		case 20:
+			removeAllChapters();
+			removeAllText();
+			Pages.comboEffects();
+			break;
+
+		case 21:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.0");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyAir.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.air.desc");
+			addText("");
+			addText("");
+			addText("effects.single.0.info");
+
+			break;
+		case 22:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.1");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyEarth.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.earth.desc");
+			addText("");
+			addText("");
+			addText("effects.single.1.info");
+
+			break;
+		case 23:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.2");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyWater.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.water.desc");
+			addText("");
+			addText("");
+			addText("effects.single.2.info");
+
+			break;
+		case 24:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.3");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyFire.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.fire.desc");
+			addText("");
+			addText("");
+			addText("effects.single.3.info");
+
+			break;
+		case 25:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.4");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyAdvancedIce.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.advancedIce.desc");
+			addText("");
+			addText("");
+			addText("effects.single.4.info");
+
+			break;
+		case 26:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.5");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyAdvancedLava.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.advancedLava.desc");
+			addText("");
+			addText("");
+			addText("effects.single.5.info");
+
+			break;
+		case 27:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.6");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyAdvancedLife.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.advancedLife.desc");
+			addText("");
+			addText("");
+			addText("effects.single.6.info");
+
+			break;
+		case 28:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.single.7");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyAdvancedLightning.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.advancedLightning.desc");
+			addText("");
+			addText("");
+			addText("");
+			addText("effects.single.7.info");
+
+			break;
+
+		case 29:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.combo.0");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyStep.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.step.desc");
+			addText("");
+			addText("");
+			addText("effects.combo.0.info");
+
+			break;
+		case 30:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.combo.1");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyRespiratory.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.respiratory.desc");
+			addText("");
+			addText("");
+				addText("effects.combo.1.info");
+
+			break;
+		case 31:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.combo.2");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyHaste.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.haste.desc");
+			addText("");
+			addText("");
+				addText("effects.combo.2.info");
+			break;
+		case 32:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.combo.3");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyFeed.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.feed.desc");
+			addText("");
+			addText("");
+				addText("effects.combo.3.info");
+
+			break;
+		case 33:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.combo.4");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyFall.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.air.desc");
+			addText("");
+			addText("");
+				addText("effects.combo.4.info");
+
+			break;
 
 		}
 
@@ -866,4 +1022,44 @@ public class GuiEManual extends GuiScreen {
 	public boolean doesGuiPauseGame() {
 		return false;
 	}
+
+	public void showRecipe(int x, int y, ShapedOreRecipe recipe) {
+
+		ItemStack[] input = new ItemStack[9];
+
+		for (int i = 0; i < input.length; i++) {
+			input[i] = (ItemStack) recipe.getInput()[i];
+		}
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		RenderHelper.enableGUIStandardItemLighting();
+		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+		drawTexturedModalRect(x, y, 0, 180, 54, 54);
+
+		if (input[0] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[0], x + 1, y + 1);
+		if (input[1] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[1], x + 1, y + 19);
+		if (input[2] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[2], x + 1, y + 37);
+		if (input[3] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[3], x + 19, y + 1);
+		if (input[4] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[4], x + 19, y + 19);
+		if (input[5] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[5], x + 19, y + 37);
+		if (input[6] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[6], x + 37, y + 1);
+		if (input[7] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[7], x + 37, y + 19);
+		if (input[8] != null)
+			itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), input[8], x + 37, y + 37);
+
+		GL11.glPopMatrix();
+	}
+
 }

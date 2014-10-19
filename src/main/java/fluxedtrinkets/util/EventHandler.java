@@ -20,18 +20,4 @@ public class EventHandler {
 		FMLCommonHandler.instance().bus().register(this);
 	}
 
-	@SubscribeEvent
-	public void startingItemsRespawn(PlayerEvent.PlayerRespawnEvent event) {
-		if ("jadedcat".equals(event.player.getCommandSenderName())) {
-			event.player.inventory.addItemStackToInventory(new ItemStack(FTItems.jadedLungs));
-		}
-
-	}
-
-	@SubscribeEvent
-	public void startingItemsLogin(PlayerEvent.PlayerLoggedInEvent event) {
-		if ("jadedcat".equals(event.player.getCommandSenderName())) {
-			event.player.inventory.addItemStackToInventory(new ItemStack(FTItems.jadedLungs));
-		}
-	}
 }

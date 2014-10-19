@@ -1,10 +1,8 @@
 package fluxedtrinkets.proxy;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.client.gui.GuiEManual;
 import fluxedtrinkets.client.render.block.RenderSolderingStation;
 import fluxedtrinkets.client.render.block.RenderTrinketAssembler;

@@ -5,6 +5,7 @@ import cofh.api.energy.IEnergyHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,7 +20,7 @@ import fluxedtrinkets.api.SolderingRecipe;
 import fluxedtrinkets.items.FTItems;
 import fluxedtrinkets.tileEntity.energy.TileEnergyBase;
 
-public class TileEntityHeatGenerator extends TileEnergyBase implements ISidedInventory {
+public class TileEntityHeatGenerator extends TileEnergyBase implements IInventory {
 	private int percentage = 0;
 
 	public TileEntityHeatGenerator() {
@@ -151,25 +152,9 @@ public class TileEntityHeatGenerator extends TileEnergyBase implements ISidedInv
 		}
 	}
 
-	@Override
-	public boolean canExtractItem(int arg0, ItemStack arg1, int arg2) {
-		return true;
-	}
-
-	@Override
-	public boolean canInsertItem(int arg0, ItemStack arg1, int arg2) {
-		return true;
-	}
-
-	@Override
-	public int[] getAccessibleSlotsFromSide(int arg0) {
-		return null;
-	}
-
 	/* NBT */
 	@Override
 	public void readFromNBT(NBTTagCompound tags) {
-		storage.readFromNBT(tags);
 		super.readFromNBT(tags);
 		readInventoryFromNBT(tags);
 	}
@@ -187,6 +172,7 @@ public class TileEntityHeatGenerator extends TileEnergyBase implements ISidedInv
 
 	@Override
 	public void writeToNBT(NBTTagCompound tags) {
+		super.writeToNBT(tags);
 		writeInventoryToNBT(tags);
 	}
 

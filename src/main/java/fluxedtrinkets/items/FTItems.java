@@ -6,6 +6,16 @@ import baubles.api.BaubleType;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.CreativeTabFluxedTrinkets;
 import fluxedtrinkets.ModInfo;
+import fluxedtrinkets.effects.EffectAdvancedEmpty;
+import fluxedtrinkets.effects.EffectAdvancedIce;
+import fluxedtrinkets.effects.EffectAdvancedLava;
+import fluxedtrinkets.effects.EffectAdvancedLife;
+import fluxedtrinkets.effects.EffectAdvancedLightning;
+import fluxedtrinkets.effects.EffectAir;
+import fluxedtrinkets.effects.EffectEarth;
+import fluxedtrinkets.effects.EffectEmpty;
+import fluxedtrinkets.effects.EffectFire;
+import fluxedtrinkets.effects.EffectWater;
 import fluxedtrinkets.items.ingredient.ItemBattery;
 import fluxedtrinkets.items.ingredient.ItemLeadWire;
 import fluxedtrinkets.items.ingredient.ItemSolderingIron;
@@ -22,20 +32,17 @@ public class FTItems {
 	/*
 	 * circuits
 	 */
-	public static Item circuit = new ItemCircuit("empty");
-	public static Item circuitAir = new ItemCircuit("air");
-	public static Item circuitEarth = new ItemCircuit("earth");
-	public static Item circuitFire = new ItemCircuit("fire");
-	public static Item circuitWater = new ItemCircuit("water");
+	public static Item circuit = new ItemCircuit("empty", new EffectEmpty());
+	public static Item circuitAir = new ItemCircuit("air", new EffectAir());
+	public static Item circuitEarth = new ItemCircuit("earth", new EffectEarth());
+	public static Item circuitFire = new ItemCircuit("fire", new EffectFire());
+	public static Item circuitWater = new ItemCircuit("water", new EffectWater());
 
-	public static Item advancedCircuit = new ItemCircuit("advancedEmpty");
-	public static Item advancedCircuitIce = new ItemCircuit("advancedIce");
-	public static Item advancedCircuitLava = new ItemCircuit("advancedLava");
-	public static Item advancedCircuitLife = new ItemCircuit("advancedLife");
-	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning");
-
-	public static Item jadedLungs = new ItemJadedLungs();
-
+	public static Item advancedCircuit = new ItemCircuit("advancedEmpty", new EffectAdvancedEmpty());
+	public static Item advancedCircuitIce = new ItemCircuit("advancedIce", new EffectAdvancedIce());
+	public static Item advancedCircuitLava = new ItemCircuit("advancedLava", new EffectAdvancedLava());
+	public static Item advancedCircuitLife = new ItemCircuit("advancedLife", new EffectAdvancedLife());
+	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning", new EffectAdvancedLightning());
 
 	// public static Item silicon = new ItemSilicon();
 
@@ -55,6 +62,8 @@ public class FTItems {
 	public static Item modularAmulet = new ModularTrinketItem(15000, BaubleType.AMULET);
 	public static Item modularRing = new ModularTrinketItem(10000, BaubleType.RING);
 
+	public static Item ftWrench = new Item();
+
 	private static void registerItems() {
 		// FluxedTrinketsAPI.addEffect("empty");
 		// FluxedTrinketsAPI.addEffect("water");
@@ -70,8 +79,6 @@ public class FTItems {
 		registerCircuit(circuitAir, "Atmospheric Circuit", "Circuit_Air");
 		registerCircuit(circuitFire, "Scorched Circuit", "Circuit_Fire");
 		registerCircuit(circuitWater, "Streaming Circuit", "Circuit_Water");
-
-		registerItem(jadedLungs, "Jaded's Spare Lungs", "JadedLungs", CreativeTabs.tabMisc);
 
 		registerCircuit(advancedCircuit, "Advanced Circuit Board", "Circuit_Advanced");
 		registerCircuit(advancedCircuitIce, "Chilling Circuit", "Circuit_Advanced_Ice");
@@ -92,6 +99,7 @@ public class FTItems {
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
 		registerItem(modularRing, "Modular Ring", "Ring_Blank");
+		registerItem(ftWrench, "Fluxed Wrench", "Fluxed_Wrench");
 		// registerItem(brokenTrinket, "Broken Trinket Metal",
 		// "Broken_Trinket");
 

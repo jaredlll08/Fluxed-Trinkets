@@ -23,7 +23,7 @@ public class EffectFire extends BaseEffect {
 				player.extinguish();
 				powerUsed += getUsage();
 			}
-			
+
 			if (hasEnergy(item, stack, getUsage())) {
 				EffectHelper.setFireImmune(entity, true);
 				powerUsed += getUsage();
@@ -39,4 +39,10 @@ public class EffectFire extends BaseEffect {
 	public void onUnequipped(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		EffectHelper.setFireImmune(entity, false);
 	}
+
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.setFire(entity.worldObj.rand.nextInt(100));
+	}
+
 }

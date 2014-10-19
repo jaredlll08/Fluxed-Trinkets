@@ -7,14 +7,16 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import fluxedtrinkets.api.BaseEffect;
 import fluxedtrinkets.api.ITrinket;
 import fluxedtrinkets.config.EffectProps;
 
 public class EffectHaste extends BaseEffect {
 
-    private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed",  0.3f, 1);
-
+	private static final AttributeModifier speedMod = new AttributeModifier(UUID.randomUUID(), "generic.movementSpeed", 0.3f, 1);
+	
 	public EffectHaste() {
 		super("haste", EffectProps.energyHaste);
 	}
@@ -22,17 +24,17 @@ public class EffectHaste extends BaseEffect {
 	@Override
 	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		if (!entity.worldObj.isRemote) {
-            IAttributeInstance moveInst = entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed);
-            moveInst.removeModifier(speedMod);
-                        
-            if (hasEnergy(item, stack, getUsage())) {
-                moveInst.applyModifier(speedMod);
-            } else {
-            	return 0;
-            }
+			IAttributeInstance moveInst = entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed);
+			moveInst.removeModifier(speedMod);
+
+			if (hasEnergy(item, stack, getUsage())) {
+				moveInst.applyModifier(speedMod);
+			} else {
+				return 0;
+			}
 
 			if (entity.onGround && isMoving(entity)) {
-                return getUsage();
+				return getUsage();
 			}
 		}
 		return 0;
@@ -45,4 +47,10 @@ public class EffectHaste extends BaseEffect {
 	public void onUnequipped(ItemStack stack, EntityLivingBase entity, ITrinket item) {
 		entity.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.movementSpeed).removeModifier(speedMod);
 	}
+
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 1, 1, false));
+	}
+
 }

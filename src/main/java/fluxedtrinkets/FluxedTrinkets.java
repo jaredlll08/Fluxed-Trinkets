@@ -15,6 +15,7 @@ import fluxedtrinkets.config.ConfigHandler;
 import fluxedtrinkets.effects.EffectAdvancedEmpty;
 import fluxedtrinkets.effects.EffectAdvancedIce;
 import fluxedtrinkets.effects.EffectAdvancedLava;
+import fluxedtrinkets.effects.EffectAdvancedLife;
 import fluxedtrinkets.effects.EffectAdvancedLightning;
 import fluxedtrinkets.effects.EffectAir;
 import fluxedtrinkets.effects.EffectEarth;
@@ -31,7 +32,6 @@ import fluxedtrinkets.proxy.CommonProxy;
 import fluxedtrinkets.tileEntity.TileEntityHeatGenerator;
 import fluxedtrinkets.tileEntity.TileEntityKineticGenerator;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
-import fluxedtrinkets.tileEntity.TileEntityTeleporter;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
 import fluxedtrinkets.util.GuiHandler;
 import fluxedtrinkets.util.RecipeHandler;
@@ -56,6 +56,7 @@ public class FluxedTrinkets {
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedIce());
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedLava());
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedLightning());
+		FluxedTrinketsAPI.addEffect(new EffectAdvancedLife());
 		FluxedTrinketsAPI.addEffect(new EffectHaste());
 		FluxedTrinketsAPI.addEffect(new EffectRespiratory());
 		FluxedTrinketsAPI.addEffect(new EffectFall());
@@ -67,18 +68,16 @@ public class FluxedTrinkets {
 		FTBlocks.init();
 		RecipeHandler.init();
 		proxy.registerRenderers();
-//		proxy.registerKeyBinding();
 		GameRegistry.registerTileEntity(TileEntitySolderingStation.class, "solderingStation");
 		GameRegistry.registerTileEntity(TileEntityTrinketAssembler.class, "trinketAssembler");
 		GameRegistry.registerTileEntity(TileEntityKineticGenerator.class, "kineticGenerator");
 		GameRegistry.registerTileEntity(TileEntityHeatGenerator.class, "heatGenerator");
-		
-		
+
+
 	}
 
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
-//		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 		new GuiHandler();
 		PacketHandler.init();
 		VersionChecker.init();

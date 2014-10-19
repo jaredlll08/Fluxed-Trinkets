@@ -25,4 +25,11 @@ public class EffectEarth extends BaseEffect {
 		}
 		return 0;
 	}
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.addPotionEffect(new PotionEffect(Potion.blindness.id, 1, 1, false));
+		entity.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1, 1, false));
+		
+	}
+
 }

@@ -12,15 +12,18 @@ public class ItemCircuit extends Item implements ICircuit {
 	
 	private IEffect effect;
 	private CircuitTier tier;
+	private String name;
 
-	public ItemCircuit(String effect, CircuitTier tier) {
-		this.effect = FluxedTrinketsAPI.getEffectFromName(effect);
+	public ItemCircuit(String name, CircuitTier tier, IEffect effect) {
+		this.name = effect.getName();
 		this.tier = tier;
+		this.effect = effect;
 	}
 	
-	public ItemCircuit(String effect) {
-		this(effect, CircuitTier.basic);
+	public ItemCircuit(String name, IEffect effect) {
+		this(name, CircuitTier.basic, effect);
 	}
+	
 
 	@Override
 	public CircuitTier getTier() {
@@ -28,10 +31,8 @@ public class ItemCircuit extends Item implements ICircuit {
 	}
 
 	public IEffect getEffect() {
-		if (effect.equals("random")) {
-			return FluxedTrinketsAPI.getEffects().get(new Random().nextInt(FluxedTrinketsAPI.getEffects().size()));
-		}
 		return effect;
 	}
+
 
 }

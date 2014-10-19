@@ -2,6 +2,7 @@ package fluxedtrinkets.api;
 
 import java.util.ArrayList;
 
+import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,7 +11,7 @@ import net.minecraft.item.ItemStack;
  * @author Jared
  *
  */
-public class SolderingRecipe {
+public class SolderingRecipe{
 
 	private static ArrayList<ItemStack[]> recipe = new ArrayList<ItemStack[]>();
 

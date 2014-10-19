@@ -9,7 +9,7 @@ import fluxedtrinkets.config.EffectProps;
 public class EffectStep extends BaseEffect {
 
 	private static final float defaultStep = 0.50001F;
-	
+
 	public EffectStep() {
 		super("step", EffectProps.energyStep);
 	}
@@ -35,4 +35,10 @@ public class EffectStep extends BaseEffect {
 		}
 		return 0;
 	}
+
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.setJumping(false);
+	}
+
 }

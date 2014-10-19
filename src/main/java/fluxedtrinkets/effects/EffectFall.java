@@ -26,4 +26,9 @@ public class EffectFall extends BaseEffect {
 		}
 		return 0;
 	}
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.motionY=-0.8;
+	}
+
 }

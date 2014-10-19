@@ -17,9 +17,10 @@ item.Copper_Ingot.name=Copper Ingot
 item.Copper_Nugget.name=Copper Nugget
 item.Lead_Ingot.name=Lead Ingot
 item.Lead_Wire.name=Lead Wire
+item.Fluxed_Wrench.name=Fluxed Wrench
 
 item.Belt_Empty.name=Modular Belt
-item.Amulet_Empty.name=Modular Necklace
+item.Amulet_Empty.name=Modular Amulet
 item.Ring_Blank.name=Modular Ring
 
 item.Electricians_Manual.name=Electricians Manual
@@ -27,6 +28,7 @@ tile.Soldering Station.name=Soldering Station
 tile.Trinket Assembler.name=Trinket Assembler
 tile.Kinetic Generator.name=Kinetic Generator
 tile.Machine Cube.name=Machine Cube
+tile.Heat Generator.name=Heat Generator
 
 
 itemGroup.Fluxed Trinkets=Fluxed Trinkets
@@ -82,17 +84,17 @@ ft.effect.water.desc=Extinguishes any nearby|fires within a 5 block radius.
 ft.manual.title.0=Introduction
 ft.manual.title.1=Trinkets
 ft.manual.title.2=Soldering
+ft.manual.title.3=Effects
+
 
 
 ft.manual.intro.0=Welcome to Fluxed-Trinkets!
 ft.manual.intro.1=Fluxed-Trinkets is a mod that adds RF-Powered Baubles.
 ft.manual.intro.2=Once the Baubles have ran out of power they stop working.
-ft.manual.intro.3=This mod uses a very intricate crafting system but dont worry, this book will explain it all.
+ft.manual.intro.3=This mod uses a very intricate crafting system but don't worry, this book will explain it all.
 
 ft.manual.trinkets.0=Baubles this mod adds:
 ft.manual.=
-ft.manual.trinkets.1=The trinkets in Fluxed Trinkets are completely modular!
-
 ft.manual.circuits.0=Empty Circuit
 ft.manual.circuits.1=Terrestrial Circuit
 ft.manual.circuits.2=Atmospheric Circuit
@@ -115,6 +117,56 @@ ft.manual.circuits.category.5=Lead Wire
 ft.manual.soldering.iron.info=The Soldering Iron is used to Solder Circuits in the Soldering Iron.
 ft.manual.wire.lead.info=Lead Wire is used to Solder Circuits in the Soldering Iron.
 
+ft.manual.effects.category.0=Effect category:
+ft.manual.effects.category.1=Single Effects
+ft.manual.effects.category.2=Combo Effects
+
+ft.manual.effects.single.0=Atmospheric
+ft.manual.effects.single.0.info=You get the Atmospheric effect by adding an Atmospheric Circuit to a trinket.
+
+ft.manual.effects.single.1=Terrestrial
+ft.manual.effects.single.1.info=You get the Terrestrial effect by adding an Terrestrial Circuit to a trinket.
+
+ft.manual.effects.single.2=Streaming
+ft.manual.effects.single.2.info=You get the Streaming effect by adding an Streaming Circuit to a trinket.
+
+
+ft.manual.effects.single.3=Scorched
+ft.manual.effects.single.3.info=You get the Scorched effect by adding a Scorched Circuit to a trinket.
+
+
+ft.manual.effects.single.4=Advanced Ice
+ft.manual.effects.single.4.info=You get the Advanced Ice effect by adding an Advanced Ice Circuit to a trinket.
+
+
+ft.manual.effects.single.5=Advanced Lava
+ft.manual.effects.single.5.info=You get the Advanced Lava effect by adding an Advanced Lightning Circuit to a trinket.
+
+
+ft.manual.effects.single.6=Advanced Life
+ft.manual.effects.single.6.info=You get the Advanced Life effect by adding an Advanced Life Circuit to a trinket.
+
+
+ft.manual.effects.single.7=Advanced Lightning
+ft.manual.effects.single.7.info=You get the Advanced Lightning effect by adding an Advanced Lightning Circuit to a trinket.
+
+
+
+
+ft.manual.effects.combo.0=Stepper
+ft.manual.effects.combo.0.info=You get the Stepper effect by adding a Terrestrial Circuit and an Empty Circuit to a trinket.
+
+ft.manual.effects.combo.1=Respiration
+ft.manual.effects.combo.1.info=You get the Respiration effect by adding an Atmospheric Circuit and a Streaming Circuit to a trinket.
+
+ft.manual.effects.combo.2=Haste
+ft.manual.effects.combo.2.info=You get the Haste effect by adding a Terrestrial Circuit and an Atmospheric Circuit to a trinket.
+
+ft.manual.effects.combo.3=Feeder
+ft.manual.effects.combo.3.info=You get the Feeder effect by adding an Advanced Life Circuit and a Streaming Circuitto a trinket.
+
+ft.manual.effects.combo.4=Slow Fall
+ft.manual.effects.combo.4.info=You get the slow Fall effect by adding a Terrestrial Circuit, Advanced Ice Circuit and an Atmospheric Circuit to a trinket.
 
 
 
@@ -159,4 +211,20 @@ ft.manual.soldering.station.recipe=The recipe for the Soldering Station is this:
 
 tick=✓
 
-item.JadedLungs.name=Jaded's Spare Lungs
+
+
+ft.manual.effect.advancedEmpty.desc=No effect.
+ft.manual.effect.empty.desc=No effect.
+ft.manual.effect.advancedLava.desc=Sets any nearby mobs on fire.
+ft.manual.effect.advancedIce.desc=Applies a weakness buff to nearby mobs.
+ft.manual.effect.advancedLife.desc=Heals any nearby pets.
+ft.manual.effect.advancedLightning.desc=If there is a lightning bolt within 48 blocks of the player, a strength buff is applied to the player.
+ft.manual.effect.air.desc=Allows the player to move faster while airborne.
+ft.manual.effect.earth.desc=While the player is below y=32 a haste buff is applied to them.
+ft.manual.effect.fall.desc=While not holding shift, the player will fall slower than normal.
+ft.manual.effect.feed.desc=If the wearer is low on hunger, food from the inventory is automatically consumed.
+ft.manual.effect.fire.desc=Makes the player immune to fire and heat.
+ft.manual.effect.haste.desc=While the wearer is on the ground they gain a speed boost.
+ft.manual.effect.respiratory.desc=Allows the wearer to breathe underwater.
+ft.manual.effect.step.desc=Allows the player to walk up full blocks.
+ft.manual.effect.water.desc=Extinguishes any nearby fires within a 5 block radius.

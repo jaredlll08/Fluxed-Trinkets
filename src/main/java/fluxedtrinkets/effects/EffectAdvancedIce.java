@@ -36,4 +36,10 @@ public class EffectAdvancedIce extends BaseEffect {
 		}
 		return 0;
 	}
+
+	@Override
+	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item) {
+		entity.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 400, 1, false));
+	}
+
 }

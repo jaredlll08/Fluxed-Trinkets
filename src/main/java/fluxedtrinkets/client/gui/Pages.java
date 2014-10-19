@@ -1,12 +1,48 @@
 package fluxedtrinkets.client.gui;
 
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.crafting.CraftingManager;
+
 public class Pages {
 
 	public static void mainPage() {
 		GuiEManual.addChapter("title.0", 0);
 		GuiEManual.addChapter("title.1", 1);
 		GuiEManual.addChapter("title.2", 2);
-		
+		GuiEManual.addChapter("title.3", 18);
+	}
+
+	public static void effectType() {
+		GuiEManual.addText("effects.category.0");
+		GuiEManual.addChapter("", -1);
+		GuiEManual.addChapter("effects.category.1", 19);
+		GuiEManual.addChapter("effects.category.2", 20);
+	}
+
+	public static void basicEffects() {
+		GuiEManual.addText("effects.category.1");
+		GuiEManual.addChapter("", -1);
+		GuiEManual.addChapter("", -2);
+		GuiEManual.addChapter("effects.single.0", 21);
+		GuiEManual.addChapter("effects.single.1", 22);
+		GuiEManual.addChapter("effects.single.2", 23);
+		GuiEManual.addChapter("effects.single.3", 24);
+		GuiEManual.addChapter("effects.single.4", 25);
+		GuiEManual.addChapter("effects.single.5", 26);
+		GuiEManual.addChapter("effects.single.6", 27);
+		GuiEManual.addChapter("effects.single.7", 28);
+	}
+
+	public static void comboEffects() {
+		GuiEManual.addText("effects.category.2");
+		GuiEManual.addChapter("", -1);
+		GuiEManual.addChapter("", -2);
+		GuiEManual.addChapter("effects.combo.0", 29);
+		GuiEManual.addChapter("effects.combo.1", 30);
+		GuiEManual.addChapter("effects.combo.2", 31);
+		GuiEManual.addChapter("effects.combo.3", 32);
+		GuiEManual.addChapter("effects.combo.4", 33);
+
 	}
 
 	public static void introductionText() {
@@ -17,15 +53,11 @@ public class Pages {
 
 		GuiEManual.addText("");
 		GuiEManual.addText("intro.3");
-		
+
 	}
 
 	public static void TrinketsChapters() {
-
-		GuiEManual.addChapter("", -1);
-		GuiEManual.addChapter("", -2);
-		GuiEManual.addText("trinkets.1");
-
+		GuiEManual.addText("trinkets.0");
 	}
 
 	public static void CircuitsChapters() {
@@ -47,6 +79,7 @@ public class Pages {
 		GuiEManual.addText("");
 		GuiEManual.addText("soldering.iron.info");
 	}
+
 	public static void LeadWire() {
 		GuiEManual.addText("circuits.category.5");
 		GuiEManual.addText("");

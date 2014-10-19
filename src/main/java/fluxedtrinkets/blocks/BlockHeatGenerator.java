@@ -8,12 +8,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fluxedtrinkets.FluxedTrinkets;
 import fluxedtrinkets.ModInfo;
+import fluxedtrinkets.items.FTItems;
 import fluxedtrinkets.tileEntity.TileEntityHeatGenerator;
 
 public class BlockHeatGenerator extends BlockContainer {
@@ -31,10 +33,15 @@ public class BlockHeatGenerator extends BlockContainer {
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9) {
 		tile = (TileEntityHeatGenerator) world.getTileEntity(x, y, z);
-		player.openGui(FluxedTrinkets.instance, 2, world, x, y, z);
+
+		if (player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() == FTItems.ftWrench) {
+			if (!world.isRemote)
+				player.addChatComponentMessage(new ChatComponentText(tile.getEnergyStored() + " Stored energy."));
+		} else {
+			player.openGui(FluxedTrinkets.instance, 2, world, x, y, z);
+		}
 		return true;
 	}
-
 
 	public void registerBlockIcons(IIconRegister icon) {
 		top = icon.registerIcon(ModInfo.modid + ":Machine_Cube");

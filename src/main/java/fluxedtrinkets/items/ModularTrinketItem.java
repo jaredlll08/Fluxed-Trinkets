@@ -64,7 +64,7 @@ public class ModularTrinketItem extends Item implements ITrinket {
 					usage += FluxedTrinketsAPI.getEffects().get(i).getUsage();
 				}
 			}
-			
+
 			addInformation(stack, player, list, par4, effects, usage);
 		}
 	}
@@ -135,8 +135,9 @@ public class ModularTrinketItem extends Item implements ITrinket {
 				container.stackTagCompound.setInteger("energy", available - maxExtract);
 			removed = maxExtract;
 		} else {
-			if (!simulate)
+			if (!simulate) {
 				container.stackTagCompound.setInteger("energy", 0);
+			}
 			removed = available;
 		}
 		if (!simulate)
@@ -163,7 +164,9 @@ public class ModularTrinketItem extends Item implements ITrinket {
 			String effects = NBTHelper.getString(itemstack, "ETEffect");
 			for (int i = 0; i < FluxedTrinketsAPI.getEffectNames().size(); i++) {
 				if (effects.contains(FluxedTrinketsAPI.getEffectNames().get(i))) {
-					extractEnergy(itemstack, FluxedTrinketsAPI.getEffects().get(i).onWornTick(itemstack, player, (ITrinket) itemstack.getItem()), false);
+					if (extractEnergy(itemstack, FluxedTrinketsAPI.getEffects().get(i).onWornTick(itemstack, player, (ITrinket) itemstack.getItem()), false) == 0) {
+						FluxedTrinketsAPI.getEffects().get(i).onPowerEmpty(itemstack, player, (ITrinket) itemstack.getItem());
+					}
 				}
 			}
 		}
