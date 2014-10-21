@@ -1,5 +1,7 @@
 package fluxedtrinkets;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -10,6 +12,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.SolderingRegistry;
+import fluxedtrinkets.api.recipes.SolderingRecipe;
 import fluxedtrinkets.blocks.FTBlocks;
 import fluxedtrinkets.config.ConfigHandler;
 import fluxedtrinkets.effects.EffectAdvancedEmpty;
@@ -37,7 +41,7 @@ import fluxedtrinkets.util.GuiHandler;
 import fluxedtrinkets.util.RecipeHandler;
 import fluxedtrinkets.util.version.VersionChecker;
 
-@Mod(modid = ModInfo.modid, name = ModInfo.name, version = ModInfo.version, dependencies = "required-after:Baubles;required-after:ThermalFoundation;required-after:CoFHCore")
+@Mod(modid = ModInfo.modid, name = ModInfo.name, version = ModInfo.version, dependencies = "required-after:Baubles;required-after:ThermalFoundation;required-after:CoFHCore;after:NotEnoughItems")
 public class FluxedTrinkets {
 
 	@Instance("fluxedtrinkets")
@@ -63,7 +67,7 @@ public class FluxedTrinkets {
 		FluxedTrinketsAPI.addEffect(new EffectFeed());
 		FluxedTrinketsAPI.addEffect(new EffectEmpty());
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedEmpty());
-
+		
 		FTItems.init();
 		FTBlocks.init();
 		RecipeHandler.init();

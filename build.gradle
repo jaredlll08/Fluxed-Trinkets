@@ -14,10 +14,15 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
-
+repositories{
+    maven {
+        name = "chickenbones"
+        url = "http://chickenbones.net/maven"
+    }
+}
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.50"
+version = "1.7.10-1.0.52"
 group= "com.jared.fluxedtrinkets" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Fluxed Trinkets"
 
@@ -39,7 +44,9 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+	compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
+    compile "codechicken:CodeChickenLib:1.7.10-1.1.1.93:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.2.9:dev"
 }
 
 processResources

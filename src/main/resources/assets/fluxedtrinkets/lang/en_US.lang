@@ -228,3 +228,5 @@ ft.manual.effect.haste.desc=While the wearer is on the ground they gain a speed 
 ft.manual.effect.respiratory.desc=Allows the wearer to breathe underwater.
 ft.manual.effect.step.desc=Allows the player to walk up full blocks.
 ft.manual.effect.water.desc=Extinguishes any nearby fires within a 5 block radius.
+
+ft.gui.nei.SolderingStation=Soldering Station
