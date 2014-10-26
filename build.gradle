@@ -22,7 +22,7 @@ repositories{
 }
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.52"
+version = "1.7.10-1.0.53"
 group= "com.jared.fluxedtrinkets" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Fluxed Trinkets"
 

@@ -16,10 +16,10 @@ public class RenderAmulet {
 		super();
 	}
 
-	public void doRender(EntityLivingBase entity, float partialTicks) {
+	public void render(EntityLivingBase entity, float partialTicks) {
 		GL11.glPushMatrix();
-		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(ModInfo.modid + ":textures/models/Trinket_Assembler.png"));
-		this.modelAmulet.render(entity, 0, 0, 500, 500, 0, partialTicks);
+		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(ModInfo.modid + ":textures/models/ModelAmulet.png"));
+		this.modelAmulet.render(entity, 0, 0, 0, 0, 0, partialTicks);
 		GL11.glPopMatrix();
 	}
 

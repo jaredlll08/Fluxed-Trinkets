@@ -2,10 +2,12 @@ package fluxedtrinkets.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.util.EnumHelper;
 import baubles.api.BaubleType;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.CreativeTabFluxedTrinkets;
 import fluxedtrinkets.ModInfo;
+import fluxedtrinkets.api.FluxedTrinketsAPI;
 import fluxedtrinkets.effects.EffectAdvancedEmpty;
 import fluxedtrinkets.effects.EffectAdvancedIce;
 import fluxedtrinkets.effects.EffectAdvancedLava;
@@ -26,7 +28,7 @@ public class FTItems {
 		registerItems();
 		registerNBT();
 	}
-
+	public static final Item.ToolMaterial modular_Metal = EnumHelper.addToolMaterial("Modular_Metal", 3, 512, 6.0F, 2.0F, 0);
 	public static CreativeTabFluxedTrinkets tab = new CreativeTabFluxedTrinkets();
 
 	/*
@@ -85,7 +87,7 @@ public class FTItems {
 		registerCircuit(advancedCircuitLava, "Blazing Circuit", "Circuit_Advanced_Lava");
 		registerCircuit(advancedCircuitLife, "Mending Circuit", "Circuit_Advanced_Life");
 		registerCircuit(advancedCircuitLightning, "Thundering Circuit", "Circuit_Advanced_Lightning");
-
+		
 		/*
 		 * Items
 		 */

@@ -40,14 +40,16 @@ public class SolderingHandler extends TemplateRecipeHandler {
 	public void drawBackground(int recipe) {
 		GL11.glScalef(0.70f, 0.65f, 0.59f);
 		GuiDraw.changeTexture(getGuiTexture());
-		GuiDraw.drawTexturedModalRect(0, 0, 0, 0, 52, 56);
+		GuiDraw.drawTexturedModalRect(0, 0, 0, 0, 52, 55);
+
+		GuiDraw.drawTexturedModalRect(106, 115, 0, 56, 28, 28);
+		
 		GuiDraw.drawTexturedModalRect(151, 0, 177, 0, 79, 83);
 
 		GuiDraw.drawTexturedModalRect(1, 150, 53, 0, 28, 28);
 		GuiDraw.drawTexturedModalRect(210, 150, 53, 0, 28, 28);
 		GuiDraw.drawTexturedModalRect(106, 150, 53, 0, 28, 28);
-		GuiDraw.drawTexturedModalRect(106, 110, 53, 0, 28, 28);
-
+		GuiDraw.drawTexturedModalRect(106, 80, 53, 0, 28, 28);
 		GL11.glDisable(GL11.GL_BLEND);
 	}
 
@@ -121,7 +123,7 @@ public class SolderingHandler extends TemplateRecipeHandler {
 		public SolderingRecipe recipe;
 
 		public CachedSolderingRecipe(SolderingRecipe recipe) {
-			this.output = new PositionedStack(recipe.getOutput(), 75, 73);
+			this.output = new PositionedStack(recipe.getOutput(), 75, 53);
 			this.recipe = recipe;
 			this.inputs = new PositionedStack(recipe.getInput(), 75, 98);
 			this.other.add(new PositionedStack(recipe.getAddons()[0], 1, 1));

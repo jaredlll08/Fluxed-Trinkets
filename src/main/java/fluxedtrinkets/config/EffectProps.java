@@ -21,4 +21,7 @@ public class EffectProps {
 	public static Property energyRespiratory;
 	public static Property energyStep;
 	public static Property energyWater;
+	
+	public static Property energyHealth;
+	
 }

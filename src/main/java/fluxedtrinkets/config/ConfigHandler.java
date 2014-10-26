@@ -26,6 +26,8 @@ public class ConfigHandler {
 		EffectProps.energyRespiratory = config.get(categoryEnergy, "Respiratory Energy", 10);
 		EffectProps.energyStep = config.get(categoryEnergy, "Step Energy", 20);
 		EffectProps.energyWater = config.get(categoryEnergy, "Water Energy", 10);
+		
+		EffectProps.energyHealth = config.get(categoryEnergy, "Health Boost Energy", 600);
 
 		config.save();
 	}

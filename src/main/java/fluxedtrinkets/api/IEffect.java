@@ -69,4 +69,6 @@ public interface IEffect {
 	 * @param item
 	 */
 	public void onPowerEmpty(ItemStack stack, EntityLivingBase entity, ITrinket item);
+	
+	
 }

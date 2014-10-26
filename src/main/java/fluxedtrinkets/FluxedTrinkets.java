@@ -28,6 +28,7 @@ import fluxedtrinkets.effects.EffectFall;
 import fluxedtrinkets.effects.EffectFeed;
 import fluxedtrinkets.effects.EffectFire;
 import fluxedtrinkets.effects.EffectHaste;
+import fluxedtrinkets.effects.EffectHealth;
 import fluxedtrinkets.effects.EffectRespiratory;
 import fluxedtrinkets.effects.EffectWater;
 import fluxedtrinkets.items.FTItems;
@@ -67,6 +68,8 @@ public class FluxedTrinkets {
 		FluxedTrinketsAPI.addEffect(new EffectFeed());
 		FluxedTrinketsAPI.addEffect(new EffectEmpty());
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedEmpty());
+		FluxedTrinketsAPI.addEffect(new EffectHealth());
+		
 		
 		FTItems.init();
 		FTBlocks.init();
