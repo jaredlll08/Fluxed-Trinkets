@@ -9,9 +9,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
-import fluxedtrinkets.api.AssemblyRecipe;
-import fluxedtrinkets.api.AssemblyRegistry;
 import fluxedtrinkets.api.IEffect;
+import fluxedtrinkets.api.recipes.AssemblyRegistry;
+import fluxedtrinkets.api.recipes.AssemblyRegistry.AssemblyRecipe;
 import fluxedtrinkets.items.ItemCircuit;
 import fluxedtrinkets.util.NBTHelper;
 
@@ -260,8 +260,8 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 
 	public AssemblyRecipe getValidRecipe(IEffect[] effects) {
 
-		for (AssemblyRecipe r : AssemblyRegistry.recipes) {
-			if (r.equals(effects)) {
+		for (AssemblyRecipe r : AssemblyRegistry.getRecipes()) {
+			if (r.matches(effects)) {
 				return r;
 			}
 		}

@@ -9,9 +9,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fluxedtrinkets.api.AssemblyRecipe;
-import fluxedtrinkets.api.AssemblyRegistry;
 import fluxedtrinkets.api.FluxedTrinketsAPI;
+import fluxedtrinkets.api.recipes.AssemblyRegistry;
 import fluxedtrinkets.blocks.FTBlocks;
 import fluxedtrinkets.config.ConfigHandler;
 import fluxedtrinkets.effects.EffectAdvancedEmpty;
@@ -77,8 +76,7 @@ public class FluxedTrinkets {
 		GameRegistry.registerTileEntity(TileEntityKineticGenerator.class, "kineticGenerator");
 		GameRegistry.registerTileEntity(TileEntityHeatGenerator.class, "heatGenerator");
 
-		AssemblyRegistry.recipes.add(new AssemblyRecipe(new EffectHaste(), new EffectAir(), new EffectEarth()));
-
+		AssemblyRegistry.addAssemblyRecipe("haste", "air", "earth");
 	}
 
 	@EventHandler
