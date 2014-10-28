@@ -9,9 +9,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
-import fluxedtrinkets.api.IEffect;
-import fluxedtrinkets.api.recipes.AssemblyRegistry;
-import fluxedtrinkets.api.recipes.AssemblyRegistry.AssemblyRecipe;
 import fluxedtrinkets.items.ItemCircuit;
 import fluxedtrinkets.util.NBTHelper;
 
@@ -162,82 +159,57 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		item[3] = getStackInSlot(3);
 		item[4] = getStackInSlot(4);
 		ArrayList<String> totalEffects = new ArrayList<String>();
-
 		for (int i = 1; i < item.length; i++) {
 			if (item[i] != null) {
 				if (item[i].getItem() instanceof ItemCircuit) {
-					totalEffects.add(((ItemCircuit) item[i].getItem()).getEffect().getName());
+					ItemCircuit circuit = (ItemCircuit) item[i].getItem();
+
+					if (!totalEffects.contains(circuit.getEffect().getName())) {
+						totalEffects.add(circuit.getEffect().getName());
+					}
+
+					if (totalEffects.contains("advancedLife")) {
+						if (totalEffects.contains("water")) {
+							totalEffects.remove("advancedLife");
+							totalEffects.remove("water");
+							totalEffects.add("feed");
+						}
+						if (totalEffects.contains("earth")) {
+							totalEffects.remove("advancedLife");
+							totalEffects.remove("earth");
+							totalEffects.add("health");
+						}
+					}
+
+					if (totalEffects.contains("earth")) {
+						if (totalEffects.contains("empty")) {
+							totalEffects.remove("empty");
+							totalEffects.remove("earth");
+							totalEffects.add("step");
+						}
+						if (totalEffects.contains("advancedIce") && totalEffects.contains("air")) {
+							totalEffects.remove("advancedIce");
+							totalEffects.remove("air");
+							totalEffects.remove("earth");
+							totalEffects.add("fall");
+						}
+						if (totalEffects.contains("air")) {
+							totalEffects.remove("air");
+							totalEffects.remove("earth");
+							totalEffects.add("haste");
+						}
+					}
+
+					if (totalEffects.contains("air")) {
+						if (totalEffects.contains("water")) {
+							totalEffects.remove("air");
+							totalEffects.remove("water");
+							totalEffects.add("respiratory");
+						}
+					}
+
 				}
 			}
-		}
-		// for (int i = 1; i < item.length; i++) {
-		// if (item[i] != null) {
-		// if (item[i].getItem() instanceof ItemCircuit) {
-		//
-		// ItemCircuit circuit = (ItemCircuit) item[i].getItem();
-		//
-		// if (!totalEffects.contains(circuit.getEffect().getName())) {
-		// totalEffects.add(circuit.getEffect().getName());
-		// }
-		//
-		// if (totalEffects.contains("advancedLife")) {
-		// if (totalEffects.contains("water")) {
-		// totalEffects.remove("advancedLife");
-		// totalEffects.remove("water");
-		// totalEffects.add("feed");
-		// }
-		// }
-		//
-		// if (totalEffects.contains("earth")) {
-		// if (totalEffects.contains("empty")) {
-		// totalEffects.remove("empty");
-		// totalEffects.remove("earth");
-		// totalEffects.add("step");
-		// }
-		// if (totalEffects.contains("advancedIce") &&
-		// totalEffects.contains("air")) {
-		// totalEffects.remove("advancedIce");
-		// totalEffects.remove("air");
-		// totalEffects.remove("earth");
-		// totalEffects.add("fall");
-		// }
-		// if (totalEffects.contains("air")) {
-		// totalEffects.remove("air");
-		// totalEffects.remove("earth");
-		// totalEffects.add("haste");
-		// }
-		// }
-		//
-		// if (totalEffects.contains("air")) {
-		// if (totalEffects.contains("water")) {
-		// totalEffects.remove("air");
-		// totalEffects.remove("water");
-		// totalEffects.add("respiratory");
-		// }
-		// }
-		//
-		// }
-		// }
-		// }
-
-		IEffect[] effects = new IEffect[4];
-		if (item[1] != null) {
-			effects[0] = ((ItemCircuit) item[1].getItem()).getEffect();
-		}
-		if (item[2] != null) {
-			effects[1] = ((ItemCircuit) item[2].getItem()).getEffect();
-		}
-		if (item[3] != null) {
-			effects[2] = ((ItemCircuit) item[3].getItem()).getEffect();
-		}
-		if (item[4] != null) {
-			effects[3] = ((ItemCircuit) item[4].getItem()).getEffect();
-		}
-
-		try {
-			totalEffects = getValidRecipe(effects).getEffects(totalEffects);
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 		if (item[0] != null) {
@@ -256,17 +228,6 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 		}
 
 		return false;
-	}
-
-	public AssemblyRecipe getValidRecipe(IEffect[] effects) {
-
-		for (AssemblyRecipe r : AssemblyRegistry.getRecipes()) {
-			if (r.matches(effects)) {
-				return r;
-			}
-		}
-
-		return null;
 	}
 
 }

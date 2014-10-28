@@ -76,7 +76,7 @@ public class FluxedTrinkets {
 		GameRegistry.registerTileEntity(TileEntityKineticGenerator.class, "kineticGenerator");
 		GameRegistry.registerTileEntity(TileEntityHeatGenerator.class, "heatGenerator");
 
-		AssemblyRegistry.addAssemblyRecipe("haste", "air", "earth");
+		AssemblyRegistry.addAssemblyRecipe(new EffectHaste(), new EffectAir(), new EffectEarth());
 	}
 
 	@EventHandler
