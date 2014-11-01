@@ -958,7 +958,7 @@ public class GuiEManual extends GuiScreen {
 			addText("effect.respiratory.desc");
 			addText("");
 			addText("");
-				addText("effects.combo.1.info");
+			addText("effects.combo.1.info");
 
 			break;
 		case 31:
@@ -971,7 +971,7 @@ public class GuiEManual extends GuiScreen {
 			addText("effect.haste.desc");
 			addText("");
 			addText("");
-				addText("effects.combo.2.info");
+			addText("effects.combo.2.info");
 			break;
 		case 32:
 			removeAllChapters();
@@ -983,7 +983,7 @@ public class GuiEManual extends GuiScreen {
 			addText("effect.feed.desc");
 			addText("");
 			addText("");
-				addText("effects.combo.3.info");
+			addText("effects.combo.3.info");
 
 			break;
 		case 33:
@@ -996,10 +996,34 @@ public class GuiEManual extends GuiScreen {
 			addText("effect.air.desc");
 			addText("");
 			addText("");
-				addText("effects.combo.4.info");
-
+			addText("effects.combo.4.info");
+			break;
+		case 34:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.combo.5");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyWither.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.witherless.desc");
+			addText("");
+			addText("");
+			addText("effects.combo.5.info");
+			break;
+		case 35:
+			removeAllChapters();
+			removeAllText();
+			addText("effects.combo.6");
+			addText("");
+			addText("Usage: " + String.valueOf(EffectProps.energyPoison.getInt()) + "RF/t", false);
+			addText("");
+			addText("effect.poisonless.desc");
+			addText("");
+			addText("");
+			addText("effects.combo.6.info");
 			break;
 
+			
 		}
 
 	}

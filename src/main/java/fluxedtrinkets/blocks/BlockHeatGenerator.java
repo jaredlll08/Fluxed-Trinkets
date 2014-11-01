@@ -34,12 +34,7 @@ public class BlockHeatGenerator extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float par7, float par8, float par9) {
 		tile = (TileEntityHeatGenerator) world.getTileEntity(x, y, z);
 
-		if (player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() == FTItems.ftWrench) {
-			if (!world.isRemote)
-				player.addChatComponentMessage(new ChatComponentText(tile.getEnergyStored() + " Stored energy."));
-		} else {
-			player.openGui(FluxedTrinkets.instance, 2, world, x, y, z);
-		}
+		player.openGui(FluxedTrinkets.instance, 2, world, x, y, z);
 		return true;
 	}
 

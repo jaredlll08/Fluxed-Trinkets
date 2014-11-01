@@ -1,6 +1,9 @@
 package fluxedtrinkets;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.crash.CrashReport;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -26,8 +29,10 @@ import fluxedtrinkets.effects.EffectFeed;
 import fluxedtrinkets.effects.EffectFire;
 import fluxedtrinkets.effects.EffectHaste;
 import fluxedtrinkets.effects.EffectHealth;
+import fluxedtrinkets.effects.EffectPoison;
 import fluxedtrinkets.effects.EffectRespiratory;
 import fluxedtrinkets.effects.EffectWater;
+import fluxedtrinkets.effects.EffectWitherless;
 import fluxedtrinkets.items.FTItems;
 import fluxedtrinkets.network.PacketHandler;
 import fluxedtrinkets.proxy.CommonProxy;
@@ -36,6 +41,7 @@ import fluxedtrinkets.tileEntity.TileEntityKineticGenerator;
 import fluxedtrinkets.tileEntity.TileEntitySolderingStation;
 import fluxedtrinkets.tileEntity.TileEntityTrinketAssembler;
 import fluxedtrinkets.util.GuiHandler;
+import fluxedtrinkets.util.HudHandler;
 import fluxedtrinkets.util.RecipeHandler;
 import fluxedtrinkets.util.version.VersionChecker;
 
@@ -66,6 +72,9 @@ public class FluxedTrinkets {
 		FluxedTrinketsAPI.addEffect(new EffectEmpty());
 		FluxedTrinketsAPI.addEffect(new EffectAdvancedEmpty());
 		FluxedTrinketsAPI.addEffect(new EffectHealth());
+		FluxedTrinketsAPI.addEffect(new EffectWitherless());
+		FluxedTrinketsAPI.addEffect(new EffectPoison());
+		
 
 		FTItems.init();
 		FTBlocks.init();
@@ -75,8 +84,9 @@ public class FluxedTrinkets {
 		GameRegistry.registerTileEntity(TileEntityTrinketAssembler.class, "trinketAssembler");
 		GameRegistry.registerTileEntity(TileEntityKineticGenerator.class, "kineticGenerator");
 		GameRegistry.registerTileEntity(TileEntityHeatGenerator.class, "heatGenerator");
+		
+		
 
-		AssemblyRegistry.addAssemblyRecipe(new EffectHaste(), new EffectAir(), new EffectEarth());
 	}
 
 	@EventHandler
@@ -85,6 +95,8 @@ public class FluxedTrinkets {
 		PacketHandler.init();
 		VersionChecker.init();
 		MinecraftForge.EVENT_BUS.register(new fluxedtrinkets.util.EventHandler());
+		
+
 	}
 
 	@EventHandler

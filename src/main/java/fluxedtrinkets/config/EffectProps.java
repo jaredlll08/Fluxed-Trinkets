@@ -23,5 +23,8 @@ public class EffectProps {
 	public static Property energyWater;
 	
 	public static Property energyHealth;
+	public static Property energyWither;
+	public static Property energyPoison;
+	
 	
 }

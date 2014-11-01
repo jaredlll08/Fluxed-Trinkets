@@ -42,6 +42,9 @@ public class Pages {
 		GuiEManual.addChapter("effects.combo.2", 31);
 		GuiEManual.addChapter("effects.combo.3", 32);
 		GuiEManual.addChapter("effects.combo.4", 33);
+		GuiEManual.addChapter("effects.combo.5", 34);
+		GuiEManual.addChapter("effects.combo.6", 35);
+		
 
 	}
 

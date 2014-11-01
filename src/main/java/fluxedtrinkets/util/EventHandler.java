@@ -4,6 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.event.entity.item.ItemEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
 import org.lwjgl.opengl.GL11;
 
@@ -18,6 +20,7 @@ public class EventHandler {
 	public EventHandler() {
 		FMLCommonHandler.instance().bus().register(this);
 	}
+	
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void render(RenderLivingEvent.Pre event) {

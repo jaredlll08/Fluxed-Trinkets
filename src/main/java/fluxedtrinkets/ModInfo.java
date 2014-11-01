@@ -7,5 +7,5 @@ public class ModInfo {
 	public static final String version = "0.53";
 	public static final String channel = "fluxedtrinkets";
 	public static final String localizing = "ft";
-	
+
 }

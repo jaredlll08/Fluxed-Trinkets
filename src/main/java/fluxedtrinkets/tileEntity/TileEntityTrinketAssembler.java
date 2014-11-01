@@ -179,6 +179,17 @@ public class TileEntityTrinketAssembler extends TileEntity implements ISidedInve
 							totalEffects.remove("earth");
 							totalEffects.add("health");
 						}
+						if (totalEffects.contains("advancedLightning")) {
+							totalEffects.remove("advancedLife");
+							totalEffects.remove("advancedLightning");
+							totalEffects.add("witherless");
+						}
+						if (totalEffects.contains("advancedIce")) {
+							totalEffects.remove("advancedLife");
+							totalEffects.remove("advancedIce");
+							totalEffects.add("poisonless");
+						}
+						
 					}
 
 					if (totalEffects.contains("earth")) {

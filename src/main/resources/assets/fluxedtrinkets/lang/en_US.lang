@@ -81,6 +81,15 @@ ft.effect.step.desc=Allows the player to|walk up full blocks.
 ft.effect.water.name=Water
 ft.effect.water.desc=Extinguishes any nearby|fires within a 5 block radius.
 
+ft.effect.health.name=Health
+ft.effect.health.desc=Adds 10 Hearts to the players|max health.
+
+ft.effect.witherless.name=Witherless
+ft.effect.witherless.desc=If the player has the Wither potion|effect, it gets removed.
+
+ft.effect.poisonless.name=Poisonless
+ft.effect.poisonless.desc=If the player has the Poison potion|effect, it gets removed.
+
 ft.manual.title.0=Introduction
 ft.manual.title.1=Trinkets
 ft.manual.title.2=Soldering
@@ -168,8 +177,11 @@ ft.manual.effects.combo.3.info=You get the Feeder effect by adding an Advanced L
 ft.manual.effects.combo.4=Slow Fall
 ft.manual.effects.combo.4.info=You get the slow Fall effect by adding a Terrestrial Circuit, Advanced Ice Circuit and an Atmospheric Circuit to a trinket.
 
+ft.manual.effects.combo.5=Witherless
+ft.manual.effects.combo.5.info=You get the Witherless effect by adding an Advanced Life Circuit and an Advanced Lightning Circuit to a trinket.
 
-
+ft.manual.effects.combo.6=Poisonless
+ft.manual.effects.combo.6.info=You get the Poisonless effect by adding an Advanced Life Circuit and an Advanced Ice Circuit to a trinket.
 
 ft.manual.soldering.station.info=The Soldering Station is used to craft Circuit
 
@@ -228,5 +240,7 @@ ft.manual.effect.haste.desc=While the wearer is on the ground they gain a speed 
 ft.manual.effect.respiratory.desc=Allows the wearer to breathe underwater.
 ft.manual.effect.step.desc=Allows the player to walk up full blocks.
 ft.manual.effect.water.desc=Extinguishes any nearby fires within a 5 block radius.
+ft.manual.effect.poisonless.desc=If the player has the Poison potion effect, it gets removed.
+ft.manual.effect.witherless.desc=If the player has the Wither potion effect, it gets removed.
 
 ft.gui.nei.SolderingStation=Soldering Station

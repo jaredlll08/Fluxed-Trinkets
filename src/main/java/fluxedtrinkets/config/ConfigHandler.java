@@ -28,6 +28,9 @@ public class ConfigHandler {
 		EffectProps.energyWater = config.get(categoryEnergy, "Water Energy", 10);
 		
 		EffectProps.energyHealth = config.get(categoryEnergy, "Health Boost Energy", 600);
+		EffectProps.energyWither = config.get(categoryEnergy, "Witherless Energy", 400);
+		EffectProps.energyPoison= config.get(categoryEnergy, "Poisonless Energy", 200);
+		
 
 		config.save();
 	}

@@ -52,11 +52,10 @@ public class ModularTrinketItem extends Item implements ITrinket {
 		return par1ItemStack;
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+		super.addInformation(stack, player, list, par4);
 		int usage = 0;
-
 		if (NBTHelper.getString(stack, "ETEffect") != "" && NBTHelper.getString(stack, "ETEffect") != null) {
 			String effects = NBTHelper.getString(stack, "ETEffect");
 			for (int i = 0; i < FluxedTrinketsAPI.getEffectAmount(); i++) {

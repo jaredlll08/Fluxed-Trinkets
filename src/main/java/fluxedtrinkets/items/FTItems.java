@@ -2,12 +2,10 @@ package fluxedtrinkets.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.util.EnumHelper;
 import baubles.api.BaubleType;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fluxedtrinkets.CreativeTabFluxedTrinkets;
 import fluxedtrinkets.ModInfo;
-import fluxedtrinkets.api.FluxedTrinketsAPI;
 import fluxedtrinkets.effects.EffectAdvancedEmpty;
 import fluxedtrinkets.effects.EffectAdvancedIce;
 import fluxedtrinkets.effects.EffectAdvancedLava;
@@ -28,13 +26,12 @@ public class FTItems {
 		registerItems();
 		registerNBT();
 	}
-	public static final Item.ToolMaterial modular_Metal = EnumHelper.addToolMaterial("Modular_Metal", 3, 512, 6.0F, 2.0F, 0);
 	public static CreativeTabFluxedTrinkets tab = new CreativeTabFluxedTrinkets();
 
 	/*
 	 * circuits
 	 */
-	public static Item circuit = new ItemCircuit("empty", new EffectEmpty());
+	public static Item circuit = new ItemCircuit("heavy", new EffectEmpty());
 	public static Item circuitAir = new ItemCircuit("air", new EffectAir());
 	public static Item circuitEarth = new ItemCircuit("earth", new EffectEarth());
 	public static Item circuitFire = new ItemCircuit("fire", new EffectFire());
@@ -45,6 +42,7 @@ public class FTItems {
 	public static Item advancedCircuitLava = new ItemCircuit("advancedLava", new EffectAdvancedLava());
 	public static Item advancedCircuitLife = new ItemCircuit("advancedLife", new EffectAdvancedLife());
 	public static Item advancedCircuitLightning = new ItemCircuit("advancedLightning", new EffectAdvancedLightning());
+	
 
 	// public static Item silicon = new ItemSilicon();
 
@@ -64,7 +62,6 @@ public class FTItems {
 	public static Item modularAmulet = new ModularTrinketItem(15000, BaubleType.AMULET);
 	public static Item modularRing = new ModularTrinketItem(10000, BaubleType.RING);
 
-	public static Item ftWrench = new Item();
 
 	private static void registerItems() {
 		// FluxedTrinketsAPI.addEffect("empty");
@@ -101,7 +98,6 @@ public class FTItems {
 		registerItem(modularAmulet, "Modular Amulet", "Amulet_Empty");
 		registerItem(modularBelt, "Modular Belt", "Belt_Empty");
 		registerItem(modularRing, "Modular Ring", "Ring_Blank");
-		registerItem(ftWrench, "Fluxed Wrench", "Fluxed_Wrench");
 		// registerItem(brokenTrinket, "Broken Trinket Metal",
 		// "Broken_Trinket");
 

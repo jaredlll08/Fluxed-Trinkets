@@ -27,7 +27,6 @@ public class RecipeHandler {
 
 		SolderingRegistry.registerRecipe(new SolderingRecipe(new ItemStack(FTItems.circuitWater), new ItemStack(FTItems.advancedCircuitIce), new ItemStack(Blocks.snow), new ItemStack(Items.potionitem, 1, 8200), new ItemStack(Blocks.ice), new ItemStack(Items.cake)));
 		SolderingRegistry.registerRecipe(new SolderingRecipe(new ItemStack(FTItems.circuitEarth), new ItemStack(FTItems.advancedCircuitLife), new ItemStack(Items.speckled_melon), new ItemStack(Items.potionitem, 1, 8197), new ItemStack(Items.potionitem, 1, 8257), new ItemStack(Items.golden_apple)));
-
 		SolderingRegistry.registerRecipe(new SolderingRecipe(new ItemStack(FTItems.circuitEarth), new ItemStack(FTItems.advancedCircuitLightning), new ItemStack(Items.glowstone_dust), new ItemStack(Items.redstone), new ItemStack(Blocks.iron_bars), new ItemStack(FTItems.advancedCircuitLava)));
 		SolderingRegistry.registerRecipe(new SolderingRecipe(new ItemStack(FTItems.circuitFire), new ItemStack(FTItems.advancedCircuitLava), new ItemStack(Items.potionitem, 1, 8195), new ItemStack(Items.blaze_rod), new ItemStack(Items.blaze_powder), new ItemStack(Blocks.netherrack)));
 
@@ -53,7 +52,6 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ShapedOreRecipe(FTBlocks.machineCube, new Object[] { "iei", "ece", "iei", 'i', "ingotInvar", 'e', "ingotIron", 'c', FTItems.circuit }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(FTBlocks.heatGenerator, new Object[] { "iei", "ece", "iei", 'i', FTItems.circuitFire, 'e', Blocks.furnace, 'c', FTBlocks.machineCube }));
 		GameRegistry.addRecipe(new ShapedOreRecipe(FTBlocks.kineticGenerator, new Object[] { "iei", "ece", "iei", 'i', FTItems.circuitEarth, 'e', FTItems.circuitAir, 'c', FTBlocks.machineCube }));
-		GameRegistry.addRecipe(new ShapedOreRecipe(FTItems.ftWrench, new Object[] { "  i", " c ", "i  ", 'i', Items.iron_ingot, 'c', "ingotInvar" }));
 		GameRegistry.addShapelessRecipe(new ItemStack(FTItems.manual), new ItemStack(FTItems.basicBattery), new ItemStack(Items.book));
 
 	}

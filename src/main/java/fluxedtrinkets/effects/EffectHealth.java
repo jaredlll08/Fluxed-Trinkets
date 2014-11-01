@@ -21,10 +21,11 @@ public class EffectHealth extends BaseEffect {
 
 	@Override
 	public int onWornTick(ItemStack stack, EntityLivingBase entity, ITrinket item) {
-		if (!entity.worldObj.isRemote)
-			if (!entity.isPotionActive(Potion.field_76434_w))
-				BaublePotionHelper.addPotionEffect((EntityPlayer) entity, new BaublesPotionEffect(Potion.field_76434_w.id, 4));
-		if(entity.worldObj.getWorldTime()%200==0){
+		if (item.getEnergyStored(stack) > 600)
+			if (!entity.worldObj.isRemote)
+				if (!entity.isPotionActive(Potion.field_76434_w))
+					BaublePotionHelper.addPotionEffect((EntityPlayer) entity, new BaublesPotionEffect(Potion.field_76434_w.id, 4));
+		if (entity.worldObj.getWorldTime() % 200 == 0) {
 			return 600;
 		}
 		return 0;
@@ -36,7 +37,9 @@ public class EffectHealth extends BaseEffect {
 	}
 
 	public void onEquipped(ItemStack stack, EntityLivingBase entity, ITrinket item) {
-		if (!entity.worldObj.isRemote)
-			BaublePotionHelper.addPotionEffect((EntityPlayer) entity, new BaublesPotionEffect(Potion.field_76434_w.id, 4));
+		if (item.getEnergyStored(stack) > 600)
+			if (!entity.worldObj.isRemote)
+				BaublePotionHelper.addPotionEffect((EntityPlayer) entity, new BaublesPotionEffect(Potion.field_76434_w.id, 4));
+		item.extractEnergy(stack, 600, false);
 	}
 }
