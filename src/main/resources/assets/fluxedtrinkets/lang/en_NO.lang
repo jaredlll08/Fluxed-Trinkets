@@ -1,0 +1,248 @@
+item.Soldering_Iron.name=Loddebolt
+item.Battery_Basic.name=Bærbart Batteri
+ 
+item.Circuit.name=Krets
+item.Circuit_Fire.name=Glohet Krets
+item.Circuit_Earth.name=Jordet Krets
+item.Circuit_Air.name=Atmosfærisk Krets
+item.Circuit_Water.name=Kjølig Krets
+ 
+item.Circuit_Advanced.name=Avansert Krets
+item.Circuit_Advanced_Ice.name=Avslappende Krets
+item.Circuit_Advanced_Lava.name=Lava Krets
+item.Circuit_Advanced_Life=Livs Krets
+item.Circuit_Advanced_Lightning=Torden Krets
+ 
+item.Copper_Ingot.name=Kobber Barre
+item.Copper_Nugget.name=Kobber Klump
+item.Lead_Ingot.name=Bly Barre
+item.Lead_Wire.name=Bly Tråd
+item.Fluxed_Wrench.name=Skrunøkkel
+ 
+item.Belt_Empty.name=Bærbart Belte
+item.Amulet_Empty.name=Bærbar Amulett
+item.Ring_Blank.name=Bærbar Ring
+ 
+item.Electricians_Manual.name=Elektrikerns Bruksanvisning
+tile.Soldering Station.name=Loddebord
+tile.Trinket Assembler.name=Trinket Bord
+tile.Kinetic Generator.name=Kinetisk Generator
+tile.Machine Cube.name=Maskin Kube
+tile.Heat Generator.name=Varme Generator
+ 
+ 
+itemGroup.Fluxed Trinkets=Fluxed Trinkets
+ft.tooltip.charge=Ladning
+ft.tooltip.energyUsage=Energi Bruk
+ft.tooltip.holdShift=Hold Shift
+ 
+ft.effect.advancedEmpty.name=Tom
+ft.effect.advancedEmpty.desc=Ingen effekter.
+ 
+ft.effect.empty.name=Tom
+ft.effect.empty.desc=Ingen effekter.
+ 
+ft.effect.advancedLava.name=Avansert Lava
+ft.effect.advancedLava.desc=Tenner på mobs i nærheten.
+ 
+ft.effect.advancedIce.name=Avansert Is
+ft.effect.advancedIce.desc=Gir alle mobs i nærheten svakhet.
+ 
+ft.effect.advancedLife.name=Avansert Liv
+ft.effect.advancedLife.desc=Helbreder dyr i nærheten.
+ 
+ft.effect.advancedLightning.name=Advansert Lyn
+ft.effect.advancedLightning.desc=Hvis det er et lynnedslag|48 blokker eller nærmere en|spiller, får spilleren styrke.
+ 
+ft.effect.air.name=Luft
+ft.effect.air.desc=Tillater spilleren å bevege seg fortere i lufta.
+ 
+ft.effect.earth.name=Jord
+ft.effect.earth.desc=Hvis spilleren er lavere enn 32 blokker får de hurtighet.
+ 
+ft.effect.fall.name=Sakte Fall
+ft.effect.fall.desc=Hvis spilleren holder shift vil spilleren falle saktere.
+ 
+ft.effect.feed.name=Fòrer
+ft.effect.feed.desc=Hvis spilleren har lite mat, vil fòreren automatisk spise for spilleren.
+ 
+ft.effect.fire.name=Flamme beskyttelse
+ft.effect.fire.desc=Gjør spilleren immun for flammer.
+ 
+ft.effect.haste.name=Hurtighet
+ft.effect.haste.desc=På bakken blir spilleren raskere
+ 
+ft.effect.respiratory.name=Respirasjon
+ft.effect.respiratory.desc=Tillater spilleren å puste under vann.
+ 
+ft.effect.step.name=Løper
+ft.effect.step.desc=Tillater spilleren å|gå opp blokker.
+ 
+ft.effect.water.name=Vann
+ft.effect.water.desc=Slukker flammer innen|5 blokker.
+ 
+ft.effect.health.name=Liv
+ft.effect.health.desc=Gir spilleren 10 ekstra hjerter.
+ 
+ft.effect.witherless.name=Witherfri
+ft.effect.witherless.desc=Hvis spilleren har wither effekten|blir den fjernet.
+ 
+ft.effect.poisonless.name=Giftfri
+ft.effect.poisonless.desc=Hvis spilleren har en giftig|effekt, blir den fjernet.
+ 
+ft.manual.title.0=Introduksjon
+ft.manual.title.1=Trinkets
+ft.manual.title.2=Lodding
+ft.manual.title.3=Effekter
+ 
+ 
+ 
+ft.manual.intro.0=Velkommen til Fluxed-Trinkets!
+ft.manual.intro.1=Fluxed-Trinkets er en addisjon som har RF-Ringer.
+ft.manual.intro.2=Når ringene ikke har strøm igjen, virker de ikke lenger.
+ft.manual.intro.3=Denne addisjonen bruker et spesielt krafte-system. Manualen vil forklare alt.
+ 
+ft.manual.trinkets.0=Ringene addisjonen legger til:
+ft.manual.=
+ft.manual.circuits.0=Tom Krets
+ft.manual.circuits.1=Jordet Krets
+ft.manual.circuits.2=Atmosfærisk Krets
+ft.manual.circuits.3=Glohet Krets
+ft.manual.circuits.4=Kjølig Krets
+ 
+ft.manual.circuits.advanced.0=Tom Avansert Krets
+ft.manual.circuits.advanced.1=Beroligende Krets
+ft.manual.circuits.advanced.2=Lava Krets
+ft.manual.circuits.advanced.3=Livs Krets
+ft.manual.circuits.advanced.4=Torden Krets
+ 
+ft.manual.circuits.category.0=Kretser denne addisjonen legger til:
+ft.manual.circuits.category.1=Standard Krets
+ft.manual.circuits.category.2=Avansert Krets
+ft.manual.circuits.category.3=Loddebord
+ft.manual.circuits.category.4=Loddebolt
+ft.manual.circuits.category.5=Bly Tråd
+ 
+ft.manual.soldering.iron.info=Loddebordet brukes til å lodde kretsene med loddebolten.
+ft.manual.wire.lead.info=Bly Tråden brukes når kretsene loddes sammen med loddebolten.
+ 
+ft.manual.effects.category.0=Effekt kategori:
+ft.manual.effects.category.1=Enkelt Effekt
+ft.manual.effects.category.2=Kombo Effekt
+ 
+ft.manual.effects.single.0=Atmosfærisk
+ft.manual.effects.single.0.info=Du får den Atmosfæriske Effekten når du legger til en Atmosfærisk Krets til en Trinket.
+ 
+ 
+ft.manual.effects.single.1=Jordet
+ft.manual.effects.single.1.info=Du får en Jordet Effekt når du legger til en Jordet Krets til en Trinket.
+ 
+ 
+ft.manual.effects.single.2=Rennende
+ft.manual.effects.single.2.info=Du får den Rennende Effekten når du legger til en Rennende Krets til en Trinket.
+ 
+ 
+ft.manual.effects.single.3=Glohet
+ft.manual.effects.single.3.info=Du får den Glohete Effekten når du legger til en Glohet Krets til en Trinket.
+ 
+ 
+ft.manual.effects.single.4=Avansert Is
+ft.manual.effects.single.4.info=Du får den Avansert Is effekten når du legger til en Avansert Is Krets til en trinket.
+ 
+ 
+ft.manual.effects.single.5=Avansert Magma
+ft.manual.effects.single.5.info=Du får den Avanserte Magma Effekten når du legger til en Avansert Magma Krets til en trinket.
+ 
+ 
+ft.manual.effects.single.6=Avansert Liv
+ft.manual.effects.single.6.info=Du får den Avanserte Livs Effekten når du legger til en Avansert Liv Krets til en trinket.
+ 
+ 
+ft.manual.effects.single.7=Avansert Torden
+ft.manual.effects.single.7.info=Du får den Avanserte Torden Effekten når du legger til en Avansert Torden Krets til en trinket.
+ 
+ 
+ 
+ 
+ft.manual.effects.combo.0=Løper
+ft.manual.effects.combo.0.info=Du før Løper effekten når du legger til en Jordet Krets og en Tom Krets til en Trinket.
+ 
+ft.manual.effects.combo.1=Respirasjon
+ft.manual.effects.combo.1.info=Du får Respirasjons effekten når du legger til en Atomosfærisk Krets og en Rennende Krets til en Trinket.
+ 
+ft.manual.effects.combo.2=Hurtighet
+ft.manual.effects.combo.2.info=Du får Hurtighet effekten når du legger til en Jordet Krets og en Atmosfærisk Krets til en Trinket.
+ 
+ft.manual.effects.combo.3=Fòrer
+ft.manual.effects.combo.3.info=Du får Fòrer effekten når du legger til en Avansert Livs Krets og en Avansert Rennende Krets til en Trinket.
+ 
+ft.manual.effects.combo.4=Sakte Fall
+ft.manual.effects.combo.4.info=Du får Sakte Fall effekten når du legger til en Jordet Krets, Avansert Is Krets og en Atmosfærisk Krets til en Trinket.
+ 
+ft.manual.effects.combo.5=Witherløs
+ft.manual.effects.combo.5.info=Du får Witherløs effekten når du legger til en Avansert Livs Krets og en Avansert Torden Krets til en Trinket.
+ 
+ft.manual.effects.combo.6=Giftløs
+ft.manual.effects.combo.6.info=Du får Giftløs effekten når du legger til en Avansert Livs Krets og en Avansert Is Krets til en Trinket.
+ 
+ft.manual.soldering.station.info=Loddebordet brukes til å lage Kretser
+ 
+ft.manual.circuits.advanced.0.info=De Avanserte Kretsene brukes som medhjelpere for andre Kretser
+ 
+ft.manual.circuit.basic.0.info=Den Tomme Kretsen brukes som medhjelper for andre Kretser.
+ft.manual.circuit.basic.0.recipe=Oppskriften for en Tom Krets er dette i et Loddebord:
+ 
+ft.manual.circuit.basic.terrestrial.info=Den Jordede Kretsen brukes som en ingrediens for en Trinket.
+ft.manual.circuit.basic.terrestrial.recipe=Oppskriften for den Jordede Kretsen er dette i et Loddebord:
+ 
+ft.manual.circuit.basic.atmospheric.info=Den Atmosfæriske Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.basic.atmospheric.recipe=Oppskriften for en Atmosfærisk Krets er dette i et Loddebord:
+ 
+ft.manual.circuit.basic.scorched.info=Den Glohete Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.basic.scorched.recipe=Oppskriften for den Glohete Kretsen er dette i et Loddebord:
+ 
+ft.manual.circuit.basic.streaming.info=Den Rennende Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.basic.streaming.recipe=Oppskriften for den Rennende Kretsen er dette i et Loddebord:
+ 
+ft.manual.circuit.advanced.empty.info=Den Avanserte Tomme Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.advanced.empty.recipe=Oppskriften for den Avanserte Tomme Kretsen er dette i et Loddebord:
+ 
+ft.manual.circuit.advanced.chilling.info=Den Beroligende Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.advanced.chilling.recipe=Oppskriften for den Beroligende Kretsen er dette i et Loddebord:
+ 
+ft.manual.circuit.advanced.blazing.info=Den Magma Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.advanced.blazing.recipe=Oppskriften for en Magma Krets er dette i et Loddebord:
+ 
+ft.manual.circuit.advanced.mending.info=Den Livs Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.advanced.mending.recipe=Oppskriften for en Livs Krets er dette i et Loddebord:
+ 
+ft.manual.circuit.advanced.thundering.info=Den Tordnende Kretsen brukes som en ingrediens for å lage Trinkets.
+ft.manual.circuit.advanced.thundering.recipe=Oppskriften for en Tordnende Krets er dette i et Loddebord:
+ 
+ 
+ft.manual.soldering.station.info=Loddebordet brukes til å lage kretser.
+ft.manual.soldering.station.recipe=Oppskriften for Loddebordet er dette:
+ 
+tick=✓
+ 
+ 
+ 
+ft.manual.effect.advancedEmpty.desc=Ingen effekt.
+ft.manual.effect.empty.desc=Ingen effekt.
+ft.manual.effect.advancedLava.desc=Tenner på alle monstre i nærheten.
+ft.manual.effect.advancedIce.desc=Gir monstre i nærheten svakhet.
+ft.manual.effect.advancedLife.desc=Helbreder dyr i nærheten.
+ft.manual.effect.advancedLightning.desc=Hvis et lyn slår ned innenfor 48 blokker vil spilleren få styrke.
+ft.manual.effect.air.desc=Tillater spilleren å forflytte seg raskere i lufta.
+ft.manual.effect.earth.desc=Når spilleren er under y=32 får de hurtighet.
+ft.manual.effect.fall.desc=Når man ikke holder shift vill spilleren falle saktere enn vanlig.
+ft.manual.effect.feed.desc=Hvis bæreren har lite sult blir mat automatisk spist.
+ft.manual.effect.fire.desc=Gjør spilleren immun for flammer.
+ft.manual.effect.haste.desc=Når spilleren er på bakken får de fart.
+ft.manual.effect.respiratory.desc=Tillater spilleren å puste under vann.
+ft.manual.effect.step.desc=Tillater spilleren å gå opp blokker.
+ft.manual.effect.water.desc=Slukker flammer innenfor 5 blokker.
+ft.manual.effect.poisonless.desc=Hvis spilleren har en gift effekt blir den fjernet.
+ft.manual.effect.witherless.desc=Hvis spilleren har en wither effekt blir den fjernet.
+ 
+ft.gui.nei.SolderingStation=Loddebord
